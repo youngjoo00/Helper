@@ -1,5 +1,5 @@
 //
-//  PostView.swift
+//  SearchView.swift
 //  Helper
 //
 //  Created by youngjoo on 4/13/24.
@@ -8,8 +8,8 @@
 import UIKit
 import Then
 
-final class FindingView: BaseView {
-
+final class SearchView: BaseView {
+    
     let categorySegmentControl = UISegmentedControl().then {
         $0.insertSegment(withTitle: "사람", at: 0, animated: false)
         $0.insertSegment(withTitle: "애완동물", at: 1, animated: false)
@@ -28,7 +28,7 @@ final class FindingView: BaseView {
     
     override func configureLayout() {
         categorySegmentControl.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide).offset(10)
+            make.top.equalTo(safeAreaLayoutGuide).offset(54)
             make.leading.equalTo(safeAreaLayoutGuide).offset(16)
             make.width.equalTo(200)
             make.height.equalTo(44)

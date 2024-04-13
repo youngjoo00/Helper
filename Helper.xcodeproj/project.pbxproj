@@ -20,10 +20,24 @@
 		8E17A2F32BCA7DA800581B58 /* FindingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A2F22BCA7DA800581B58 /* FindingViewController.swift */; };
 		8E17A2F52BCA7DAE00581B58 /* FindingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A2F42BCA7DAE00581B58 /* FindingViewModel.swift */; };
 		8E17A2F72BCA7F1D00581B58 /* PostTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A2F62BCA7F1D00581B58 /* PostTabViewController.swift */; };
-		8E17A2F92BCA7F6C00581B58 /* PostTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A2F82BCA7F6C00581B58 /* PostTabView.swift */; };
 		8E17A2FE2BCA80AF00581B58 /* FoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A2FD2BCA80AF00581B58 /* FoundView.swift */; };
 		8E17A3002BCA80B900581B58 /* FoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A2FF2BCA80B900581B58 /* FoundViewController.swift */; };
 		8E17A3022BCA80BF00581B58 /* FoundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3012BCA80BF00581B58 /* FoundViewModel.swift */; };
+		8E17A3062BCA8F9200581B58 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3052BCA8F9200581B58 /* SearchView.swift */; };
+		8E17A3082BCA8F9900581B58 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3072BCA8F9900581B58 /* SearchViewController.swift */; };
+		8E17A30C2BCA8FA900581B58 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A30B2BCA8FA900581B58 /* SearchViewModel.swift */; };
+		8E17A30E2BCA8FBF00581B58 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A30D2BCA8FBF00581B58 /* MyProfileView.swift */; };
+		8E17A3102BCA8FC800581B58 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A30F2BCA8FC800581B58 /* MyProfileViewController.swift */; };
+		8E17A3122BCA8FCF00581B58 /* MyProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3112BCA8FCF00581B58 /* MyProfileViewModel.swift */; };
+		8E17A3152BCAC58200581B58 /* MyPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3142BCAC58200581B58 /* MyPostView.swift */; };
+		8E17A3172BCAC58A00581B58 /* MyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3162BCAC58A00581B58 /* MyPostViewController.swift */; };
+		8E17A3192BCAC59400581B58 /* MyPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3182BCAC59400581B58 /* MyPostViewModel.swift */; };
+		8E17A31C2BCAC61900581B58 /* MyStoragePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A31B2BCAC61900581B58 /* MyStoragePostView.swift */; };
+		8E17A31E2BCAC62B00581B58 /* MyStoragePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A31D2BCAC62B00581B58 /* MyStoragePostViewController.swift */; };
+		8E17A3202BCAC63C00581B58 /* MyStorageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A31F2BCAC63C00581B58 /* MyStorageViewModel.swift */; };
+		8E17A3232BCAC87E00581B58 /* MyProfileTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3222BCAC87E00581B58 /* MyProfileTabViewController.swift */; };
+		8E17A32A2BCAD16E00581B58 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3292BCAD16E00581B58 /* PostView.swift */; };
+		8E17A32C2BCAD17600581B58 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A32B2BCAD17600581B58 /* PostViewController.swift */; };
 		8E1BADE42BC965CC00A65075 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BADE32BC965CC00A65075 /* AppDelegate.swift */; };
 		8E1BADE62BC965CC00A65075 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BADE52BC965CC00A65075 /* SceneDelegate.swift */; };
 		8E1BADED2BC965CD00A65075 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E1BADEC2BC965CD00A65075 /* Assets.xcassets */; };
@@ -93,10 +107,24 @@
 		8E17A2F22BCA7DA800581B58 /* FindingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindingViewController.swift; sourceTree = "<group>"; };
 		8E17A2F42BCA7DAE00581B58 /* FindingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindingViewModel.swift; sourceTree = "<group>"; };
 		8E17A2F62BCA7F1D00581B58 /* PostTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTabViewController.swift; sourceTree = "<group>"; };
-		8E17A2F82BCA7F6C00581B58 /* PostTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTabView.swift; sourceTree = "<group>"; };
 		8E17A2FD2BCA80AF00581B58 /* FoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundView.swift; sourceTree = "<group>"; };
 		8E17A2FF2BCA80B900581B58 /* FoundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundViewController.swift; sourceTree = "<group>"; };
 		8E17A3012BCA80BF00581B58 /* FoundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundViewModel.swift; sourceTree = "<group>"; };
+		8E17A3052BCA8F9200581B58 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		8E17A3072BCA8F9900581B58 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		8E17A30B2BCA8FA900581B58 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		8E17A30D2BCA8FBF00581B58 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
+		8E17A30F2BCA8FC800581B58 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		8E17A3112BCA8FCF00581B58 /* MyProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewModel.swift; sourceTree = "<group>"; };
+		8E17A3142BCAC58200581B58 /* MyPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostView.swift; sourceTree = "<group>"; };
+		8E17A3162BCAC58A00581B58 /* MyPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostViewController.swift; sourceTree = "<group>"; };
+		8E17A3182BCAC59400581B58 /* MyPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostViewModel.swift; sourceTree = "<group>"; };
+		8E17A31B2BCAC61900581B58 /* MyStoragePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStoragePostView.swift; sourceTree = "<group>"; };
+		8E17A31D2BCAC62B00581B58 /* MyStoragePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStoragePostViewController.swift; sourceTree = "<group>"; };
+		8E17A31F2BCAC63C00581B58 /* MyStorageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStorageViewModel.swift; sourceTree = "<group>"; };
+		8E17A3222BCAC87E00581B58 /* MyProfileTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTabViewController.swift; sourceTree = "<group>"; };
+		8E17A3292BCAD16E00581B58 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		8E17A32B2BCAD17600581B58 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		8E1BADE02BC965CC00A65075 /* Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Helper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E1BADE32BC965CC00A65075 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E1BADE52BC965CC00A65075 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -187,6 +215,8 @@
 		8E17A2EF2BCA7D8D00581B58 /* Post */ = {
 			isa = PBXGroup;
 			children = (
+				8E17A3292BCAD16E00581B58 /* PostView.swift */,
+				8E17A32B2BCAD17600581B58 /* PostViewController.swift */,
 				8E17A2FA2BCA7F7800581B58 /* PostTab */,
 				8E17A2FB2BCA808700581B58 /* Finding */,
 				8E17A2FC2BCA809200581B58 /* Found */,
@@ -197,7 +227,6 @@
 		8E17A2FA2BCA7F7800581B58 /* PostTab */ = {
 			isa = PBXGroup;
 			children = (
-				8E17A2F82BCA7F6C00581B58 /* PostTabView.swift */,
 				8E17A2F62BCA7F1D00581B58 /* PostTabViewController.swift */,
 			);
 			path = PostTab;
@@ -221,6 +250,57 @@
 				8E17A3012BCA80BF00581B58 /* FoundViewModel.swift */,
 			);
 			path = Found;
+			sourceTree = "<group>";
+		};
+		8E17A3032BCA8F2A00581B58 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				8E17A3052BCA8F9200581B58 /* SearchView.swift */,
+				8E17A3072BCA8F9900581B58 /* SearchViewController.swift */,
+				8E17A30B2BCA8FA900581B58 /* SearchViewModel.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		8E17A3042BCA8F3400581B58 /* MyProfile */ = {
+			isa = PBXGroup;
+			children = (
+				8E17A30D2BCA8FBF00581B58 /* MyProfileView.swift */,
+				8E17A30F2BCA8FC800581B58 /* MyProfileViewController.swift */,
+				8E17A3112BCA8FCF00581B58 /* MyProfileViewModel.swift */,
+				8E17A3212BCAC84500581B58 /* MyProfileTab */,
+				8E17A3132BCAC54F00581B58 /* MyPost */,
+				8E17A31A2BCAC5C000581B58 /* MyStoragePost */,
+			);
+			path = MyProfile;
+			sourceTree = "<group>";
+		};
+		8E17A3132BCAC54F00581B58 /* MyPost */ = {
+			isa = PBXGroup;
+			children = (
+				8E17A3142BCAC58200581B58 /* MyPostView.swift */,
+				8E17A3162BCAC58A00581B58 /* MyPostViewController.swift */,
+				8E17A3182BCAC59400581B58 /* MyPostViewModel.swift */,
+			);
+			path = MyPost;
+			sourceTree = "<group>";
+		};
+		8E17A31A2BCAC5C000581B58 /* MyStoragePost */ = {
+			isa = PBXGroup;
+			children = (
+				8E17A31B2BCAC61900581B58 /* MyStoragePostView.swift */,
+				8E17A31D2BCAC62B00581B58 /* MyStoragePostViewController.swift */,
+				8E17A31F2BCAC63C00581B58 /* MyStorageViewModel.swift */,
+			);
+			path = MyStoragePost;
+			sourceTree = "<group>";
+		};
+		8E17A3212BCAC84500581B58 /* MyProfileTab */ = {
+			isa = PBXGroup;
+			children = (
+				8E17A3222BCAC87E00581B58 /* MyProfileTabViewController.swift */,
+			);
+			path = MyProfileTab;
 			sourceTree = "<group>";
 		};
 		8E1BADD72BC965CC00A65075 = {
@@ -306,6 +386,8 @@
 			children = (
 				8E1BAE842BC97F0400A65075 /* User */,
 				8E17A2EF2BCA7D8D00581B58 /* Post */,
+				8E17A3032BCA8F2A00581B58 /* Search */,
+				8E17A3042BCA8F3400581B58 /* MyProfile */,
 			);
 			path = Present;
 			sourceTree = "<group>";
@@ -518,12 +600,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E17A32C2BCAD17600581B58 /* PostViewController.swift in Sources */,
 				8E17A2F52BCA7DAE00581B58 /* FindingViewModel.swift in Sources */,
 				8E1BAE1D2BC968E500A65075 /* SignInViewController.swift in Sources */,
 				8E1BAE3A2BC968EC00A65075 /* TokenIntercepter.swift in Sources */,
 				8E1BAE732BC97D5D00A65075 /* BaseTableViewCell.swift in Sources */,
 				8E17A2F32BCA7DA800581B58 /* FindingViewController.swift in Sources */,
 				8E1BAE392BC968EC00A65075 /* TargetType.swift in Sources */,
+				8E17A30C2BCA8FA900581B58 /* SearchViewModel.swift in Sources */,
 				8E1BAE202BC968E500A65075 /* PasswordViewController.swift in Sources */,
 				8E17A2EE2BCA59D000581B58 /* BirthdayViewModel.swift in Sources */,
 				8E1BAE3E2BC968F100A65075 /* UserDefaultsManager.swift in Sources */,
@@ -532,15 +616,20 @@
 				8E1BAE372BC968EC00A65075 /* RequestModel.swift in Sources */,
 				8E1BAE4D2BC969DD00A65075 /* UITextField+.swift in Sources */,
 				8E1BAE4F2BC96AA600A65075 /* DateManager.swift in Sources */,
+				8E17A3082BCA8F9900581B58 /* SearchViewController.swift in Sources */,
 				8E1BAE212BC968E500A65075 /* PasswordViewModel.swift in Sources */,
 				8E17A2EA2BCA59C100581B58 /* BirthdayView.swift in Sources */,
 				8E1BAE802BC97D9600A65075 /* shadowImageView.swift in Sources */,
 				8E17A2F72BCA7F1D00581B58 /* PostTabViewController.swift in Sources */,
 				8E1BAE232BC968E500A65075 /* SignUpViewController.swift in Sources */,
+				8E17A31C2BCAC61900581B58 /* MyStoragePostView.swift in Sources */,
 				8E17A3022BCA80BF00581B58 /* FoundViewModel.swift in Sources */,
+				8E17A3122BCA8FCF00581B58 /* MyProfileViewModel.swift in Sources */,
+				8E17A31E2BCAC62B00581B58 /* MyStoragePostViewController.swift in Sources */,
 				8E1BAE252BC968E500A65075 /* NicknameView.swift in Sources */,
 				8E1BAE1F2BC968E500A65075 /* PasswordView.swift in Sources */,
 				8E1BADE42BC965CC00A65075 /* AppDelegate.swift in Sources */,
+				8E17A3202BCAC63C00581B58 /* MyStorageViewModel.swift in Sources */,
 				8E17A2DC2BCA267000581B58 /* RedColorLabel.swift in Sources */,
 				8E1BAE722BC97D5D00A65075 /* BaseView.swift in Sources */,
 				8E1BAE8A2BC97FF800A65075 /* PointButton.swift in Sources */,
@@ -548,11 +637,14 @@
 				8E1BADFD2BC968C100A65075 /* ViewModelType.swift in Sources */,
 				8E17A2E82BCA3E6500581B58 /* SignUpManager.swift in Sources */,
 				8E17A2FE2BCA80AF00581B58 /* FoundView.swift in Sources */,
+				8E17A3102BCA8FC800581B58 /* MyProfileViewController.swift in Sources */,
 				8E1BADE62BC965CC00A65075 /* SceneDelegate.swift in Sources */,
 				8E1BAE892BC97FF800A65075 /* SignTextField.swift in Sources */,
+				8E17A3062BCA8F9200581B58 /* SearchView.swift in Sources */,
 				8E1BAE362BC968EC00A65075 /* NetworkManager.swift in Sources */,
 				8E17A2E22BCA3D7800581B58 /* PhoneView.swift in Sources */,
 				8E1BAE382BC968EC00A65075 /* ResponseModel.swift in Sources */,
+				8E17A32A2BCAD16E00581B58 /* PostView.swift in Sources */,
 				8E1BAE712BC97D5D00A65075 /* BaseCollectionViewCell.swift in Sources */,
 				8E17A2EC2BCA59C800581B58 /* BirthdayViewController.swift in Sources */,
 				8E17A2E62BCA3D8600581B58 /* PhoneViewModel.swift in Sources */,
@@ -560,21 +652,25 @@
 				8E1BAE702BC97D5D00A65075 /* BaseViewController.swift in Sources */,
 				8E1BAE8D2BC9800B00A65075 /* Color.swift in Sources */,
 				8E1BAE352BC968EC00A65075 /* HTTPHeader.swift in Sources */,
-				8E17A2F92BCA7F6C00581B58 /* PostTabView.swift in Sources */,
 				8E17A2DE2BCA31D400581B58 /* ViewModelType+.swift in Sources */,
 				8E1BAE222BC968E500A65075 /* SignUpView.swift in Sources */,
+				8E17A3152BCAC58200581B58 /* MyPostView.swift in Sources */,
 				8E1BAE262BC968E500A65075 /* NicknameViewController.swift in Sources */,
+				8E17A3192BCAC59400581B58 /* MyPostViewModel.swift in Sources */,
 				8E1BAE272BC968E500A65075 /* NicknameViewModel.swift in Sources */,
 				8E1BADFC2BC968C100A65075 /* ReusableID.swift in Sources */,
 				8E17A3002BCA80B900581B58 /* FoundViewController.swift in Sources */,
 				8E1BAE522BC96AC500A65075 /* TabBarController.swift in Sources */,
 				8E1BAEA02BC99F3200A65075 /* PointBoldLabel.swift in Sources */,
 				8E1BAE462BC968F900A65075 /* UIViewController+.swift in Sources */,
+				8E17A3232BCAC87E00581B58 /* MyProfileTabViewController.swift in Sources */,
 				8E1BADF82BC966BA00A65075 /* PrivateKey.swift in Sources */,
 				8E1BAE9E2BC99E7C00A65075 /* PointLabel.swift in Sources */,
 				8E17A2E42BCA3D7F00581B58 /* PhoneViewController.swift in Sources */,
+				8E17A3172BCAC58A00581B58 /* MyPostViewController.swift in Sources */,
 				8E1BAE3B2BC968EC00A65075 /* UserRouter.swift in Sources */,
 				8E1BAE862BC97FDE00A65075 /* SignInView.swift in Sources */,
+				8E17A30E2BCA8FBF00581B58 /* MyProfileView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

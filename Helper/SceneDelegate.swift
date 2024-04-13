@@ -19,10 +19,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: scene)
         
+        print(#function)
         NetworkManager.shared.callAPI(type: ResponseModel.MyProfile.self, router: .myProfile)
             .subscribe(with: self) { owner, result in
                 switch result {
-                case .success(let data):
+                case .success:
                     owner.window?.rootViewController = TabBarController()
                 case .fail(let fail):
                     print(fail.localizedDescription)

@@ -1,5 +1,5 @@
 //
-//  PostTabViewController.swift
+//  MyProfileTabViewController.swift
 //  Helper
 //
 //  Created by youngjoo on 4/13/24.
@@ -8,11 +8,11 @@
 import UIKit
 import Tabman
 import Pageboy
+import Then
 
-final class PostTabViewController: TabmanViewController {
+final class MyProfileTabViewController: TabmanViewController {
     
     var viewControllers: [UIViewController] = []
-    
     let bar = TMBar.ButtonBar().then {
         $0.backgroundView.style = .blur(style: .regular)
         $0.layout.contentInset = UIEdgeInsets.zero
@@ -34,29 +34,30 @@ final class PostTabViewController: TabmanViewController {
         configureView()
         view.backgroundColor = .white
     }
+    
 }
 
-extension PostTabViewController {
-    
+extension MyProfileTabViewController {
+
     private func configureView() {
-        let findingVC = FindingViewController()
-        let foundVC = FoundViewController()
+        let myPostVC = MyPostViewController()
+        let myStorageVC = MyStoragePostViewController()
         
-        viewControllers.append(contentsOf: [findingVC, foundVC])
+        viewControllers.append(contentsOf: [myPostVC, myStorageVC])
         
         dataSource = self
         addBar(bar, dataSource: self, at: .top)
     }
 }
 
-extension PostTabViewController: PageboyViewControllerDataSource, TMBarDataSource {
+extension MyProfileTabViewController: PageboyViewControllerDataSource, TMBarDataSource {
     
     func barItem(for bar: TMBar, at index: Int) -> TMBarItemable {
         switch index {
         case 0:
-            return TMBarItem(title: "찾고있어요")
+            return TMBarItem(title: "작성한 게시글")
         case 1:
-            return TMBarItem(title: "찾았어요")
+            return TMBarItem(title: "저장한 게시글")
         default:
             return TMBarItem(title: "Page \(index)")
         }

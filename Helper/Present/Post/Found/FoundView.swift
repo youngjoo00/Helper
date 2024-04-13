@@ -28,7 +28,7 @@ final class FoundView: BaseView {
     
     override func configureLayout() {
         categorySegmentControl.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide).offset(54)
+            make.top.equalTo(safeAreaLayoutGuide).offset(10)
             make.leading.equalTo(safeAreaLayoutGuide).offset(16)
             make.width.equalTo(200)
             make.height.equalTo(44)
