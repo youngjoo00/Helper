@@ -12,51 +12,58 @@ import RxCocoa
 final class NicknameViewModel: ViewModelType {
     
     var disposeBag: RxSwift.DisposeBag = .init()
-    
-    
+
     struct Input {
         let nickname: Observable<String>
         let nextButtonTap: ControlEvent<Void>
     }
     
     struct Output {
-        let valid: Driver<Bool>
+        let isValid: Driver<Bool>
         let description: Driver<String>
-        let nextButtonTap: ControlEvent<Void>
+        let nextButtonTapTrigger: Driver<Void>
     }
     
     func transform(input: Input) -> Output {
-        let valid = input.nickname
-            .map { $0.count >= 2 }
-            .asDriver(onErrorJustReturn: false)
         
-        let description = valid
+        let nextButtonTapTrigger = PublishRelay<Void>()
+        
+        let isValid = input.nickname
+            .map { $0.count >= 2 }
+        
+        let description = isValid
             .map { $0 ? "" : "닉네임은 최소 두 글자 이상입니다" }
-            .asDriver()
         
         input.nextButtonTap
-            .withLatestFrom(input.nickname) { first, second in
-                RequestModel.Join(email: SignUp.shared.email,
-                            password: SignUp.shared.password,
-                            nick: second,
-                            phone: nil,
-                            birthday: nil)
-            }
-            .flatMap { NetworkManager.shared.callAPI(type: ResponseModel.Join.self, router: .join(query: $0)) }
-            .subscribe(with: self) { owner, result in
-                switch result {
-                case .success(let data):
-                    print(data)
-                case .fail(let fail):
-                    print(fail)
-                case .errorMessage(let message):
-                    print(message)
-                }
+            .withLatestFrom(input.nickname)
+            .subscribe(with: self) { owner, nickname in
+                SignUpManager.shared.nick = nickname
+                nextButtonTapTrigger.accept(())
             }
             .disposed(by: disposeBag)
+//        input.nextButtonTap
+//            .withLatestFrom(input.nickname) { first, second in
+//                RequestModel.Join(email: SignUp.shared.email,
+//                            password: SignUp.shared.password,
+//                            nick: second,
+//                            phone: nil,
+//                            birthday: nil)
+//            }
+//            .flatMap { NetworkManager.shared.callAPI(type: ResponseModel.Join.self, router: .join(query: $0)) }
+//            .subscribe(with: self) { owner, result in
+//                switch result {
+//                case .success(let data):
+//                    print(data)
+//                case .fail(let fail):
+//                    print(fail)
+//                case .errorMessage(let message):
+//                    print(message)
+//                }
+//            }
+//            .disposed(by: disposeBag)
         
-        return Output(valid: valid,
-                      description: description, 
-                      nextButtonTap: input.nextButtonTap)
+        return Output(isValid: isValid.asDriver(onErrorJustReturn: false),
+                      description: description.asDriver(onErrorJustReturn: ""),
+                      nextButtonTapTrigger: nextButtonTapTrigger.asDriver(onErrorJustReturn: ()))
     }
 }

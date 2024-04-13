@@ -49,14 +49,3 @@ enum ResponseModel {
         let message: String
     }
 }
-
-final class SignUp {
-    
-    static let shared = SignUp()
-    private init() {}
-    
-    var email: String = ""
-    var password: String = ""
-    var nick: String = ""
-}
-

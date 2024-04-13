@@ -56,7 +56,7 @@ final class SignUpViewModel: ViewModelType {
                 switch response {
                 case .success(let data):
                     print(data.message)
-                    SignUp.shared.email = email.email
+                    SignUpManager.shared.email = email.email
                     isEmailUnique.accept(true)
                 case .fail(let fail):
                     print(fail)

@@ -24,7 +24,6 @@ final class SignInViewController: BaseViewController {
     
     override func bind() {
         
-        // RxCocoa 는 UIKit 기반인데 이게 싫으면 아예 옵저버블 타입으로 넘겨버림
         let input = SignInViewModel.Input(emailText: mainView.emailTextField.rx.text.orEmpty.asObservable(),
                                           passwordText: mainView.passwordTextField.rx.text.orEmpty.asObservable(),
                                           loginButtonTapped: mainView.signInButton.rx.tap,
@@ -36,7 +35,7 @@ final class SignInViewController: BaseViewController {
         output.loginValid
             .drive(with: self) { owner, valid in
                 if valid {
-                    owner.showAlert(title: "로그인 성공!", message: nil)
+                    owner.changeRootView()
                 } else {
                     owner.showAlert(title: "로그인 실패!", message: nil)
                 }

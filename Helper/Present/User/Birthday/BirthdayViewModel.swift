@@ -1,20 +1,20 @@
 //
-//  PasswordViewModel.swift
-//  SeSACRxThreads
+//  BirthdayViewModel.swift
+//  Helper
 //
-//  Created by youngjoo on 4/3/24.
+//  Created by youngjoo on 4/13/24.
 //
 
 import Foundation
 import RxSwift
 import RxCocoa
 
-final class PasswordViewModel: ViewModelType {
-
-    var disposeBag: DisposeBag = .init()
+final class BirthdayViewModel: ViewModelType {
     
+    var disposeBag: RxSwift.DisposeBag = .init()
+
     struct Input {
-        let password: Observable<String>
+        let phone: Observable<String>
         let nextButtonTap: ControlEvent<Void>
     }
     
@@ -28,25 +28,25 @@ final class PasswordViewModel: ViewModelType {
         
         let nextButtonTapTrigger = PublishRelay<Void>()
         
-        let isValid = input.password
-            .map { $0.count >= 4 }
+        let isValid: Observable<Bool> = input.phone
+            .map { [weak self] phone in
+                guard let self else { return false }
+                return self.validatePhone(phone)
+            }
         
         let description = isValid
-            .map { $0 ? "" : "비밀번호는 최소 4자 이상입니다" }
+            .map { $0 ? "" : "유효한 휴대폰 번호 형식이 아닙니다." }
         
         input.nextButtonTap
-            .withLatestFrom(input.password)
-            .subscribe(with: self) { owner, password in
-                SignUpManager.shared.password = password
+            .withLatestFrom(input.phone)
+            .subscribe(with: self) { owner, phone in
+                SignUpManager.shared.phone = phone
                 nextButtonTapTrigger.accept(())
             }
             .disposed(by: disposeBag)
         
-        
-        
         return Output(isValid: isValid.asDriver(onErrorJustReturn: false),
                       description: description.asDriver(onErrorJustReturn: ""),
-                      nextButtonTapTrigger: nextButtonTapTrigger.asDriver(onErrorJustReturn: ())
-        )
+                      nextButtonTapTrigger: nextButtonTapTrigger.asDriver(onErrorJustReturn: ()))
     }
 }

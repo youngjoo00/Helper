@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import RxSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
+    let disposebag = DisposeBag()
     var window: UIWindow?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -17,38 +19,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: scene)
         
-        window?.rootViewController = UINavigationController(rootViewController: SignInViewController())
-        window?.makeKeyAndVisible()
-        
-//        let value = UserDefaults.standard.bool(forKey: "userState")
-//        
-//        if !value {
-//            window = UIWindow(windowScene: scene)
-//            
-//            let SignUp = UINavigationController(rootViewController: SignUpViewController())
-//            
-//            window?.rootViewController = OnBoarding
-//            window?.makeKeyAndVisible()
-//        } else {
-//            window = UIWindow(windowScene: scene)
-//            
-//            let tabBar = UITabBarController()
-//            let sb = UIStoryboard(name: "Main", bundle: nil)
-//            let firstTab = sb.instantiateViewController(withIdentifier: "MainNavigationController")
-//            
-//            let firstTabBarItem = UITabBarItem(title: "검색", image: UIImage(systemName: "magnifyingglass"), tag: 0)
-//            firstTab.tabBarItem = firstTabBarItem
-//            
-//            let secondTab = UINavigationController(rootViewController: SettingViewController())
-//            let secondTabBarItem = UITabBarItem(title: "설정", image: UIImage(systemName: "person"), tag: 1)
-//            secondTab.tabBarItem = secondTabBarItem
-//            
-//            tabBar.viewControllers = [firstTab, secondTab]
-//            
-//            window?.rootViewController = tabBar
-//            window?.makeKeyAndVisible()
-//        }
-        
+        NetworkManager.shared.callAPI(type: ResponseModel.MyProfile.self, router: .myProfile)
+            .subscribe(with: self) { owner, result in
+                switch result {
+                case .success(let data):
+                    owner.window?.rootViewController = TabBarController()
+                case .fail(let fail):
+                    print(fail.localizedDescription)
+                    owner.window?.rootViewController = UINavigationController(rootViewController: SignInViewController())
+                case .errorMessage(let message):
+                    print(message.message)
+                    owner.window?.rootViewController = UINavigationController(rootViewController: SignInViewController())
+                }
+                owner.window?.makeKeyAndVisible()
+            }
+            .disposed(by: disposebag)
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

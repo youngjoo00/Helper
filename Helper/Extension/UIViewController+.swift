@@ -8,11 +8,11 @@
 import UIKit
 
 extension UIViewController {
-    func changeRootView(to viewController: UIViewController, isNav: Bool = false) {
+    func changeRootView() {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
         let sceneDelegate = windowScene.delegate as? SceneDelegate
-        let vc = isNav ? UINavigationController(rootViewController: viewController) : viewController
-        sceneDelegate?.window?.rootViewController = vc
+        let tabbar = TabBarController()
+        sceneDelegate?.window?.rootViewController = tabbar
         sceneDelegate?.window?.makeKey()
     }
 

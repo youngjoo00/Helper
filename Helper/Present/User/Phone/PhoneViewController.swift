@@ -1,18 +1,18 @@
 //
-//  NicknameViewController.swift
-//  SeSACRxThreads
+//  PhoneViewController.swift
+//  Helper
 //
-//  Created by jack on 2023/10/30.
+//  Created by youngjoo on 4/13/24.
 //
 
 import UIKit
 import RxSwift
 import RxCocoa
 
-final class NicknameViewController: BaseViewController {
+final class PhoneViewController: BaseViewController {
     
-    private let mainView = NicknameView()
-    private let viewModel = NicknameViewModel()
+    private let mainView = PhoneView()
+    private let viewModel = PhoneViewModel()
         
     override func loadView() {
         view = mainView
@@ -24,7 +24,7 @@ final class NicknameViewController: BaseViewController {
     
     override func bind() {
         
-        let input = NicknameViewModel.Input(nickname: mainView.nicknameTextField.rx.text.orEmpty.asObservable(),
+        let input = PhoneViewModel.Input(phone: mainView.phoneTextField.rx.text.orEmpty.asObservable(),
                                             nextButtonTap: mainView.nextButton.rx.tap)
         
         let output = viewModel.transform(input: input)
@@ -39,7 +39,7 @@ final class NicknameViewController: BaseViewController {
 
         output.nextButtonTapTrigger
             .drive(with: self) { owner, _ in
-                owner.navigationController?.pushViewController(PhoneViewController(), animated: true)
+                owner.navigationController?.pushViewController(BirthdayViewController(), animated: true)
             }
             .disposed(by: disposeBag)
 
