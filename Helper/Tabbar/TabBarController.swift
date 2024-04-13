@@ -12,9 +12,9 @@ final class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let firstTab = UINavigationController(rootViewController: PostViewController())
-        let firstTabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "house"), tag: 0)
-        firstTab.tabBarItem = firstTabBarItem
+//        let firstTab = UINavigationController(rootViewController: PostViewController())
+//        let firstTabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "house"), tag: 0)
+//        firstTab.tabBarItem = firstTabBarItem
         
 //        let secondTab = UINavigationController(rootViewController: SearchViewController())
 //        let secondTabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "magnifyingglass"), tag: 1)
@@ -32,6 +32,6 @@ final class TabBarController: UITabBarController {
 //        thirdTab.tabBarItem = thirdTabBarItem
         
         //self.viewControllers = [firstTab, secondTab, thirdTab, forthTab]
-        self.viewControllers = [firstTab]
+//        self.viewControllers = [firstTab]
     }
 }

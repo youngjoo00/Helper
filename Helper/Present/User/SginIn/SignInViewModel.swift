@@ -17,12 +17,12 @@ final class SignInViewModel: ViewModelType {
         let emailText: Observable<String>
         let passwordText: Observable<String>
         let loginButtonTapped: ControlEvent<Void>
-        let joinButtonTapped: ControlEvent<Void>
+        let signUpButtonTapped: ControlEvent<Void>
     }
     
     struct Output {
         let loginValid: Driver<Bool>
-        let joinButtonTapped: Driver<Void>
+        let signUpButtonTapped: Driver<Void>
     }
     
     func transform(input: Input) -> Output {
@@ -59,7 +59,7 @@ final class SignInViewModel: ViewModelType {
             .disposed(by: disposeBag)
 
         return Output(loginValid: loginValid.asDriver(onErrorJustReturn: false),
-                      joinButtonTapped: input.joinButtonTapped.asDriver()
+                      signUpButtonTapped: input.signUpButtonTapped.asDriver()
         )
     }
     

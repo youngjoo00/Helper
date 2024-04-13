@@ -11,12 +11,14 @@ import RxSwift
 
 final class NicknameView: BaseView {
     
+    let titleLabel = PointBoldLabel("닉네임 등록하기", fontSize: 30)
     let nicknameTextField = SignTextField(placeholderText: "닉네임을 입력해주세요")
     let nextButton = PointButton(title: "다음")
-    let descriptionLabel = UILabel()
+    let descriptionLabel = RedColorLabel("", fontSize: 15)
     
     override func configureHierarchy() {
         [
+            titleLabel,
             nicknameTextField,
             descriptionLabel,
             nextButton,

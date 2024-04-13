@@ -19,27 +19,32 @@ final class PasswordViewModel: ViewModelType {
     }
     
     struct Output {
-        let valid: Driver<Bool>
+        let isValid: Driver<Bool>
         let description: Driver<String>
-        let nextButtonTap: Driver<String>
+        let nextButtonTapTrigger: Driver<Void>
     }
     
     func transform(input: Input) -> Output {
         
-        let nextButtonTap = input.nextButtonTap
+        let nextButtonTapTrigger = PublishRelay<Void>()
+        
+        input.nextButtonTap
             .withLatestFrom(input.password)
+            .subscribe(with: self) { owner, password in
+                SignUp.shared.password = password
+                nextButtonTapTrigger.accept(())
+            }
+            .disposed(by: disposeBag)
         
-        let valid = input.password
+        let isValid = input.password
             .map { $0.count >= 4 }
-            .asDriver(onErrorJustReturn: false)
         
-        let description = valid
+        let description = isValid
             .map { $0 ? "" : "비밀번호는 최소 4자 이상입니다" }
-            .asDriver(onErrorJustReturn: "")
         
-        return Output(valid: valid, 
-                      description: description,
-                      nextButtonTap: nextButtonTap.asDriver(onErrorJustReturn: "")
+        return Output(isValid: isValid.asDriver(onErrorJustReturn: false),
+                      description: description.asDriver(onErrorJustReturn: ""),
+                      nextButtonTapTrigger: nextButtonTapTrigger.asDriver(onErrorJustReturn: ())
         )
     }
 }

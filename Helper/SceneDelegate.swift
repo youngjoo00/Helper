@@ -17,9 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: scene)
         
-        let vc = SignInViewController()
-        
-        window?.rootViewController = vc
+        window?.rootViewController = UINavigationController(rootViewController: SignInViewController())
         window?.makeKeyAndVisible()
         
 //        let value = UserDefaults.standard.bool(forKey: "userState")

@@ -2,11 +2,10 @@
 //  SignUpViewController.swift
 //  SeSACRxThreads
 //
-//  Created by jack on 2023/10/30.
+//  Created by youngjoo on 3/28/24.
 //
 
 import UIKit
-import SnapKit
 import RxSwift
 import RxCocoa
 
@@ -21,34 +20,32 @@ final class SignUpViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func bind() {
         
         let input = SignUpViewModel.Input(email: mainView.emailTextField.rx.text.orEmpty.asObservable(),
-                                          validationButtonTap: mainView.validationButton.rx.tap,
                                           nextButtonTapped: mainView.nextButton.rx.tap
         )
         
         let output = viewModel.transform(input: input)
         
-        output.validEmail
-            .drive(with: self) { owner, valid in
-                print(valid)
-                if valid {
-                    owner.showAlert(title: "성공!", message: nil)
-                } else {
-                    owner.showAlert(title: "실패!", message: nil)
+        // 이메일 정규식
+        output.isEmailValid
+            .drive(mainView.nextButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        // 이메일 중복 통과라면 다음 화면
+        output.isEmailUnique
+            .drive(with: self) { owner, value in
+                if value {
+                    owner.navigationController?.pushViewController(PasswordViewController(), animated: true)
                 }
             }
             .disposed(by: disposeBag)
         
-        output.nextButtonTapped
-            .drive(with: self) { owner, email in
-                SignUp.shared.email = email
-                owner.navigationController?.pushViewController(PasswordViewController(), animated: true)
-            }
+        output.description
+            .drive(mainView.descriptionLabel.rx.text)
             .disposed(by: disposeBag)
     }
 }

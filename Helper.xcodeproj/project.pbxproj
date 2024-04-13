@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E17A2DC2BCA267000581B58 /* RedColorLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A2DB2BCA267000581B58 /* RedColorLabel.swift */; };
+		8E17A2DE2BCA31D400581B58 /* ViewModelType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A2DD2BCA31D400581B58 /* ViewModelType+.swift */; };
 		8E1BADE42BC965CC00A65075 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BADE32BC965CC00A65075 /* AppDelegate.swift */; };
 		8E1BADE62BC965CC00A65075 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BADE52BC965CC00A65075 /* SceneDelegate.swift */; };
 		8E1BADED2BC965CD00A65075 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E1BADEC2BC965CD00A65075 /* Assets.xcassets */; };
@@ -45,23 +47,26 @@
 		8E1BAE612BC97C4F00A65075 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 8E1BAE602BC97C4F00A65075 /* RxCocoa */; };
 		8E1BAE632BC97C4F00A65075 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 8E1BAE622BC97C4F00A65075 /* RxRelay */; };
 		8E1BAE652BC97C4F00A65075 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8E1BAE642BC97C4F00A65075 /* RxSwift */; };
-		8E1BAE682BC97C5A00A65075 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8E1BAE672BC97C5A00A65075 /* SnapKit */; };
 		8E1BAE6B2BC97CD500A65075 /* Tabman in Frameworks */ = {isa = PBXBuildFile; productRef = 8E1BAE6A2BC97CD500A65075 /* Tabman */; };
 		8E1BAE702BC97D5D00A65075 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE6C2BC97D5D00A65075 /* BaseViewController.swift */; };
 		8E1BAE712BC97D5D00A65075 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE6D2BC97D5D00A65075 /* BaseCollectionViewCell.swift */; };
 		8E1BAE722BC97D5D00A65075 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE6E2BC97D5D00A65075 /* BaseView.swift */; };
 		8E1BAE732BC97D5D00A65075 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE6F2BC97D5D00A65075 /* BaseTableViewCell.swift */; };
 		8E1BAE802BC97D9600A65075 /* shadowImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE782BC97D9600A65075 /* shadowImageView.swift */; };
-		8E1BAE822BC97D9600A65075 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE7A2BC97D9600A65075 /* PaddingLabel.swift */; };
 		8E1BAE862BC97FDE00A65075 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE852BC97FDE00A65075 /* SignInView.swift */; };
 		8E1BAE892BC97FF800A65075 /* SignTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE872BC97FF700A65075 /* SignTextField.swift */; };
 		8E1BAE8A2BC97FF800A65075 /* PointButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE882BC97FF800A65075 /* PointButton.swift */; };
 		8E1BAE8D2BC9800B00A65075 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE8B2BC9800B00A65075 /* Color.swift */; };
 		8E1BAE902BC9852E00A65075 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8E1BAE8F2BC9852E00A65075 /* IQKeyboardManagerSwift */; };
 		8E1BAE962BC9883500A65075 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E1BAE952BC9883500A65075 /* Main.storyboard */; };
+		8E1BAE992BC993C100A65075 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8E1BAE982BC993C100A65075 /* SnapKit */; };
+		8E1BAE9E2BC99E7C00A65075 /* PointLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE9D2BC99E7C00A65075 /* PointLabel.swift */; };
+		8E1BAEA02BC99F3200A65075 /* PointBoldLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE9F2BC99F3200A65075 /* PointBoldLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E17A2DB2BCA267000581B58 /* RedColorLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedColorLabel.swift; sourceTree = "<group>"; };
+		8E17A2DD2BCA31D400581B58 /* ViewModelType+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewModelType+.swift"; sourceTree = "<group>"; };
 		8E1BADE02BC965CC00A65075 /* Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Helper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E1BADE32BC965CC00A65075 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E1BADE52BC965CC00A65075 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,12 +105,13 @@
 		8E1BAE6E2BC97D5D00A65075 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		8E1BAE6F2BC97D5D00A65075 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		8E1BAE782BC97D9600A65075 /* shadowImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shadowImageView.swift; sourceTree = "<group>"; };
-		8E1BAE7A2BC97D9600A65075 /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		8E1BAE852BC97FDE00A65075 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		8E1BAE872BC97FF700A65075 /* SignTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignTextField.swift; sourceTree = "<group>"; };
 		8E1BAE882BC97FF800A65075 /* PointButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointButton.swift; sourceTree = "<group>"; };
 		8E1BAE8B2BC9800B00A65075 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		8E1BAE952BC9883500A65075 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		8E1BAE9D2BC99E7C00A65075 /* PointLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointLabel.swift; sourceTree = "<group>"; };
+		8E1BAE9F2BC99F3200A65075 /* PointBoldLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointBoldLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +120,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E1BAE632BC97C4F00A65075 /* RxRelay in Frameworks */,
-				8E1BAE682BC97C5A00A65075 /* SnapKit in Frameworks */,
 				8E1BAE5E2BC97C3200A65075 /* Kingfisher in Frameworks */,
 				8E1BAE5B2BC97C2A00A65075 /* Alamofire in Frameworks */,
 				8E1BAE612BC97C4F00A65075 /* RxCocoa in Frameworks */,
@@ -123,6 +128,7 @@
 				8E1BAE582BC97C2100A65075 /* Toast in Frameworks */,
 				8E1BAE552BC97C1500A65075 /* Then in Frameworks */,
 				8E1BAE652BC97C4F00A65075 /* RxSwift in Frameworks */,
+				8E1BAE992BC993C100A65075 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,9 +249,11 @@
 			isa = PBXGroup;
 			children = (
 				8E1BAE782BC97D9600A65075 /* shadowImageView.swift */,
-				8E1BAE7A2BC97D9600A65075 /* PaddingLabel.swift */,
 				8E1BAE882BC97FF800A65075 /* PointButton.swift */,
 				8E1BAE872BC97FF700A65075 /* SignTextField.swift */,
+				8E1BAE9D2BC99E7C00A65075 /* PointLabel.swift */,
+				8E1BAE9F2BC99F3200A65075 /* PointBoldLabel.swift */,
+				8E17A2DB2BCA267000581B58 /* RedColorLabel.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -255,6 +263,7 @@
 			children = (
 				8E1BAE4C2BC969DD00A65075 /* UITextField+.swift */,
 				8E1BAE422BC968F900A65075 /* UIViewController+.swift */,
+				8E17A2DD2BCA31D400581B58 /* ViewModelType+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -347,9 +356,9 @@
 				8E1BAE602BC97C4F00A65075 /* RxCocoa */,
 				8E1BAE622BC97C4F00A65075 /* RxRelay */,
 				8E1BAE642BC97C4F00A65075 /* RxSwift */,
-				8E1BAE672BC97C5A00A65075 /* SnapKit */,
 				8E1BAE6A2BC97CD500A65075 /* Tabman */,
 				8E1BAE8F2BC9852E00A65075 /* IQKeyboardManagerSwift */,
+				8E1BAE982BC993C100A65075 /* SnapKit */,
 			);
 			productName = Helper;
 			productReference = 8E1BADE02BC965CC00A65075 /* Helper.app */;
@@ -385,9 +394,9 @@
 				8E1BAE592BC97C2A00A65075 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				8E1BAE5C2BC97C3200A65075 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				8E1BAE5F2BC97C4F00A65075 /* XCRemoteSwiftPackageReference "RxSwift" */,
-				8E1BAE662BC97C5A00A65075 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				8E1BAE692BC97CD500A65075 /* XCRemoteSwiftPackageReference "Tabman" */,
 				8E1BAE8E2BC9852E00A65075 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				8E1BAE972BC993C100A65075 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 8E1BADE12BC965CC00A65075 /* Products */;
 			projectDirPath = "";
@@ -432,6 +441,7 @@
 				8E1BAE252BC968E500A65075 /* NicknameView.swift in Sources */,
 				8E1BAE1F2BC968E500A65075 /* PasswordView.swift in Sources */,
 				8E1BADE42BC965CC00A65075 /* AppDelegate.swift in Sources */,
+				8E17A2DC2BCA267000581B58 /* RedColorLabel.swift in Sources */,
 				8E1BAE722BC97D5D00A65075 /* BaseView.swift in Sources */,
 				8E1BAE8A2BC97FF800A65075 /* PointButton.swift in Sources */,
 				8E1BAE332BC968EC00A65075 /* APIError.swift in Sources */,
@@ -439,20 +449,22 @@
 				8E1BADE62BC965CC00A65075 /* SceneDelegate.swift in Sources */,
 				8E1BAE892BC97FF800A65075 /* SignTextField.swift in Sources */,
 				8E1BAE362BC968EC00A65075 /* NetworkManager.swift in Sources */,
-				8E1BAE822BC97D9600A65075 /* PaddingLabel.swift in Sources */,
 				8E1BAE382BC968EC00A65075 /* ResponseModel.swift in Sources */,
 				8E1BAE712BC97D5D00A65075 /* BaseCollectionViewCell.swift in Sources */,
 				8E1BAE1E2BC968E500A65075 /* SignInViewModel.swift in Sources */,
 				8E1BAE702BC97D5D00A65075 /* BaseViewController.swift in Sources */,
 				8E1BAE8D2BC9800B00A65075 /* Color.swift in Sources */,
 				8E1BAE352BC968EC00A65075 /* HTTPHeader.swift in Sources */,
+				8E17A2DE2BCA31D400581B58 /* ViewModelType+.swift in Sources */,
 				8E1BAE222BC968E500A65075 /* SignUpView.swift in Sources */,
 				8E1BAE262BC968E500A65075 /* NicknameViewController.swift in Sources */,
 				8E1BAE272BC968E500A65075 /* NicknameViewModel.swift in Sources */,
 				8E1BADFC2BC968C100A65075 /* ReusableID.swift in Sources */,
 				8E1BAE522BC96AC500A65075 /* TabBarController.swift in Sources */,
+				8E1BAEA02BC99F3200A65075 /* PointBoldLabel.swift in Sources */,
 				8E1BAE462BC968F900A65075 /* UIViewController+.swift in Sources */,
 				8E1BADF82BC966BA00A65075 /* PrivateKey.swift in Sources */,
+				8E1BAE9E2BC99E7C00A65075 /* PointLabel.swift in Sources */,
 				8E1BAE3B2BC968EC00A65075 /* UserRouter.swift in Sources */,
 				8E1BAE862BC97FDE00A65075 /* SignInView.swift in Sources */,
 			);
@@ -721,14 +733,6 @@
 				minimumVersion = 6.6.0;
 			};
 		};
-		8E1BAE662BC97C5A00A65075 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.1;
-			};
-		};
 		8E1BAE692BC97CD500A65075 /* XCRemoteSwiftPackageReference "Tabman" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/uias/Tabman.git";
@@ -743,6 +747,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 7.0.2;
+			};
+		};
+		8E1BAE972BC993C100A65075 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -783,11 +795,6 @@
 			package = 8E1BAE5F2BC97C4F00A65075 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
 		};
-		8E1BAE672BC97C5A00A65075 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8E1BAE662BC97C5A00A65075 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
 		8E1BAE6A2BC97CD500A65075 /* Tabman */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8E1BAE692BC97CD500A65075 /* XCRemoteSwiftPackageReference "Tabman" */;
@@ -797,6 +804,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8E1BAE8E2BC9852E00A65075 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		8E1BAE982BC993C100A65075 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E1BAE972BC993C100A65075 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

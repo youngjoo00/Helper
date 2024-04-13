@@ -14,62 +14,67 @@ final class SignUpViewModel: ViewModelType {
     
     struct Input {
         let email: Observable<String>
-        let validationButtonTap: ControlEvent<Void>
         let nextButtonTapped: ControlEvent<Void>
     }
     
     struct Output {
-        let validEmail: Driver<Bool>
-        let nextButtonTapped: Driver<String>
+        let isEmailValid: Driver<Bool>
+        let isEmailUnique: Driver<Bool>
+        let description: Driver<String>
     }
     
     func transform(input: Input) -> Output {
         
-        let validEmail = PublishRelay<Bool>()
-        let nextButtonTapped = input.nextButtonTapped
-            .withLatestFrom(input.email)
+        let isEmailValid = BehaviorRelay(value: false)
+        let isEmailUnique = PublishRelay<Bool>()
+        let description = PublishRelay<String>()
+  
+        // 이메일 정규식 체크
+        input.email
+            .subscribe(with: self) { owner, email in
+                let validate = owner.validateEmail(email)
+                if validate {
+                    description.accept("")
+                } else {
+                    description.accept("유효한 이메일 형식이 아닙니다.")
+                }
+                isEmailValid.accept(validate)
+            }
+            .disposed(by: disposeBag)
         
-        input.validationButtonTap
-            .debug()
+        // 이메일 중복확인
+        input.nextButtonTapped
             .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .withLatestFrom(input.email)
             .map { RequestModel.ValidationEmail(email: $0) }
-            .flatMap { NetworkManager.shared.callAPI(type: ResponseModel.ValidationEmail.self, router: .validationEmail(query: $0)) }
+            .flatMap { email in
+                NetworkManager.shared.callAPI(type: ResponseModel.ValidationEmail.self, router: .validationEmail(query: email))
+                    .map { (email, $0) }
+            }
             .subscribe(with: self) { owner, result in
-                switch result {
+                let (email, response) = result
+                switch response {
                 case .success(let data):
-                    validEmail.accept(true)
+                    print(data.message)
+                    SignUp.shared.email = email.email
+                    isEmailUnique.accept(true)
                 case .fail(let fail):
-                    validEmail.accept(false)
+                    print(fail)
+                    description.accept(fail.localizedDescription)
                 case .errorMessage(let error):
-                    validEmail.accept(false)
+                    print(error)
+                    description.accept(error.message)
                 }
             } onDisposed: { _ in
-                print("buttonDispose 됨!")
+                print("buttonDispose")
             }
             .disposed(by: disposeBag)
 
-        
-
         return Output(
-            validEmail: validEmail.asDriver(onErrorJustReturn: false),
-            nextButtonTapped: nextButtonTapped.asDriver(onErrorJustReturn: "")
+            isEmailValid: isEmailValid.asDriver(onErrorJustReturn: false),
+            isEmailUnique: isEmailUnique.asDriver(onErrorJustReturn: false),
+            description: description.asDriver(onErrorJustReturn: "")
         )
     }
     
 }
-
-//extension SignUpViewModel {
-//    
-//    private func emailTextValid(_ text: String) {
-//        let isValid = validateEmail(text)
-//        
-//        outputValidText.accept(isValid ? "" : "유효한 형식이 아닙니다.")
-//        outputValidButton.accept(isValid)
-//        
-//        guard isValid else {
-//            return outputValidNextButton.accept(false)
-//        }
-//        
-//    }
-//}

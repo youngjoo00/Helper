@@ -8,11 +8,6 @@
 import Foundation
 import Alamofire
 
-//1. 회원가입 API
-//2. 로그인 API
-//3. 회원 탈퇴 API
-//4. 토큰 갱신 API
-//5. 프로필 조회 API 를 통해 토큰 갱신 로직 구성해보기
 enum UserRouter {
     case join(query: RequestModel.Join)
     case validationEmail(query: RequestModel.ValidationEmail)
@@ -24,13 +19,13 @@ enum UserRouter {
 
 extension UserRouter: TargetType {
     var baseURL: String {
-        APIKey.baseURL.rawValue
+        PrivateKey.baseURL.rawValue
     }
     
     var header: [String : String] {
         let baseHeader = [
             HTTPHeader.contentType.rawValue: HTTPHeader.json.rawValue,
-            HTTPHeader.sesacKey.rawValue: APIKey.sesacKey.rawValue
+            HTTPHeader.sesacKey.rawValue: PrivateKey.sesac.rawValue
         ]
         switch self {
         case .join:
@@ -40,16 +35,14 @@ extension UserRouter: TargetType {
         case .login:
             return baseHeader
         case .withdraw:
-            var headers = baseHeader
-            return headers
+            return baseHeader
         case .refresh:
             var headers = baseHeader
             headers[HTTPHeader.authorization.rawValue] = UserDefaultsManager.shared.getAccessToken()
             headers[HTTPHeader.refresh.rawValue] = UserDefaultsManager.shared.getRefreshToken()
             return headers
         case .myProfile:
-            var headers = baseHeader
-            return headers
+            return baseHeader
         }
     }
     

@@ -18,6 +18,7 @@ class BaseViewController: UIViewController {
         
         view.backgroundColor = .white
         bind()
+        configureNavigation()
     }
 
     func showTaost(_ message: String) {
@@ -25,4 +26,10 @@ class BaseViewController: UIViewController {
     }
     
     func bind() { }
+    
+    func configureNavigation() {
+        // 백버튼 처리
+        self.navigationController?.navigationBar.tintColor = Color.black
+        self.navigationController?.navigationBar.topItem?.title = ""
+    }
 }

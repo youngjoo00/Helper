@@ -21,8 +21,6 @@ final class PasswordViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         
-        print(SignUp.shared.email)
     }
 
     override func bind() {
@@ -32,9 +30,8 @@ final class PasswordViewController: BaseViewController {
         
         let output = viewModel.transform(input: input)
         
-        output.nextButtonTap
-            .drive(with: self) { owner, password in
-                SignUp.shared.password = password
+        output.nextButtonTapTrigger
+            .drive(with: self) { owner, _ in
                 owner.navigationController?.pushViewController(NicknameViewController(), animated: true)
             }
             .disposed(by: disposeBag)
@@ -43,13 +40,8 @@ final class PasswordViewController: BaseViewController {
             .drive(mainView.descriptionLabel.rx.text)
             .disposed(by: disposeBag)
         
-        output.valid
+        output.isValid
             .drive(mainView.nextButton.rx.isEnabled)
-            .disposed(by: disposeBag)
-        
-        output.valid
-            .map { $0 ? UIColor.systemPink : UIColor.lightGray }
-            .drive(mainView.nextButton.rx.backgroundColor)
             .disposed(by: disposeBag)
     }
 }
