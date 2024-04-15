@@ -48,7 +48,7 @@ final class SignUpViewModel: ViewModelType {
             .withLatestFrom(input.email)
             .map { RequestModel.ValidationEmail(email: $0) }
             .flatMap { email in
-                NetworkManager.shared.callAPI(type: ResponseModel.ValidationEmail.self, router: .validationEmail(query: email))
+                NetworkManager.shared.callAPI(type: ResponseModel.ValidationEmail.self, router: Router.user(.validationEmail(query: email)))
                     .map { (email, $0) }
             }
             .subscribe(with: self) { owner, result in

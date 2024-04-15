@@ -20,9 +20,12 @@ final class FindingView: BaseView {
         $0.apportionsSegmentWidthsByContent = true
     }
     
+    let regionsButton = PointButton(title: "서울특별시")
+    
     override func configureHierarchy() {
         [
             categorySegmentControl,
+            regionsButton,
         ].forEach { addSubview($0) }
     }
     
@@ -33,9 +36,11 @@ final class FindingView: BaseView {
             make.width.equalTo(200)
             make.height.equalTo(44)
         }
-    }
-    
-    override func configureView() {
         
+        regionsButton.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide).offset(10)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
+            make.height.equalTo(44)
+        }
     }
 }

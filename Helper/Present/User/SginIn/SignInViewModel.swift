@@ -37,7 +37,7 @@ final class SignInViewModel: ViewModelType {
         input.loginButtonTapped
             .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .withLatestFrom(loginQuery)
-            .flatMap { NetworkManager.shared.callAPI(type: ResponseModel.Login.self, router: .login(query: $0)) }
+            .flatMap { NetworkManager.shared.callAPI(type: ResponseModel.Login.self, router: Router.user(.login(query: $0))) }
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let data):

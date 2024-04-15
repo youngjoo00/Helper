@@ -30,6 +30,7 @@ final class PostViewController: BaseViewController {
     }
 }
 
+// MARK: - Custom Func
 extension PostViewController {
     
     private func configureTabViewController() {

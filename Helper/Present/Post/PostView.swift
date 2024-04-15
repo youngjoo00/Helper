@@ -26,8 +26,4 @@ final class PostView: BaseView {
         }
         
     }
-    
-    override func configureView() {
-        
-    }
 }

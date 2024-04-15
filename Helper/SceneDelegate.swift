@@ -18,9 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: scene)
-        
-        print(#function)
-        NetworkManager.shared.callAPI(type: ResponseModel.MyProfile.self, router: .myProfile)
+
+        NetworkManager.shared.callAPI(type: ResponseModel.MyProfile.self, router: Router.user(.myProfile))
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success:

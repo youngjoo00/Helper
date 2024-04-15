@@ -36,6 +36,7 @@ final class PostTabViewController: TabmanViewController {
     }
 }
 
+// MARK: - Custom Func
 extension PostTabViewController {
     
     private func configureView() {
@@ -49,7 +50,8 @@ extension PostTabViewController {
     }
 }
 
-extension PostTabViewController: PageboyViewControllerDataSource, TMBarDataSource {
+// MARK: - Tabman DataSource
+extension PostTabViewController: TMBarDataSource {
     
     func barItem(for bar: TMBar, at index: Int) -> TMBarItemable {
         switch index {
@@ -62,6 +64,12 @@ extension PostTabViewController: PageboyViewControllerDataSource, TMBarDataSourc
         }
     }
     
+}
+
+
+// MARK: - PageBody
+extension PostTabViewController: PageboyViewControllerDataSource {
+
     func numberOfViewControllers(in pageboyViewController: PageboyViewController) -> Int {
         return viewControllers.count
     }
