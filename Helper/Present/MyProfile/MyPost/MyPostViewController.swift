@@ -29,8 +29,8 @@ final class MyPostViewController: BaseViewController {
         let output = viewModel.transform(input: input)
         
         output.posts
-            .drive(mainView.collectionView.rx.items(cellIdentifier: MyPostCollectionViewCell.id,
-                                                    cellType: MyPostCollectionViewCell.self)) { row, item, cell in
+            .drive(mainView.collectionView.rx.items(cellIdentifier: PostCollectionViewCell.id,
+                                                    cellType: PostCollectionViewCell.self)) { row, item, cell in
                 cell.updateCell(item)
             }
             .disposed(by: disposeBag)

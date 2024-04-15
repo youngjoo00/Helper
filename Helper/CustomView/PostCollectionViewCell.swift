@@ -1,21 +1,23 @@
 //
-//  MyPostCollectionViewCell.swift
+//  PostCollectionViewCell.swift
 //  Helper
 //
-//  Created by youngjoo on 4/14/24.
+//  Created by youngjoo on 4/16/24.
 //
 
 import UIKit
 import Then
 import Kingfisher
 
-final class MyPostCollectionViewCell: BaseCollectionViewCell {
+final class PostCollectionViewCell: BaseCollectionViewCell {
     
     let imageView = UIImageView().then {
         $0.backgroundColor = .lightGray
     }
-    let titleLabel = PointLabel("test", fontSize: 17)
-    let contentLabel = PointLabel("test", fontSize: 15)
+    let titleLabel = PointBoldLabel(nil, fontSize: 17)
+    let pointLabel = PointLabel(nil, fontSize: 15)
+    let dateLabel = PointLabel(nil, fontSize: 15)
+    let locateLabel = PointLabel(nil, fontSize: 15)
     
     let activityIndicator = UIActivityIndicatorView(style: .medium).then {
         $0.hidesWhenStopped = true
@@ -25,7 +27,9 @@ final class MyPostCollectionViewCell: BaseCollectionViewCell {
         [
             imageView,
             titleLabel,
-            contentLabel,
+            pointLabel,
+            dateLabel,
+            locateLabel,
             activityIndicator
         ].forEach { contentView.addSubview($0) }
     }
@@ -33,7 +37,7 @@ final class MyPostCollectionViewCell: BaseCollectionViewCell {
     override func configureLayout() {
         imageView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalToSuperview()
-            make.height.equalTo(100)
+            make.height.equalToSuperview().dividedBy(2)
         }
         
         titleLabel.snp.makeConstraints { make in
@@ -41,8 +45,18 @@ final class MyPostCollectionViewCell: BaseCollectionViewCell {
             make.horizontalEdges.equalToSuperview().inset(10)
         }
         
-        contentLabel.snp.makeConstraints { make in
+        pointLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(5)
+            make.horizontalEdges.equalToSuperview().inset(10)
+        }
+        
+        dateLabel.snp.makeConstraints { make in
+            make.top.equalTo(pointLabel.snp.bottom).offset(5)
+            make.horizontalEdges.equalToSuperview().inset(10)
+        }
+        
+        locateLabel.snp.makeConstraints { make in
+            make.top.equalTo(dateLabel.snp.bottom).offset(5)
             make.horizontalEdges.equalToSuperview().inset(10)
         }
         
@@ -52,11 +66,11 @@ final class MyPostCollectionViewCell: BaseCollectionViewCell {
     }
     
     override func configureView() {
-        backgroundColor = .lightGray
+        
     }
 }
 
-extension MyPostCollectionViewCell {
+extension PostCollectionViewCell {
     
     func updateCell(_ data: ResponseModel.PostID) {
         activityIndicator.startAnimating()
@@ -66,6 +80,8 @@ extension MyPostCollectionViewCell {
         }
         
         titleLabel.text = data.title
-        contentLabel.text = data.content
+        pointLabel.text = data.content1
+        dateLabel.text = data.content2
+        locateLabel.text = data.content3
     }
 }

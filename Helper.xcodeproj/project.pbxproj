@@ -40,7 +40,6 @@
 		8E17A32C2BCAD17600581B58 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A32B2BCAD17600581B58 /* PostViewController.swift */; };
 		8E17A3302BCAF03300581B58 /* BaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A32F2BCAF03300581B58 /* BaseCollectionView.swift */; };
 		8E17A3322BCAF03D00581B58 /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3312BCAF03D00581B58 /* BaseTableView.swift */; };
-		8E17A3342BCAF18A00581B58 /* MyPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3332BCAF18A00581B58 /* MyPostCollectionViewCell.swift */; };
 		8E17A3362BCAF33200581B58 /* PostRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3352BCAF33200581B58 /* PostRouter.swift */; };
 		8E1BADE42BC965CC00A65075 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BADE32BC965CC00A65075 /* AppDelegate.swift */; };
 		8E1BADE62BC965CC00A65075 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BADE52BC965CC00A65075 /* SceneDelegate.swift */; };
@@ -97,6 +96,8 @@
 		8E1BAEA02BC99F3200A65075 /* PointBoldLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE9F2BC99F3200A65075 /* PointBoldLabel.swift */; };
 		8E83BC482BCBC134007E1637 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E83BC472BCBC134007E1637 /* Router.swift */; };
 		8E9A3FCC2BCD7255005E4F45 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FCB2BCD7255005E4F45 /* UIImageView+.swift */; };
+		8E9A3FD02BCD81BA005E4F45 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FCF2BCD81BA005E4F45 /* PostCollectionViewCell.swift */; };
+		8E9A3FD22BCD8455005E4F45 /* UICollectionViewLayout+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FD12BCD8455005E4F45 /* UICollectionViewLayout+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -133,7 +134,6 @@
 		8E17A32B2BCAD17600581B58 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		8E17A32F2BCAF03300581B58 /* BaseCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
 		8E17A3312BCAF03D00581B58 /* BaseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
-		8E17A3332BCAF18A00581B58 /* MyPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E17A3352BCAF33200581B58 /* PostRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRouter.swift; sourceTree = "<group>"; };
 		8E1BADE02BC965CC00A65075 /* Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Helper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E1BADE32BC965CC00A65075 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -182,6 +182,8 @@
 		8E1BAE9F2BC99F3200A65075 /* PointBoldLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointBoldLabel.swift; sourceTree = "<group>"; };
 		8E83BC472BCBC134007E1637 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8E9A3FCB2BCD7255005E4F45 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
+		8E9A3FCF2BCD81BA005E4F45 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
+		8E9A3FD12BCD8455005E4F45 /* UICollectionViewLayout+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewLayout+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,7 +297,6 @@
 				8E17A3142BCAC58200581B58 /* MyPostView.swift */,
 				8E17A3162BCAC58A00581B58 /* MyPostViewController.swift */,
 				8E17A3182BCAC59400581B58 /* MyPostViewModel.swift */,
-				8E17A3332BCAF18A00581B58 /* MyPostCollectionViewCell.swift */,
 			);
 			path = MyPost;
 			sourceTree = "<group>";
@@ -438,6 +439,7 @@
 				8E1BAE9D2BC99E7C00A65075 /* PointLabel.swift */,
 				8E1BAE9F2BC99F3200A65075 /* PointBoldLabel.swift */,
 				8E17A2DB2BCA267000581B58 /* RedColorLabel.swift */,
+				8E9A3FCF2BCD81BA005E4F45 /* PostCollectionViewCell.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -449,6 +451,7 @@
 				8E1BAE422BC968F900A65075 /* UIViewController+.swift */,
 				8E17A2DD2BCA31D400581B58 /* ViewModelType+.swift */,
 				8E9A3FCB2BCD7255005E4F45 /* UIImageView+.swift */,
+				8E9A3FD12BCD8455005E4F45 /* UICollectionViewLayout+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -623,7 +626,6 @@
 				8E1BAE1D2BC968E500A65075 /* SignInViewController.swift in Sources */,
 				8E1BAE3A2BC968EC00A65075 /* TokenIntercepter.swift in Sources */,
 				8E17A3362BCAF33200581B58 /* PostRouter.swift in Sources */,
-				8E17A3342BCAF18A00581B58 /* MyPostCollectionViewCell.swift in Sources */,
 				8E1BAE732BC97D5D00A65075 /* BaseTableViewCell.swift in Sources */,
 				8E17A3302BCAF03300581B58 /* BaseCollectionView.swift in Sources */,
 				8E17A2F32BCA7DA800581B58 /* FindingViewController.swift in Sources */,
@@ -687,11 +689,13 @@
 				8E1BAE462BC968F900A65075 /* UIViewController+.swift in Sources */,
 				8E17A3232BCAC87E00581B58 /* MyProfileTabViewController.swift in Sources */,
 				8E1BADF82BC966BA00A65075 /* PrivateKey.swift in Sources */,
+				8E9A3FD22BCD8455005E4F45 /* UICollectionViewLayout+.swift in Sources */,
 				8E17A3322BCAF03D00581B58 /* BaseTableView.swift in Sources */,
 				8E1BAE9E2BC99E7C00A65075 /* PointLabel.swift in Sources */,
 				8E17A2E42BCA3D7F00581B58 /* PhoneViewController.swift in Sources */,
 				8E9A3FCC2BCD7255005E4F45 /* UIImageView+.swift in Sources */,
 				8E17A3172BCAC58A00581B58 /* MyPostViewController.swift in Sources */,
+				8E9A3FD02BCD81BA005E4F45 /* PostCollectionViewCell.swift in Sources */,
 				8E1BAE3B2BC968EC00A65075 /* UserRouter.swift in Sources */,
 				8E1BAE862BC97FDE00A65075 /* SignInView.swift in Sources */,
 				8E17A30E2BCA8FBF00581B58 /* MyProfileView.swift in Sources */,

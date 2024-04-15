@@ -15,7 +15,9 @@ extension UIImageView {
         
         do {
             let urlRequest = try Router.post(.image(url: urlString)).asURLRequest()
-        
+            
+            print(urlRequest.url)
+            print(urlRequest.headers)
             let modifier = AnyModifier { _ in
                 return urlRequest
             }

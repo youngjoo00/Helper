@@ -10,14 +10,9 @@ import Then
 
 final class MyPostView: BaseView {
     
-    lazy var collectionView = BaseCollectionView(frame: .zero, collectionViewLayout: collectionViewLayout()).then {
-        $0.register(MyPostCollectionViewCell.self, forCellWithReuseIdentifier: MyPostCollectionViewCell.id)
+    lazy var collectionView = BaseCollectionView(frame: .zero, collectionViewLayout: .postCollectionViewLayout()).then {
+        $0.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: PostCollectionViewCell.id)
     }
-    
-//    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout()).then {
-//        $0.register(MyPostCollectionViewCell.self, forCellWithReuseIdentifier: MyPostCollectionViewCell.id)
-//        $0.backgroundColor = .lightGray
-//    }
     
     override func configureHierarchy() {
         [

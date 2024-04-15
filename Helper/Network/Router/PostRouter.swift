@@ -30,7 +30,9 @@ extension PostRouter: TargetType {
         case .postID:
             return baseHeader
         case .image:
-            return baseHeader
+            var headers = baseHeader
+            headers[HTTPHeader.authorization.rawValue] = UserDefaultsManager.shared.getAccessToken()
+            return headers
         }
     }
     

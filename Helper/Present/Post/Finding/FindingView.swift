@@ -22,6 +22,8 @@ final class FindingView: BaseView {
     
     let regionsButton = PointButton(title: "서울특별시")
     
+    let collectionView = BaseCollectionView(frame: .zero, collectionViewLayout: .postCollectionViewLayout())
+    
     override func configureHierarchy() {
         [
             categorySegmentControl,
