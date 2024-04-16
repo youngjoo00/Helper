@@ -31,7 +31,7 @@ final class MyPostViewController: BaseViewController {
         output.posts
             .drive(mainView.collectionView.rx.items(cellIdentifier: PostCollectionViewCell.id,
                                                     cellType: PostCollectionViewCell.self)) { row, item, cell in
-                cell.updateCell(item)
+                cell.updateView(item)
             }
             .disposed(by: disposeBag)
     }

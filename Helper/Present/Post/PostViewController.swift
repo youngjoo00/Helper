@@ -23,8 +23,8 @@ final class PostViewController: BaseViewController {
         configureTabViewController()
     }
     
-    override func configureNavigation() {
-        super.configureNavigation()
+    override func configureNavigationBackButton() {
+        super.configureNavigationBackButton()
         
         navigationItem.titleView = mainView.navTitle
     }

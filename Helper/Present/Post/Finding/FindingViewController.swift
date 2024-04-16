@@ -23,12 +23,17 @@ final class FindingViewController: BaseViewController {
     }
     
     override func bind() {
-        let input = FindingViewModel.Input()
+        let input = FindingViewModel.Input(viewDidLoadTrigger: Observable.just(()), 
+                                           selectedControlSegment: mainView.categorySegmentControl.rx.selectedSegmentIndex.asObservable()
+        )
         
         let output = viewModel.transform(input: input)
+        
+        output.posts
+            .drive(mainView.collectionView.rx.items(cellIdentifier: PostCollectionViewCell.id,
+                                                    cellType: PostCollectionViewCell.self)) { row, item, cell in
+                cell.updateView(item)
+            }
+            .disposed(by: disposeBag)
     }
-}
-
-extension FindingViewController {
-    
 }

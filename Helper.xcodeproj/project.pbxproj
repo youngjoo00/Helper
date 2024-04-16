@@ -98,6 +98,10 @@
 		8E9A3FCC2BCD7255005E4F45 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FCB2BCD7255005E4F45 /* UIImageView+.swift */; };
 		8E9A3FD02BCD81BA005E4F45 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FCF2BCD81BA005E4F45 /* PostCollectionViewCell.swift */; };
 		8E9A3FD22BCD8455005E4F45 /* UICollectionViewLayout+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FD12BCD8455005E4F45 /* UICollectionViewLayout+.swift */; };
+		8E9A3FD52BCD9498005E4F45 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FD42BCD9498005E4F45 /* SettingView.swift */; };
+		8E9A3FD72BCD94A2005E4F45 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FD62BCD94A2005E4F45 /* SettingViewController.swift */; };
+		8E9A3FD92BCD94A9005E4F45 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FD82BCD94A9005E4F45 /* SettingViewModel.swift */; };
+		8E9A3FDB2BCD9530005E4F45 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FDA2BCD9530005E4F45 /* SettingTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -184,6 +188,10 @@
 		8E9A3FCB2BCD7255005E4F45 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		8E9A3FCF2BCD81BA005E4F45 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E9A3FD12BCD8455005E4F45 /* UICollectionViewLayout+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewLayout+.swift"; sourceTree = "<group>"; };
+		8E9A3FD42BCD9498005E4F45 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		8E9A3FD62BCD94A2005E4F45 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		8E9A3FD82BCD94A9005E4F45 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		8E9A3FDA2BCD9530005E4F45 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +295,7 @@
 				8E17A3212BCAC84500581B58 /* MyProfileTab */,
 				8E17A3132BCAC54F00581B58 /* MyPost */,
 				8E17A31A2BCAC5C000581B58 /* MyStoragePost */,
+				8E9A3FD32BCD947D005E4F45 /* Setting */,
 			);
 			path = MyProfile;
 			sourceTree = "<group>";
@@ -528,6 +537,17 @@
 			path = Birthday;
 			sourceTree = "<group>";
 		};
+		8E9A3FD32BCD947D005E4F45 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A3FD42BCD9498005E4F45 /* SettingView.swift */,
+				8E9A3FD62BCD94A2005E4F45 /* SettingViewController.swift */,
+				8E9A3FD82BCD94A9005E4F45 /* SettingViewModel.swift */,
+				8E9A3FDA2BCD9530005E4F45 /* SettingTableViewCell.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -645,6 +665,7 @@
 				8E1BAE802BC97D9600A65075 /* shadowImageView.swift in Sources */,
 				8E17A2F72BCA7F1D00581B58 /* PostTabViewController.swift in Sources */,
 				8E1BAE232BC968E500A65075 /* SignUpViewController.swift in Sources */,
+				8E9A3FDB2BCD9530005E4F45 /* SettingTableViewCell.swift in Sources */,
 				8E17A31C2BCAC61900581B58 /* MyStoragePostView.swift in Sources */,
 				8E17A3022BCA80BF00581B58 /* FoundViewModel.swift in Sources */,
 				8E17A3122BCA8FCF00581B58 /* MyProfileViewModel.swift in Sources */,
@@ -656,6 +677,7 @@
 				8E17A2DC2BCA267000581B58 /* RedColorLabel.swift in Sources */,
 				8E1BAE722BC97D5D00A65075 /* BaseView.swift in Sources */,
 				8E1BAE8A2BC97FF800A65075 /* PointButton.swift in Sources */,
+				8E9A3FD72BCD94A2005E4F45 /* SettingViewController.swift in Sources */,
 				8E1BAE332BC968EC00A65075 /* APIError.swift in Sources */,
 				8E1BADFD2BC968C100A65075 /* ViewModelType.swift in Sources */,
 				8E17A2E82BCA3E6500581B58 /* SignUpManager.swift in Sources */,
@@ -663,6 +685,7 @@
 				8E17A3102BCA8FC800581B58 /* MyProfileViewController.swift in Sources */,
 				8E1BADE62BC965CC00A65075 /* SceneDelegate.swift in Sources */,
 				8E1BAE892BC97FF800A65075 /* SignTextField.swift in Sources */,
+				8E9A3FD92BCD94A9005E4F45 /* SettingViewModel.swift in Sources */,
 				8E17A3062BCA8F9200581B58 /* SearchView.swift in Sources */,
 				8E83BC482BCBC134007E1637 /* Router.swift in Sources */,
 				8E1BAE362BC968EC00A65075 /* NetworkManager.swift in Sources */,
@@ -674,6 +697,7 @@
 				8E17A2E62BCA3D8600581B58 /* PhoneViewModel.swift in Sources */,
 				8E1BAE1E2BC968E500A65075 /* SignInViewModel.swift in Sources */,
 				8E1BAE702BC97D5D00A65075 /* BaseViewController.swift in Sources */,
+				8E9A3FD52BCD9498005E4F45 /* SettingView.swift in Sources */,
 				8E1BAE8D2BC9800B00A65075 /* Color.swift in Sources */,
 				8E1BAE352BC968EC00A65075 /* HTTPHeader.swift in Sources */,
 				8E17A2DE2BCA31D400581B58 /* ViewModelType+.swift in Sources */,

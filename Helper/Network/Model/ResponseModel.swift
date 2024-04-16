@@ -74,6 +74,17 @@ enum ResponseModel {
     
     
     // MARK: - Post Model
+    struct Posts: Decodable {
+        let data: [PostID]
+        let nextCursor: String
+        
+        enum CodingKeys: String, CodingKey {
+            case data
+            case nextCursor = "next_cursor"
+        }
+    }
+    
+    
     struct PostID: Decodable {
         let postID: String
         let productId: String

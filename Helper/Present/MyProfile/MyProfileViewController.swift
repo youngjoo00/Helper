@@ -23,7 +23,7 @@ final class MyProfileViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTabViewController()
-        
+        configureNavigationBar()
     }
     
     override func bind() {
@@ -61,5 +61,16 @@ extension MyProfileViewController {
         }
         
         tabVC.didMove(toParent: self)
+    }
+    
+    private func configureNavigationBar() {
+        let rightBtnItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(didRightBarButtonItemTapped))
+        rightBtnItem.tintColor = UIColor.black
+        
+        navigationItem.rightBarButtonItem = rightBtnItem
+    }
+    
+    @objc private func didRightBarButtonItemTapped() {
+        navigationController?.pushViewController(SettingViewController(), animated: true)
     }
 }

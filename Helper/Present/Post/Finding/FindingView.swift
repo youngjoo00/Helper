@@ -22,12 +22,15 @@ final class FindingView: BaseView {
     
     let regionsButton = PointButton(title: "서울특별시")
     
-    let collectionView = BaseCollectionView(frame: .zero, collectionViewLayout: .postCollectionViewLayout())
+    let collectionView = BaseCollectionView(frame: .zero, collectionViewLayout: .postCollectionViewLayout()).then {
+        $0.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: PostCollectionViewCell.id)
+    }
     
     override func configureHierarchy() {
         [
             categorySegmentControl,
             regionsButton,
+            collectionView
         ].forEach { addSubview($0) }
     }
     
@@ -43,6 +46,11 @@ final class FindingView: BaseView {
             make.top.equalTo(safeAreaLayoutGuide).offset(10)
             make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
             make.height.equalTo(44)
+        }
+        
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(categorySegmentControl.snp.bottom).offset(10)
+            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
 }
