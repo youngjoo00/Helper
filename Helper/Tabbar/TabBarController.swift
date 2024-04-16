@@ -38,6 +38,7 @@ final class TabBarController: UITabBarController {
 
 // MARK: - Tabbar Delegate
 extension TabBarController: UITabBarControllerDelegate {
+    // tag 2번 선택 시 PHPickerVC present
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if viewController.tabBarItem.tag == 2 {
             var configuration = PHPickerConfiguration()

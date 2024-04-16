@@ -76,7 +76,8 @@ final class NetworkManager {
                                                  fileName: "helper.png",
                                                  mimeType: "image/png")
                     }
-                }, to: url, headers: urlRequest.headers)
+                }, to: url, headers: urlRequest.headers, interceptor: TokenIntercepter())
+                .validate(statusCode: 200..<300)
                 .responseData { response in
                     switch response.result {
                     case .success(let data):
@@ -108,4 +109,5 @@ final class NetworkManager {
             return Disposables.create()
         }
     }
+    
 }

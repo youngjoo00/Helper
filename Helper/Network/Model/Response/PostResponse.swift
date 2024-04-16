@@ -107,7 +107,7 @@ enum PostResponse {
         }
     }
     
-    struct Files: Decodable {
+    struct FilesModel: Decodable {
         let files: [String]
     }
 }
