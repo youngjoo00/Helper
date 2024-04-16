@@ -72,7 +72,7 @@ final class PostCollectionViewCell: BaseCollectionViewCell {
 
 extension PostCollectionViewCell {
     
-    func updateView(_ data: ResponseModel.PostID) {
+    func updateView(_ data: PostResponse.PostID) {
         activityIndicator.startAnimating()
         
         if imageView.loadImage(urlString: data.files[0]) {

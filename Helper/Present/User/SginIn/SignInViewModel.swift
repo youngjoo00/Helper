@@ -31,13 +31,13 @@ final class SignInViewModel: ViewModelType {
         
         let loginQuery = Observable.combineLatest(input.emailText, input.passwordText)
             .map { email, password in
-                RequestModel.Login(email: email, password: password)
+                UserRequest.Login(email: email, password: password)
             }
         
         input.loginButtonTapped
             .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .withLatestFrom(loginQuery)
-            .flatMap { NetworkManager.shared.callAPI(type: ResponseModel.Login.self, router: Router.user(.login(query: $0))) }
+            .flatMap { NetworkManager.shared.callAPI(type: UserResponse.Login.self, router: Router.user(.login(query: $0))) }
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let data):

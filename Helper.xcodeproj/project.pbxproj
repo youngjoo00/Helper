@@ -62,8 +62,6 @@
 		8E1BAE332BC968EC00A65075 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE292BC968EB00A65075 /* APIError.swift */; };
 		8E1BAE352BC968EC00A65075 /* HTTPHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE2B2BC968EB00A65075 /* HTTPHeader.swift */; };
 		8E1BAE362BC968EC00A65075 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE2C2BC968EB00A65075 /* NetworkManager.swift */; };
-		8E1BAE372BC968EC00A65075 /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE2D2BC968EB00A65075 /* RequestModel.swift */; };
-		8E1BAE382BC968EC00A65075 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE2E2BC968EB00A65075 /* ResponseModel.swift */; };
 		8E1BAE392BC968EC00A65075 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE2F2BC968EB00A65075 /* TargetType.swift */; };
 		8E1BAE3A2BC968EC00A65075 /* TokenIntercepter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE302BC968EB00A65075 /* TokenIntercepter.swift */; };
 		8E1BAE3B2BC968EC00A65075 /* UserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE312BC968EB00A65075 /* UserRouter.swift */; };
@@ -102,6 +100,13 @@
 		8E9A3FD72BCD94A2005E4F45 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FD62BCD94A2005E4F45 /* SettingViewController.swift */; };
 		8E9A3FD92BCD94A9005E4F45 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FD82BCD94A9005E4F45 /* SettingViewModel.swift */; };
 		8E9A3FDB2BCD9530005E4F45 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FDA2BCD9530005E4F45 /* SettingTableViewCell.swift */; };
+		8E9A3FE42BCEBD8F005E4F45 /* WritePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FE32BCEBD8F005E4F45 /* WritePostView.swift */; };
+		8E9A3FE62BCEBD98005E4F45 /* WritePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FE52BCEBD98005E4F45 /* WritePostViewController.swift */; };
+		8E9A3FE82BCEBDA8005E4F45 /* WritePostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FE72BCEBDA8005E4F45 /* WritePostViewModel.swift */; };
+		8E9A3FF62BCEE291005E4F45 /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FF52BCEE291005E4F45 /* UserRequest.swift */; };
+		8E9A3FF82BCEE2CE005E4F45 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FF72BCEE2CE005E4F45 /* UserResponse.swift */; };
+		8E9A3FFA2BCEE2D5005E4F45 /* PostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FF92BCEE2D5005E4F45 /* PostResponse.swift */; };
+		8E9A3FFC2BCEE2DD005E4F45 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FFB2BCEE2DC005E4F45 /* ErrorResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -162,8 +167,6 @@
 		8E1BAE292BC968EB00A65075 /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		8E1BAE2B2BC968EB00A65075 /* HTTPHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPHeader.swift; sourceTree = "<group>"; };
 		8E1BAE2C2BC968EB00A65075 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		8E1BAE2D2BC968EB00A65075 /* RequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
-		8E1BAE2E2BC968EB00A65075 /* ResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		8E1BAE2F2BC968EB00A65075 /* TargetType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
 		8E1BAE302BC968EB00A65075 /* TokenIntercepter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenIntercepter.swift; sourceTree = "<group>"; };
 		8E1BAE312BC968EB00A65075 /* UserRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRouter.swift; sourceTree = "<group>"; };
@@ -192,6 +195,13 @@
 		8E9A3FD62BCD94A2005E4F45 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		8E9A3FD82BCD94A9005E4F45 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		8E9A3FDA2BCD9530005E4F45 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		8E9A3FE32BCEBD8F005E4F45 /* WritePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritePostView.swift; sourceTree = "<group>"; };
+		8E9A3FE52BCEBD98005E4F45 /* WritePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritePostViewController.swift; sourceTree = "<group>"; };
+		8E9A3FE72BCEBDA8005E4F45 /* WritePostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritePostViewModel.swift; sourceTree = "<group>"; };
+		8E9A3FF52BCEE291005E4F45 /* UserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
+		8E9A3FF72BCEE2CE005E4F45 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
+		8E9A3FF92BCEE2D5005E4F45 /* PostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResponse.swift; sourceTree = "<group>"; };
+		8E9A3FFB2BCEE2DC005E4F45 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,8 +240,8 @@
 		8E17A2E02BCA3C0A00581B58 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8E1BAE2D2BC968EB00A65075 /* RequestModel.swift */,
-				8E1BAE2E2BC968EB00A65075 /* ResponseModel.swift */,
+				8E9A3FF32BCEE25A005E4F45 /* Request */,
+				8E9A3FF42BCEE264005E4F45 /* Response */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -412,6 +422,7 @@
 				8E1BAE842BC97F0400A65075 /* User */,
 				8E17A2EF2BCA7D8D00581B58 /* Post */,
 				8E17A3032BCA8F2A00581B58 /* Search */,
+				8E9A3FE22BCEBCC7005E4F45 /* WritePost */,
 				8E17A3042BCA8F3400581B58 /* MyProfile */,
 			);
 			path = Present;
@@ -548,6 +559,34 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		8E9A3FE22BCEBCC7005E4F45 /* WritePost */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A3FE32BCEBD8F005E4F45 /* WritePostView.swift */,
+				8E9A3FE52BCEBD98005E4F45 /* WritePostViewController.swift */,
+				8E9A3FE72BCEBDA8005E4F45 /* WritePostViewModel.swift */,
+			);
+			path = WritePost;
+			sourceTree = "<group>";
+		};
+		8E9A3FF32BCEE25A005E4F45 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A3FF52BCEE291005E4F45 /* UserRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		8E9A3FF42BCEE264005E4F45 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A3FF72BCEE2CE005E4F45 /* UserResponse.swift */,
+				8E9A3FF92BCEE2D5005E4F45 /* PostResponse.swift */,
+				8E9A3FFB2BCEE2DC005E4F45 /* ErrorResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -656,7 +695,6 @@
 				8E1BAE3E2BC968F100A65075 /* UserDefaultsManager.swift in Sources */,
 				8E1BAE242BC968E500A65075 /* SignUpViewModel.swift in Sources */,
 				8E17A2F12BCA7D9F00581B58 /* FindingView.swift in Sources */,
-				8E1BAE372BC968EC00A65075 /* RequestModel.swift in Sources */,
 				8E1BAE4D2BC969DD00A65075 /* UITextField+.swift in Sources */,
 				8E1BAE4F2BC96AA600A65075 /* DateManager.swift in Sources */,
 				8E17A3082BCA8F9900581B58 /* SearchViewController.swift in Sources */,
@@ -665,6 +703,7 @@
 				8E1BAE802BC97D9600A65075 /* shadowImageView.swift in Sources */,
 				8E17A2F72BCA7F1D00581B58 /* PostTabViewController.swift in Sources */,
 				8E1BAE232BC968E500A65075 /* SignUpViewController.swift in Sources */,
+				8E9A3FE62BCEBD98005E4F45 /* WritePostViewController.swift in Sources */,
 				8E9A3FDB2BCD9530005E4F45 /* SettingTableViewCell.swift in Sources */,
 				8E17A31C2BCAC61900581B58 /* MyStoragePostView.swift in Sources */,
 				8E17A3022BCA80BF00581B58 /* FoundViewModel.swift in Sources */,
@@ -690,7 +729,6 @@
 				8E83BC482BCBC134007E1637 /* Router.swift in Sources */,
 				8E1BAE362BC968EC00A65075 /* NetworkManager.swift in Sources */,
 				8E17A2E22BCA3D7800581B58 /* PhoneView.swift in Sources */,
-				8E1BAE382BC968EC00A65075 /* ResponseModel.swift in Sources */,
 				8E17A32A2BCAD16E00581B58 /* PostView.swift in Sources */,
 				8E1BAE712BC97D5D00A65075 /* BaseCollectionViewCell.swift in Sources */,
 				8E17A2EC2BCA59C800581B58 /* BirthdayViewController.swift in Sources */,
@@ -700,16 +738,22 @@
 				8E9A3FD52BCD9498005E4F45 /* SettingView.swift in Sources */,
 				8E1BAE8D2BC9800B00A65075 /* Color.swift in Sources */,
 				8E1BAE352BC968EC00A65075 /* HTTPHeader.swift in Sources */,
+				8E9A3FE42BCEBD8F005E4F45 /* WritePostView.swift in Sources */,
 				8E17A2DE2BCA31D400581B58 /* ViewModelType+.swift in Sources */,
+				8E9A3FF62BCEE291005E4F45 /* UserRequest.swift in Sources */,
 				8E1BAE222BC968E500A65075 /* SignUpView.swift in Sources */,
+				8E9A3FFC2BCEE2DD005E4F45 /* ErrorResponse.swift in Sources */,
 				8E17A3152BCAC58200581B58 /* MyPostView.swift in Sources */,
 				8E1BAE262BC968E500A65075 /* NicknameViewController.swift in Sources */,
 				8E17A3192BCAC59400581B58 /* MyPostViewModel.swift in Sources */,
 				8E1BAE272BC968E500A65075 /* NicknameViewModel.swift in Sources */,
 				8E1BADFC2BC968C100A65075 /* ReusableID.swift in Sources */,
 				8E17A3002BCA80B900581B58 /* FoundViewController.swift in Sources */,
+				8E9A3FF82BCEE2CE005E4F45 /* UserResponse.swift in Sources */,
 				8E1BAE522BC96AC500A65075 /* TabBarController.swift in Sources */,
+				8E9A3FE82BCEBDA8005E4F45 /* WritePostViewModel.swift in Sources */,
 				8E1BAEA02BC99F3200A65075 /* PointBoldLabel.swift in Sources */,
+				8E9A3FFA2BCEE2D5005E4F45 /* PostResponse.swift in Sources */,
 				8E1BAE462BC968F900A65075 /* UIViewController+.swift in Sources */,
 				8E17A3232BCAC87E00581B58 /* MyProfileTabViewController.swift in Sources */,
 				8E1BADF82BC966BA00A65075 /* PrivateKey.swift in Sources */,

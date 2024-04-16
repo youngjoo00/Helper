@@ -45,13 +45,13 @@ final class BirthdayViewModel: ViewModelType {
             .withLatestFrom(date) { _, date in
                 SignUpManager.shared.birthday = date.0 + date.1 + date.2
                 let signUp = SignUpManager.shared
-                return RequestModel.Join(email: signUp.email,
+                return UserRequest.Join(email: signUp.email,
                                   password: signUp.password,
                                   nick: signUp.nick,
                                   phone: signUp.phone,
                                   birthday: signUp.birthday)
             }
-            .flatMap { NetworkManager.shared.callAPI(type: ResponseModel.Join.self, router: Router.user(.join(query: $0))) }
+            .flatMap { NetworkManager.shared.callAPI(type: UserResponse.Join.self, router: Router.user(.join(query: $0))) }
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let data):

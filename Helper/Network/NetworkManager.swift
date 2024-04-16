@@ -12,7 +12,7 @@ import Alamofire
 enum APIResult<T: Decodable> {
     case success(T)
     case fail(APIError)
-    case errorMessage(ResponseModel.ErrorMessage)
+    case errorMessage(ErrorResponse.ErrorMessage)
 }
 
 final class NetworkManager {
@@ -41,7 +41,7 @@ final class NetworkManager {
                         case .failure:
                             if let data = response.data {
                                 do {
-                                    let response = try JSONDecoder().decode(ResponseModel.ErrorMessage.self, from: data)
+                                    let response = try JSONDecoder().decode(ErrorResponse.ErrorMessage.self, from: data)
                                     single(.success(.errorMessage(response)))
                                 } catch {
                                     print("서버 통신 실패 케이스: ", error)

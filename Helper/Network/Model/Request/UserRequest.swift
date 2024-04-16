@@ -1,13 +1,13 @@
 //
-//  Querys.swift
-//  LSLPBasic
+//  UserRequest.swift
+//  Helper
 //
-//  Created by youngjoo on 4/10/24.
+//  Created by youngjoo on 4/17/24.
 //
 
 import Foundation
 
-enum RequestModel {
+enum UserRequest {
     struct Join: Encodable {
         let email: String
         let password: String
@@ -20,7 +20,7 @@ enum RequestModel {
         let email: String
         let password: String
     }
-    
+
     struct ValidationEmail: Encodable {
         let email: String
     }

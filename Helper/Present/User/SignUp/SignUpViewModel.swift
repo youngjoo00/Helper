@@ -46,9 +46,9 @@ final class SignUpViewModel: ViewModelType {
         input.nextButtonTapped
             .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .withLatestFrom(input.email)
-            .map { RequestModel.ValidationEmail(email: $0) }
+            .map { UserRequest.ValidationEmail(email: $0) }
             .flatMap { email in
-                NetworkManager.shared.callAPI(type: ResponseModel.ValidationEmail.self, router: Router.user(.validationEmail(query: email)))
+                NetworkManager.shared.callAPI(type: UserResponse.ValidationEmail.self, router: Router.user(.validationEmail(query: email)))
                     .map { (email, $0) }
             }
             .subscribe(with: self) { owner, result in

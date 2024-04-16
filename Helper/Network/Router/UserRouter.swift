@@ -9,9 +9,9 @@ import Foundation
 import Alamofire
 
 enum UserRouter {
-    case join(query: RequestModel.Join)
-    case validationEmail(query: RequestModel.ValidationEmail)
-    case login(query: RequestModel.Login)
+    case join(query: UserRequest.Join)
+    case validationEmail(query: UserRequest.ValidationEmail)
+    case login(query: UserRequest.Login)
     case withdraw
     case refresh
     case myProfile

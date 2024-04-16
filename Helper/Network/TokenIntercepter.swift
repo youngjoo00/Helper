@@ -46,7 +46,7 @@ final class TokenIntercepter: RequestInterceptor {
         do {
             let urlRequest = try UserRouter.refresh.asURLRequest()
             AF.request(urlRequest)
-                .responseDecodable(of: ResponseModel.Refresh.self) { response in
+                .responseDecodable(of: UserResponse.Refresh.self) { response in
                     switch response.result {
                     case .success(let data):
                         UserDefaultsManager.shared.saveToken(data.accessToken)

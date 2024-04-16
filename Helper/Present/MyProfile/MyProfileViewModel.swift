@@ -24,13 +24,13 @@ final class MyProfileViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         
-        let profileInfo = PublishRelay<ResponseModel.MyProfile>()
+        let profileInfo = PublishRelay<UserResponse.MyProfile>()
         let nickname = PublishRelay<String>()
         let postsID = PublishSubject<[String]>()
         
         // viewDidLoad - myProfile 통신
         input.viewDidLoadTrigger
-            .flatMap { NetworkManager.shared.callAPI(type: ResponseModel.MyProfile.self, router: Router.user(.myProfile)) }
+            .flatMap { NetworkManager.shared.callAPI(type: UserResponse.MyProfile.self, router: Router.user(.myProfile)) }
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let data):

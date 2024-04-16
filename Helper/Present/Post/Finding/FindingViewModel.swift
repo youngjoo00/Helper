@@ -19,15 +19,15 @@ final class FindingViewModel: ViewModelType {
     }
     
     struct Output {
-        let posts: Driver<[ResponseModel.PostID]>
+        let posts: Driver<[PostResponse.PostID]>
     }
     
     func transform(input: Input) -> Output {
         
-        let posts = PublishRelay<[ResponseModel.PostID]>()
+        let posts = PublishRelay<[PostResponse.PostID]>()
         
         input.viewDidLoadTrigger
-            .flatMap { NetworkManager.shared.callAPI(type: ResponseModel.Posts.self, router: Router.post(.posts(query: ""))) }
+            .flatMap { NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.posts(query: ""))) }
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let data):

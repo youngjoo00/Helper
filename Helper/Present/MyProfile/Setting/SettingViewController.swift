@@ -43,7 +43,7 @@ final class SettingViewController: BaseViewController {
                     }
                 } else {
                     owner.showAlert(title: "회원탈퇴", message: "모든 정보가 삭제됩니다!", btnTitle: "탈퇴") {
-                        NetworkManager.shared.callAPI(type: ResponseModel.Join.self, router: Router.user(.withdraw))
+                        NetworkManager.shared.callAPI(type: UserResponse.Join.self, router: Router.user(.withdraw))
                             .subscribe(with: self) { owner, result in
                                 switch result {
                                 case .success(let data):

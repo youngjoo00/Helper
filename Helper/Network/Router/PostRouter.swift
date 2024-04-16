@@ -12,6 +12,7 @@ enum PostRouter {
     case posts(query: String)
     case postID(id: String)
     case image(url: String)
+    case uploadImage
 }
 
 extension PostRouter: TargetType {
@@ -33,6 +34,10 @@ extension PostRouter: TargetType {
             var headers = baseHeader
             headers[HTTPHeader.authorization.rawValue] = UserDefaultsManager.shared.getAccessToken()
             return headers
+        case .uploadImage:
+            var headers = baseHeader
+            headers[HTTPHeader.contentType.rawValue] = HTTPHeader.multipart.rawValue
+            return headers
         }
     }
     
@@ -45,6 +50,8 @@ extension PostRouter: TargetType {
             return version + "/posts/\(id)"
         case .image(let url):
             return version + "/\(url)"
+        case .uploadImage:
+            return version + "/posts/files"
         }
     }
     
@@ -56,6 +63,8 @@ extension PostRouter: TargetType {
             return .get
         case .image:
             return .get
+        case .uploadImage:
+            return .post
         }
     }
     
@@ -71,6 +80,8 @@ extension PostRouter: TargetType {
             return nil
         case .image:
             return nil
+        case .uploadImage:
+            return nil
         }
     }
     
@@ -81,6 +92,8 @@ extension PostRouter: TargetType {
         case .postID:
             return nil
         case .image:
+            return nil
+        case .uploadImage:
             return nil
         }
     }
@@ -93,6 +106,8 @@ extension PostRouter: TargetType {
         case .postID:
             return nil
         case .image:
+            return nil
+        case .uploadImage:
             return nil
         }
     }

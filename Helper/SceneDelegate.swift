@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: scene)
 
-        NetworkManager.shared.callAPI(type: ResponseModel.MyProfile.self, router: Router.user(.myProfile))
+        NetworkManager.shared.callAPI(type: UserResponse.MyProfile.self, router: Router.user(.myProfile))
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success:
