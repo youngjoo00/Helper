@@ -35,7 +35,7 @@ final class SignInViewController: BaseViewController {
         output.loginValid
             .drive(with: self) { owner, valid in
                 if valid {
-                    owner.changeRootView()
+                    owner.changeHomeRootView()
                 } else {
                     owner.showAlert(title: "로그인 실패!", message: nil)
                 }

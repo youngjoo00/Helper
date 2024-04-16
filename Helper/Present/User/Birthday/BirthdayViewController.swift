@@ -23,25 +23,30 @@ final class BirthdayViewController: BaseViewController {
     }
     
     override func bind() {
-//        
-//        let input = BirthdayView.Input(phone: mainView.phoneTextField.rx.text.orEmpty.asObservable(),
-//                                            nextButtonTap: mainView.nextButton.rx.tap)
-//        
-//        let output = viewModel.transform(input: input)
-//        
-//        output.isValid
-//            .drive(mainView.nextButton.rx.isEnabled)
-//            .disposed(by: disposeBag)
-//        
-//        output.description
-//            .drive(mainView.descriptionLabel.rx.text)
-//            .disposed(by: disposeBag)
-//
-//        output.nextButtonTapTrigger
-//            .drive(with: self) { owner, _ in
-//                owner.navigationController?.pushViewController(PhoneViewController(), animated: true)
-//            }
-//            .disposed(by: disposeBag)
+        
+        let input = BirthdayViewModel.Input(year: mainView.yearTextField.rx.text.orEmpty.asObservable(),
+                                            month: mainView.monthTextField.rx.text.orEmpty.asObservable(),
+                                            day: mainView.dayTextField.rx.text.orEmpty.asObservable(),
+                                            signUpButtonTap: mainView.signUpButton.rx.tap
+        )
+        
+        let output = viewModel.transform(input: input)
+        
+        output.isValid
+            .drive(mainView.signUpButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        output.description
+            .drive(mainView.descriptionLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        output.signUpButtonTapTrigger
+            .drive(with: self) { owner, _ in
+                owner.showAlert(title: "축하합니다!", message: "회원가입에 성공했습니다.") {
+                    owner.changeSignInRootView()
+                }
+            }
+            .disposed(by: disposeBag)
 
     }
     

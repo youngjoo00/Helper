@@ -39,14 +39,7 @@ final class SettingViewController: BaseViewController {
             .subscribe(with: self) { owner, indexPath in
                 if indexPath.row == 0 {
                     owner.showAlert(title: "로그아웃 하시겠습니까?", message: nil, btnTitle: "확인") {
-                        UserDefaultsManager.shared.saveTokens("", refreshToken: "")
-                        
-                        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-                        let sceneDelegate = windowScene?.delegate as? SceneDelegate
-                        
-                        let nav = UINavigationController(rootViewController: SignInViewController())
-                        sceneDelegate?.window?.rootViewController = nav
-                        sceneDelegate?.window?.makeKeyAndVisible()
+                        owner.changeSignInRootView()
                     }
                 } else {
                     owner.showAlert(title: "회원탈퇴", message: "모든 정보가 삭제됩니다!", btnTitle: "탈퇴") {
@@ -54,14 +47,7 @@ final class SettingViewController: BaseViewController {
                             .subscribe(with: self) { owner, result in
                                 switch result {
                                 case .success(let data):
-                                    UserDefaultsManager.shared.saveTokens("", refreshToken: "")
-                                    
-                                    let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-                                    let sceneDelegate = windowScene?.delegate as? SceneDelegate
-                                    
-                                    let nav = UINavigationController(rootViewController: SignInViewController())
-                                    sceneDelegate?.window?.rootViewController = nav
-                                    sceneDelegate?.window?.makeKeyAndVisible()
+                                    owner.changeSignInRootView()
                                 case .fail(let fail):
                                     print(fail)
                                 case .errorMessage(let error):
