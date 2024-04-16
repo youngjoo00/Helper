@@ -37,8 +37,8 @@ final class MyProfileViewModel: ViewModelType {
                     profileInfo.accept(data)
                 case .fail(let fail):
                     print(fail)
-                case .errorMessage(let message):
-                    print(message)
+//                case .errorMessage(let message):
+//                    print(message)
                 }
             }
             .disposed(by: disposeBag)

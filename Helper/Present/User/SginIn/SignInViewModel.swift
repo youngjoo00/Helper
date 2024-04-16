@@ -47,9 +47,6 @@ final class SignInViewModel: ViewModelType {
                 case .fail(let fail):
                     loginValid.accept(false)
                     print(fail.localizedDescription)
-                case .errorMessage(let message):
-                    loginValid.accept(false)
-                    print(message.message)
                 }
             } onError: { _, error in
                 print(error, "onError 등장")

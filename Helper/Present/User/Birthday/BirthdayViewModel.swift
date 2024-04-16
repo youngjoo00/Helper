@@ -58,9 +58,7 @@ final class BirthdayViewModel: ViewModelType {
                     print("회원가입 성공!")
                     signUpButtonTapTrigger.accept(())
                 case .fail(let fail):
-                    print(fail)
-                case .errorMessage(let message):
-                    print(message)
+                    print(fail.localizedDescription)
                 }
             }
             .disposed(by: disposeBag)

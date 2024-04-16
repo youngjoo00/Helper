@@ -41,9 +41,9 @@ final class MyPostViewModel: ViewModelType {
                         case .fail(let fail):
                             print(fail)
                             return nil
-                        case .errorMessage(let message):
-                            print(message)
-                            return nil
+//                        case .errorMessage(let message):
+//                            print(message)
+//                            return nil
                         }
                     }
                 }

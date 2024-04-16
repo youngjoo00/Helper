@@ -60,13 +60,13 @@ extension TabBarController: PHPickerViewControllerDelegate {
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true) {
-            // 이미지를 저장할 빈 배열을 생성합니다.
+            // 이미지를 저장할 빈 배열
             var images: [UIImage] = []
             
             // 결과가 비어있는지 확인
             guard !results.isEmpty else { return }
             
-            // 모든 결과에 대해 반복 처리합니다.
+            // 반복문으로 UIImage 타입으로 변환 -> images 배열에 삽입
             for result in results {
                 let itemProvider = result.itemProvider
                 

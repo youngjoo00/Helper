@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import UIKit
 
 enum PostRouter {
     case posts(query: String)

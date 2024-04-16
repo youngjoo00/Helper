@@ -27,7 +27,7 @@ final class WritePostViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         print(selectedImages)
-        //NetworkManager.shared.callAPI(type: <#T##Decodable.Type#>, router: <#T##TargetType#>)
+        NetworkManager.shared.callAPI(type: PostResponse.Files.self, router: Router.post(.uploadImage))
     }
 }
 

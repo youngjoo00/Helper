@@ -105,8 +105,9 @@ enum PostResponse {
                 case creator
             }
         }
-        
-        
-
+    }
+    
+    struct Files: Decodable {
+        let files: [String]
     }
 }

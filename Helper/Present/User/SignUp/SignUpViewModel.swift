@@ -61,9 +61,6 @@ final class SignUpViewModel: ViewModelType {
                 case .fail(let fail):
                     print(fail)
                     description.accept(fail.localizedDescription)
-                case .errorMessage(let error):
-                    print(error)
-                    description.accept(error.message)
                 }
             } onDisposed: { _ in
                 print("buttonDispose")

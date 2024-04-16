@@ -41,6 +41,8 @@ final class NicknameViewModel: ViewModelType {
                 nextButtonTapTrigger.accept(())
             }
             .disposed(by: disposeBag)
+        
+        // 여기까지만 회원가입할지 고민
 //        input.nextButtonTap
 //            .withLatestFrom(input.nickname) { first, second in
 //                RequestModel.Join(email: SignUp.shared.email,

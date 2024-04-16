@@ -19,6 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: scene)
 
+        // 여기도 바꿔야함
         NetworkManager.shared.callAPI(type: UserResponse.MyProfile.self, router: Router.user(.myProfile))
             .subscribe(with: self) { owner, result in
                 switch result {
@@ -26,9 +27,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     owner.window?.rootViewController = TabBarController()
                 case .fail(let fail):
                     print(fail.localizedDescription)
-                    owner.window?.rootViewController = UINavigationController(rootViewController: SignInViewController())
-                case .errorMessage(let message):
-                    print(message.message)
                     owner.window?.rootViewController = UINavigationController(rootViewController: SignInViewController())
                 }
                 owner.window?.makeKeyAndVisible()

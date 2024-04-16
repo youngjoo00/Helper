@@ -13,9 +13,10 @@ enum APIError: Error {
     case statusError
     case decodingFali
     case noData
+    case serverError(ErrorResponse.ErrorMessage)
 }
 
-extension APIError: LocalizedError {
+extension APIError: LocalizedError, Decodable {
     var errorDescription: String? {
         switch self {
         case .invalidURL:
@@ -28,6 +29,8 @@ extension APIError: LocalizedError {
             return "디코딩에 실패했습니다."
         case .noData:
             return "데이터가 없습니다."
+        case .serverError(let serverError):
+            return serverError.message
         }
     }
 }
