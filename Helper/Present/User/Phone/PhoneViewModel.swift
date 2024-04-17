@@ -41,6 +41,8 @@ final class PhoneViewModel: ViewModelType {
             .withLatestFrom(input.phone)
             .subscribe(with: self) { owner, phone in
                 SignUpManager.shared.phone = phone
+                print(phone)
+                print(SignUpManager.shared.phone)
                 nextButtonTapTrigger.accept(())
             }
             .disposed(by: disposeBag)

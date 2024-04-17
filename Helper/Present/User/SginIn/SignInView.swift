@@ -11,8 +11,8 @@ import Then
 final class SignInView: BaseView {
     
     let logoTitle = PointBoldLabel("Helper", fontSize: 40)
-    let emailTextField = SignTextField(placeholderText: "이메일을 입력해주세요")
-    let passwordTextField = SignTextField(placeholderText: "비밀번호를 입력해주세요")
+    let emailTextField = PointTextField(placeholderText: "이메일을 입력해주세요")
+    let passwordTextField = PointTextField(placeholderText: "비밀번호를 입력해주세요")
     let signInButton = PointButton(title: "로그인")
     let signUpButton = PointButton(title: "회원가입")
     

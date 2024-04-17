@@ -18,17 +18,17 @@ final class MyPostViewModel: ViewModelType {
     }
     
     struct Output {
-        let posts: Driver<[PostResponse.PostID]>
+        let posts: Driver<[PostResponse.FetchPost]>
     }
     
     func transform(input: Input) -> Output {
         
-        let posts: BehaviorRelay<[PostResponse.PostID]> = BehaviorRelay(value: [])
+        let posts: BehaviorRelay<[PostResponse.FetchPost]> = BehaviorRelay(value: [])
         
         input.postID
             .flatMap { ids in // String 배열
                 let requests = ids.map { id in // String 단일
-                    NetworkManager.shared.callAPI(type: PostResponse.PostID.self, router: Router.post(.postID(id: id)))
+                    NetworkManager.shared.callAPI(type: PostResponse.FetchPost.self, router: Router.post(.postID(id: id)))
                         .asObservable() // Single<APIResult<T>> -> Observable<APIResult<ResponseModel.PostID>>
                 }
                 // 통신 결과를 zip 으로 묶기 위해 위에서 asObservable 메서드 사용

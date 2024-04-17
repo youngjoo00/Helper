@@ -10,10 +10,11 @@ import Alamofire
 import UIKit
 
 enum PostRouter {
-    case posts(query: String)
+    case posts(next: String, productID: String, hashTag: String)
     case postID(id: String)
     case image(url: String)
     case uploadImage
+    case write(query: PostRequest.Write)
 }
 
 extension PostRouter: TargetType {
@@ -39,6 +40,8 @@ extension PostRouter: TargetType {
             var headers = baseHeader
             headers[HTTPHeader.contentType.rawValue] = HTTPHeader.multipart.rawValue
             return headers
+        case .write:
+            return baseHeader
         }
     }
     
@@ -53,6 +56,8 @@ extension PostRouter: TargetType {
             return version + "/\(url)"
         case .uploadImage:
             return version + "/posts/files"
+        case .write:
+            return version + "/posts"
         }
     }
     
@@ -66,22 +71,27 @@ extension PostRouter: TargetType {
             return .get
         case .uploadImage:
             return .post
+        case .write:
+            return .post
         }
     }
     
     var queryItems: [URLQueryItem]? {
         switch self {
-        case .posts(let query):
+        case .posts(let next, let productID, let hashTag):
             return [
-                URLQueryItem(name: "next", value: "0"),
-                URLQueryItem(name: "limit", value: "25"),
-                URLQueryItem(name: "product_id", value: "서울_분실"),
+                URLQueryItem(name: "next", value: next),
+                URLQueryItem(name: "limit", value: "200"),
+                URLQueryItem(name: "product_id", value: productID),
+                URLQueryItem(name: "hashTag", value: hashTag)
             ]
         case .postID:
             return nil
         case .image:
             return nil
         case .uploadImage:
+            return nil
+        case .write:
             return nil
         }
     }
@@ -95,6 +105,8 @@ extension PostRouter: TargetType {
         case .image:
             return nil
         case .uploadImage:
+            return nil
+        case .write:
             return nil
         }
     }
@@ -110,6 +122,8 @@ extension PostRouter: TargetType {
             return nil
         case .uploadImage:
             return nil
+        case .write(let query):
+            return try? encoder.encode(query)
         }
     }
 }

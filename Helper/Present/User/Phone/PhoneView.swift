@@ -12,7 +12,7 @@ import RxSwift
 final class PhoneView: BaseView {
     
     let titleLabel = PointBoldLabel("휴대폰 번호 등록하기", fontSize: 30)
-    let phoneTextField = SignTextField(placeholderText: "휴대폰 번호를 입력해주세요")
+    let phoneTextField = PointTextField(placeholderText: "휴대폰 번호를 입력해주세요")
     let nextButton = PointButton(title: "다음")
     let descriptionLabel = RedColorLabel("", fontSize: 15)
     

@@ -15,7 +15,7 @@ final class PostCollectionViewCell: BaseCollectionViewCell {
         $0.backgroundColor = .lightGray
     }
     let titleLabel = PointBoldLabel(nil, fontSize: 17)
-    let pointLabel = PointLabel(nil, fontSize: 15)
+    let featureLabel = PointLabel(nil, fontSize: 15)
     let dateLabel = PointLabel(nil, fontSize: 15)
     let locateLabel = PointLabel(nil, fontSize: 15)
     
@@ -27,7 +27,7 @@ final class PostCollectionViewCell: BaseCollectionViewCell {
         [
             imageView,
             titleLabel,
-            pointLabel,
+            featureLabel,
             dateLabel,
             locateLabel,
             activityIndicator
@@ -45,13 +45,13 @@ final class PostCollectionViewCell: BaseCollectionViewCell {
             make.horizontalEdges.equalToSuperview().inset(10)
         }
         
-        pointLabel.snp.makeConstraints { make in
+        featureLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(5)
             make.horizontalEdges.equalToSuperview().inset(10)
         }
         
         dateLabel.snp.makeConstraints { make in
-            make.top.equalTo(pointLabel.snp.bottom).offset(5)
+            make.top.equalTo(featureLabel.snp.bottom).offset(5)
             make.horizontalEdges.equalToSuperview().inset(10)
         }
         
@@ -72,16 +72,22 @@ final class PostCollectionViewCell: BaseCollectionViewCell {
 
 extension PostCollectionViewCell {
     
-    func updateView(_ data: PostResponse.PostID) {
+    func updateView(_ data: PostResponse.FetchPost) {
         activityIndicator.startAnimating()
         
-        if imageView.loadImage(urlString: data.files[0]) {
-            activityIndicator.stopAnimating()
+        imageView.loadImage(urlString: data.files[0]) { [weak self] result in
+            guard let self else { return }
+            if result {
+                activityIndicator.stopAnimating()
+            } else {
+                // 실패케이스 처리 고민합시다
+            }
+            
         }
         
         titleLabel.text = data.title
-        pointLabel.text = data.content1
-        dateLabel.text = data.content2
-        locateLabel.text = data.content3
+        featureLabel.text = data.feature
+        dateLabel.text = data.date
+        locateLabel.text = data.locate
     }
 }

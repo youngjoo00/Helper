@@ -12,9 +12,9 @@ import RxSwift
 final class BirthdayView: BaseView {
     
     let titleLabel = PointBoldLabel("생년월일 등록하기", fontSize: 30)
-    let yearTextField = SignTextField(placeholderText: "YYYY")
-    let monthTextField = SignTextField(placeholderText: "MM")
-    let dayTextField = SignTextField(placeholderText: "DD")
+    let yearTextField = PointTextField(placeholderText: "YYYY")
+    let monthTextField = PointTextField(placeholderText: "MM")
+    let dayTextField = PointTextField(placeholderText: "DD")
     let signUpButton = PointButton(title: "회원가입 완료")
     let descriptionLabel = RedColorLabel("", fontSize: 15)
     

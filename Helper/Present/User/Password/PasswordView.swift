@@ -12,7 +12,7 @@ import RxSwift
 final class PasswordView: BaseView {
     
     let titleLabel = PointBoldLabel("비밀번호 등록하기", fontSize: 30)
-    let passwordTextField = SignTextField(placeholderText: "비밀번호를 입력해주세요")
+    let passwordTextField = PointTextField(placeholderText: "비밀번호를 입력해주세요")
     let nextButton = PointButton(title: "다음")
     let descriptionLabel = RedColorLabel("", fontSize: 15)
 

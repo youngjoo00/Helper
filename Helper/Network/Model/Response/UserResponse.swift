@@ -35,7 +35,7 @@ enum UserResponse {
         let nick: String
         let phoneNum: String
         let birthDay: String
-        let profileImage: String?
+        let profileImage: String
         let followers: [String]
         let following: [String]
         let posts: [String]
@@ -57,8 +57,8 @@ enum UserResponse {
             self.userID = try container.decode(String.self, forKey: UserResponse.MyProfile.CodingKeys.userID)
             self.email = try container.decode(String.self, forKey: UserResponse.MyProfile.CodingKeys.email)
             self.nick = try container.decode(String.self, forKey: UserResponse.MyProfile.CodingKeys.nick)
-            self.phoneNum = try container.decode(String.self, forKey: UserResponse.MyProfile.CodingKeys.phoneNum)
-            self.birthDay = try container.decode(String.self, forKey: UserResponse.MyProfile.CodingKeys.birthDay)
+            self.phoneNum = try container.decodeIfPresent(String.self, forKey: UserResponse.MyProfile.CodingKeys.phoneNum) ?? ""
+            self.birthDay = try container.decodeIfPresent(String.self, forKey: UserResponse.MyProfile.CodingKeys.birthDay) ?? ""
             self.profileImage = try container.decodeIfPresent(String.self, forKey: UserResponse.MyProfile.CodingKeys.profileImage) ?? ""
             self.followers = try container.decode([String].self, forKey: UserResponse.MyProfile.CodingKeys.followers)
             self.following = try container.decode([String].self, forKey: UserResponse.MyProfile.CodingKeys.following)

@@ -12,8 +12,8 @@ enum UserRequest {
         let email: String
         let password: String
         let nick: String
-        let phone: String?
-        let birthday: String?
+        let phoneNum: String
+        let birthDay: String
     }
 
     struct Login: Encodable {

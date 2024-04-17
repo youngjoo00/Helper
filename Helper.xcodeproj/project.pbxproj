@@ -84,10 +84,9 @@
 		8E1BAE732BC97D5D00A65075 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE6F2BC97D5D00A65075 /* BaseTableViewCell.swift */; };
 		8E1BAE802BC97D9600A65075 /* shadowImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE782BC97D9600A65075 /* shadowImageView.swift */; };
 		8E1BAE862BC97FDE00A65075 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE852BC97FDE00A65075 /* SignInView.swift */; };
-		8E1BAE892BC97FF800A65075 /* SignTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE872BC97FF700A65075 /* SignTextField.swift */; };
+		8E1BAE892BC97FF800A65075 /* PointTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE872BC97FF700A65075 /* PointTextField.swift */; };
 		8E1BAE8A2BC97FF800A65075 /* PointButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE882BC97FF800A65075 /* PointButton.swift */; };
 		8E1BAE8D2BC9800B00A65075 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE8B2BC9800B00A65075 /* Color.swift */; };
-		8E1BAE902BC9852E00A65075 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8E1BAE8F2BC9852E00A65075 /* IQKeyboardManagerSwift */; };
 		8E1BAE962BC9883500A65075 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E1BAE952BC9883500A65075 /* Main.storyboard */; };
 		8E1BAE992BC993C100A65075 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8E1BAE982BC993C100A65075 /* SnapKit */; };
 		8E1BAE9E2BC99E7C00A65075 /* PointLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE9D2BC99E7C00A65075 /* PointLabel.swift */; };
@@ -107,6 +106,11 @@
 		8E9A3FF82BCEE2CE005E4F45 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FF72BCEE2CE005E4F45 /* UserResponse.swift */; };
 		8E9A3FFA2BCEE2D5005E4F45 /* PostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FF92BCEE2D5005E4F45 /* PostResponse.swift */; };
 		8E9A3FFC2BCEE2DD005E4F45 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FFB2BCEE2DC005E4F45 /* ErrorResponse.swift */; };
+		8E9A40102BCFBB36005E4F45 /* PostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A400F2BCFBB36005E4F45 /* PostRequest.swift */; };
+		8E9A40122BCFC196005E4F45 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A40112BCFC196005E4F45 /* ImageCollectionViewCell.swift */; };
+		8E9A40142BCFD3D3005E4F45 /* PointTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A40132BCFD3D3005E4F45 /* PointTextView.swift */; };
+		8E9A40162BCFE9C8005E4F45 /* WhiteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A40152BCFE9C8005E4F45 /* WhiteButton.swift */; };
+		8E9A40192BCFFADE005E4F45 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8E9A40182BCFFADE005E4F45 /* IQKeyboardManagerSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -181,7 +185,7 @@
 		8E1BAE6F2BC97D5D00A65075 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		8E1BAE782BC97D9600A65075 /* shadowImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shadowImageView.swift; sourceTree = "<group>"; };
 		8E1BAE852BC97FDE00A65075 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		8E1BAE872BC97FF700A65075 /* SignTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignTextField.swift; sourceTree = "<group>"; };
+		8E1BAE872BC97FF700A65075 /* PointTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointTextField.swift; sourceTree = "<group>"; };
 		8E1BAE882BC97FF800A65075 /* PointButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointButton.swift; sourceTree = "<group>"; };
 		8E1BAE8B2BC9800B00A65075 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		8E1BAE952BC9883500A65075 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -202,6 +206,10 @@
 		8E9A3FF72BCEE2CE005E4F45 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		8E9A3FF92BCEE2D5005E4F45 /* PostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResponse.swift; sourceTree = "<group>"; };
 		8E9A3FFB2BCEE2DC005E4F45 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		8E9A400F2BCFBB36005E4F45 /* PostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRequest.swift; sourceTree = "<group>"; };
+		8E9A40112BCFC196005E4F45 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		8E9A40132BCFD3D3005E4F45 /* PointTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointTextView.swift; sourceTree = "<group>"; };
+		8E9A40152BCFE9C8005E4F45 /* WhiteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,8 +221,8 @@
 				8E1BAE5E2BC97C3200A65075 /* Kingfisher in Frameworks */,
 				8E1BAE5B2BC97C2A00A65075 /* Alamofire in Frameworks */,
 				8E1BAE612BC97C4F00A65075 /* RxCocoa in Frameworks */,
-				8E1BAE902BC9852E00A65075 /* IQKeyboardManagerSwift in Frameworks */,
 				8E1BAE6B2BC97CD500A65075 /* Tabman in Frameworks */,
+				8E9A40192BCFFADE005E4F45 /* IQKeyboardManagerSwift in Frameworks */,
 				8E1BAE582BC97C2100A65075 /* Toast in Frameworks */,
 				8E1BAE552BC97C1500A65075 /* Then in Frameworks */,
 				8E1BAE652BC97C4F00A65075 /* RxSwift in Frameworks */,
@@ -455,11 +463,13 @@
 			children = (
 				8E1BAE782BC97D9600A65075 /* shadowImageView.swift */,
 				8E1BAE882BC97FF800A65075 /* PointButton.swift */,
-				8E1BAE872BC97FF700A65075 /* SignTextField.swift */,
+				8E9A40152BCFE9C8005E4F45 /* WhiteButton.swift */,
+				8E1BAE872BC97FF700A65075 /* PointTextField.swift */,
 				8E1BAE9D2BC99E7C00A65075 /* PointLabel.swift */,
 				8E1BAE9F2BC99F3200A65075 /* PointBoldLabel.swift */,
 				8E17A2DB2BCA267000581B58 /* RedColorLabel.swift */,
 				8E9A3FCF2BCD81BA005E4F45 /* PostCollectionViewCell.swift */,
+				8E9A40132BCFD3D3005E4F45 /* PointTextView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -565,6 +575,7 @@
 				8E9A3FE32BCEBD8F005E4F45 /* WritePostView.swift */,
 				8E9A3FE52BCEBD98005E4F45 /* WritePostViewController.swift */,
 				8E9A3FE72BCEBDA8005E4F45 /* WritePostViewModel.swift */,
+				8E9A40112BCFC196005E4F45 /* ImageCollectionViewCell.swift */,
 			);
 			path = WritePost;
 			sourceTree = "<group>";
@@ -573,6 +584,7 @@
 			isa = PBXGroup;
 			children = (
 				8E9A3FF52BCEE291005E4F45 /* UserRequest.swift */,
+				8E9A400F2BCFBB36005E4F45 /* PostRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -612,8 +624,8 @@
 				8E1BAE622BC97C4F00A65075 /* RxRelay */,
 				8E1BAE642BC97C4F00A65075 /* RxSwift */,
 				8E1BAE6A2BC97CD500A65075 /* Tabman */,
-				8E1BAE8F2BC9852E00A65075 /* IQKeyboardManagerSwift */,
 				8E1BAE982BC993C100A65075 /* SnapKit */,
+				8E9A40182BCFFADE005E4F45 /* IQKeyboardManagerSwift */,
 			);
 			productName = Helper;
 			productReference = 8E1BADE02BC965CC00A65075 /* Helper.app */;
@@ -650,8 +662,8 @@
 				8E1BAE5C2BC97C3200A65075 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				8E1BAE5F2BC97C4F00A65075 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				8E1BAE692BC97CD500A65075 /* XCRemoteSwiftPackageReference "Tabman" */,
-				8E1BAE8E2BC9852E00A65075 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				8E1BAE972BC993C100A65075 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				8E9A40172BCFFADD005E4F45 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 8E1BADE12BC965CC00A65075 /* Products */;
 			projectDirPath = "";
@@ -723,7 +735,7 @@
 				8E17A2FE2BCA80AF00581B58 /* FoundView.swift in Sources */,
 				8E17A3102BCA8FC800581B58 /* MyProfileViewController.swift in Sources */,
 				8E1BADE62BC965CC00A65075 /* SceneDelegate.swift in Sources */,
-				8E1BAE892BC97FF800A65075 /* SignTextField.swift in Sources */,
+				8E1BAE892BC97FF800A65075 /* PointTextField.swift in Sources */,
 				8E9A3FD92BCD94A9005E4F45 /* SettingViewModel.swift in Sources */,
 				8E17A3062BCA8F9200581B58 /* SearchView.swift in Sources */,
 				8E83BC482BCBC134007E1637 /* Router.swift in Sources */,
@@ -737,7 +749,9 @@
 				8E1BAE702BC97D5D00A65075 /* BaseViewController.swift in Sources */,
 				8E9A3FD52BCD9498005E4F45 /* SettingView.swift in Sources */,
 				8E1BAE8D2BC9800B00A65075 /* Color.swift in Sources */,
+				8E9A40162BCFE9C8005E4F45 /* WhiteButton.swift in Sources */,
 				8E1BAE352BC968EC00A65075 /* HTTPHeader.swift in Sources */,
+				8E9A40142BCFD3D3005E4F45 /* PointTextView.swift in Sources */,
 				8E9A3FE42BCEBD8F005E4F45 /* WritePostView.swift in Sources */,
 				8E17A2DE2BCA31D400581B58 /* ViewModelType+.swift in Sources */,
 				8E9A3FF62BCEE291005E4F45 /* UserRequest.swift in Sources */,
@@ -747,6 +761,7 @@
 				8E1BAE262BC968E500A65075 /* NicknameViewController.swift in Sources */,
 				8E17A3192BCAC59400581B58 /* MyPostViewModel.swift in Sources */,
 				8E1BAE272BC968E500A65075 /* NicknameViewModel.swift in Sources */,
+				8E9A40102BCFBB36005E4F45 /* PostRequest.swift in Sources */,
 				8E1BADFC2BC968C100A65075 /* ReusableID.swift in Sources */,
 				8E17A3002BCA80B900581B58 /* FoundViewController.swift in Sources */,
 				8E9A3FF82BCEE2CE005E4F45 /* UserResponse.swift in Sources */,
@@ -757,6 +772,7 @@
 				8E1BAE462BC968F900A65075 /* UIViewController+.swift in Sources */,
 				8E17A3232BCAC87E00581B58 /* MyProfileTabViewController.swift in Sources */,
 				8E1BADF82BC966BA00A65075 /* PrivateKey.swift in Sources */,
+				8E9A40122BCFC196005E4F45 /* ImageCollectionViewCell.swift in Sources */,
 				8E9A3FD22BCD8455005E4F45 /* UICollectionViewLayout+.swift in Sources */,
 				8E17A3322BCAF03D00581B58 /* BaseTableView.swift in Sources */,
 				8E1BAE9E2BC99E7C00A65075 /* PointLabel.swift in Sources */,
@@ -1041,20 +1057,20 @@
 				minimumVersion = 3.1.0;
 			};
 		};
-		8E1BAE8E2BC9852E00A65075 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.2;
-			};
-		};
 		8E1BAE972BC993C100A65075 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.7.1;
+			};
+		};
+		8E9A40172BCFFADD005E4F45 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1100,15 +1116,15 @@
 			package = 8E1BAE692BC97CD500A65075 /* XCRemoteSwiftPackageReference "Tabman" */;
 			productName = Tabman;
 		};
-		8E1BAE8F2BC9852E00A65075 /* IQKeyboardManagerSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8E1BAE8E2BC9852E00A65075 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
-			productName = IQKeyboardManagerSwift;
-		};
 		8E1BAE982BC993C100A65075 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8E1BAE972BC993C100A65075 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		8E9A40182BCFFADE005E4F45 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E9A40172BCFFADD005E4F45 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

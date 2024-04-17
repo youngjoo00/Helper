@@ -9,7 +9,7 @@ import Foundation
 
 enum PostResponse {
     struct Posts: Decodable {
-        let data: [PostID]
+        let data: [FetchPost]
         let nextCursor: String
         
         enum CodingKeys: String, CodingKey {
@@ -18,17 +18,16 @@ enum PostResponse {
         }
     }
     
-    
-    struct PostID: Decodable {
+    struct FetchPost: Decodable {
         let postID: String
         let productId: String
         let title: String
+        let hashTag: String
+        let feature: String
+        let locate: String
+        let date: String
+        let phone: String
         let content: String
-        let content1: String
-        let content2: String
-        let content3: String
-        let content4: String
-        let content5: String
         let createdAt: String
         let creator: Creator
         let files: [String]
@@ -40,12 +39,12 @@ enum PostResponse {
             case postID = "post_id"
             case productId = "product_id"
             case title
-            case content
-            case content1
-            case content2
-            case content3
-            case content4
-            case content5
+            case hashTag = "content"
+            case feature = "content1"
+            case locate = "content2"
+            case date = "content3"
+            case phone = "content4"
+            case content = "content5"
             case createdAt
             case creator
             case files
@@ -54,23 +53,23 @@ enum PostResponse {
             case comments
         }
         
-        init(from decoder: any Decoder) throws {
-            let container: KeyedDecodingContainer<PostResponse.PostID.CodingKeys> = try decoder.container(keyedBy: PostResponse.PostID.CodingKeys.self)
-            self.postID = try container.decode(String.self, forKey: PostResponse.PostID.CodingKeys.postID)
-            self.productId = try container.decodeIfPresent(String.self, forKey: PostResponse.PostID.CodingKeys.productId) ?? ""
-            self.title = try container.decode(String.self, forKey: PostResponse.PostID.CodingKeys.title)
-            self.content = try container.decode(String.self, forKey: PostResponse.PostID.CodingKeys.content)
-            self.content1 = try container.decodeIfPresent(String.self, forKey: PostResponse.PostID.CodingKeys.content1) ?? ""
-            self.content2 = try container.decodeIfPresent(String.self, forKey: PostResponse.PostID.CodingKeys.content2) ?? ""
-            self.content3 = try container.decodeIfPresent(String.self, forKey: PostResponse.PostID.CodingKeys.content3) ?? ""
-            self.content4 = try container.decodeIfPresent(String.self, forKey: PostResponse.PostID.CodingKeys.content4) ?? ""
-            self.content5 = try container.decodeIfPresent(String.self, forKey: PostResponse.PostID.CodingKeys.content5) ?? ""
-            self.createdAt = try container.decode(String.self, forKey: PostResponse.PostID.CodingKeys.createdAt)
-            self.creator = try container.decode(PostResponse.PostID.Creator.self, forKey: PostResponse.PostID.CodingKeys.creator)
-            self.files = try container.decode([String].self, forKey: PostResponse.PostID.CodingKeys.files)
-            self.likes = try container.decode([String].self, forKey: PostResponse.PostID.CodingKeys.likes)
-            self.hashTags = try container.decode([String].self, forKey: PostResponse.PostID.CodingKeys.hashTags)
-            self.comments = try container.decode([PostResponse.PostID.Comments].self, forKey: PostResponse.PostID.CodingKeys.comments)
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            postID = try container.decode(String.self, forKey: .postID)
+            productId = try container.decodeIfPresent(String.self, forKey: .productId) ?? ""
+            title = try container.decode(String.self, forKey: .title)
+            hashTag = try container.decode(String.self, forKey: .hashTag)
+            feature = try container.decodeIfPresent(String.self, forKey: .feature) ?? ""
+            locate = try container.decodeIfPresent(String.self, forKey: .locate) ?? ""
+            date = try container.decodeIfPresent(String.self, forKey: .date) ?? ""
+            phone = try container.decodeIfPresent(String.self, forKey: .phone) ?? ""
+            content = try container.decodeIfPresent(String.self, forKey: .content) ?? ""
+            createdAt = try container.decode(String.self, forKey: .createdAt)
+            creator = try container.decode(Creator.self, forKey: .creator)
+            files = try container.decode([String].self, forKey: .files)
+            likes = try container.decode([String].self, forKey: .likes)
+            hashTags = try container.decode([String].self, forKey: .hashTags)
+            comments = try container.decode([Comments].self, forKey: .comments)
         }
         
         struct Creator: Decodable {
@@ -84,11 +83,11 @@ enum PostResponse {
                 case profileImage
             }
             
-            init(from decoder: any Decoder) throws {
-                let container: KeyedDecodingContainer<PostResponse.PostID.Creator.CodingKeys> = try decoder.container(keyedBy: PostResponse.PostID.Creator.CodingKeys.self)
-                self.userID = try container.decode(String.self, forKey: PostResponse.PostID.Creator.CodingKeys.userID)
-                self.nick = try container.decode(String.self, forKey: PostResponse.PostID.Creator.CodingKeys.nick)
-                self.profileImage = try container.decodeIfPresent(String.self, forKey: PostResponse.PostID.Creator.CodingKeys.profileImage) ?? ""
+            init(from decoder: Decoder) throws {
+                let container = try decoder.container(keyedBy: CodingKeys.self)
+                userID = try container.decode(String.self, forKey: .userID)
+                nick = try container.decode(String.self, forKey: .nick)
+                profileImage = try container.decodeIfPresent(String.self, forKey: .profileImage) ?? ""
             }
         }
         
@@ -104,6 +103,7 @@ enum PostResponse {
                 case createdAt
                 case creator
             }
+            
         }
     }
     

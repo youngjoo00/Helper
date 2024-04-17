@@ -21,4 +21,19 @@ extension UICollectionViewLayout {
         layout.minimumInteritemSpacing = spacing
         return layout
     }
+    
+    static func writePostCollectionViewLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewFlowLayout()
+        let spacing: CGFloat = 12
+        
+        let cellWidth = 150
+        let cellhieght = cellWidth
+        
+        layout.itemSize = CGSize(width: cellWidth, height: cellhieght)
+        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        layout.minimumLineSpacing = spacing
+        layout.minimumInteritemSpacing = spacing
+        layout.scrollDirection = .horizontal
+        return layout
+    }
 }

@@ -10,8 +10,7 @@ import Kingfisher
 
 extension UIImageView {
     /// Kingfisher 를 이용한 이미지 로드
-    func loadImage(urlString: String) -> Bool {
-        var isIndicator = false
+    func loadImage(urlString: String, completion: @escaping (Bool) -> Void) {
         
         do {
             let urlRequest = try Router.post(.image(url: urlString)).asURLRequest()
@@ -26,9 +25,10 @@ extension UIImageView {
                 options: [.requestModifier(modifier)]) { response in
                     switch response {
                     case .success:
-                        print("성공")
-                        isIndicator = true
+                        print("이미지 불러오기 성공")
+                        completion(true)
                     case .failure(let error):
+                        completion(false)
                         if case .responseError(reason: let reason) = error {
                             switch reason {
                             case .invalidURLResponse(response: let response):
@@ -49,9 +49,8 @@ extension UIImageView {
                 }
         } catch {
             print("loadImage: ", error)
+            completion(false)
         }
-        
-        return isIndicator
     }
 }
 

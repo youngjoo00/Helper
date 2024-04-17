@@ -19,6 +19,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: scene)
 
+        // 임시
+//        window?.rootViewController = WritePostViewController()
+//        window?.makeKeyAndVisible()
+        
         // 여기도 바꿔야함
         NetworkManager.shared.callAPI(type: UserResponse.MyProfile.self, router: Router.user(.myProfile))
             .subscribe(with: self) { owner, result in

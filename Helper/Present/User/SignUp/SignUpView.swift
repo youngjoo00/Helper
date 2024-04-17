@@ -12,7 +12,7 @@ import RxSwift
 final class SignUpView: BaseView {
     
     let titleLabel = PointBoldLabel("이메일 등록하기", fontSize: 30)
-    let emailTextField = SignTextField(placeholderText: "이메일을 입력해주세요")
+    let emailTextField = PointTextField(placeholderText: "이메일을 입력해주세요")
     let nextButton = PointButton(title: "다음")
     let descriptionLabel = RedColorLabel("", fontSize: 15)
     

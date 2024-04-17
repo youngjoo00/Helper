@@ -1,24 +1,22 @@
 //
-//  SignTextField.swift
-//  LSLPBasic
+//  PointTextView.swift
+//  Helper
 //
-//  Created by jack on 2024/04/09.
+//  Created by youngjoo on 4/17/24.
 //
 
 import UIKit
 
-class SignTextField: UITextField {
+class PointTextView: UITextView {
     
-    init(placeholderText: String) {
-        super.init(frame: .zero)
+    override init(frame: CGRect, textContainer: NSTextContainer?) {
+        super.init(frame: frame, textContainer: textContainer)
         
         textColor = Color.black
-        placeholder = placeholderText
-        borderStyle = .none
         layer.cornerRadius = 10
         layer.borderWidth = 1
         layer.borderColor = Color.black.cgColor
-        addLeftPadding()
+        self.textContainer.lineFragmentPadding = 10
     }
     
     @available(*, unavailable)

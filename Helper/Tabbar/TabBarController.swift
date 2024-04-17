@@ -26,7 +26,7 @@ final class TabBarController: UITabBarController {
         secondTab.tabBarItem = UITabBarItem(title: "검색", image: UIImage(systemName: "magnifyingglass"), tag: 1)
         
         let thirdTab = UINavigationController(rootViewController: UIViewController())
-        thirdTab.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "plus.circle.fill"), tag: 2)
+        thirdTab.tabBarItem = UITabBarItem(title: "작성", image: UIImage(systemName: "pencil"), tag: 2)
         
         let fourTab = UINavigationController(rootViewController: MyProfileViewController())
         fourTab.tabBarItem = UITabBarItem(title: "프로필", image: UIImage(systemName: "person"), tag: 3)
@@ -42,7 +42,7 @@ extension TabBarController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if viewController.tabBarItem.tag == 2 {
             var configuration = PHPickerConfiguration()
-            configuration.selectionLimit = 3
+            configuration.selectionLimit = 5
             configuration.filter = .images
             
             let picker = PHPickerViewController(configuration: configuration)

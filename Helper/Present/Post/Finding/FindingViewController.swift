@@ -13,6 +13,8 @@ final class FindingViewController: BaseViewController {
 
     private let mainView = FindingView()
     private let viewModel = FindingViewModel()
+
+    let fetchTrigger = PublishSubject<Void>()
     
     override func loadView() {
         view = mainView
@@ -20,11 +22,15 @@ final class FindingViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchTrigger.onNext(())
     }
     
     override func bind() {
-        let input = FindingViewModel.Input(viewDidLoadTrigger: Observable.just(()), 
-                                           selectedControlSegment: mainView.categorySegmentControl.rx.selectedSegmentIndex.asObservable()
+        
+        let input = FindingViewModel.Input(fetchTrigger: fetchTrigger,
+                                           region: mainView.regionSubject,
+                                           category: mainView.categorySegmentControl.rx.selectedSegmentIndex
         )
         
         let output = viewModel.transform(input: input)
