@@ -18,7 +18,7 @@ final class TokenIntercepter: RequestInterceptor {
         print(#function)
         var urlRequest = urlRequest
         let accessToken = UserDefaultsManager.shared.getAccessToken()
-        urlRequest.setValue(accessToken, forHTTPHeaderField: "Authorization")
+        urlRequest.setValue(accessToken, forHTTPHeaderField: HTTPHeader.authorization.rawValue)
         
         completion(.success(urlRequest))
     }

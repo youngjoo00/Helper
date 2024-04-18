@@ -111,6 +111,11 @@
 		8E9A40142BCFD3D3005E4F45 /* PointTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A40132BCFD3D3005E4F45 /* PointTextView.swift */; };
 		8E9A40162BCFE9C8005E4F45 /* WhiteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A40152BCFE9C8005E4F45 /* WhiteButton.swift */; };
 		8E9A40192BCFFADE005E4F45 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8E9A40182BCFFADE005E4F45 /* IQKeyboardManagerSwift */; };
+		8ED3AE1C2BD14B890040DA58 /* DetailPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3AE1B2BD14B890040DA58 /* DetailPostView.swift */; };
+		8ED3AE1E2BD14B920040DA58 /* DetailPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3AE1D2BD14B920040DA58 /* DetailPostViewController.swift */; };
+		8ED3AE202BD14B9B0040DA58 /* DetailPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3AE1F2BD14B9B0040DA58 /* DetailPostViewModel.swift */; };
+		8ED3AE222BD15C960040DA58 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3AE212BD15C960040DA58 /* CommentsTableViewCell.swift */; };
+		8ED3AE242BD171C10040DA58 /* DetailPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3AE232BD171C10040DA58 /* DetailPostCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -210,6 +215,11 @@
 		8E9A40112BCFC196005E4F45 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E9A40132BCFD3D3005E4F45 /* PointTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointTextView.swift; sourceTree = "<group>"; };
 		8E9A40152BCFE9C8005E4F45 /* WhiteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteButton.swift; sourceTree = "<group>"; };
+		8ED3AE1B2BD14B890040DA58 /* DetailPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostView.swift; sourceTree = "<group>"; };
+		8ED3AE1D2BD14B920040DA58 /* DetailPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewController.swift; sourceTree = "<group>"; };
+		8ED3AE1F2BD14B9B0040DA58 /* DetailPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewModel.swift; sourceTree = "<group>"; };
+		8ED3AE212BD15C960040DA58 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
+		8ED3AE232BD171C10040DA58 /* DetailPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +272,7 @@
 				8E17A2FA2BCA7F7800581B58 /* PostTab */,
 				8E17A2FB2BCA808700581B58 /* Finding */,
 				8E17A2FC2BCA809200581B58 /* Found */,
+				8ED3AE1A2BD14B670040DA58 /* Detail */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -599,6 +610,18 @@
 			path = Response;
 			sourceTree = "<group>";
 		};
+		8ED3AE1A2BD14B670040DA58 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				8ED3AE1B2BD14B890040DA58 /* DetailPostView.swift */,
+				8ED3AE1D2BD14B920040DA58 /* DetailPostViewController.swift */,
+				8ED3AE1F2BD14B9B0040DA58 /* DetailPostViewModel.swift */,
+				8ED3AE212BD15C960040DA58 /* CommentsTableViewCell.swift */,
+				8ED3AE232BD171C10040DA58 /* DetailPostCollectionViewCell.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -739,12 +762,14 @@
 				8E9A3FD92BCD94A9005E4F45 /* SettingViewModel.swift in Sources */,
 				8E17A3062BCA8F9200581B58 /* SearchView.swift in Sources */,
 				8E83BC482BCBC134007E1637 /* Router.swift in Sources */,
+				8ED3AE222BD15C960040DA58 /* CommentsTableViewCell.swift in Sources */,
 				8E1BAE362BC968EC00A65075 /* NetworkManager.swift in Sources */,
 				8E17A2E22BCA3D7800581B58 /* PhoneView.swift in Sources */,
 				8E17A32A2BCAD16E00581B58 /* PostView.swift in Sources */,
 				8E1BAE712BC97D5D00A65075 /* BaseCollectionViewCell.swift in Sources */,
 				8E17A2EC2BCA59C800581B58 /* BirthdayViewController.swift in Sources */,
 				8E17A2E62BCA3D8600581B58 /* PhoneViewModel.swift in Sources */,
+				8ED3AE1E2BD14B920040DA58 /* DetailPostViewController.swift in Sources */,
 				8E1BAE1E2BC968E500A65075 /* SignInViewModel.swift in Sources */,
 				8E1BAE702BC97D5D00A65075 /* BaseViewController.swift in Sources */,
 				8E9A3FD52BCD9498005E4F45 /* SettingView.swift in Sources */,
@@ -770,11 +795,14 @@
 				8E1BAEA02BC99F3200A65075 /* PointBoldLabel.swift in Sources */,
 				8E9A3FFA2BCEE2D5005E4F45 /* PostResponse.swift in Sources */,
 				8E1BAE462BC968F900A65075 /* UIViewController+.swift in Sources */,
+				8ED3AE202BD14B9B0040DA58 /* DetailPostViewModel.swift in Sources */,
+				8ED3AE242BD171C10040DA58 /* DetailPostCollectionViewCell.swift in Sources */,
 				8E17A3232BCAC87E00581B58 /* MyProfileTabViewController.swift in Sources */,
 				8E1BADF82BC966BA00A65075 /* PrivateKey.swift in Sources */,
 				8E9A40122BCFC196005E4F45 /* ImageCollectionViewCell.swift in Sources */,
 				8E9A3FD22BCD8455005E4F45 /* UICollectionViewLayout+.swift in Sources */,
 				8E17A3322BCAF03D00581B58 /* BaseTableView.swift in Sources */,
+				8ED3AE1C2BD14B890040DA58 /* DetailPostView.swift in Sources */,
 				8E1BAE9E2BC99E7C00A65075 /* PointLabel.swift in Sources */,
 				8E17A2E42BCA3D7F00581B58 /* PhoneViewController.swift in Sources */,
 				8E9A3FCC2BCD7255005E4F45 /* UIImageView+.swift in Sources */,

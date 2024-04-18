@@ -36,4 +36,14 @@ extension UICollectionViewLayout {
         layout.scrollDirection = .horizontal
         return layout
     }
+    
+    static func imageCollectionViewLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewFlowLayout()
+        let cellWidth = UIScreen.main.bounds.width
+        let cellhieght = cellWidth
+        
+        layout.itemSize = CGSize(width: cellWidth, height: cellhieght)
+        layout.scrollDirection = .horizontal
+        return layout
+    }
 }

@@ -15,7 +15,7 @@ class PointButton: UIButton {
     }
     
     
-    convenience init(title: String, image: UIImage? = nil) {
+    convenience init(title: String?, image: UIImage? = nil) {
         self.init()
         configureView(title, image: image)
     }
@@ -28,7 +28,7 @@ class PointButton: UIButton {
 
 extension PointButton {
     
-    func configureView(_ title: String, image: UIImage?) {
+    func configureView(_ title: String?, image: UIImage?) {
         var configuration = UIButton.Configuration.gray()
         configuration.baseForegroundColor = Color.white
         configuration.baseBackgroundColor = Color.black

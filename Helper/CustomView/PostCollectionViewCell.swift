@@ -14,10 +14,10 @@ final class PostCollectionViewCell: BaseCollectionViewCell {
     let imageView = UIImageView().then {
         $0.backgroundColor = .lightGray
     }
-    let titleLabel = PointBoldLabel(nil, fontSize: 17)
-    let featureLabel = PointLabel(nil, fontSize: 15)
-    let dateLabel = PointLabel(nil, fontSize: 15)
-    let locateLabel = PointLabel(nil, fontSize: 15)
+    let titleLabel = PointBoldLabel(fontSize: 17)
+    let featureLabel = PointLabel(fontSize: 15)
+    let dateLabel = PointLabel(fontSize: 15)
+    let locateLabel = PointLabel(fontSize: 15)
     
     let activityIndicator = UIActivityIndicatorView(style: .medium).then {
         $0.hidesWhenStopped = true

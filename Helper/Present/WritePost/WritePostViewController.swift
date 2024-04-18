@@ -41,7 +41,7 @@ final class WritePostViewController: BaseViewController {
     }
     
     override func bind() {
-        // 버튼의 타이틀이 변경되면 이벤트를 보내고 싶어 어떻게 하는거지
+
         let input = WritePostViewModel.Input(dataList: dataListSubject,
                                              hashTag: mainView.hashTagSubject,
                                              category: mainView.categorySubject,

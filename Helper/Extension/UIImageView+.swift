@@ -19,6 +19,8 @@ extension UIImageView {
                 return urlRequest
             }
         
+            self.kf.indicatorType = .activity
+            
             self.kf.setImage(
                 with: urlRequest.url,
                 placeholder: nil,

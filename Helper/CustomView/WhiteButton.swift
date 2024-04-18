@@ -15,7 +15,7 @@ class WhiteButton: UIButton {
     }
     
     
-    convenience init(title: String, image: UIImage? = nil) {
+    convenience init(title: String?, image: UIImage? = nil) {
         self.init()
         configureView(title, image: image)
     }
@@ -28,7 +28,7 @@ class WhiteButton: UIButton {
 
 extension WhiteButton {
     
-    func configureView(_ title: String, image: UIImage?) {
+    func configureView(_ title: String?, image: UIImage?) {
         var configuration = UIButton.Configuration.gray()
         configuration.baseForegroundColor = Color.black
         configuration.baseBackgroundColor = Color.white

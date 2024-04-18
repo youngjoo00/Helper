@@ -13,7 +13,7 @@ class PointLabel: UILabel {
         super.init(frame: frame)
     }
     
-    convenience init(_ text: String?, fontSize: CGFloat) {
+    convenience init(_ text: String? = nil, fontSize: CGFloat) {
         self.init()
         self.text = text
         self.textColor = Color.black
