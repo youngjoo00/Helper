@@ -27,6 +27,7 @@ final class NetworkManager {
                 AF.request(urlRequest, interceptor: TokenIntercepter())
                     .validate(statusCode: 200..<300)
                     .responseData { response in
+                        print("확인합니다")
                         switch response.result {
                         case .success(let data):
                             do {

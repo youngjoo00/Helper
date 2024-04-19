@@ -73,9 +73,9 @@ extension CommentRouter: TargetType {
         let encoder = JSONEncoder()
         switch self {
         case .create(let query):
-            return try? encoder.encode(query.comment)
+            return try? encoder.encode(query.content)
         case .update(let query):
-            return try? encoder.encode(query.comment)
+            return try? encoder.encode(query.content)
         case .delete:
             return nil
         }

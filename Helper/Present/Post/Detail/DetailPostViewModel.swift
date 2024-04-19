@@ -52,7 +52,6 @@ final class DetailPostViewModel: ViewModelType {
                 switch result {
                 case .success(let data):
                     postInfo.onNext(data)
-                    print(data.comments)
                 case .fail(let fail):
                     errorMessage.accept(fail.localizedDescription)
                     print(fail.localizedDescription)
@@ -60,10 +59,12 @@ final class DetailPostViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
+        // Comment 요청 구조체 생성
         let createRequest = Observable.combineLatest(input.postID, input.comment) { postID, comment in
-            return CommentRequest.Create(postID: postID, comment: comment)
+            return CommentRequest.Create(postID: postID, content: CommentRequest.Content(content: comment))
         }
         
+        // 네트워크 통신 - Comment Create
         input.commentButtonTap
             .withLatestFrom(createRequest)
             .flatMap { NetworkManager.shared.callAPI(type: Comments.self, router: Router.comment(.create($0))) }
@@ -71,14 +72,12 @@ final class DetailPostViewModel: ViewModelType {
                 switch result {
                 case .success(let data):
                     commentEvent.onNext(())
-                    print(data)
                 case .fail(let fail):
                     errorMessage.accept(fail.localizedDescription)
                     print(fail.localizedDescription)
                 }
             }
             .disposed(by: disposeBag)
-        
         
         // output
         let nickname = postInfo
