@@ -11,6 +11,7 @@ import Alamofire
 enum Router {
     case user(UserRouter)
     case post(PostRouter)
+    case comment(CommentRouter)
 }
 
 extension Router: TargetType {
@@ -21,6 +22,8 @@ extension Router: TargetType {
             return userRouter.baseURL
         case .post(let postRouter):
             return postRouter.baseURL
+        case .comment(let commentRouter):
+            return commentRouter.baseURL
         }
     }
 
@@ -30,6 +33,8 @@ extension Router: TargetType {
             return userRouter.header
         case .post(let postRouter):
             return postRouter.header
+        case .comment(let commentRouter):
+            return commentRouter.header
         }
     }
 
@@ -39,6 +44,8 @@ extension Router: TargetType {
             return userRouter.path
         case .post(let postRouter):
             return postRouter.path
+        case .comment(let commentRouter):
+            return commentRouter.path
         }
     }
 
@@ -48,6 +55,8 @@ extension Router: TargetType {
             return userRouter.method
         case .post(let postRouter):
             return postRouter.method
+        case .comment(let commentRouter):
+            return commentRouter.method
         }
     }
 
@@ -57,6 +66,8 @@ extension Router: TargetType {
             return userRouter.queryItems
         case .post(let postRouter):
             return postRouter.queryItems
+        case .comment(let commentRouter):
+            return commentRouter.queryItems
         }
     }
 
@@ -66,6 +77,8 @@ extension Router: TargetType {
             return userRouter.parameters
         case .post(let postRouter):
             return postRouter.parameters
+        case .comment(let commentRouter):
+            return commentRouter.parameters
         }
     }
 
@@ -75,6 +88,8 @@ extension Router: TargetType {
             return userRouter.body
         case .post(let postRouter):
             return postRouter.body
+        case .comment(let commentRouter):
+            return commentRouter.body
         }
     }
 }

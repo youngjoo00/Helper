@@ -75,39 +75,6 @@ enum PostResponse {
             comments = try container.decode([Comments].self, forKey: .comments)
         }
         
-        struct Creator: Decodable {
-            let userID: String
-            let nick: String
-            let profileImage: String?
-            
-            enum CodingKeys: String, CodingKey {
-                case userID = "user_id"
-                case nick
-                case profileImage
-            }
-            
-            init(from decoder: Decoder) throws {
-                let container = try decoder.container(keyedBy: CodingKeys.self)
-                userID = try container.decode(String.self, forKey: .userID)
-                nick = try container.decode(String.self, forKey: .nick)
-                profileImage = try container.decodeIfPresent(String.self, forKey: .profileImage) ?? ""
-            }
-        }
-        
-        struct Comments: Decodable {
-            let commentID: String
-            let content: String
-            let createdAt: String
-            let creator: Creator
-            
-            enum CodingKeys: String, CodingKey {
-                case commentID = "comment_id"
-                case content
-                case createdAt
-                case creator
-            }
-            
-        }
     }
     
     struct FilesModel: Decodable {

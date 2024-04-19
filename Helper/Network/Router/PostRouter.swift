@@ -46,7 +46,7 @@ extension PostRouter: TargetType {
     }
     
     var path: String {
-        let version = "/v1"
+        let version = PathVersion.v1.rawValue
         switch self {
         case .posts:
             return version + "/posts"

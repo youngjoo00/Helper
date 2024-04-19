@@ -46,8 +46,9 @@ final class FindingViewController: BaseViewController {
                        mainView.collectionView.rx.modelSelected(PostResponse.FetchPost.self))
             .subscribe(with: self) { owner, value in
                 let vc = DetailPostViewController()
+                let nav = UINavigationController(rootViewController: vc)
                 vc.postID = value.1.postID
-                owner.navigationController?.pushViewController(vc, animated: true)
+                owner.navigationController?.pushViewController(vc, animated: true)  
             }
             .disposed(by: disposeBag)
         

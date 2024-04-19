@@ -50,8 +50,6 @@ final class SettingViewController: BaseViewController {
                                     owner.changeSignInRootView()
                                 case .fail(let fail):
                                     print(fail)
-//                                case .errorMessage(let error):
-//                                    print(error)
                                 }
                             }
                             .disposed(by: owner.disposeBag)

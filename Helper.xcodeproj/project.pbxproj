@@ -111,6 +111,12 @@
 		8E9A40142BCFD3D3005E4F45 /* PointTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A40132BCFD3D3005E4F45 /* PointTextView.swift */; };
 		8E9A40162BCFE9C8005E4F45 /* WhiteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A40152BCFE9C8005E4F45 /* WhiteButton.swift */; };
 		8E9A40192BCFFADE005E4F45 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8E9A40182BCFFADE005E4F45 /* IQKeyboardManagerSwift */; };
+		8EA59CE52BD19240009938E0 /* CommentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA59CE42BD19240009938E0 /* CommentRouter.swift */; };
+		8EA59CE72BD196FF009938E0 /* CommentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA59CE62BD196FF009938E0 /* CommentRequest.swift */; };
+		8EA59CE92BD19D56009938E0 /* PathVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA59CE82BD19D56009938E0 /* PathVersion.swift */; };
+		8EA59CEB2BD1A562009938E0 /* CommentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA59CEA2BD1A562009938E0 /* CommentResponse.swift */; };
+		8EA59CED2BD1A64D009938E0 /* CreatorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA59CEC2BD1A64D009938E0 /* CreatorResponse.swift */; };
+		8EA59D0D2BD25B3C009938E0 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA59D0C2BD25B3C009938E0 /* ImageButton.swift */; };
 		8ED3AE1C2BD14B890040DA58 /* DetailPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3AE1B2BD14B890040DA58 /* DetailPostView.swift */; };
 		8ED3AE1E2BD14B920040DA58 /* DetailPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3AE1D2BD14B920040DA58 /* DetailPostViewController.swift */; };
 		8ED3AE202BD14B9B0040DA58 /* DetailPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3AE1F2BD14B9B0040DA58 /* DetailPostViewModel.swift */; };
@@ -215,6 +221,12 @@
 		8E9A40112BCFC196005E4F45 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E9A40132BCFD3D3005E4F45 /* PointTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointTextView.swift; sourceTree = "<group>"; };
 		8E9A40152BCFE9C8005E4F45 /* WhiteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteButton.swift; sourceTree = "<group>"; };
+		8EA59CE42BD19240009938E0 /* CommentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRouter.swift; sourceTree = "<group>"; };
+		8EA59CE62BD196FF009938E0 /* CommentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRequest.swift; sourceTree = "<group>"; };
+		8EA59CE82BD19D56009938E0 /* PathVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathVersion.swift; sourceTree = "<group>"; };
+		8EA59CEA2BD1A562009938E0 /* CommentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentResponse.swift; sourceTree = "<group>"; };
+		8EA59CEC2BD1A64D009938E0 /* CreatorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorResponse.swift; sourceTree = "<group>"; };
+		8EA59D0C2BD25B3C009938E0 /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
 		8ED3AE1B2BD14B890040DA58 /* DetailPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostView.swift; sourceTree = "<group>"; };
 		8ED3AE1D2BD14B920040DA58 /* DetailPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewController.swift; sourceTree = "<group>"; };
 		8ED3AE1F2BD14B9B0040DA58 /* DetailPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewModel.swift; sourceTree = "<group>"; };
@@ -249,8 +261,10 @@
 				8E83BC472BCBC134007E1637 /* Router.swift */,
 				8E1BAE312BC968EB00A65075 /* UserRouter.swift */,
 				8E17A3352BCAF33200581B58 /* PostRouter.swift */,
+				8EA59CE42BD19240009938E0 /* CommentRouter.swift */,
 				8E1BAE2F2BC968EB00A65075 /* TargetType.swift */,
 				8E1BAE2B2BC968EB00A65075 /* HTTPHeader.swift */,
+				8EA59CE82BD19D56009938E0 /* PathVersion.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -472,15 +486,12 @@
 		8E1BAE412BC968F900A65075 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				8E1BAE782BC97D9600A65075 /* shadowImageView.swift */,
-				8E1BAE882BC97FF800A65075 /* PointButton.swift */,
-				8E9A40152BCFE9C8005E4F45 /* WhiteButton.swift */,
-				8E1BAE872BC97FF700A65075 /* PointTextField.swift */,
-				8E1BAE9D2BC99E7C00A65075 /* PointLabel.swift */,
-				8E1BAE9F2BC99F3200A65075 /* PointBoldLabel.swift */,
-				8E17A2DB2BCA267000581B58 /* RedColorLabel.swift */,
-				8E9A3FCF2BCD81BA005E4F45 /* PostCollectionViewCell.swift */,
-				8E9A40132BCFD3D3005E4F45 /* PointTextView.swift */,
+				8EA59D0E2BD25B43009938E0 /* Button */,
+				8EA59D0F2BD25B4F009938E0 /* Label */,
+				8EA59D102BD25B5B009938E0 /* TextField */,
+				8EA59D112BD25B66009938E0 /* ImageView */,
+				8EA59D122BD25B6E009938E0 /* CollectionViewCell */,
+				8EA59D132BD25B76009938E0 /* TextView */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -596,6 +607,7 @@
 			children = (
 				8E9A3FF52BCEE291005E4F45 /* UserRequest.swift */,
 				8E9A400F2BCFBB36005E4F45 /* PostRequest.swift */,
+				8EA59CE62BD196FF009938E0 /* CommentRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -605,9 +617,63 @@
 			children = (
 				8E9A3FF72BCEE2CE005E4F45 /* UserResponse.swift */,
 				8E9A3FF92BCEE2D5005E4F45 /* PostResponse.swift */,
+				8EA59CEA2BD1A562009938E0 /* CommentResponse.swift */,
+				8EA59CEC2BD1A64D009938E0 /* CreatorResponse.swift */,
 				8E9A3FFB2BCEE2DC005E4F45 /* ErrorResponse.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		8EA59D0E2BD25B43009938E0 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				8E1BAE882BC97FF800A65075 /* PointButton.swift */,
+				8E9A40152BCFE9C8005E4F45 /* WhiteButton.swift */,
+				8EA59D0C2BD25B3C009938E0 /* ImageButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		8EA59D0F2BD25B4F009938E0 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				8E1BAE9D2BC99E7C00A65075 /* PointLabel.swift */,
+				8E1BAE9F2BC99F3200A65075 /* PointBoldLabel.swift */,
+				8E17A2DB2BCA267000581B58 /* RedColorLabel.swift */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
+		8EA59D102BD25B5B009938E0 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				8E1BAE872BC97FF700A65075 /* PointTextField.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		8EA59D112BD25B66009938E0 /* ImageView */ = {
+			isa = PBXGroup;
+			children = (
+				8E1BAE782BC97D9600A65075 /* shadowImageView.swift */,
+			);
+			path = ImageView;
+			sourceTree = "<group>";
+		};
+		8EA59D122BD25B6E009938E0 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A3FCF2BCD81BA005E4F45 /* PostCollectionViewCell.swift */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		8EA59D132BD25B76009938E0 /* TextView */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A40132BCFD3D3005E4F45 /* PointTextView.swift */,
+			);
+			path = TextView;
 			sourceTree = "<group>";
 		};
 		8ED3AE1A2BD14B670040DA58 /* Detail */ = {
@@ -616,8 +682,8 @@
 				8ED3AE1B2BD14B890040DA58 /* DetailPostView.swift */,
 				8ED3AE1D2BD14B920040DA58 /* DetailPostViewController.swift */,
 				8ED3AE1F2BD14B9B0040DA58 /* DetailPostViewModel.swift */,
-				8ED3AE212BD15C960040DA58 /* CommentsTableViewCell.swift */,
 				8ED3AE232BD171C10040DA58 /* DetailPostCollectionViewCell.swift */,
+				8ED3AE212BD15C960040DA58 /* CommentsTableViewCell.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -735,6 +801,7 @@
 				8E17A3082BCA8F9900581B58 /* SearchViewController.swift in Sources */,
 				8E1BAE212BC968E500A65075 /* PasswordViewModel.swift in Sources */,
 				8E17A2EA2BCA59C100581B58 /* BirthdayView.swift in Sources */,
+				8EA59CE92BD19D56009938E0 /* PathVersion.swift in Sources */,
 				8E1BAE802BC97D9600A65075 /* shadowImageView.swift in Sources */,
 				8E17A2F72BCA7F1D00581B58 /* PostTabViewController.swift in Sources */,
 				8E1BAE232BC968E500A65075 /* SignUpViewController.swift in Sources */,
@@ -753,14 +820,17 @@
 				8E1BAE8A2BC97FF800A65075 /* PointButton.swift in Sources */,
 				8E9A3FD72BCD94A2005E4F45 /* SettingViewController.swift in Sources */,
 				8E1BAE332BC968EC00A65075 /* APIError.swift in Sources */,
+				8EA59CE52BD19240009938E0 /* CommentRouter.swift in Sources */,
 				8E1BADFD2BC968C100A65075 /* ViewModelType.swift in Sources */,
 				8E17A2E82BCA3E6500581B58 /* SignUpManager.swift in Sources */,
 				8E17A2FE2BCA80AF00581B58 /* FoundView.swift in Sources */,
 				8E17A3102BCA8FC800581B58 /* MyProfileViewController.swift in Sources */,
 				8E1BADE62BC965CC00A65075 /* SceneDelegate.swift in Sources */,
 				8E1BAE892BC97FF800A65075 /* PointTextField.swift in Sources */,
+				8EA59CED2BD1A64D009938E0 /* CreatorResponse.swift in Sources */,
 				8E9A3FD92BCD94A9005E4F45 /* SettingViewModel.swift in Sources */,
 				8E17A3062BCA8F9200581B58 /* SearchView.swift in Sources */,
+				8EA59CE72BD196FF009938E0 /* CommentRequest.swift in Sources */,
 				8E83BC482BCBC134007E1637 /* Router.swift in Sources */,
 				8ED3AE222BD15C960040DA58 /* CommentsTableViewCell.swift in Sources */,
 				8E1BAE362BC968EC00A65075 /* NetworkManager.swift in Sources */,
@@ -770,6 +840,7 @@
 				8E17A2EC2BCA59C800581B58 /* BirthdayViewController.swift in Sources */,
 				8E17A2E62BCA3D8600581B58 /* PhoneViewModel.swift in Sources */,
 				8ED3AE1E2BD14B920040DA58 /* DetailPostViewController.swift in Sources */,
+				8EA59CEB2BD1A562009938E0 /* CommentResponse.swift in Sources */,
 				8E1BAE1E2BC968E500A65075 /* SignInViewModel.swift in Sources */,
 				8E1BAE702BC97D5D00A65075 /* BaseViewController.swift in Sources */,
 				8E9A3FD52BCD9498005E4F45 /* SettingView.swift in Sources */,
@@ -795,6 +866,7 @@
 				8E1BAEA02BC99F3200A65075 /* PointBoldLabel.swift in Sources */,
 				8E9A3FFA2BCEE2D5005E4F45 /* PostResponse.swift in Sources */,
 				8E1BAE462BC968F900A65075 /* UIViewController+.swift in Sources */,
+				8EA59D0D2BD25B3C009938E0 /* ImageButton.swift in Sources */,
 				8ED3AE202BD14B9B0040DA58 /* DetailPostViewModel.swift in Sources */,
 				8ED3AE242BD171C10040DA58 /* DetailPostCollectionViewCell.swift in Sources */,
 				8E17A3232BCAC87E00581B58 /* MyProfileTabViewController.swift in Sources */,

@@ -7,9 +7,10 @@
 
 import UIKit
 import Then
+import SnapKit
 
 final class DetailPostView: BaseView {
-    
+
     let scrollView = UIScrollView()
     let contentView = UIView()
     
@@ -18,11 +19,12 @@ final class DetailPostView: BaseView {
     
     let categoryLabel = PointLabel(fontSize: 20)
     let hashTagLabel = PointBoldLabel(fontSize: 20)
-    let storageButton = WhiteButton(title: nil, image: UIImage(systemName: "bookmark"))
+    let storageButton = ImageButton(image: UIImage(systemName: "bookmark"))
     
     let imageCollectionView = BaseCollectionView(frame: .zero, collectionViewLayout: .imageCollectionViewLayout()).then {
         $0.register(DetailPostCollectionViewCell.self, forCellWithReuseIdentifier: DetailPostCollectionViewCell.id)
-        $0.showsVerticalScrollIndicator = false
+        $0.showsHorizontalScrollIndicator = false
+        $0.isPagingEnabled = true
     }
 
     let contentsStackView = UIStackView().then {
@@ -76,11 +78,18 @@ final class DetailPostView: BaseView {
     let commentsLabel = PointLabel("0개의 댓글", fontSize: 17)
     let commentsTableView = BaseTableView().then {
         $0.register(CommentsTableViewCell.self, forCellReuseIdentifier: CommentsTableViewCell.id)
+        $0.estimatedRowHeight = 44
+        $0.rowHeight = UITableView.automaticDimension
+        $0.isScrollEnabled = false
     }
     
-    let commentView = UIView()
+    let commentView = UIView().then {
+        $0.backgroundColor = .white
+    }
     let commentTextField = PointTextField(placeholderText: "댓글 내용을 입력하세요")
     let commentWriteButton = PointButton(title: "등록")
+    
+    let scrollBottomSpaceView = UIView()
     
     override func configureHierarchy() {
         [
@@ -101,6 +110,7 @@ final class DetailPostView: BaseView {
             contentsStackView,
             commentsLabel,
             commentsTableView,
+            scrollBottomSpaceView,
         ].forEach { contentView.addSubview($0) }
         
         [
@@ -137,6 +147,11 @@ final class DetailPostView: BaseView {
             contentValueLabel
         ].forEach { contentStackView.addArrangedSubview($0) }
         
+        [
+            commentTextField,
+            commentWriteButton,
+        ].forEach { commentView.addSubview($0) }
+        
     }
     
     override func configureLayout() {
@@ -171,7 +186,7 @@ final class DetailPostView: BaseView {
         
         storageButton.snp.makeConstraints { make in
             make.top.equalTo(categoryLabel).offset(-5)
-            make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
+            make.trailing.equalTo(safeAreaLayoutGuide)
         }
         
         imageCollectionView.snp.makeConstraints { make in
@@ -197,11 +212,58 @@ final class DetailPostView: BaseView {
         
         commentsTableView.snp.makeConstraints { make in
             make.top.equalTo(commentsLabel.snp.bottom).offset(10)
+            make.horizontalEdges.equalToSuperview()
+            make.height.equalTo(0)
+        }
+        
+        scrollBottomSpaceView.snp.makeConstraints { make in
+            make.top.equalTo(commentsTableView.snp.bottom).offset(10)
+            make.height.equalTo(66)
             make.horizontalEdges.bottom.equalToSuperview()
+        }
+        
+        commentView.snp.makeConstraints { make in
+            make.bottom.horizontalEdges.equalTo(safeAreaLayoutGuide)
+            make.height.equalTo(66)
+        }
+        
+        commentTextField.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.height.equalTo(44)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(16)
+            make.trailing.equalTo(commentWriteButton.snp.leading).offset(-16)
+        }
+        
+        commentWriteButton.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.height.equalTo(44)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
         }
     }
     
     override func configureView() {
         
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        commentsTableViewHeightUpdate()
+
+    }
+    
 }
+
+extension DetailPostView {
+    
+    func commentsTableViewHeightUpdate() {
+        commentsTableView.snp.updateConstraints { make in
+            make.height.equalTo(commentsTableView.contentSize.height)
+        }
+    }
+}
+
+
+//        commentsTableView.performBatchUpdates(nil) { _ in
+//            self.updateTableViewHeight()
+//        }

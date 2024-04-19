@@ -27,11 +27,22 @@ final class DetailPostViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.tabBarController?.tabBar.isHidden = true
         postIDSubject.onNext(postID)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     override func bind() {
-        let input = DetailPostViewModel.Input(postID: postIDSubject)
+        
+        let input = DetailPostViewModel.Input(postID: postIDSubject,
+                                              comment: mainView.commentTextField.rx.text.orEmpty.asObservable(),
+                                              commentButtonTap: mainView.commentWriteButton.rx.tap
+        )
         
         let output = viewModel.transform(input: input)
                
@@ -81,6 +92,13 @@ final class DetailPostViewController: BaseViewController {
 //        output.storage
 //            .drive(mainView.dateValueLabel.rx.text)
 //            .disposed(by: disposeBag)
+        
+        output.comments
+            .drive(mainView.commentsTableView.rx.items(cellIdentifier: CommentsTableViewCell.id,
+                                                       cellType: CommentsTableViewCell.self)) { row, item, cell in
+                cell.updateView(item)
+            }
+            .disposed(by: disposeBag)
         
         output.errorMessage
             .drive(with: self) { owner, message in

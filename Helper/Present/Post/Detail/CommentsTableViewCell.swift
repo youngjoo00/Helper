@@ -10,10 +10,12 @@ import Then
 
 final class CommentsTableViewCell: BaseTableViewCell {
     
-    let nicknameLabel = PointBoldLabel("닉네임", fontSize: 18)
-    let regDateLabel = PointLabel("20시간 전", fontSize: 15)
-    let editButton = PointButton(title: nil, image: UIImage(systemName: "ellipsis.circle"))
-    let commentLabel = PointLabel("머시기저시기", fontSize: 15)
+    private let nicknameLabel = PointBoldLabel("닉네임", fontSize: 18)
+    private let regDateLabel = PointLabel("20시간 전", fontSize: 15)
+    private let editButton = ImageButton(image: UIImage(systemName: "ellipsis.circle"))
+    private let commentLabel = PointLabel("머시기저시기", fontSize: 15).then {
+        $0.numberOfLines = 0
+    }
 
     override func configureHierarchy() {
         [
@@ -38,16 +40,28 @@ final class CommentsTableViewCell: BaseTableViewCell {
         editButton.snp.makeConstraints { make in
             make.top.equalTo(nicknameLabel)
             make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
-            make.size.equalTo(30)
+            make.size.equalTo(20)
         }
         
         commentLabel.snp.makeConstraints { make in
             make.top.equalTo(nicknameLabel.snp.bottom).offset(10)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
+            make.bottom.equalToSuperview().offset(-5)
         }
     }
     
     override func configureView() {
         
+    }
+}
+
+
+// MARK: - Custom Func
+extension CommentsTableViewCell {
+    
+    func updateView(_ data: Comments) {
+        nicknameLabel.text = data.creator.nick
+        regDateLabel.text = DateManager.shared.dateFormat(data.createdAt)
+        commentLabel.text = data.content
     }
 }

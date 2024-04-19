@@ -43,6 +43,7 @@ extension UICollectionViewLayout {
         let cellhieght = cellWidth
         
         layout.itemSize = CGSize(width: cellWidth, height: cellhieght)
+        layout.minimumLineSpacing = 0
         layout.scrollDirection = .horizontal
         return layout
     }

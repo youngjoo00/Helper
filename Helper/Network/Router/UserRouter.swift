@@ -47,7 +47,7 @@ extension UserRouter: TargetType {
     }
     
     var path: String {
-        let version = "/v1"
+        let version = PathVersion.v1.rawValue
         switch self {
         case .join:
             return version + "/users/join"
