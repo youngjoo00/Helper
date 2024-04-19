@@ -18,6 +18,7 @@ extension UIViewController {
     
     func changeSignInRootView() {
         UserDefaultsManager.shared.saveTokens("", refreshToken: "")
+        UserDefaultsManager.shared.saveUserID("")
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
         let sceneDelegate = windowScene.delegate as? SceneDelegate
         let nav = UINavigationController(rootViewController: SignInViewController())

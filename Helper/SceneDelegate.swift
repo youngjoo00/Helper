@@ -27,8 +27,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         NetworkManager.shared.callAPI(type: UserResponse.MyProfile.self, router: Router.user(.myProfile))
             .subscribe(with: self) { owner, result in
                 switch result {
-                case .success:
+                case .success(let data):
                     owner.window?.rootViewController = TabBarController()
+                    UserDefaultsManager.shared.saveUserID(data.userID)
                 case .fail(let fail):
                     print(fail.localizedDescription)
                     owner.window?.rootViewController = UINavigationController(rootViewController: SignInViewController())

@@ -20,6 +20,7 @@ final class DetailPostViewModel: ViewModelType {
     }
     
     struct Output {
+        let checkedUserID: Driver<Bool>
         let nickname: Driver<String>
         let regDate: Driver<String>
         let files: Driver<[String]>
@@ -32,6 +33,7 @@ final class DetailPostViewModel: ViewModelType {
         let date: Driver<String>
         let storage: Driver<[String]>
         let comments: Driver<[Comments]>
+        let commentsCount: Driver<String>
         let errorMessage: Driver<String>
     }
     
@@ -78,6 +80,11 @@ final class DetailPostViewModel: ViewModelType {
                 }
             }
             .disposed(by: disposeBag)
+        
+        let checkedUserID = postInfo
+            .map { $0.creator.userID.checkedUserID }
+            .map { !$0 }
+            .asDriver(onErrorJustReturn: false)
         
         // output
         let nickname = postInfo
@@ -128,7 +135,12 @@ final class DetailPostViewModel: ViewModelType {
             .map { $0.comments }
             .asDriver(onErrorJustReturn: [])
         
-        return Output(nickname: nickname,
+        let commentsCount = postInfo
+            .map { "댓글 \($0.comments.count)" }
+            .asDriver(onErrorJustReturn: "")
+        
+        return Output(checkedUserID: checkedUserID,
+                      nickname: nickname,
                       regDate: regDate,
                       files: files,
                       title: title,
@@ -140,6 +152,7 @@ final class DetailPostViewModel: ViewModelType {
                       date: date,
                       storage: storage,
                       comments: comments,
+                      commentsCount: commentsCount,
                       errorMessage: errorMessage.asDriver(onErrorJustReturn: "알 수 없는 오류입니다"))
     }
 }

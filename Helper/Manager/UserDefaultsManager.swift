@@ -15,6 +15,7 @@ final class UserDefaultsManager {
     let userdefaults = UserDefaults.standard
     let tokenKey = "token"
     let refreshTokenKey = "refreshToken"
+    let userIDKey = "userID"
     
     func saveTokens(_ token: String, refreshToken: String) {
         userdefaults.setValue(token, forKey: tokenKey)
@@ -31,5 +32,13 @@ final class UserDefaultsManager {
     
     func getRefreshToken() -> String {
         return userdefaults.string(forKey: refreshTokenKey) ?? ""
+    }
+    
+    func saveUserID(_ id: String) {
+        userdefaults.setValue(id, forKey: userIDKey)
+    }
+    
+    func getUserID() -> String {
+        return userdefaults.string(forKey: userIDKey) ?? ""
     }
 }

@@ -44,6 +44,7 @@ final class SignInViewModel: ViewModelType {
                     loginValid.accept(true)
                     print("로그인 성공!", data.accessToken, data.refreshToken)
                     UserDefaultsManager.shared.saveTokens(data.accessToken, refreshToken: data.refreshToken)
+                    UserDefaultsManager.shared.saveUserID(data.userID)
                 case .fail(let fail):
                     loginValid.accept(false)
                     print(fail.localizedDescription)

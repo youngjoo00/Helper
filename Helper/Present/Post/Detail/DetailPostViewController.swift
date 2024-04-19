@@ -22,6 +22,8 @@ final class DetailPostViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureNavigationBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,7 +47,14 @@ final class DetailPostViewController: BaseViewController {
         )
         
         let output = viewModel.transform(input: input)
-               
+              
+        output.checkedUserID
+            .drive(with: self) { owner, value in
+                owner.mainView.storageButton.isHidden = value
+                owner.navigationItem.rightBarButtonItem?.isHidden = value
+            }
+            .disposed(by: disposeBag)
+        
         output.nickname
             .drive(mainView.nicknameLabel.rx.text)
             .disposed(by: disposeBag)
@@ -100,6 +109,13 @@ final class DetailPostViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        output.commentsCount
+            .drive(with: self) { owner, text in
+                owner.mainView.commentsLabel.text = text
+                owner.mainView.performBatcUpdate()
+            }
+            .disposed(by: disposeBag)
+        
         output.errorMessage
             .drive(with: self) { owner, message in
                 owner.showAlert(title: "오류!", message: message) {
@@ -109,5 +125,28 @@ final class DetailPostViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         
+    }
+}
+
+// MARK: - Custom Func
+extension DetailPostViewController {
+    
+    private func configureNavigationBar() {
+        
+        let menuItems = [
+            UIAction(title: "수정", image: UIImage(systemName: "pencil")) { _ in
+                print("edit")
+            },
+            UIAction(title: "삭제", image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
+                print("delete")
+            }
+        ]
+        
+        let menu = UIMenu(title: "", image: nil, identifier: nil, options: [], children: menuItems)
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "",
+                                                                 image: UIImage(systemName: "line.3.horizontal"),
+                                                                 primaryAction: nil,
+                                                                 menu: menu)
     }
 }

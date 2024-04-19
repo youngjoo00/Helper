@@ -117,6 +117,7 @@
 		8EA59CEB2BD1A562009938E0 /* CommentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA59CEA2BD1A562009938E0 /* CommentResponse.swift */; };
 		8EA59CED2BD1A64D009938E0 /* CreatorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA59CEC2BD1A64D009938E0 /* CreatorResponse.swift */; };
 		8EA59D0D2BD25B3C009938E0 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA59D0C2BD25B3C009938E0 /* ImageButton.swift */; };
+		8EA59D152BD28284009938E0 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA59D142BD28284009938E0 /* String+.swift */; };
 		8ED3AE1C2BD14B890040DA58 /* DetailPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3AE1B2BD14B890040DA58 /* DetailPostView.swift */; };
 		8ED3AE1E2BD14B920040DA58 /* DetailPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3AE1D2BD14B920040DA58 /* DetailPostViewController.swift */; };
 		8ED3AE202BD14B9B0040DA58 /* DetailPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3AE1F2BD14B9B0040DA58 /* DetailPostViewModel.swift */; };
@@ -227,6 +228,7 @@
 		8EA59CEA2BD1A562009938E0 /* CommentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentResponse.swift; sourceTree = "<group>"; };
 		8EA59CEC2BD1A64D009938E0 /* CreatorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorResponse.swift; sourceTree = "<group>"; };
 		8EA59D0C2BD25B3C009938E0 /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
+		8EA59D142BD28284009938E0 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		8ED3AE1B2BD14B890040DA58 /* DetailPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostView.swift; sourceTree = "<group>"; };
 		8ED3AE1D2BD14B920040DA58 /* DetailPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewController.swift; sourceTree = "<group>"; };
 		8ED3AE1F2BD14B9B0040DA58 /* DetailPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewModel.swift; sourceTree = "<group>"; };
@@ -504,6 +506,7 @@
 				8E17A2DD2BCA31D400581B58 /* ViewModelType+.swift */,
 				8E9A3FCB2BCD7255005E4F45 /* UIImageView+.swift */,
 				8E9A3FD12BCD8455005E4F45 /* UICollectionViewLayout+.swift */,
+				8EA59D142BD28284009938E0 /* String+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -807,6 +810,7 @@
 				8E1BAE232BC968E500A65075 /* SignUpViewController.swift in Sources */,
 				8E9A3FE62BCEBD98005E4F45 /* WritePostViewController.swift in Sources */,
 				8E9A3FDB2BCD9530005E4F45 /* SettingTableViewCell.swift in Sources */,
+				8EA59D152BD28284009938E0 /* String+.swift in Sources */,
 				8E17A31C2BCAC61900581B58 /* MyStoragePostView.swift in Sources */,
 				8E17A3022BCA80BF00581B58 /* FoundViewModel.swift in Sources */,
 				8E17A3122BCA8FCF00581B58 /* MyProfileViewModel.swift in Sources */,

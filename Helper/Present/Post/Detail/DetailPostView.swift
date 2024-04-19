@@ -256,14 +256,21 @@ final class DetailPostView: BaseView {
 
 extension DetailPostView {
     
+    // 콘텐츠 높이에 맞게 테이블뷰 높이 설정
     func commentsTableViewHeightUpdate() {
         commentsTableView.snp.updateConstraints { make in
             make.height.equalTo(commentsTableView.contentSize.height)
         }
     }
+    
+    // 콘텐츠 변경 시 높이 재설정
+    func performBatcUpdate() {
+        // performBatchUpdates 을 사용하여 변경 사항이 존재할때 값을 안넣어버리고, 온전히 변경이 끝났을 때 높이를 변경하도록 함
+        commentsTableView.performBatchUpdates(nil) { _ in
+            self.commentsTableViewHeightUpdate()
+        }
+    }
 }
 
 
-//        commentsTableView.performBatchUpdates(nil) { _ in
-//            self.updateTableViewHeight()
-//        }
+
