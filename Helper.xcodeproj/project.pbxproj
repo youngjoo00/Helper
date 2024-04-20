@@ -92,6 +92,7 @@
 		8E1BAE9E2BC99E7C00A65075 /* PointLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE9D2BC99E7C00A65075 /* PointLabel.swift */; };
 		8E1BAEA02BC99F3200A65075 /* PointBoldLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE9F2BC99F3200A65075 /* PointBoldLabel.swift */; };
 		8E83BC482BCBC134007E1637 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E83BC472BCBC134007E1637 /* Router.swift */; };
+		8E887CDB2BD417D600E95008 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E887CDA2BD417D600E95008 /* MenuButton.swift */; };
 		8E9A3FCC2BCD7255005E4F45 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FCB2BCD7255005E4F45 /* UIImageView+.swift */; };
 		8E9A3FD02BCD81BA005E4F45 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FCF2BCD81BA005E4F45 /* PostCollectionViewCell.swift */; };
 		8E9A3FD22BCD8455005E4F45 /* UICollectionViewLayout+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FD12BCD8455005E4F45 /* UICollectionViewLayout+.swift */; };
@@ -204,6 +205,7 @@
 		8E1BAE9D2BC99E7C00A65075 /* PointLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointLabel.swift; sourceTree = "<group>"; };
 		8E1BAE9F2BC99F3200A65075 /* PointBoldLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointBoldLabel.swift; sourceTree = "<group>"; };
 		8E83BC472BCBC134007E1637 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		8E887CDA2BD417D600E95008 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		8E9A3FCB2BCD7255005E4F45 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		8E9A3FCF2BCD81BA005E4F45 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E9A3FD12BCD8455005E4F45 /* UICollectionViewLayout+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewLayout+.swift"; sourceTree = "<group>"; };
@@ -633,6 +635,7 @@
 				8E1BAE882BC97FF800A65075 /* PointButton.swift */,
 				8E9A40152BCFE9C8005E4F45 /* WhiteButton.swift */,
 				8EA59D0C2BD25B3C009938E0 /* ImageButton.swift */,
+				8E887CDA2BD417D600E95008 /* MenuButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -860,6 +863,7 @@
 				8E17A3152BCAC58200581B58 /* MyPostView.swift in Sources */,
 				8E1BAE262BC968E500A65075 /* NicknameViewController.swift in Sources */,
 				8E17A3192BCAC59400581B58 /* MyPostViewModel.swift in Sources */,
+				8E887CDB2BD417D600E95008 /* MenuButton.swift in Sources */,
 				8E1BAE272BC968E500A65075 /* NicknameViewModel.swift in Sources */,
 				8E9A40102BCFBB36005E4F45 /* PostRequest.swift in Sources */,
 				8E1BADFC2BC968C100A65075 /* ReusableID.swift in Sources */,

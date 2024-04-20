@@ -14,7 +14,7 @@ enum PostRouter {
     case postID(id: String)
     case image(url: String)
     case uploadImage
-    case write(query: PostRequest.Write)
+    case create(query: PostRequest.Write)
     case update(query: PostRequest.Write, id: String)
     case delete(id: String)
 }
@@ -30,7 +30,7 @@ extension PostRouter: TargetType {
             HTTPHeader.sesacKey.rawValue: PrivateKey.sesac.rawValue
         ]
         switch self {
-        case .posts, .postID, .write, .update, .delete:
+        case .posts, .postID, .create, .update, .delete:
             return baseHeader
         case .image:
             var headers = baseHeader
@@ -55,7 +55,7 @@ extension PostRouter: TargetType {
             return version + "/\(url)"
         case .uploadImage:
             return version + posts + "/files"
-        case .write:
+        case .create:
             return version + posts
         case .update(let query, let id):
             return version + posts + "/\(id)"
@@ -74,7 +74,7 @@ extension PostRouter: TargetType {
             return .get
         case .uploadImage:
             return .post
-        case .write:
+        case .create:
             return .post
         case .delete:
             return .delete
@@ -92,14 +92,14 @@ extension PostRouter: TargetType {
                 URLQueryItem(name: "product_id", value: productID),
                 URLQueryItem(name: "hashTag", value: hashTag)
             ]
-        case .postID, .image, .uploadImage, .write, .update, .delete:
+        case .postID, .image, .uploadImage, .create, .update, .delete:
             return nil
         }
     }
     
     var parameters: String? {
         switch self {
-        case .posts, .postID, .image, .uploadImage, .write, .update, .delete:
+        case .posts, .postID, .image, .uploadImage, .create, .update, .delete:
             return nil
         }
     }
@@ -115,7 +115,7 @@ extension PostRouter: TargetType {
             return nil
         case .uploadImage:
             return nil
-        case .write(let query):
+        case .create(let query):
             return try? encoder.encode(query)
         case .update(let query, let id):
             return try? encoder.encode(query)

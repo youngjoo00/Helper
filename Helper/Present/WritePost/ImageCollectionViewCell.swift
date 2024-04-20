@@ -36,10 +36,6 @@ final class ImageCollectionViewCell: BaseCollectionViewCell {
 
 extension ImageCollectionViewCell {
     
-    func updateView(_ image: UIImage) {
-        imageView.image = image
-    }
-    
     func updateImageView(_ urlString: String) {
         print(urlString)
         imageView.loadImage(urlString: urlString) { _ in

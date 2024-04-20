@@ -65,11 +65,12 @@ final class WritePostViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        // Request Model 생성
+        // Request Model Gruop
         let inputGroup1 = Observable.combineLatest(input.title, input.content, input.feature, input.locate, input.date)
             .debug("")
         let inputGroup2 = Observable.combineLatest(input.phone, input.category, input.hashTag, input.region, files)
 
+        // 생성 Request
         let createRequest = Observable.combineLatest(inputGroup1, inputGroup2) { group1, group2 in
             let (title, content, feature, locate, date) = group1
             let (phone, category, hashTag, region, files) = group2
@@ -86,12 +87,13 @@ final class WritePostViewModel: ViewModelType {
                 files: files)
             }
             
+        // 수정 Request
         let updateRequest = Observable.combineLatest(createRequest, postInfo)
         
         // 게시글 작성
         input.completeButtonTap
             .withLatestFrom(createRequest)
-            .flatMap { NetworkManager.shared.callAPI(type: PostResponse.FetchPost.self, router: Router.post(.write(query: $0))) }
+            .flatMap { NetworkManager.shared.callAPI(type: PostResponse.FetchPost.self, router: Router.post(.create(query: $0))) }
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success:

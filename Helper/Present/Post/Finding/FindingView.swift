@@ -24,7 +24,7 @@ final class FindingView: BaseView {
         $0.apportionsSegmentWidthsByContent = true
     }
     
-    let regionButton = PointButton(title: "서울특별시").then {
+    let regionButton = MenuButton(title: "서울특별시").then {
         $0.showsMenuAsPrimaryAction = true
     }
     

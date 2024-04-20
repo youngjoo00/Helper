@@ -30,12 +30,12 @@ final class WritePostView: BaseView {
         $0.spacing = 10
     }
     
-    let hashtagButton = WhiteButton(title: "찾고있어요").then { // 해시태그
+    let hashtagButton = MenuButton(title: "찾고있어요").then { // 해시태그
         $0.showsMenuAsPrimaryAction = true // 버튼을 눌렀을 때 메뉴가 나오도록 설정
         $0.tag = 1
     }
     
-    let categoryButton = WhiteButton(title: "사람").then { // 사람/동물/물품 카테고리
+    let categoryButton = MenuButton(title: "사람").then { // 사람/동물/물품 카테고리
         $0.showsMenuAsPrimaryAction = true
         $0.tag = 0
     }
@@ -47,7 +47,7 @@ final class WritePostView: BaseView {
     let featureTextField = PointTextField(placeholderText: "특징을 입력하세요")
     
     let regionLabel = PointLabel("지역", fontSize: 18)
-    let regionButton = WhiteButton(title: "서울특별시").then {
+    let regionButton = MenuButton(title: "서울특별시").then {
         $0.showsMenuAsPrimaryAction = true
         $0.tag = 2
     }
