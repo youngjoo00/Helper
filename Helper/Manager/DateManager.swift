@@ -19,7 +19,8 @@ final class DateManager {
         $0.locale = Locale(identifier: "ko_KR")
     }
     
-    func formatDateString(date: Date) -> String {
+    /// date 를 String 으로
+    func formatDateToString(date: Date) -> String {
         return dateFormatter.string(from: date)
     }
     
@@ -54,6 +55,7 @@ final class DateManager {
         return true
     }
     
+    /// 서버에서 받은 날짜를 우리가 사용하도록
     func dateFormat(_ dateString: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
@@ -83,6 +85,10 @@ final class DateManager {
             return displayFormatter.string(from: inputDate)
         }
 
+    }
+    
+    func formatStringToDate(_ dateString: String) -> Date {
+        return dateFormatter.date(from: dateString) ?? Date()
     }
 }
 

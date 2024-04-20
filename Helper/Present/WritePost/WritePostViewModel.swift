@@ -23,7 +23,7 @@ final class WritePostViewModel: ViewModelType {
         let feature: Observable<String>
         let region: Observable<String>
         let locate: Observable<String>
-        let date: Observable<String>
+        let date: Observable<Date>
         let phone: Observable<String>
         let content: Observable<String>
         let completeButtonTap: ControlEvent<Void>
@@ -80,7 +80,7 @@ final class WritePostViewModel: ViewModelType {
                 hashTag: "#\(hashTag)",
                 feature: feature,
                 locate: locate,
-                date: date,
+                date: DateManager.shared.formatDateToString(date: date),
                 phone: phone,
                 content: content,
                 product_id: "\(region)_\(category)",

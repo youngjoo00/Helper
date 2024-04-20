@@ -56,7 +56,11 @@ final class WritePostView: BaseView {
     let locateTextField = PointTextField(placeholderText: "상세 위치를 입력하세요")
     
     let dateLabel = PointLabel("날짜", fontSize: 18)
-    let dateTextField = PointTextField(placeholderText: "날짜를 입력하세요")
+    let datePicker = UIDatePicker().then {
+        $0.datePickerMode = .date
+        $0.preferredDatePickerStyle = .compact
+        $0.locale = Locale(identifier: "ko_KR")
+    }
     
     let phoneLabel = PointLabel("연락처", fontSize: 18)
     let phoneTextField = PointTextField(placeholderText: "연락처를 입력하세요")
@@ -87,7 +91,7 @@ final class WritePostView: BaseView {
             locateLabel,
             locateTextField,
             dateLabel,
-            dateTextField,
+            datePicker,
             phoneLabel,
             phoneTextField,
             contentLabel,
@@ -177,12 +181,12 @@ final class WritePostView: BaseView {
         }
         
         dateLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(dateTextField)
+            make.centerY.equalTo(datePicker)
             make.leading.equalTo(titleLabel)
             make.width.equalTo(titleLabel)
         }
         
-        dateTextField.snp.makeConstraints { make in
+        datePicker.snp.makeConstraints { make in
             make.top.equalTo(locateTextField.snp.bottom).offset(10)
             make.leading.equalTo(contentLabel.snp.trailing).offset(5)
             make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
@@ -196,7 +200,7 @@ final class WritePostView: BaseView {
         }
         
         phoneTextField.snp.makeConstraints { make in
-            make.top.equalTo(dateTextField.snp.bottom).offset(10)
+            make.top.equalTo(datePicker.snp.bottom).offset(10)
             make.leading.equalTo(contentLabel.snp.trailing).offset(5)
             make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
             make.height.equalTo(44)
@@ -301,6 +305,7 @@ extension WritePostView {
         locateTextField.text = data.locate
         phoneTextField.text = data.phone
         contentTextView.text = data.content
+        datePicker.date = DateManager.shared.formatStringToDate(data.date)
     }
     
     private func updateButton(_ productID: String, hashTag: String) {

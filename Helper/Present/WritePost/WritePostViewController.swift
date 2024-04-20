@@ -77,12 +77,13 @@ final class WritePostViewController: BaseViewController {
             feature: mainView.featureTextField.rx.text.orEmpty.asObservable(),
             region: mainView.regionSubject,
             locate: mainView.locateTextField.rx.text.orEmpty.asObservable(),
-            date: mainView.dateTextField.rx.text.orEmpty.asObservable(),
+            date: mainView.datePicker.rx.date.asObservable(),
             phone: mainView.phoneTextField.rx.text.orEmpty.asObservable(),
             content: mainView.contentTextView.rx.text.orEmpty.asObservable(),
             completeButtonTap: mainView.completeButton.rx.tap
         )
         
+        // MARK: - output
         let output = viewModel.transform(input: input)
         
         output.postInfo
