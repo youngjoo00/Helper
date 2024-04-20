@@ -17,6 +17,8 @@ final class DetailPostViewModel: ViewModelType {
         let postID: Observable<String>
         let comment: Observable<String>
         let commentButtonTap: ControlEvent<Void>
+        let postDeleteTap: Observable<Void>
+        let postEditMenuTap: Observable<Void>
     }
     
     struct Output {
@@ -34,14 +36,16 @@ final class DetailPostViewModel: ViewModelType {
         let storage: Driver<[String]>
         let comments: Driver<[Comments]>
         let commentsCount: Driver<String>
+        let deleteSuccess: Driver<Void>
         let errorMessage: Driver<String>
+        let postEditMenuTap: Driver<PostResponse.FetchPost>
     }
     
     func transform(input: Input) -> Output {
         
         let postInfo = PublishSubject<PostResponse.FetchPost>()
         let commentEvent = BehaviorSubject<Void>(value: ())
-
+        let deleteSuccess = PublishRelay<Void>()
         let errorMessage = PublishRelay<String>()
         
         
@@ -81,12 +85,30 @@ final class DetailPostViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
+        // 게시물 삭제
+        input.postDeleteTap
+            .withLatestFrom(input.postID)
+            .flatMap { NetworkManager.shared.EmptyResponseCallAPI(router: Router.post(.delete(id: $0))) }
+            .subscribe(with: self) { owner, result in
+                switch result {
+                case .success:
+                    deleteSuccess.accept(())
+                case .fail(let fail):
+                    errorMessage.accept(fail.localizedDescription)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        let postEditMenuTap = input.postEditMenuTap
+            .withLatestFrom(postInfo)
+            .asDriver(onErrorDriveWith: .empty())
+        
+        // MARK: - output Info
         let checkedUserID = postInfo
             .map { $0.creator.userID.checkedUserID }
             .map { !$0 }
             .asDriver(onErrorJustReturn: false)
-        
-        // output
+
         let nickname = postInfo
             .map { $0.creator.nick }
             .asDriver(onErrorJustReturn: "")
@@ -152,7 +174,9 @@ final class DetailPostViewModel: ViewModelType {
                       date: date,
                       storage: storage,
                       comments: comments,
-                      commentsCount: commentsCount,
-                      errorMessage: errorMessage.asDriver(onErrorJustReturn: "알 수 없는 오류입니다"))
+                      commentsCount: commentsCount, 
+                      deleteSuccess: deleteSuccess.asDriver(onErrorDriveWith: .empty()),
+                      errorMessage: errorMessage.asDriver(onErrorJustReturn: "알 수 없는 오류입니다"), 
+                      postEditMenuTap: postEditMenuTap)
     }
 }

@@ -42,6 +42,7 @@ final class FindingViewModel: ViewModelType {
             }
         
         Observable.combineLatest(input.fetchTrigger, input.region, category)
+            .debug("트리거 터졌나요")
             .map { _, region, category in
                 return "\(region)_\(category)"
             }

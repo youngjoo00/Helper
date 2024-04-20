@@ -294,4 +294,23 @@ extension WritePostView {
         button.menu = UIMenu(title: menuTitle, children: actions)
     }
     
+    func updateView(_ data: PostResponse.FetchPost) {
+        updateButton(data.productId, hashTag: data.hashTags[0])
+        titleTextField.text = data.title
+        featureTextField.text = data.feature
+        locateTextField.text = data.locate
+        phoneTextField.text = data.phone
+        contentTextView.text = data.content
+    }
+    
+    private func updateButton(_ productID: String, hashTag: String) {
+        let splitProductID = productID.splitProductID
+        hashtagButton.configuration?.title = hashTag
+        regionButton.configuration?.title = splitProductID[0]
+        categoryButton.configuration?.title = splitProductID[1]
+        completeButton.configuration?.title = "수정하기"
+        hashTagSubject.onNext(hashTag)
+        regionSubject.onNext(splitProductID[0])
+        categorySubject.onNext(splitProductID[1])
+    }
 }

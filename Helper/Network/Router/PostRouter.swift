@@ -15,6 +15,8 @@ enum PostRouter {
     case image(url: String)
     case uploadImage
     case write(query: PostRequest.Write)
+    case update(query: PostRequest.Write, id: String)
+    case delete(id: String)
 }
 
 extension PostRouter: TargetType {
@@ -28,9 +30,7 @@ extension PostRouter: TargetType {
             HTTPHeader.sesacKey.rawValue: PrivateKey.sesac.rawValue
         ]
         switch self {
-        case .posts:
-            return baseHeader
-        case .postID:
+        case .posts, .postID, .write, .update, .delete:
             return baseHeader
         case .image:
             var headers = baseHeader
@@ -40,24 +40,27 @@ extension PostRouter: TargetType {
             var headers = baseHeader
             headers[HTTPHeader.contentType.rawValue] = HTTPHeader.multipart.rawValue
             return headers
-        case .write:
-            return baseHeader
         }
     }
     
     var path: String {
         let version = PathVersion.v1.rawValue
+        let posts = "/posts"
         switch self {
         case .posts:
-            return version + "/posts"
+            return version + posts
         case .postID(let id):
-            return version + "/posts/\(id)"
+            return version + posts + "/\(id)"
         case .image(let url):
             return version + "/\(url)"
         case .uploadImage:
-            return version + "/posts/files"
+            return version + posts + "/files"
         case .write:
-            return version + "/posts"
+            return version + posts
+        case .update(let query, let id):
+            return version + posts + "/\(id)"
+        case .delete(let id):
+            return version + posts + "/\(id)"
         }
     }
     
@@ -73,6 +76,10 @@ extension PostRouter: TargetType {
             return .post
         case .write:
             return .post
+        case .delete:
+            return .delete
+        case .update:
+            return .put
         }
     }
     
@@ -85,28 +92,14 @@ extension PostRouter: TargetType {
                 URLQueryItem(name: "product_id", value: productID),
                 URLQueryItem(name: "hashTag", value: hashTag)
             ]
-        case .postID:
-            return nil
-        case .image:
-            return nil
-        case .uploadImage:
-            return nil
-        case .write:
+        case .postID, .image, .uploadImage, .write, .update, .delete:
             return nil
         }
     }
     
     var parameters: String? {
         switch self {
-        case .posts:
-            return nil
-        case .postID:
-            return nil
-        case .image:
-            return nil
-        case .uploadImage:
-            return nil
-        case .write:
+        case .posts, .postID, .image, .uploadImage, .write, .update, .delete:
             return nil
         }
     }
@@ -124,6 +117,10 @@ extension PostRouter: TargetType {
             return nil
         case .write(let query):
             return try? encoder.encode(query)
+        case .update(let query, let id):
+            return try? encoder.encode(query)
+        case .delete:
+            return nil
         }
     }
 }

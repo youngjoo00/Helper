@@ -14,6 +14,8 @@ final class DetailPostViewController: BaseViewController {
     private let mainView = DetailPostView()
     private let viewModel = DetailPostViewModel()
     private let postIDSubject = PublishSubject<String>()
+    private let postDeleteTap = PublishSubject<Void>()
+    private let postEditMenuTap = PublishSubject<Void>()
     var postID = ""
     
     override func loadView() {
@@ -43,7 +45,9 @@ final class DetailPostViewController: BaseViewController {
         
         let input = DetailPostViewModel.Input(postID: postIDSubject,
                                               comment: mainView.commentTextField.rx.text.orEmpty.asObservable(),
-                                              commentButtonTap: mainView.commentWriteButton.rx.tap
+                                              commentButtonTap: mainView.commentWriteButton.rx.tap,
+                                              postDeleteTap: postDeleteTap,
+                                              postEditMenuTap: postEditMenuTap
         )
         
         let output = viewModel.transform(input: input)
@@ -116,6 +120,14 @@ final class DetailPostViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        output.deleteSuccess
+            .drive(with: self) { owner, _ in
+                let vc = FindingViewController()
+                vc.fetchTrigger.onNext(())
+                owner.navigationController?.popViewController(animated: true)
+            }
+            .disposed(by: disposeBag)
+        
         output.errorMessage
             .drive(with: self) { owner, message in
                 owner.showAlert(title: "오류!", message: message) {
@@ -124,7 +136,14 @@ final class DetailPostViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        
+        output.postEditMenuTap
+            .drive(with: self) { owner, data in
+                let vc = WritePostViewController()
+                vc.postInfo = data
+                vc.postMode = .update
+                owner.navigationController?.pushViewController(vc, animated: true)
+            }
+            .disposed(by: disposeBag)
     }
 }
 
@@ -134,11 +153,15 @@ extension DetailPostViewController {
     private func configureNavigationBar() {
         
         let menuItems = [
-            UIAction(title: "수정", image: UIImage(systemName: "pencil")) { _ in
-                print("edit")
+            UIAction(title: "수정", image: UIImage(systemName: "pencil")) { [weak self] _ in
+                guard let self else { return }
+                self.postEditMenuTap.onNext(())
             },
-            UIAction(title: "삭제", image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
-                print("delete")
+            UIAction(title: "삭제", image: UIImage(systemName: "trash"), attributes: .destructive) { [weak self] _ in
+                guard let self else { return }
+                self.showAlert(title: "삭제", message: "게시물을 삭제하시겠습니까?", btnTitle: "삭제") {
+                    self.postDeleteTap.onNext(())
+                }
             }
         ]
         
