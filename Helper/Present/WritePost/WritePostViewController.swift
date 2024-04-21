@@ -83,6 +83,7 @@ final class WritePostViewController: BaseViewController {
             completeButtonTap: mainView.completeButton.rx.tap
         )
         
+        // MARK: - Input
         mainView.titleTextField.rx.text.orEmpty
             .bind(to: mainView.titleSubject)
             .disposed(by: disposeBag)

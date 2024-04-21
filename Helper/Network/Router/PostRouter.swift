@@ -17,6 +17,7 @@ enum PostRouter {
     case create(query: PostRequest.Write)
     case update(query: PostRequest.Write, id: String)
     case delete(id: String)
+    case storage(query: PostRequest.StorageStatus, id: String)
 }
 
 extension PostRouter: TargetType {
@@ -30,7 +31,7 @@ extension PostRouter: TargetType {
             HTTPHeader.sesacKey.rawValue: PrivateKey.sesac.rawValue
         ]
         switch self {
-        case .posts, .postID, .create, .update, .delete:
+        case .posts, .postID, .create, .update, .delete, .storage:
             return baseHeader
         case .image:
             var headers = baseHeader
@@ -61,6 +62,8 @@ extension PostRouter: TargetType {
             return version + posts + "/\(id)"
         case .delete(let id):
             return version + posts + "/\(id)"
+        case .storage(let query, let id):
+            return version + posts + "/\(id)" + "/like"
         }
     }
     
@@ -80,6 +83,8 @@ extension PostRouter: TargetType {
             return .delete
         case .update:
             return .put
+        case .storage:
+            return .post
         }
     }
     
@@ -92,14 +97,14 @@ extension PostRouter: TargetType {
                 URLQueryItem(name: "product_id", value: productID),
                 URLQueryItem(name: "hashTag", value: hashTag)
             ]
-        case .postID, .image, .uploadImage, .create, .update, .delete:
+        case .postID, .image, .uploadImage, .create, .update, .delete, .storage:
             return nil
         }
     }
     
     var parameters: String? {
         switch self {
-        case .posts, .postID, .image, .uploadImage, .create, .update, .delete:
+        case .posts, .postID, .image, .uploadImage, .create, .update, .delete, .storage:
             return nil
         }
     }
@@ -121,6 +126,8 @@ extension PostRouter: TargetType {
             return try? encoder.encode(query)
         case .delete:
             return nil
+        case .storage(let query, let id):
+            return try? encoder.encode(query)
         }
     }
 }

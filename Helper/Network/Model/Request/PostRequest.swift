@@ -33,5 +33,12 @@ enum PostRequest {
         }
     }
     
+    struct StorageStatus: Encodable {
+        let storageStatus: Bool
+        
+        enum CodingKeys: String, CodingKey {
+            case storageStatus = "like_status"
+        }
+    }
     
 }

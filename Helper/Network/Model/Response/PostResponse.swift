@@ -80,4 +80,12 @@ enum PostResponse {
     struct FilesModel: Decodable {
         let files: [String]
     }
+    
+    struct StorageStatus: Decodable {
+        let storageStatus: Bool
+        
+        enum CodingKeys: String, CodingKey {
+            case storageStatus = "like_status"
+        }
+    }
 }

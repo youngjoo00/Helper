@@ -257,6 +257,7 @@ final class DetailPostView: BaseView {
     
 }
 
+// MARK: - Custom Func
 extension DetailPostView {
     
     // 콘텐츠 높이에 맞게 테이블뷰 높이 설정
@@ -272,6 +273,10 @@ extension DetailPostView {
         commentsTableView.performBatchUpdates(nil) { _ in
             self.commentsTableViewHeightUpdate()
         }
+    }
+    
+    func updateStorageButton(_ state: Bool) {
+        storageButton.configureView(image: UIImage(systemName: state ? "bookmark.fill" : "bookmark"))
     }
 }
 

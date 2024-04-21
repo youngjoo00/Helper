@@ -47,7 +47,8 @@ final class DetailPostViewController: BaseViewController {
                                               comment: mainView.commentWriteTextField.rx.text.orEmpty.asObservable(),
                                               commentButtonTap: mainView.commentWriteButton.rx.tap,
                                               postDeleteTap: postDeleteTap,
-                                              postEditMenuTap: postEditMenuTap
+                                              postEditMenuTap: postEditMenuTap, 
+                                              storageButtonTap: mainView.storageButton.rx.tap
         )
         
         let output = viewModel.transform(input: input)
@@ -59,6 +60,7 @@ final class DetailPostViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        // MARK: - View 관련 output
         output.nickname
             .drive(mainView.nicknameLabel.rx.text)
             .disposed(by: disposeBag)
@@ -93,7 +95,6 @@ final class DetailPostViewController: BaseViewController {
         output.regionLocate
             .drive(mainView.regionLocateValueLabel.rx.text)
             .disposed(by: disposeBag)
-
         
         output.date
             .drive(mainView.dateValueLabel.rx.text)
@@ -103,9 +104,11 @@ final class DetailPostViewController: BaseViewController {
             .drive(mainView.phoneValueLabel.rx.text)
             .disposed(by: disposeBag)
         
-//        output.storage
-//            .drive(mainView.dateValueLabel.rx.text)
-//            .disposed(by: disposeBag)
+        output.storage
+            .drive(with: self) { owner, state in
+                owner.mainView.updateStorageButton(state)
+            }
+            .disposed(by: disposeBag)
         
         output.content
             .drive(mainView.contentValueLabel.rx.text)
@@ -125,6 +128,7 @@ final class DetailPostViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        // 삭제 성공
         output.deleteSuccess
             .drive(with: self) { owner, _ in
                 let vc = FindingViewController()
@@ -133,6 +137,14 @@ final class DetailPostViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        // 저장 성공
+        output.storageSuccess
+            .drive(with: self) { owner, message in
+                owner.showTaost(message)
+            }
+            .disposed(by: disposeBag)
+        
+        // 에러 메세지
         output.errorMessage
             .drive(with: self) { owner, message in
                 owner.showAlert(title: "오류!", message: message) {
@@ -141,6 +153,7 @@ final class DetailPostViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        // 게시물 수정 클릭
         output.postEditMenuTap
             .drive(with: self) { owner, data in
                 let vc = WritePostViewController()

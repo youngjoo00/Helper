@@ -19,6 +19,7 @@ final class DetailPostViewModel: ViewModelType {
         let commentButtonTap: ControlEvent<Void>
         let postDeleteTap: Observable<Void>
         let postEditMenuTap: Observable<Void>
+        let storageButtonTap: ControlEvent<Void>
     }
     
     struct Output {
@@ -33,26 +34,27 @@ final class DetailPostViewModel: ViewModelType {
         let regionLocate: Driver<String>
         let date: Driver<String>
         let phone: Driver<String>
-        let storage: Driver<[String]>
+        let storage: Driver<Bool>
         let content: Driver<String>
         let comments: Driver<[Comments]>
         let commentsCount: Driver<String>
         let deleteSuccess: Driver<Void>
         let errorMessage: Driver<String>
         let postEditMenuTap: Driver<PostResponse.FetchPost>
+        let storageSuccess: Driver<String>
     }
     
     func transform(input: Input) -> Output {
         
         let postInfo = PublishSubject<PostResponse.FetchPost>()
         let commentEvent = BehaviorSubject<Void>(value: ())
+        let storageSuccess = BehaviorSubject<Bool>(value: false)
         let deleteSuccess = PublishRelay<Void>()
         let errorMessage = PublishRelay<String>()
         
-        
         // 네트워크 통신 - postInfo
-        Observable.combineLatest(input.postID, commentEvent)
-            .flatMap { postID, _ in
+        Observable.combineLatest(input.postID, commentEvent, storageSuccess)
+            .flatMap { postID, _, _ in
                 NetworkManager.shared.callAPI(type: PostResponse.FetchPost.self, router: Router.post(.postID(id: postID)))
             }
             .subscribe(with: self) { owner, result in
@@ -94,6 +96,23 @@ final class DetailPostViewModel: ViewModelType {
                 switch result {
                 case .success:
                     deleteSuccess.accept(())
+                case .fail(let fail):
+                    errorMessage.accept(fail.localizedDescription)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        // 게시물 저장
+        input.storageButtonTap
+            .withLatestFrom(Observable.combineLatest(input.postID, postInfo))
+            .flatMap { postID, postInfo in
+                var state = postInfo.storage.filter { $0.checkedUserID }.count >= 1
+                return NetworkManager.shared.callAPI(type: PostResponse.StorageStatus.self, router: Router.post(.storage(query: PostRequest.StorageStatus(storageStatus: !state), id: postID)))
+            }
+            .subscribe(with: self) { owner, result in
+                switch result {
+                case .success(let data):
+                    storageSuccess.onNext(data.storageStatus)
                 case .fail(let fail):
                     errorMessage.accept(fail.localizedDescription)
                 }
@@ -150,10 +169,6 @@ final class DetailPostViewModel: ViewModelType {
             .map { $0.phone.contentEmpty }
             .asDriver(onErrorJustReturn: "")
         
-        let storage = postInfo
-            .map { $0.storage }
-            .asDriver(onErrorJustReturn: [])
-        
         let content = postInfo
             .map { $0.content.contentEmpty }
             .asDriver(onErrorJustReturn: "")
@@ -165,6 +180,10 @@ final class DetailPostViewModel: ViewModelType {
         let comments = postInfo
             .map { $0.comments }
             .asDriver(onErrorJustReturn: [])
+        
+        let storage = postInfo
+            .map { $0.storage.filter { $0.checkedUserID }.count >= 1 }
+            .asDriver(onErrorJustReturn: false)
         
         return Output(checkedUserID: checkedUserID,
                       nickname: nickname,
@@ -183,6 +202,8 @@ final class DetailPostViewModel: ViewModelType {
                       commentsCount: commentsCount, 
                       deleteSuccess: deleteSuccess.asDriver(onErrorDriveWith: .empty()),
                       errorMessage: errorMessage.asDriver(onErrorJustReturn: "알 수 없는 오류입니다"), 
-                      postEditMenuTap: postEditMenuTap)
+                      postEditMenuTap: postEditMenuTap,
+                      storageSuccess: storageSuccess.map { $0 ? "게시글을 저장했어요!" : "게시글 저장을 취소했어요!" }.asDriver(onErrorJustReturn: "")
+        )
     }
 }
