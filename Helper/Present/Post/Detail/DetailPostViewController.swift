@@ -31,25 +31,27 @@ final class DetailPostViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.tabBarController?.tabBar.isHidden = true
         postIDSubject.onNext(postID)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         
-        self.tabBarController?.tabBar.isHidden = false
     }
     
     override func bind() {
         
         let input = DetailPostViewModel.Input(postID: postIDSubject,
-                                              comment: mainView.commentWriteTextField.rx.text.orEmpty.asObservable(),
+                                              comment: mainView.commentWriteSubject,
                                               commentButtonTap: mainView.commentWriteButton.rx.tap,
                                               postDeleteTap: postDeleteTap,
                                               postEditMenuTap: postEditMenuTap, 
                                               storageButtonTap: mainView.storageButton.rx.tap
         )
+        
+        mainView.commentWriteTextField.rx.text.orEmpty
+            .bind(to: mainView.commentWriteSubject)
+            .disposed(by: disposeBag)
         
         let output = viewModel.transform(input: input)
               
@@ -125,6 +127,13 @@ final class DetailPostViewController: BaseViewController {
             .drive(with: self) { owner, text in
                 owner.mainView.commentsLabel.text = text
                 owner.mainView.performBatcUpdate()
+            }
+            .disposed(by: disposeBag)
+        
+        // 댓글 성공
+        output.commentSuccess
+            .drive(with: self) { owner, _ in
+                owner.mainView.updateCommentTextField()
             }
             .disposed(by: disposeBag)
         

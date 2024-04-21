@@ -124,6 +124,7 @@
 		8ED3AE202BD14B9B0040DA58 /* DetailPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3AE1F2BD14B9B0040DA58 /* DetailPostViewModel.swift */; };
 		8ED3AE222BD15C960040DA58 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3AE212BD15C960040DA58 /* CommentsTableViewCell.swift */; };
 		8ED3AE242BD171C10040DA58 /* DetailPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3AE232BD171C10040DA58 /* DetailPostCollectionViewCell.swift */; };
+		8ED8B7432BD556BC009B4387 /* TransitionStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7422BD556BC009B4387 /* TransitionStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -236,6 +237,7 @@
 		8ED3AE1F2BD14B9B0040DA58 /* DetailPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewModel.swift; sourceTree = "<group>"; };
 		8ED3AE212BD15C960040DA58 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
 		8ED3AE232BD171C10040DA58 /* DetailPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostCollectionViewCell.swift; sourceTree = "<group>"; };
+		8ED8B7422BD556BC009B4387 /* TransitionStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -509,6 +511,7 @@
 				8E9A3FCB2BCD7255005E4F45 /* UIImageView+.swift */,
 				8E9A3FD12BCD8455005E4F45 /* UICollectionViewLayout+.swift */,
 				8EA59D142BD28284009938E0 /* String+.swift */,
+				8ED8B7422BD556BC009B4387 /* TransitionStyle.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -833,6 +836,7 @@
 				8E17A2FE2BCA80AF00581B58 /* FoundView.swift in Sources */,
 				8E17A3102BCA8FC800581B58 /* MyProfileViewController.swift in Sources */,
 				8E1BADE62BC965CC00A65075 /* SceneDelegate.swift in Sources */,
+				8ED8B7432BD556BC009B4387 /* TransitionStyle.swift in Sources */,
 				8E1BAE892BC97FF800A65075 /* PointTextField.swift in Sources */,
 				8EA59CED2BD1A64D009938E0 /* CreatorResponse.swift in Sources */,
 				8E9A3FD92BCD94A9005E4F45 /* SettingViewModel.swift in Sources */,
@@ -960,6 +964,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -1017,6 +1022,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;

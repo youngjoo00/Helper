@@ -8,9 +8,13 @@
 import UIKit
 import Then
 import SnapKit
+import RxSwift
+import RxCocoa
 
 final class DetailPostView: BaseView {
 
+    lazy var commentWriteSubject = BehaviorSubject<String>(value: commentWriteTextField.text ?? "")
+    
     let scrollView = UIScrollView()
     let contentView = UIView()
     
@@ -277,6 +281,11 @@ extension DetailPostView {
     
     func updateStorageButton(_ state: Bool) {
         storageButton.configureView(image: UIImage(systemName: state ? "bookmark.fill" : "bookmark"))
+    }
+    
+    func updateCommentTextField() {
+        commentWriteTextField.text = ""
+        commentWriteSubject.onNext("")
     }
 }
 

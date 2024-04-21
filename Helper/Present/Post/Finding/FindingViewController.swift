@@ -47,7 +47,7 @@ final class FindingViewController: BaseViewController {
             .subscribe(with: self) { owner, value in
                 let vc = DetailPostViewController()
                 vc.postID = value.1.postID
-                owner.navigationController?.pushViewController(vc, animated: true)  
+                owner.transition(viewController: vc, style: .hideBottomPush)
             }
             .disposed(by: disposeBag)
         

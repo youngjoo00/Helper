@@ -82,7 +82,7 @@ extension TabBarController: PHPickerViewControllerDelegate {
                                     let writePostVC = WritePostViewController()
                                     writePostVC.selectedImages = images
                                     writePostVC.postMode = .create
-                                    
+                                    writePostVC.hidesBottomBarWhenPushed = true
                                     // 이게 왜 안되는거지?
                                     //self.navigationController?.pushViewController(writePostVC, animated: true)
                                     if let navController = self.selectedViewController as? UINavigationController {
