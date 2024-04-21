@@ -81,6 +81,7 @@ extension TabBarController: PHPickerViewControllerDelegate {
                                 if images.count == results.count {
                                     let writePostVC = WritePostViewController()
                                     writePostVC.selectedImages = images
+                                    writePostVC.postMode = .create
                                     
                                     // 이게 왜 안되는거지?
                                     //self.navigationController?.pushViewController(writePostVC, animated: true)

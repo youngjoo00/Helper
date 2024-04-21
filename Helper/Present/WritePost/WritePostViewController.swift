@@ -73,15 +73,35 @@ final class WritePostViewController: BaseViewController {
             dataList: dataListSubject,
             hashTag: mainView.hashTagSubject,
             category: mainView.categorySubject,
-            title: mainView.titleTextField.rx.text.orEmpty.asObservable(),
-            feature: mainView.featureTextField.rx.text.orEmpty.asObservable(),
+            title: mainView.titleSubject,
+            feature: mainView.featureSubject,
             region: mainView.regionSubject,
-            locate: mainView.locateTextField.rx.text.orEmpty.asObservable(),
+            locate: mainView.locateSubject,
             date: mainView.datePicker.rx.date.asObservable(),
-            phone: mainView.phoneTextField.rx.text.orEmpty.asObservable(),
-            content: mainView.contentTextView.rx.text.orEmpty.asObservable(),
+            phone: mainView.phoneSubject,
+            content: mainView.contentSubject,
             completeButtonTap: mainView.completeButton.rx.tap
         )
+        
+        mainView.titleTextField.rx.text.orEmpty
+            .bind(to: mainView.titleSubject)
+            .disposed(by: disposeBag)
+        
+        mainView.featureTextField.rx.text.orEmpty
+            .bind(to: mainView.featureSubject)
+            .disposed(by: disposeBag)
+        
+        mainView.locateTextField.rx.text.orEmpty
+            .bind(to: mainView.locateSubject)
+            .disposed(by: disposeBag)
+        
+        mainView.phoneTextField.rx.text.orEmpty
+            .bind(to: mainView.phoneSubject)
+            .disposed(by: disposeBag)
+        
+        mainView.contentTextView.rx.text.orEmpty
+            .bind(to: mainView.contentSubject)
+            .disposed(by: disposeBag)
         
         // MARK: - output
         let output = viewModel.transform(input: input)
@@ -101,11 +121,17 @@ final class WritePostViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         // 에러 메세지
-        output.errorMessage
+        output.errorAlertMessage
             .drive(with: self) { owner, message in
                 owner.showAlert(title: "오류!", message: message) {
                     owner.navigationController?.popViewController(animated: true)
                 }
+            }
+            .disposed(by: disposeBag)
+        
+        output.errorToastMessage
+            .drive(with: self) { owner, message in
+                owner.showTaost(message)
             }
             .disposed(by: disposeBag)
         

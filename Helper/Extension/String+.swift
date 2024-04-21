@@ -16,4 +16,9 @@ extension String {
     var splitProductID: [String] {
         return self.split(separator: "_").map { String($0) }
     }
+    
+    /// 콘텐츠가 비어있으면 없음 이라는 String 반환
+    var contentEmpty: String {
+        return self.isEmpty ? "없음" : self
+    }
 }

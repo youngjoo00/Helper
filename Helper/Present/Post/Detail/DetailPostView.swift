@@ -26,52 +26,25 @@ final class DetailPostView: BaseView {
         $0.showsHorizontalScrollIndicator = false
         $0.isPagingEnabled = true
     }
-
-    let contentsStackView = UIStackView().then {
-        $0.axis = .vertical
-        $0.spacing = 10
-    }
     
     let titleLabel = PointLabel(fontSize: 20)
     
-    let featureStackView = UIStackView().then {
-        $0.axis = .horizontal
-        $0.spacing = 10
-    }
     let featureLabel = PointLabel("특징", fontSize: 17)
     let featureValueLabel = PointLabel(fontSize: 17).then {
-        $0.numberOfLines = 2
+        $0.numberOfLines = 0
     }
-    
-    let regionLocateStackView = UIStackView().then {
-        $0.axis = .horizontal
-        $0.spacing = 10
-    }
+
     let regionLocateLabel = PointLabel("위치", fontSize: 17)
-    let regionValueLabel = PointLabel(fontSize: 17)
-    let locateValueeLabel = PointLabel("", fontSize: 17).then {
-        $0.numberOfLines = 2
+    let regionLocateValueLabel = PointLabel(fontSize: 17).then {
+        $0.numberOfLines = 0
     }
-    
-    let dateStackView = UIStackView().then {
-        $0.axis = .horizontal
-        $0.spacing = 10
-    }
+
     let dateLabel = PointLabel("날짜", fontSize: 17)
     let dateValueLabel = PointLabel(fontSize: 17)
     
-    let phoneStackView = UIStackView().then {
-        $0.axis = .horizontal
-        $0.spacing = 10
-    }
     let phoneLabel = PointLabel("연락처", fontSize: 17)
     let phoneValueLabel = PointLabel("연락처", fontSize: 17)
     
-    let contentStackView = UIStackView().then {
-        $0.axis = .vertical
-        $0.distribution = .fillEqually
-        $0.spacing = 10
-    }
     let contentLabel = PointLabel("내용", fontSize: 17)
     let contentValueLabel = PointLabel(fontSize: 17)
 
@@ -86,7 +59,7 @@ final class DetailPostView: BaseView {
     let commentView = UIView().then {
         $0.backgroundColor = .white
     }
-    let commentTextField = PointTextField(placeholderText: "댓글 내용을 입력하세요")
+    let commentWriteTextField = PointTextField(placeholderText: "댓글 내용을 입력하세요")
     let commentWriteButton = PointButton(title: "등록")
     
     let scrollBottomSpaceView = UIView()
@@ -107,48 +80,23 @@ final class DetailPostView: BaseView {
             storageButton,
             imageCollectionView,
             titleLabel,
-            contentsStackView,
+            featureLabel,
+            featureValueLabel,
+            regionLocateLabel,
+            regionLocateValueLabel,
+            dateLabel,
+            dateValueLabel,
+            phoneLabel,
+            phoneValueLabel,
+            contentLabel,
+            contentValueLabel,
             commentsLabel,
             commentsTableView,
             scrollBottomSpaceView,
         ].forEach { contentView.addSubview($0) }
-        
-        [
-            featureStackView,
-            regionLocateStackView,
-            dateStackView,
-            phoneStackView,
-            contentStackView,
-        ].forEach { contentsStackView.addArrangedSubview($0) }
-        
-        [
-            featureLabel,
-            featureValueLabel
-        ].forEach { featureStackView.addArrangedSubview($0) }
 
         [
-            regionLocateLabel,
-            regionValueLabel,
-            locateValueeLabel
-        ].forEach { regionLocateStackView.addArrangedSubview($0) }
-        
-        [
-            dateLabel,
-            dateValueLabel
-        ].forEach { dateStackView.addArrangedSubview($0) }
-
-        [
-            phoneLabel,
-            phoneValueLabel
-        ].forEach { phoneStackView.addArrangedSubview($0) }
-
-        [
-            contentLabel,
-            contentValueLabel
-        ].forEach { contentStackView.addArrangedSubview($0) }
-        
-        [
-            commentTextField,
+            commentWriteTextField,
             commentWriteButton,
         ].forEach { commentView.addSubview($0) }
         
@@ -200,13 +148,67 @@ final class DetailPostView: BaseView {
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
         }
         
-        contentsStackView.snp.makeConstraints { make in
+        featureLabel.snp.makeConstraints { make in
+            make.top.equalTo(featureValueLabel)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(16)
+            make.width.equalTo(55)
+        }
+        
+        featureValueLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            make.leading.equalTo(featureLabel.snp.trailing)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
+        }
+        
+        regionLocateLabel.snp.makeConstraints { make in
+            make.top.equalTo(regionLocateValueLabel)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(16)
+            make.width.equalTo(featureLabel)
+        }
+        
+        regionLocateValueLabel.snp.makeConstraints { make in
+            make.top.equalTo(featureValueLabel.snp.bottom).offset(10)
+            make.leading.equalTo(regionLocateLabel.snp.trailing)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
+        }
+        
+        dateLabel.snp.makeConstraints { make in
+            make.top.equalTo(dateValueLabel)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(16)
+            make.width.equalTo(featureLabel)
+        }
+        
+        dateValueLabel.snp.makeConstraints { make in
+            make.top.equalTo(regionLocateValueLabel.snp.bottom).offset(10)
+            make.leading.equalTo(dateLabel.snp.trailing)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
+        }
+        
+        phoneLabel.snp.makeConstraints { make in
+            make.top.equalTo(phoneValueLabel)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(16)
+            make.width.equalTo(featureLabel)
+        }
+        
+        phoneValueLabel.snp.makeConstraints { make in
+            make.top.equalTo(dateValueLabel.snp.bottom).offset(10)
+            make.leading.equalTo(phoneLabel.snp.trailing)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
+        }
+        
+        contentLabel.snp.makeConstraints { make in
+            make.top.equalTo(phoneValueLabel.snp.bottom).offset(10)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(16)
+            make.width.equalTo(featureLabel)
+        }
+        
+        contentValueLabel.snp.makeConstraints { make in
+            make.top.equalTo(contentLabel.snp.bottom).offset(10)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
         }
         
         commentsLabel.snp.makeConstraints { make in
-            make.top.equalTo(contentsStackView.snp.bottom).offset(20)
+            make.top.equalTo(contentValueLabel.snp.bottom).offset(15)
             make.leading.equalTo(safeAreaLayoutGuide).offset(16)
         }
         
@@ -227,7 +229,7 @@ final class DetailPostView: BaseView {
             make.height.equalTo(66)
         }
         
-        commentTextField.snp.makeConstraints { make in
+        commentWriteTextField.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.height.equalTo(44)
             make.leading.equalTo(safeAreaLayoutGuide).offset(16)
@@ -237,6 +239,7 @@ final class DetailPostView: BaseView {
         commentWriteButton.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.height.equalTo(44)
+            make.width.equalTo(70)
             make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
         }
     }

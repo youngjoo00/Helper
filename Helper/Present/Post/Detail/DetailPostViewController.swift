@@ -44,7 +44,7 @@ final class DetailPostViewController: BaseViewController {
     override func bind() {
         
         let input = DetailPostViewModel.Input(postID: postIDSubject,
-                                              comment: mainView.commentTextField.rx.text.orEmpty.asObservable(),
+                                              comment: mainView.commentWriteTextField.rx.text.orEmpty.asObservable(),
                                               commentButtonTap: mainView.commentWriteButton.rx.tap,
                                               postDeleteTap: postDeleteTap,
                                               postEditMenuTap: postEditMenuTap
@@ -90,21 +90,26 @@ final class DetailPostViewController: BaseViewController {
             .drive(mainView.featureValueLabel.rx.text)
             .disposed(by: disposeBag)
         
-        output.region
-            .drive(mainView.regionValueLabel.rx.text)
+        output.regionLocate
+            .drive(mainView.regionLocateValueLabel.rx.text)
             .disposed(by: disposeBag)
-        
-        output.locate
-            .drive(mainView.locateValueeLabel.rx.text)
-            .disposed(by: disposeBag)
+
         
         output.date
             .drive(mainView.dateValueLabel.rx.text)
             .disposed(by: disposeBag)
 
+        output.phone
+            .drive(mainView.phoneValueLabel.rx.text)
+            .disposed(by: disposeBag)
+        
 //        output.storage
 //            .drive(mainView.dateValueLabel.rx.text)
 //            .disposed(by: disposeBag)
+        
+        output.content
+            .drive(mainView.contentValueLabel.rx.text)
+            .disposed(by: disposeBag)
         
         output.comments
             .drive(mainView.commentsTableView.rx.items(cellIdentifier: CommentsTableViewCell.id,

@@ -15,7 +15,12 @@ final class WritePostView: BaseView {
     lazy var hashTagSubject = BehaviorSubject<String>(value: hashtagButton.configuration?.title ?? "")
     lazy var categorySubject = BehaviorSubject<String>(value: categoryButton.configuration?.title ?? "")
     lazy var regionSubject = BehaviorSubject<String>(value: regionButton.configuration?.title ?? "")
-    
+    lazy var titleSubject = BehaviorSubject<String>(value: titleTextField.text ?? "")
+    lazy var featureSubject = BehaviorSubject<String>(value: featureTextField.text ?? "")
+    lazy var locateSubject = BehaviorSubject<String>(value: locateTextField.text ?? "")
+    lazy var phoneSubject = BehaviorSubject<String>(value: phoneTextField.text ?? "")
+    lazy var contentSubject = BehaviorSubject<String>(value: contentTextView.text ?? "")
+   
     let scrollView = UIScrollView()
     let contentView = UIView()
     
@@ -40,7 +45,7 @@ final class WritePostView: BaseView {
         $0.tag = 0
     }
     
-    let titleLabel = PointLabel("제목", fontSize: 18)
+    let titleLabel = PointLabel("제목*", fontSize: 18)
     let titleTextField = PointTextField(placeholderText: "제목을 입력하세요")
     
     let featureLabel = PointLabel("특징", fontSize: 18)
@@ -188,8 +193,7 @@ final class WritePostView: BaseView {
         
         datePicker.snp.makeConstraints { make in
             make.top.equalTo(locateTextField.snp.bottom).offset(10)
-            make.leading.equalTo(contentLabel.snp.trailing).offset(5)
-            make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
+            make.leading.equalTo(dateLabel.snp.trailing).offset(5)
             make.height.equalTo(44)
         }
         
@@ -306,6 +310,11 @@ extension WritePostView {
         phoneTextField.text = data.phone
         contentTextView.text = data.content
         datePicker.date = DateManager.shared.formatStringToDate(data.date)
+        titleSubject.onNext(data.title)
+        featureSubject.onNext(data.feature)
+        locateSubject.onNext(data.locate)
+        phoneSubject.onNext(data.phone)
+        contentSubject.onNext(data.content)
     }
     
     private func updateButton(_ productID: String, hashTag: String) {

@@ -30,10 +30,11 @@ final class DetailPostViewModel: ViewModelType {
         let category: Driver<String>
         let hashTag: Driver<String>
         let feature: Driver<String>
-        let region: Driver<String>
-        let locate: Driver<String>
+        let regionLocate: Driver<String>
         let date: Driver<String>
+        let phone: Driver<String>
         let storage: Driver<[String]>
+        let content: Driver<String>
         let comments: Driver<[Comments]>
         let commentsCount: Driver<String>
         let deleteSuccess: Driver<Void>
@@ -134,32 +135,36 @@ final class DetailPostViewModel: ViewModelType {
             .asDriver(onErrorJustReturn: "")
         
         let feature = postInfo
-            .map { $0.feature }
+            .map { $0.feature.contentEmpty }
             .asDriver(onErrorJustReturn: "")
         
-        let region = postInfo
-            .map { String($0.productId.split(separator: "_")[0]) }
-            .asDriver(onErrorJustReturn: "")
-        
-        let locate = postInfo
-            .map { $0.locate }
+        let regionLocate = postInfo
+            .map { "\($0.productId.splitProductID[0] + " " + $0.locate)".contentEmpty }
             .asDriver(onErrorJustReturn: "")
         
         let date = postInfo
-            .map { $0.date }
+            .map { $0.date.contentEmpty }
+            .asDriver(onErrorJustReturn: "")
+        
+        let phone = postInfo
+            .map { $0.phone.contentEmpty }
             .asDriver(onErrorJustReturn: "")
         
         let storage = postInfo
             .map { $0.storage }
             .asDriver(onErrorJustReturn: [])
         
-        let comments = postInfo
-            .map { $0.comments }
-            .asDriver(onErrorJustReturn: [])
+        let content = postInfo
+            .map { $0.content.contentEmpty }
+            .asDriver(onErrorJustReturn: "")
         
         let commentsCount = postInfo
             .map { "댓글 \($0.comments.count)" }
             .asDriver(onErrorJustReturn: "")
+        
+        let comments = postInfo
+            .map { $0.comments }
+            .asDriver(onErrorJustReturn: [])
         
         return Output(checkedUserID: checkedUserID,
                       nickname: nickname,
@@ -169,10 +174,11 @@ final class DetailPostViewModel: ViewModelType {
                       category: category,
                       hashTag: hashTag,
                       feature: feature,
-                      region: region,
-                      locate: locate,
-                      date: date,
+                      regionLocate: regionLocate,
+                      date: date, 
+                      phone: phone,
                       storage: storage,
+                      content: content,
                       comments: comments,
                       commentsCount: commentsCount, 
                       deleteSuccess: deleteSuccess.asDriver(onErrorDriveWith: .empty()),

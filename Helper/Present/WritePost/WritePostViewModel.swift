@@ -30,7 +30,8 @@ final class WritePostViewModel: ViewModelType {
     }
     
     struct Output {
-        let errorMessage: Driver<String>
+        let errorAlertMessage: Driver<String>
+        let errorToastMessage: Driver<String>
         let isWriteComplete: Driver<String>
         let postInfo: Driver<PostResponse.FetchPost>
         let files: Driver<[String]>
@@ -38,7 +39,8 @@ final class WritePostViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         
-        let errorMessage = PublishRelay<String>()
+        let errorAlertMessage = PublishRelay<String>()
+        let errorToastMessage = PublishRelay<String>()
         let files = BehaviorRelay<[String]>(value: [])
         let isWriteComplete = PublishRelay<String>()
         
@@ -59,19 +61,20 @@ final class WritePostViewModel: ViewModelType {
                 case .success(let data):
                     files.accept(data.files)
                 case .fail(let fail):
-                    errorMessage.accept(fail.localizedDescription)
+                    errorAlertMessage.accept(fail.localizedDescription)
                     print(fail.localizedDescription)
                 }
             }
             .disposed(by: disposeBag)
         
+        // 제목이 비어있으면 안됨
         // Request Model Gruop
         let inputGroup1 = Observable.combineLatest(input.title, input.content, input.feature, input.locate, input.date)
-            .debug("")
+            .debug("1번그룹")
         let inputGroup2 = Observable.combineLatest(input.phone, input.category, input.hashTag, input.region, files)
-
+            .debug("2번그룹")
         // 생성 Request
-        let createRequest = Observable.combineLatest(inputGroup1, inputGroup2) { group1, group2 in
+        let requestModel = Observable.combineLatest(inputGroup1, inputGroup2) { group1, group2 in
             let (title, content, feature, locate, date) = group1
             let (phone, category, hashTag, region, files) = group2
             
@@ -86,44 +89,67 @@ final class WritePostViewModel: ViewModelType {
                 product_id: "\(region)_\(category)",
                 files: files)
             }
-            
-        // 수정 Request
-        let updateRequest = Observable.combineLatest(createRequest, postInfo)
+            .debug("최종 그룹")
+       
+        // 1. requestModel, postMode 를 가져옴
+        // 2. 타이틀이 비어있으면 제목은 필수라고하고 에러처리하면서 끝냄
+        // 3. 비어있지 않다면, 포스트 모드가 create 인 경우 -> requestModel 갖고 네트워크 통신
+        // 4. update 인 경우 -> postInfo.postID 를 갖고 네트워크 통신
+        // 5. 결과를 구독하고 있다가, 포스트 모드에 맞게 complete 에 "작성" / "수정" 이라는 String 이벤트 방출
+        let createAPI = PublishSubject<PostRequest.Write>()
+        let updateAPI = PublishSubject<(PostRequest.Write, String)>()
+
+        let requestData = Observable.combineLatest(requestModel, input.postMode, input.postInfo)
         
-        // 게시글 작성
         input.completeButtonTap
-            .withLatestFrom(createRequest)
-            .flatMap { NetworkManager.shared.callAPI(type: PostResponse.FetchPost.self, router: Router.post(.create(query: $0))) }
-            .subscribe(with: self) { owner, result in
-                switch result {
+            .withLatestFrom(requestData)
+            .subscribe(with: self) { owner, requestData in
+                if requestData.0.title.isEmpty {
+                    errorToastMessage.accept("제목은 필수입니다.")
+                } else {
+                    switch requestData.1 {
+                    case .create:
+                        createAPI.onNext(requestData.0)
+                    case .update:
+                        if let postID = requestData.2?.postID {
+                            updateAPI.onNext((requestData.0, postID))
+                        }
+                    }
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        createAPI
+            .flatMap { requestModel in
+                NetworkManager.shared.callAPI(type: PostResponse.FetchPost.self, router: Router.post(.create(query: requestModel)))
+            }
+            .subscribe(with: self) { owner, reslut in
+                switch reslut {
                 case .success:
                     isWriteComplete.accept("작성")
-                case .fail(let fail):
-                    errorMessage.accept(fail.localizedDescription)
-                    print(fail.localizedDescription)
+                case .fail(let error):
+                    errorAlertMessage.accept(error.localizedDescription)
                 }
             }
             .disposed(by: disposeBag)
         
-        // 게시물 수정
-        input.completeButtonTap
-            .withLatestFrom(updateRequest)
-            .flatMap { requestModel, info in
-                NetworkManager.shared.callAPI(type: PostResponse.FetchPost.self, router: Router.post(.update(query: requestModel, id: info.postID)))
+        updateAPI
+            .flatMap { requestModel, postID in
+                NetworkManager.shared.callAPI(type: PostResponse.FetchPost.self, router: Router.post(.update(query: requestModel, id: postID)))
             }
-            .subscribe(with: self) { owner, result in
-                switch result {
+            .subscribe(with: self) { owner, reslut in
+                switch reslut {
                 case .success:
                     isWriteComplete.accept("수정")
-                case .fail(let fail):
-                    errorMessage.accept(fail.localizedDescription)
-                    print(fail.localizedDescription)
+                case .fail(let error):
+                    errorAlertMessage.accept(error.localizedDescription)
                 }
             }
             .disposed(by: disposeBag)
-        
+
         return Output(
-            errorMessage: errorMessage.asDriver(onErrorJustReturn: "알 수 없는 오류입니다."),
+            errorAlertMessage: errorAlertMessage.asDriver(onErrorJustReturn: "알 수 없는 오류입니다."),
+            errorToastMessage: errorToastMessage.asDriver(onErrorJustReturn: "알 수 없는 오류입니다."),
             isWriteComplete: isWriteComplete.asDriver(onErrorJustReturn: "알 수 없는 오류입니다."),
             postInfo: postInfo.asDriver(onErrorDriveWith: .empty()),
             files: files.asDriver(onErrorJustReturn: [])
