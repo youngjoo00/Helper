@@ -102,7 +102,7 @@ final class WritePostViewModel: ViewModelType {
         let requestData = Observable.combineLatest(requestModel, input.postMode, input.postInfo)
         
         input.completeButtonTap
-            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .withLatestFrom(requestData)
             .subscribe(with: self) { owner, requestData in
                 if requestData.0.title.isEmpty {

@@ -12,7 +12,8 @@ import RxCocoa
 
 final class CommentsTableViewCell: BaseTableViewCell {
     
-    //lazy var editSubject = BehaviorSubject(value: Comments)
+    lazy var deleteSubject = PublishSubject<String>()
+    private var commentID = ""
     private let nicknameLabel = PointBoldLabel("닉네임", fontSize: 18)
     private let regDateLabel = PointLabel("20시간 전", fontSize: 15)
     private let editButton = ImageButton(image: UIImage(systemName: "ellipsis.circle")).then {
@@ -57,11 +58,16 @@ final class CommentsTableViewCell: BaseTableViewCell {
     
     override func configureView() {
         let editList = [
-            "수정",
             "삭제",
         ]
         
         configureMenu(editButton, menuTitle: "", actions: editList)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        disposeBag = DisposeBag()
     }
 }
 
@@ -70,6 +76,7 @@ final class CommentsTableViewCell: BaseTableViewCell {
 extension CommentsTableViewCell {
     
     func updateView(_ data: Comments) {
+        commentID = data.commentID
         nicknameLabel.text = data.creator.nick
         regDateLabel.text = DateManager.shared.dateFormat(data.createdAt)
         commentLabel.text = data.content
@@ -80,8 +87,7 @@ extension CommentsTableViewCell {
         let actions = actions.map { title in
             UIAction(title: title) { [weak self] _ in
                 guard let self else { return }
-                //button.configuration?.title = title
-                //self.editSubject.onNext(title)
+                self.deleteSubject.onNext(commentID)
             }
         }
         

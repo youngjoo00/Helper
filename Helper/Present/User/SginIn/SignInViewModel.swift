@@ -35,7 +35,7 @@ final class SignInViewModel: ViewModelType {
             }
         
         input.loginButtonTapped
-            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .withLatestFrom(loginQuery)
             .flatMap { NetworkManager.shared.callAPI(type: UserResponse.Login.self, router: Router.user(.login(query: $0))) }
             .subscribe(with: self) { owner, result in

@@ -44,7 +44,7 @@ final class SignUpViewModel: ViewModelType {
         
         // 이메일 중복확인
         input.nextButtonTapped
-            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .withLatestFrom(input.email)
             .map { UserRequest.ValidationEmail(email: $0) }
             .flatMap { email in

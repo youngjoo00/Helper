@@ -20,6 +20,7 @@ final class DetailPostViewModel: ViewModelType {
         let postDeleteTap: Observable<Void>
         let postEditMenuTap: Observable<Void>
         let storageButtonTap: ControlEvent<Void>
+        let commentDeleteTap: Observable<String>
     }
     
     struct Output {
@@ -38,26 +39,29 @@ final class DetailPostViewModel: ViewModelType {
         let content: Driver<String>
         let comments: Driver<[Comments]>
         let commentsCount: Driver<String>
-        let deleteSuccess: Driver<Void>
-        let errorMessage: Driver<String>
+        let postDeleteSuccess: Driver<Void>
+        let errorAlertMessage: Driver<String>
+        let errorToastMessage: Driver<String>
         let postEditMenuTap: Driver<PostResponse.FetchPost>
         let storageSuccess: Driver<String>
-        let commentSuccess: Driver<Void>
+        let commentCreateSuccess: Driver<Void>
+        let commentDeleteSuccess: Driver<Void>
     }
     
     func transform(input: Input) -> Output {
         
         let postInfo = PublishSubject<PostResponse.FetchPost>()
-        let commentEvent = BehaviorSubject<Void>(value: ())
-        let commentSuccess = PublishRelay<Void>()
-        let storageEvent = BehaviorSubject<Void>(value: ())
+        let fetchInfoTrigger = BehaviorSubject<Void>(value: ())
+        let commentCreateSuccess = PublishRelay<Void>()
+        let commentDeleteSuccess = PublishRelay<Void>()
         let storageSuccess = PublishRelay<Bool>()
-        let deleteSuccess = PublishRelay<Void>()
-        let errorMessage = PublishRelay<String>()
+        let postDeleteSuccess = PublishRelay<Void>()
+        let errorAlertMessage = PublishRelay<String>()
+        let errorToastMessage = PublishRelay<String>()
         
         // 네트워크 통신 - postInfo
-        Observable.combineLatest(input.postID, commentEvent, storageEvent)
-            .flatMap { postID, _, _ in
+        Observable.combineLatest(input.postID, fetchInfoTrigger)
+            .flatMap { postID, _ in
                 NetworkManager.shared.callAPI(type: PostResponse.FetchPost.self, router: Router.post(.postID(id: postID)))
             }
             .subscribe(with: self) { owner, result in
@@ -65,31 +69,49 @@ final class DetailPostViewModel: ViewModelType {
                 case .success(let data):
                     postInfo.onNext(data)
                 case .fail(let fail):
-                    errorMessage.accept(fail.localizedDescription)
+                    errorAlertMessage.accept(fail.localizedDescription)
                     print(fail.localizedDescription)
                 }
             }
             .disposed(by: disposeBag)
         
-        // Comment 요청 구조체 생성
+        // 댓글 요청 구조체 생성
         let commentRequest = Observable.combineLatest(input.postID, input.comment) { postID, comment in
             return CommentRequest.Create(postID: postID, content: CommentRequest.Content(content: comment))
         }
         
-        // 네트워크 통신 - Comment Create
+        // 댓글 등록
         input.commentButtonTap
             .withLatestFrom(input.comment)
             .filter { !$0.isEmpty }
-            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .withLatestFrom(commentRequest)
             .flatMap { NetworkManager.shared.callAPI(type: Comments.self, router: Router.comment(.create($0))) }
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success:
-                    commentEvent.onNext(())
-                    commentSuccess.accept(())
+                    fetchInfoTrigger.onNext(())
+                    commentCreateSuccess.accept(())
                 case .fail(let fail):
-                    errorMessage.accept(fail.localizedDescription)
+                    errorAlertMessage.accept(fail.localizedDescription)
+                    print(fail.localizedDescription)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        // 댓글 삭제
+        input.commentDeleteTap
+            .withLatestFrom(postInfo) { commentID, postInfo in
+                return CommentRequest.Delete(postID: postInfo.postID, commentID: commentID)
+            }
+            .flatMap { NetworkManager.shared.EmptyResponseCallAPI(router: Router.comment(.delete($0))) }
+            .subscribe(with: self) { owner, result in
+                switch result {
+                case .success:
+                    fetchInfoTrigger.onNext(())
+                    commentDeleteSuccess.accept(())
+                case .fail(let fail):
+                    errorToastMessage.accept(fail.localizedDescription)
                     print(fail.localizedDescription)
                 }
             }
@@ -97,22 +119,22 @@ final class DetailPostViewModel: ViewModelType {
         
         // 게시물 삭제
         input.postDeleteTap
-            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .withLatestFrom(input.postID)
             .flatMap { NetworkManager.shared.EmptyResponseCallAPI(router: Router.post(.delete(id: $0))) }
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success:
-                    deleteSuccess.accept(())
+                    postDeleteSuccess.accept(())
                 case .fail(let fail):
-                    errorMessage.accept(fail.localizedDescription)
+                    errorAlertMessage.accept(fail.localizedDescription)
                 }
             }
             .disposed(by: disposeBag)
         
         // 게시물 저장
         input.storageButtonTap
-            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .withLatestFrom(Observable.combineLatest(input.postID, postInfo))
             .flatMap { postID, postInfo in
                 let state = postInfo.storage.filter { $0.checkedUserID }.count >= 1
@@ -121,10 +143,10 @@ final class DetailPostViewModel: ViewModelType {
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let data):
-                    storageEvent.onNext(())
+                    fetchInfoTrigger.onNext(())
                     storageSuccess.accept(data.storageStatus)
                 case .fail(let fail):
-                    errorMessage.accept(fail.localizedDescription)
+                    errorAlertMessage.accept(fail.localizedDescription)
                 }
             }
             .disposed(by: disposeBag)
@@ -210,11 +232,13 @@ final class DetailPostViewModel: ViewModelType {
                       content: content,
                       comments: comments,
                       commentsCount: commentsCount, 
-                      deleteSuccess: deleteSuccess.asDriver(onErrorDriveWith: .empty()),
-                      errorMessage: errorMessage.asDriver(onErrorJustReturn: "알 수 없는 오류입니다"), 
+                      postDeleteSuccess: postDeleteSuccess.asDriver(onErrorDriveWith: .empty()),
+                      errorAlertMessage: errorAlertMessage.asDriver(onErrorJustReturn: "알 수 없는 오류입니다"), 
+                      errorToastMessage: errorToastMessage.asDriver(onErrorJustReturn: "알 수 없는 오류입니다."),
                       postEditMenuTap: postEditMenuTap,
                       storageSuccess: storageSuccess.map { $0 ? "게시글을 저장했어요!" : "게시글 저장을 취소했어요!" }.asDriver(onErrorDriveWith: .empty()),
-                      commentSuccess: commentSuccess.asDriver(onErrorDriveWith: .empty())
+                      commentCreateSuccess: commentCreateSuccess.asDriver(onErrorDriveWith: .empty()), 
+                      commentDeleteSuccess: commentDeleteSuccess.asDriver(onErrorDriveWith: .empty())
         )
     }
 }

@@ -41,14 +41,17 @@ final class DetailPostViewController: BaseViewController {
     
     override func bind() {
         
+        let commentDeleteTap = PublishSubject<String>()
+        
         let input = DetailPostViewModel.Input(postID: postIDSubject,
                                               comment: mainView.commentWriteSubject,
                                               commentButtonTap: mainView.commentWriteButton.rx.tap,
                                               postDeleteTap: postDeleteTap,
                                               postEditMenuTap: postEditMenuTap, 
-                                              storageButtonTap: mainView.storageButton.rx.tap
+                                              storageButtonTap: mainView.storageButton.rx.tap, 
+                                              commentDeleteTap: commentDeleteTap
         )
-        
+                
         mainView.commentWriteTextField.rx.text.orEmpty
             .bind(to: mainView.commentWriteSubject)
             .disposed(by: disposeBag)
@@ -116,10 +119,22 @@ final class DetailPostViewController: BaseViewController {
             .drive(mainView.contentValueLabel.rx.text)
             .disposed(by: disposeBag)
         
+        // 댓글 TableView 구성
         output.comments
             .drive(mainView.commentsTableView.rx.items(cellIdentifier: CommentsTableViewCell.id,
                                                        cellType: CommentsTableViewCell.self)) { row, item, cell in
                 cell.updateView(item)
+                
+                // deleteMenu 선택 시 commentID 방출
+                cell.deleteSubject
+                    .bind(to: commentDeleteTap)
+                    .disposed(by: cell.disposeBag)
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.commentsTableView.rx.modelSelected(Comments.self)
+            .subscribe(with: self) { owner, data in
+                print(data)
             }
             .disposed(by: disposeBag)
         
@@ -131,14 +146,21 @@ final class DetailPostViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         // 댓글 성공
-        output.commentSuccess
+        output.commentCreateSuccess
             .drive(with: self) { owner, _ in
                 owner.mainView.updateCommentTextField()
             }
             .disposed(by: disposeBag)
         
-        // 삭제 성공
-        output.deleteSuccess
+        output.commentDeleteSuccess
+            .drive(with: self) { owner, _ in
+                owner.showTaost("댓글을 삭제했습니다")
+                owner.mainView.updateCommentTextField()
+            }
+            .disposed(by: disposeBag)
+        
+        // 게시글 삭제 성공
+        output.postDeleteSuccess
             .drive(with: self) { owner, _ in
                 let vc = FindingViewController()
                 vc.fetchTrigger.onNext(())
@@ -153,12 +175,19 @@ final class DetailPostViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        // 에러 메세지
-        output.errorMessage
+        // 에러 Alert
+        output.errorAlertMessage
             .drive(with: self) { owner, message in
                 owner.showAlert(title: "오류!", message: message) {
                     owner.navigationController?.popViewController(animated: true)
                 }
+            }
+            .disposed(by: disposeBag)
+        
+        // 에러 Toast
+        output.errorToastMessage
+            .drive(with: self) { owner, message in
+                owner.showTaost(message)
             }
             .disposed(by: disposeBag)
         
