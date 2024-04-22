@@ -15,16 +15,16 @@ final class FindingView: BaseView {
     lazy var regionSubject = BehaviorSubject(value: regionButton.configuration?.title ?? "")
     
     let categorySegmentControl = UISegmentedControl().then {
-        $0.insertSegment(withTitle: "사람", at: 0, animated: false)
-        $0.insertSegment(withTitle: "애완동물", at: 1, animated: false)
-        $0.insertSegment(withTitle: "물품", at: 2, animated: false)
+        $0.insertSegment(withTitle: HelperString.categoryPerson, at: 0, animated: false)
+        $0.insertSegment(withTitle: HelperString.categoryAnimal, at: 1, animated: false)
+        $0.insertSegment(withTitle: HelperString.categoryThing, at: 2, animated: false)
         $0.selectedSegmentIndex = 0
         $0.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .selected)
         $0.setTitleTextAttributes([.foregroundColor: UIColor.lightGray], for: .normal)
         $0.apportionsSegmentWidthsByContent = true
     }
     
-    let regionButton = MenuButton(title: "서울특별시").then {
+    let regionButton = MenuButton(title: HelperString.regions[0]).then {
         $0.showsMenuAsPrimaryAction = true
     }
     
@@ -61,26 +61,7 @@ final class FindingView: BaseView {
     }
     
     override func configureView() {
-        let regionActions = [
-            "서울특별시",
-            "부산광역시",
-            "대구광역시",
-            "인천광역시",
-            "광주광역시",
-            "대전광역시",
-            "울산광역시",
-            "세종특별자치시",
-            "경기도",
-            "강원도",
-            "충청북도",
-            "충청남도",
-            "전라북도",
-            "전라남도",
-            "경상북도",
-            "경상남도",
-            "제주특별자치도"
-        ]
-        configureMenu(regionButton, menuTitle: "지역을 선택하세요", actions: regionActions)
+        configureMenu(regionButton, menuTitle: "지역을 선택하세요", actions: HelperString.regions)
     }
 }
 

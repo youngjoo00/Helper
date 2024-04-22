@@ -13,19 +13,24 @@ final class MyPostViewController: BaseViewController {
 
     private let mainView = MyPostView()
     private let viewModel = MyPostViewModel()
-    let postsID: BehaviorSubject<[String]> = BehaviorSubject(value: [])
-    
+    let fetchPostsTrigger = PublishSubject<Void>()
     override func loadView() {
         view = mainView
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func bind() {
 
-        let input = MyPostViewModel.Input(postID: postsID)
+        let input = MyPostViewModel.Input(
+            fetchPostsTrigger: fetchPostsTrigger,
+            reachedBottomTrigger: mainView.collectionView.rx.reachedBottom(),
+            refreshControlTrigger: mainView.refreshControl.rx.controlEvent(.valueChanged)
+        )
         let output = viewModel.transform(input: input)
         
         output.posts
@@ -34,5 +39,12 @@ final class MyPostViewController: BaseViewController {
                 cell.updateView(item)
             }
             .disposed(by: disposeBag)
+
+        // refreshControl
+        output.isLoading
+            .delay(.seconds(1))
+            .drive(mainView.refreshControl.rx.isRefreshing)
+            .disposed(by: disposeBag)
+
     }
 }

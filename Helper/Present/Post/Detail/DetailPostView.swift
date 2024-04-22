@@ -50,7 +50,9 @@ final class DetailPostView: BaseView {
     let phoneValueLabel = PointLabel("연락처", fontSize: 17)
     
     let contentLabel = PointLabel("내용", fontSize: 17)
-    let contentValueLabel = PointLabel(fontSize: 17)
+    let contentValueLabel = PointLabel(fontSize: 17).then {
+        $0.numberOfLines = 0
+    }
 
     let commentsLabel = PointLabel("0개의 댓글", fontSize: 17)
     let commentsTableView = BaseTableView().then {

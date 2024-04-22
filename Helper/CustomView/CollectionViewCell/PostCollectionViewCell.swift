@@ -68,6 +68,7 @@ final class PostCollectionViewCell: BaseCollectionViewCell {
     override func configureView() {
         
     }
+    
 }
 
 extension PostCollectionViewCell {

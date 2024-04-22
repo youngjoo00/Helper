@@ -125,6 +125,8 @@
 		8ED3AE222BD15C960040DA58 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3AE212BD15C960040DA58 /* CommentsTableViewCell.swift */; };
 		8ED3AE242BD171C10040DA58 /* DetailPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3AE232BD171C10040DA58 /* DetailPostCollectionViewCell.swift */; };
 		8ED8B7432BD556BC009B4387 /* TransitionStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7422BD556BC009B4387 /* TransitionStyle.swift */; };
+		8ED8B7572BD65C9E009B4387 /* HelperString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7562BD65C9E009B4387 /* HelperString.swift */; };
+		8ED8B7592BD6913D009B4387 /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7582BD6913D009B4387 /* UIScrollView+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -238,6 +240,8 @@
 		8ED3AE212BD15C960040DA58 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
 		8ED3AE232BD171C10040DA58 /* DetailPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostCollectionViewCell.swift; sourceTree = "<group>"; };
 		8ED8B7422BD556BC009B4387 /* TransitionStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionStyle.swift; sourceTree = "<group>"; };
+		8ED8B7562BD65C9E009B4387 /* HelperString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperString.swift; sourceTree = "<group>"; };
+		8ED8B7582BD6913D009B4387 /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -512,6 +516,7 @@
 				8E9A3FD12BCD8455005E4F45 /* UICollectionViewLayout+.swift */,
 				8EA59D142BD28284009938E0 /* String+.swift */,
 				8ED8B7422BD556BC009B4387 /* TransitionStyle.swift */,
+				8ED8B7582BD6913D009B4387 /* UIScrollView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -554,6 +559,7 @@
 			isa = PBXGroup;
 			children = (
 				8E1BAE8B2BC9800B00A65075 /* Color.swift */,
+				8ED8B7562BD65C9E009B4387 /* HelperString.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -868,12 +874,14 @@
 				8E1BAE262BC968E500A65075 /* NicknameViewController.swift in Sources */,
 				8E17A3192BCAC59400581B58 /* MyPostViewModel.swift in Sources */,
 				8E887CDB2BD417D600E95008 /* MenuButton.swift in Sources */,
+				8ED8B7572BD65C9E009B4387 /* HelperString.swift in Sources */,
 				8E1BAE272BC968E500A65075 /* NicknameViewModel.swift in Sources */,
 				8E9A40102BCFBB36005E4F45 /* PostRequest.swift in Sources */,
 				8E1BADFC2BC968C100A65075 /* ReusableID.swift in Sources */,
 				8E17A3002BCA80B900581B58 /* FoundViewController.swift in Sources */,
 				8E9A3FF82BCEE2CE005E4F45 /* UserResponse.swift in Sources */,
 				8E1BAE522BC96AC500A65075 /* TabBarController.swift in Sources */,
+				8ED8B7592BD6913D009B4387 /* UIScrollView+.swift in Sources */,
 				8E9A3FE82BCEBDA8005E4F45 /* WritePostViewModel.swift in Sources */,
 				8E1BAEA02BC99F3200A65075 /* PointBoldLabel.swift in Sources */,
 				8E9A3FFA2BCEE2D5005E4F45 /* PostResponse.swift in Sources */,

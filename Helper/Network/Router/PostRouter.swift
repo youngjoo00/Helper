@@ -10,7 +10,7 @@ import Alamofire
 import UIKit
 
 enum PostRouter {
-    case posts(next: String, productID: String, hashTag: String)
+    case fetchHashTag(query: PostRequest.FetchHashTag)
     case postID(id: String)
     case image(url: String)
     case uploadImage
@@ -18,6 +18,8 @@ enum PostRouter {
     case update(query: PostRequest.Write, id: String)
     case delete(id: String)
     case storage(query: PostRequest.StorageStatus, id: String)
+    case fetchStorage(next: String)
+    case otherUserFetchPosts(next: String, userID: String)
 }
 
 extension PostRouter: TargetType {
@@ -31,7 +33,7 @@ extension PostRouter: TargetType {
             HTTPHeader.sesacKey.rawValue: PrivateKey.sesac.rawValue
         ]
         switch self {
-        case .posts, .postID, .create, .update, .delete, .storage:
+        case .fetchHashTag, .postID, .create, .update, .delete, .storage, .fetchStorage, .otherUserFetchPosts:
             return baseHeader
         case .image:
             var headers = baseHeader
@@ -48,8 +50,8 @@ extension PostRouter: TargetType {
         let version = PathVersion.v1.rawValue
         let posts = "/posts"
         switch self {
-        case .posts:
-            return version + posts
+        case .fetchHashTag:
+            return version + posts + "/hashtags"
         case .postID(let id):
             return version + posts + "/\(id)"
         case .image(let url):
@@ -64,12 +66,16 @@ extension PostRouter: TargetType {
             return version + posts + "/\(id)"
         case .storage(let query, let id):
             return version + posts + "/\(id)" + "/like"
+        case .fetchStorage:
+            return version + posts + "/likes/me"
+        case .otherUserFetchPosts(let next, let userID):
+            return version + posts + "/users" + "/\(userID)"
         }
     }
     
     var method: Alamofire.HTTPMethod {
         switch self {
-        case .posts:
+        case .fetchHashTag:
             return .get
         case .postID:
             return .get
@@ -85,26 +91,40 @@ extension PostRouter: TargetType {
             return .put
         case .storage:
             return .post
+        case .fetchStorage:
+            return .get
+        case .otherUserFetchPosts:
+            return .get
         }
     }
     
     var queryItems: [URLQueryItem]? {
         switch self {
-        case .posts(let next, let productID, let hashTag):
+        case .fetchHashTag(let query):
             return [
-                URLQueryItem(name: "next", value: next),
-                URLQueryItem(name: "limit", value: "200"),
-                URLQueryItem(name: "product_id", value: productID),
-                URLQueryItem(name: "hashTag", value: hashTag)
+                URLQueryItem(name: "next", value: query.next),
+                URLQueryItem(name: "limit", value: "50"),
+                URLQueryItem(name: "product_id", value: query.productID),
+                URLQueryItem(name: "hashTag", value: query.hashTag)
             ]
         case .postID, .image, .uploadImage, .create, .update, .delete, .storage:
             return nil
+        case .fetchStorage(let next):
+            return [
+                URLQueryItem(name: "next", value: next),
+                URLQueryItem(name: "limit", value: "50"),
+            ]
+        case .otherUserFetchPosts(let next, let id):
+            return [
+                URLQueryItem(name: "next", value: next),
+                URLQueryItem(name: "limit", value: "6"),
+            ]
         }
     }
     
     var parameters: String? {
         switch self {
-        case .posts, .postID, .image, .uploadImage, .create, .update, .delete, .storage:
+        case .fetchHashTag, .postID, .image, .uploadImage, .create, .update, .delete, .storage, .fetchStorage, .otherUserFetchPosts:
             return nil
         }
     }
@@ -112,7 +132,7 @@ extension PostRouter: TargetType {
     var body: Data? {
         let encoder = JSONEncoder()
         switch self {
-        case .posts:
+        case .fetchHashTag:
             return nil
         case .postID:
             return nil
@@ -128,6 +148,10 @@ extension PostRouter: TargetType {
             return nil
         case .storage(let query, let id):
             return try? encoder.encode(query)
+        case .fetchStorage(next: let next):
+            return nil
+        case .otherUserFetchPosts:
+            return nil
         }
     }
 }

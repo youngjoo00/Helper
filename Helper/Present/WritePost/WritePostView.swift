@@ -236,32 +236,13 @@ final class WritePostView: BaseView {
     }
     
     override func configureView() {
-        let hashtagActions = ["찾고있어요", "찾았어요"]
+        let hashtagActions = [HelperString.hashTagFinding, HelperString.hashTagFound]
         configureMenu(hashtagButton, menuTitle: "상태를 선택하세요", actions: hashtagActions)
         
-        let categoryActions = ["사람", "동물", "물품"]
+        let categoryActions = [HelperString.categoryPerson, HelperString.categoryAnimal, HelperString.categoryThing]
         configureMenu(categoryButton, menuTitle: "카테고리를 선택하세요", actions: categoryActions)
         
-        let regionActions = [
-            "서울특별시",
-            "부산광역시",
-            "대구광역시",
-            "인천광역시",
-            "광주광역시",
-            "대전광역시",
-            "울산광역시",
-            "세종특별자치시",
-            "경기도",
-            "강원도",
-            "충청북도",
-            "충청남도",
-            "전라북도",
-            "전라남도",
-            "경상북도",
-            "경상남도",
-            "제주특별자치도"
-        ]
-        configureMenu(regionButton, menuTitle: "지역을 선택하세요", actions: regionActions)
+        configureMenu(regionButton, menuTitle: "지역을 선택하세요", actions: HelperString.regions)
     }
     
     override func layoutSubviews() {

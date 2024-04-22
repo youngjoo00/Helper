@@ -10,8 +10,11 @@ import Then
 
 final class MyPostView: BaseView {
     
+    let refreshControl = UIRefreshControl()
+    
     lazy var collectionView = BaseCollectionView(frame: .zero, collectionViewLayout: .postCollectionViewLayout()).then {
         $0.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: PostCollectionViewCell.id)
+        $0.refreshControl = refreshControl
     }
     
     override func configureHierarchy() {

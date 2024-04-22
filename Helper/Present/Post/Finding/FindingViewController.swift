@@ -30,7 +30,8 @@ final class FindingViewController: BaseViewController {
         
         let input = FindingViewModel.Input(fetchTrigger: fetchTrigger,
                                            region: mainView.regionSubject,
-                                           category: mainView.categorySegmentControl.rx.selectedSegmentIndex
+                                           category: mainView.categorySegmentControl.rx.selectedSegmentIndex,
+                                           reachedBottomTrigger: mainView.collectionView.rx.reachedBottom()
         )
         
         let output = viewModel.transform(input: input)
