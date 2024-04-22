@@ -67,7 +67,7 @@ extension PostRouter: TargetType {
         case .storage(let query, let id):
             return version + posts + "/\(id)" + "/like"
         case .fetchStorage:
-            return version + posts + "/likes/me"
+            return version + posts + "/likes" + "/me"
         case .otherUserFetchPosts(let next, let userID):
             return version + posts + "/users" + "/\(userID)"
         }

@@ -50,6 +50,7 @@ final class MyPostViewModel: ViewModelType {
             .flatMap { next -> Observable<APIResult<PostResponse.Posts>> in
                 isLoading.accept(true)
                 if next == "0" {
+                    isLoading.accept(false)
                     return .empty()
                 } else {
                     return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.otherUserFetchPosts(next: next, userID: myID))).asObservable()

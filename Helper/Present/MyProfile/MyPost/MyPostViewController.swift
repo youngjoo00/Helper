@@ -14,6 +14,7 @@ final class MyPostViewController: BaseViewController {
     private let mainView = MyPostView()
     private let viewModel = MyPostViewModel()
     let fetchPostsTrigger = PublishSubject<Void>()
+    
     override func loadView() {
         view = mainView
         
