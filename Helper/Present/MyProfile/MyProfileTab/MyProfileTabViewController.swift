@@ -40,6 +40,7 @@ final class MyProfileTabViewController: TabmanViewController {
 extension MyProfileTabViewController {
 
     private func configureView() {
+        
         let myPostVC = MyPostViewController()
         let myStorageVC = MyStoragePostViewController()
         

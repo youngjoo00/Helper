@@ -47,5 +47,13 @@ final class MyStoragePostViewController: BaseViewController {
             .drive(mainView.refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
 
+        // Transition DetailVC
+        mainView.collectionView.rx.modelSelected(PostResponse.FetchPost.self)
+            .subscribe(with: self) { owner, data in
+                let vc = DetailPostViewController()
+                vc.postID = data.postID
+                owner.transition(viewController: vc, style: .hideBottomPush)
+            }
+            .disposed(by: disposeBag)
     }
 }

@@ -60,7 +60,6 @@ final class DetailPostViewController: BaseViewController {
               
         output.checkedUserID
             .drive(with: self) { owner, value in
-                owner.mainView.storageButton.isHidden = value
                 owner.navigationItem.rightBarButtonItem?.isHidden = value
             }
             .disposed(by: disposeBag)
