@@ -56,8 +56,8 @@ final class MyPostViewModel: ViewModelType {
                     return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.otherUserFetchPosts(next: next, userID: myID))).asObservable()
                 }
             }
+            .delay(.seconds(1), scheduler: MainScheduler.instance)
             .subscribe(with: self) { owner, result in
-                print("실행합니다")
                 switch result {
                 case .success(let data):
                     do {

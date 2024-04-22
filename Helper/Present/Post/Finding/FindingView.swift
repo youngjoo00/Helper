@@ -14,6 +14,8 @@ final class FindingView: BaseView {
 
     lazy var regionSubject = BehaviorSubject(value: regionButton.configuration?.title ?? "")
     
+    let refreshControl = UIRefreshControl()
+    
     let categorySegmentControl = UISegmentedControl().then {
         $0.insertSegment(withTitle: HelperString.categoryPerson, at: 0, animated: false)
         $0.insertSegment(withTitle: HelperString.categoryAnimal, at: 1, animated: false)
@@ -28,8 +30,9 @@ final class FindingView: BaseView {
         $0.showsMenuAsPrimaryAction = true
     }
     
-    let collectionView = BaseCollectionView(frame: .zero, collectionViewLayout: .postCollectionViewLayout()).then {
+    lazy var collectionView = BaseCollectionView(frame: .zero, collectionViewLayout: .postCollectionViewLayout()).then {
         $0.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: PostCollectionViewCell.id)
+        $0.refreshControl = refreshControl
     }
     
     override func configureHierarchy() {

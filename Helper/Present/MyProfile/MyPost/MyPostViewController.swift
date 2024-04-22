@@ -43,7 +43,6 @@ final class MyPostViewController: BaseViewController {
 
         // refreshControl
         output.isLoading
-            .delay(.seconds(1))
             .drive(mainView.refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
 

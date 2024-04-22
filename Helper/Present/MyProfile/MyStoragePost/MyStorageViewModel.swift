@@ -27,10 +27,8 @@ final class MyStorageViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         
-        let myID = UserDefaultsManager.shared.getUserID()
         let posts: BehaviorRelay<[PostResponse.FetchPost]> = BehaviorRelay(value: [])
         let next = BehaviorSubject(value: "")
-        let fetchTrigger = BehaviorSubject(value: ())
         
         let errorAlertMessage = PublishRelay<String>()
         let isLoading = PublishRelay<Bool>()
@@ -56,8 +54,8 @@ final class MyStorageViewModel: ViewModelType {
                     return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchStorage(next: next))).asObservable()
                 }
             }
+            .delay(.seconds(1), scheduler: MainScheduler.instance)
             .subscribe(with: self) { owner, result in
-                print("실행합니다")
                 switch result {
                 case .success(let data):
                     do {
@@ -78,6 +76,7 @@ final class MyStorageViewModel: ViewModelType {
                     errorAlertMessage.accept(fail.localizedDescription)
                     print(fail.localizedDescription)
                 }
+                
                 isLoading.accept(false)
             }
             .disposed(by: disposeBag)
