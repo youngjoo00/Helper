@@ -161,7 +161,7 @@ final class DetailPostView: BaseView {
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(imageCollectionView.snp.bottom).offset(10)
+            make.top.equalTo(pageControl.snp.bottom)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
         }
         
@@ -269,7 +269,6 @@ final class DetailPostView: BaseView {
         super.layoutSubviews()
         
         commentsTableViewHeightUpdate()
-
     }
     
 }
@@ -300,6 +299,18 @@ extension DetailPostView {
         commentWriteTextField.text = ""
         commentWriteSubject.onNext("")
     }
+    
+    func titleLabelLayoutUpdate() {
+        titleLabel.snp.remakeConstraints { make in
+            if pageControl.isHidden {
+                make.top.equalTo(imageCollectionView.snp.bottom).offset(10)
+            } else {
+                make.top.equalTo(pageControl.snp.bottom)
+            }
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
+        }
+    }
+
 }
 
 

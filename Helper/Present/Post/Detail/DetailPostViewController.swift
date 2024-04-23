@@ -81,10 +81,14 @@ final class DetailPostViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        // 페이지 총 개수
+        // 페이지 총 개수 / hidden 처리
         output.files
-            .map { $0.count }
-            .drive(mainView.pageControl.rx.numberOfPages)
+            .drive(with: self) { owner, value in
+                let count = value.count
+                owner.mainView.pageControl.numberOfPages = count
+                owner.mainView.pageControl.isHidden = count == 1
+                owner.mainView.titleLabelLayoutUpdate()
+            }
             .disposed(by: disposeBag)
         
         // 현재 페이지
