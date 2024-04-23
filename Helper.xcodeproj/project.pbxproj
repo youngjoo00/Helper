@@ -127,6 +127,7 @@
 		8ED8B7432BD556BC009B4387 /* TransitionStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7422BD556BC009B4387 /* TransitionStyle.swift */; };
 		8ED8B7572BD65C9E009B4387 /* HelperString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7562BD65C9E009B4387 /* HelperString.swift */; };
 		8ED8B7592BD6913D009B4387 /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7582BD6913D009B4387 /* UIScrollView+.swift */; };
+		8ED8B76C2BD80FFD009B4387 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B76B2BD80FFD009B4387 /* EventManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -242,6 +243,7 @@
 		8ED8B7422BD556BC009B4387 /* TransitionStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionStyle.swift; sourceTree = "<group>"; };
 		8ED8B7562BD65C9E009B4387 /* HelperString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperString.swift; sourceTree = "<group>"; };
 		8ED8B7582BD6913D009B4387 /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
+		8ED8B76B2BD80FFD009B4387 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -489,6 +491,7 @@
 				8E1BAE3C2BC968F100A65075 /* UserDefaultsManager.swift */,
 				8E1BAE4E2BC96AA600A65075 /* DateManager.swift */,
 				8E17A2E72BCA3E6500581B58 /* SignUpManager.swift */,
+				8ED8B76B2BD80FFD009B4387 /* EventManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -886,6 +889,7 @@
 				8E1BAEA02BC99F3200A65075 /* PointBoldLabel.swift in Sources */,
 				8E9A3FFA2BCEE2D5005E4F45 /* PostResponse.swift in Sources */,
 				8E1BAE462BC968F900A65075 /* UIViewController+.swift in Sources */,
+				8ED8B76C2BD80FFD009B4387 /* EventManager.swift in Sources */,
 				8EA59D0D2BD25B3C009938E0 /* ImageButton.swift in Sources */,
 				8ED3AE202BD14B9B0040DA58 /* DetailPostViewModel.swift in Sources */,
 				8ED3AE242BD171C10040DA58 /* DetailPostCollectionViewCell.swift in Sources */,

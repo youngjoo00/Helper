@@ -23,10 +23,22 @@ final class FindingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchTrigger.onNext(())
     }
     
     override func bind() {
+        
+        EventManager.shared.postWriteTrigger
+            .subscribe(with: self) { owner, _ in
+                owner.fetchTrigger.onNext(())
+            }
+            .disposed(by: disposeBag)
+        
+        fetchTrigger
+            .debug("패치트리거")
+            .subscribe(with: self) { owner, _ in
+                print("감지")
+            }
+            .disposed(by: disposeBag)
         
         let input = FindingViewModel.Input(fetchTrigger: fetchTrigger,
                                            region: mainView.regionSubject,
@@ -49,6 +61,7 @@ final class FindingViewController: BaseViewController {
             .drive(mainView.refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
 
+        // viewDidLoad 부터 fetchTrigger 를 여기서 담당함
         Observable.combineLatest(mainView.regionSubject, mainView.categorySegmentControl.rx.selectedSegmentIndex)
             .subscribe(with: self) { owner, _ in
                 input.fetchTrigger.onNext(())

@@ -27,6 +27,12 @@ final class MyPostViewController: BaseViewController {
     
     override func bind() {
 
+        EventManager.shared.postWriteTrigger
+            .subscribe(with: self) { owner, _ in
+                owner.fetchPostsTrigger.onNext(())
+            }
+            .disposed(by: disposeBag)
+        
         let input = MyPostViewModel.Input(
             fetchPostsTrigger: fetchPostsTrigger,
             reachedBottomTrigger: mainView.collectionView.rx.reachedBottom(),

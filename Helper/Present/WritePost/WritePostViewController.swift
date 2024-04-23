@@ -54,9 +54,8 @@ final class WritePostViewController: BaseViewController {
         
         switch postMode {
         case .create:
+            // 부모 뷰 컨트롤러나 네비게이션 스택에서 제거될 때 true 가 되면서 실행
             if self.isMovingFromParent {
-                let vc = FindingViewController()
-                vc.fetchTrigger.onNext(())
                 self.tabBarController?.selectedIndex = 0
             }
         case .update:
@@ -140,6 +139,7 @@ final class WritePostViewController: BaseViewController {
         output.isWriteComplete
             .drive(with: self) { owner, complete in
                 owner.showAlert(title: "성공!", message: "게시물 \(complete)에 성공했습니다") {
+                    EventManager.shared.postWriteTrigger.onNext(())
                     owner.navigationController?.popViewController(animated: true)
                 }
             }

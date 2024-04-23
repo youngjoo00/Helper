@@ -27,7 +27,7 @@ extension UIImageView {
                 options: [.requestModifier(modifier)]) { response in
                     switch response {
                     case .success:
-                        print("이미지 불러오기 성공")
+                        return
                     case .failure(let error):
                         if case .responseError(reason: let reason) = error {
                             switch reason {
