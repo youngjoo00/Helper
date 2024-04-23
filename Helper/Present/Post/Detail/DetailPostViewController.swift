@@ -73,10 +73,25 @@ final class DetailPostViewController: BaseViewController {
             .drive(mainView.regDateLabel.rx.text)
             .disposed(by: disposeBag)
         
+        // 이미지 콜렉션뷰
         output.files
             .drive(mainView.imageCollectionView.rx.items(cellIdentifier: DetailPostCollectionViewCell.id,
                                                          cellType: DetailPostCollectionViewCell.self)) { row, item, cell in
                 cell.updateView(item)
+            }
+            .disposed(by: disposeBag)
+        
+        // 페이지 총 개수
+        output.files
+            .map { $0.count }
+            .drive(mainView.pageControl.rx.numberOfPages)
+            .disposed(by: disposeBag)
+        
+        // 현재 페이지
+        mainView.imageCollectionView.rx.didEndDecelerating
+            .subscribe(with: self) { owner, _ in
+                let currentPage = owner.mainView.imageCollectionView.contentOffset.x / owner.mainView.imageCollectionView.frame.width
+                owner.mainView.pageControl.currentPage = Int(currentPage)
             }
             .disposed(by: disposeBag)
         
@@ -87,7 +102,7 @@ final class DetailPostViewController: BaseViewController {
         output.category
             .drive(mainView.categoryLabel.rx.text)
             .disposed(by: disposeBag)
-        
+
         output.hashTag
             .drive(mainView.hashTagLabel.rx.text)
             .disposed(by: disposeBag)

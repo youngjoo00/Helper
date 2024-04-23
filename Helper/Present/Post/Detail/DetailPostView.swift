@@ -31,6 +31,11 @@ final class DetailPostView: BaseView {
         $0.isPagingEnabled = true
     }
     
+    let pageControl = UIPageControl().then {
+        $0.currentPageIndicatorTintColor = .black
+        $0.pageIndicatorTintColor = .lightGray
+    }
+    
     let titleLabel = PointLabel(fontSize: 20)
     
     let featureLabel = PointLabel("특징", fontSize: 17)
@@ -85,6 +90,7 @@ final class DetailPostView: BaseView {
             hashTagLabel,
             storageButton,
             imageCollectionView,
+            pageControl,
             titleLabel,
             featureLabel,
             featureValueLabel,
@@ -147,6 +153,11 @@ final class DetailPostView: BaseView {
             make.top.equalTo(categoryLabel.snp.bottom).offset(10)
             make.horizontalEdges.equalToSuperview()
             make.height.equalTo(UIScreen.main.bounds.width)
+        }
+        
+        pageControl.snp.makeConstraints { make in
+            make.top.equalTo(imageCollectionView.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
         }
         
         titleLabel.snp.makeConstraints { make in
