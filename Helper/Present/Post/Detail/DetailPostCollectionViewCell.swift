@@ -11,10 +11,8 @@ import Kingfisher
 
 final class DetailPostCollectionViewCell: BaseCollectionViewCell {
     
-    let imageView = UIImageView().then {
-        $0.backgroundColor = .lightGray
-    }
-    
+    let imageView = lightGrayBackgroundImageView()
+        
     override func configureHierarchy() {
         [
             imageView,
@@ -35,8 +33,6 @@ final class DetailPostCollectionViewCell: BaseCollectionViewCell {
 extension DetailPostCollectionViewCell {
     
     func updateView(_ file: String) {
-        imageView.loadImage(urlString: file) { bool in
-            
-        }
+        imageView.loadImage(urlString: file)
     }
 }

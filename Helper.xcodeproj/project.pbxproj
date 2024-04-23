@@ -82,7 +82,7 @@
 		8E1BAE712BC97D5D00A65075 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE6D2BC97D5D00A65075 /* BaseCollectionViewCell.swift */; };
 		8E1BAE722BC97D5D00A65075 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE6E2BC97D5D00A65075 /* BaseView.swift */; };
 		8E1BAE732BC97D5D00A65075 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE6F2BC97D5D00A65075 /* BaseTableViewCell.swift */; };
-		8E1BAE802BC97D9600A65075 /* shadowImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE782BC97D9600A65075 /* shadowImageView.swift */; };
+		8E1BAE802BC97D9600A65075 /* lightGrayBackgroundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE782BC97D9600A65075 /* lightGrayBackgroundImageView.swift */; };
 		8E1BAE862BC97FDE00A65075 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE852BC97FDE00A65075 /* SignInView.swift */; };
 		8E1BAE892BC97FF800A65075 /* PointTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE872BC97FF700A65075 /* PointTextField.swift */; };
 		8E1BAE8A2BC97FF800A65075 /* PointButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE882BC97FF800A65075 /* PointButton.swift */; };
@@ -199,7 +199,7 @@
 		8E1BAE6D2BC97D5D00A65075 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E1BAE6E2BC97D5D00A65075 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		8E1BAE6F2BC97D5D00A65075 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
-		8E1BAE782BC97D9600A65075 /* shadowImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shadowImageView.swift; sourceTree = "<group>"; };
+		8E1BAE782BC97D9600A65075 /* lightGrayBackgroundImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = lightGrayBackgroundImageView.swift; sourceTree = "<group>"; };
 		8E1BAE852BC97FDE00A65075 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		8E1BAE872BC97FF700A65075 /* PointTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointTextField.swift; sourceTree = "<group>"; };
 		8E1BAE882BC97FF800A65075 /* PointButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointButton.swift; sourceTree = "<group>"; };
@@ -670,7 +670,7 @@
 		8EA59D112BD25B66009938E0 /* ImageView */ = {
 			isa = PBXGroup;
 			children = (
-				8E1BAE782BC97D9600A65075 /* shadowImageView.swift */,
+				8E1BAE782BC97D9600A65075 /* lightGrayBackgroundImageView.swift */,
 			);
 			path = ImageView;
 			sourceTree = "<group>";
@@ -817,7 +817,7 @@
 				8E1BAE212BC968E500A65075 /* PasswordViewModel.swift in Sources */,
 				8E17A2EA2BCA59C100581B58 /* BirthdayView.swift in Sources */,
 				8EA59CE92BD19D56009938E0 /* PathVersion.swift in Sources */,
-				8E1BAE802BC97D9600A65075 /* shadowImageView.swift in Sources */,
+				8E1BAE802BC97D9600A65075 /* lightGrayBackgroundImageView.swift in Sources */,
 				8E17A2F72BCA7F1D00581B58 /* PostTabViewController.swift in Sources */,
 				8E1BAE232BC968E500A65075 /* SignUpViewController.swift in Sources */,
 				8E9A3FE62BCEBD98005E4F45 /* WritePostViewController.swift in Sources */,

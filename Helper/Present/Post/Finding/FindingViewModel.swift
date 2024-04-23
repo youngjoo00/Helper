@@ -54,6 +54,7 @@ final class FindingViewModel: ViewModelType {
 
         // 5. 이제 진짜 콜 합시다
         
+        // 네트워크 통신 트리거
         let loadDataTrigger = Observable.merge(
             Observable.merge(input.fetchTrigger, input.refreshControlTrigger.asObservable()).do(onNext: { _ in
                 next.onNext("")
@@ -61,11 +62,13 @@ final class FindingViewModel: ViewModelType {
             input.reachedBottomTrigger.asObservable()
         )
         
+        // 요청 모델
         let requestModel = Observable.combineLatest(next, input.region, category) { next, region, category in
             let productID = region == HelperString.regions[0] ? "" : "\(region)_\(category)"
             return PostRequest.FetchHashTag(next: next, productID: productID, hashTag: HelperString.hashTagFinding)
         }
         
+        // 네트워크 통신
         loadDataTrigger
             .withLatestFrom(requestModel)
             .flatMap { requestModel -> Observable<(String, APIResult<PostResponse.Posts>)> in

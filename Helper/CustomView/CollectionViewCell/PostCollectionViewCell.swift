@@ -11,9 +11,7 @@ import Kingfisher
 
 final class PostCollectionViewCell: BaseCollectionViewCell {
     
-    let imageView = UIImageView().then {
-        $0.backgroundColor = .lightGray
-    }
+    let imageView = lightGrayBackgroundImageView()
     let titleLabel = PointBoldLabel(fontSize: 17)
     let featureLabel = PointLabel(fontSize: 15)
     let dateLabel = PointLabel(fontSize: 15)
@@ -74,17 +72,7 @@ final class PostCollectionViewCell: BaseCollectionViewCell {
 extension PostCollectionViewCell {
     
     func updateView(_ data: PostResponse.FetchPost) {
-        activityIndicator.startAnimating()
-        
-        imageView.loadImage(urlString: data.files[0]) { [weak self] result in
-            guard let self else { return }
-            if result {
-                activityIndicator.stopAnimating()
-            } else {
-                // 실패케이스 처리 고민합시다
-            }
-            
-        }
+        imageView.loadImage(urlString: data.files[0])
         
         titleLabel.text = data.title
         featureLabel.text = data.feature

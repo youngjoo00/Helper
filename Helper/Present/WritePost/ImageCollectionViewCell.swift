@@ -11,8 +11,7 @@ import Kingfisher
 
 final class ImageCollectionViewCell: BaseCollectionViewCell {
     
-    let imageView = UIImageView().then {
-        $0.backgroundColor = .lightGray
+    let imageView = lightGrayBackgroundImageView().then {
         $0.clipsToBounds = true
         $0.layer.cornerRadius = 8
     }
@@ -37,9 +36,6 @@ final class ImageCollectionViewCell: BaseCollectionViewCell {
 extension ImageCollectionViewCell {
     
     func updateImageView(_ urlString: String) {
-        print(urlString)
-        imageView.loadImage(urlString: urlString) { _ in
-            print("성공??")
-        }
+        imageView.loadImage(urlString: urlString)
     }
 }
