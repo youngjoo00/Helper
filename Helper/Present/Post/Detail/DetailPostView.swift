@@ -21,8 +21,8 @@ final class DetailPostView: BaseView {
     let nicknameLabel = PointBoldLabel(fontSize: 18)
     let regDateLabel = PointLabel(fontSize: 15)
     
-    let categoryLabel = PointLabel(fontSize: 20)
-    let hashTagLabel = PointBoldLabel(fontSize: 20)
+    let categoryLabel = PointLabel(fontSize: 16)
+    let hashTagLabel = PointLabel(fontSize: 16)
     let storageButton = ImageButton(image: UIImage(systemName: "bookmark"))
     
     let imageCollectionView = BaseCollectionView(frame: .zero, collectionViewLayout: .imageCollectionViewLayout()).then {
