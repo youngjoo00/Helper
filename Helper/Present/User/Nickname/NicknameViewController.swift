@@ -9,11 +9,17 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+enum NicknameViewMode {
+    case signUp
+    case profileEdit
+}
+
 final class NicknameViewController: BaseViewController {
     
     private let mainView = NicknameView()
     private let viewModel = NicknameViewModel()
-        
+    var viewMode = NicknameViewMode.signUp
+    
     override func loadView() {
         view = mainView
     }
@@ -39,10 +45,17 @@ final class NicknameViewController: BaseViewController {
 
         output.nextButtonTapTrigger
             .drive(with: self) { owner, _ in
-                owner.navigationController?.pushViewController(PhoneViewController(), animated: true)
+                switch owner.viewMode {
+                case .signUp:
+                    owner.transition(viewController: PhoneViewController(), style: .push)
+                case .profileEdit:
+                    owner.navigationController?.popViewController(animated: true)
+                }
+                
             }
             .disposed(by: disposeBag)
 
+        
     }
     
 }

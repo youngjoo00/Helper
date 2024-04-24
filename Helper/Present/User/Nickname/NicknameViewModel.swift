@@ -37,7 +37,7 @@ final class NicknameViewModel: ViewModelType {
         input.nextButtonTap
             .withLatestFrom(input.nickname)
             .subscribe(with: self) { owner, nickname in
-                SignUpManager.shared.nick = nickname
+                UserProfileManager.shared.nick = nickname
                 nextButtonTapTrigger.accept(())
             }
             .disposed(by: disposeBag)

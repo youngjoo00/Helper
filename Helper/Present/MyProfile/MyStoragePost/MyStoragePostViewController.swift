@@ -11,7 +11,7 @@ import RxCocoa
 
 final class MyStoragePostViewController: BaseViewController {
 
-    private let mainView = MyStoragePostView()
+    private let mainView = PostsView()
     private let viewModel = MyStorageViewModel()
     let fetchPostsTrigger = PublishSubject<Void>()
     
@@ -26,6 +26,12 @@ final class MyStoragePostViewController: BaseViewController {
     
     override func bind() {
 
+        EventManager.shared.postWriteTrigger
+            .subscribe(with: self) { owner, _ in
+                owner.fetchPostsTrigger.onNext(())
+            }
+            .disposed(by: disposeBag)
+        
         let input = MyStorageViewModel.Input(
             fetchPostsTrigger: fetchPostsTrigger,
             reachedBottomTrigger: mainView.collectionView.rx.reachedBottom(),

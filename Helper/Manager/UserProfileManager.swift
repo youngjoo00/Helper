@@ -7,9 +7,9 @@
 
 import Foundation
 
-final class SignUpManager {
+final class UserProfileManager {
     
-    static let shared = SignUpManager()
+    static let shared = UserProfileManager()
     private init() {}
     
     var email: String = ""

@@ -11,7 +11,7 @@ import RxCocoa
 
 final class MyPostViewController: BaseViewController {
 
-    private let mainView = MyPostView()
+    private let mainView = PostsView()
     private let viewModel = MyPostViewModel()
     let fetchPostsTrigger = PublishSubject<Void>()
     
@@ -38,6 +38,7 @@ final class MyPostViewController: BaseViewController {
             reachedBottomTrigger: mainView.collectionView.rx.reachedBottom(),
             refreshControlTrigger: mainView.refreshControl.rx.controlEvent(.valueChanged)
         )
+        
         let output = viewModel.transform(input: input)
         
         output.posts

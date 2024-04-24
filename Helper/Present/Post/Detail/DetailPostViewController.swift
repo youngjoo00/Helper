@@ -86,7 +86,8 @@ final class DetailPostViewController: BaseViewController {
             .drive(with: self) { owner, value in
                 let count = value.count
                 owner.mainView.pageControl.numberOfPages = count
-                owner.mainView.pageControl.isHidden = count == 1
+                //owner.mainView.pageControl.isHidden = count == 1
+                owner.mainView.pageControl.hidesForSinglePage = true
                 owner.mainView.titleLabelLayoutUpdate()
             }
             .disposed(by: disposeBag)

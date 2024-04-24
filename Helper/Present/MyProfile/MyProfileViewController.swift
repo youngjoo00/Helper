@@ -27,12 +27,22 @@ final class MyProfileViewController: BaseViewController {
     }
     
     override func bind() {
-        let input = MyProfileViewModel.Input(viewDidLoadTrigger: Observable.just(()))
+        let input = MyProfileViewModel.Input(
+            viewDidLoadTrigger: Observable.just(()),
+            editProfileTap: mainView.profileEditButton.rx.tap
+        )
         
         let output = viewModel.transform(input: input)
         
         output.nickname
             .drive(mainView.nicknameLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.editProfileTap
+            .drive(with: self) { owner, _ in
+                let vc = EditProfileViewController()
+                owner.transition(viewController: vc, style: .hideBottomPush)
+            }
             .disposed(by: disposeBag)
         
         // 나중에 자식으로 보내주게 된다면 씁시다..
@@ -53,6 +63,22 @@ final class MyProfileViewController: BaseViewController {
 // MARK: - Custom Func
 extension MyProfileViewController {
     
+    private func configureNavigationBar() {
+        let rightBtnItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(didRightBarButtonItemTapped))
+        rightBtnItem.tintColor = UIColor.black
+        
+        navigationItem.rightBarButtonItem = rightBtnItem
+    }
+    
+    @objc private func didRightBarButtonItemTapped() {
+        navigationController?.pushViewController(SettingViewController(), animated: true)
+    }
+    
+}
+
+// MARK: - Add Child
+extension MyProfileViewController {
+    
     private func configureTabViewController() {
         addChild(tabVC)
         mainView.containerView.addSubview(tabVC.view)
@@ -64,14 +90,4 @@ extension MyProfileViewController {
         tabVC.didMove(toParent: self)
     }
     
-    private func configureNavigationBar() {
-        let rightBtnItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(didRightBarButtonItemTapped))
-        rightBtnItem.tintColor = UIColor.black
-        
-        navigationItem.rightBarButtonItem = rightBtnItem
-    }
-    
-    @objc private func didRightBarButtonItemTapped() {
-        navigationController?.pushViewController(SettingViewController(), animated: true)
-    }
 }

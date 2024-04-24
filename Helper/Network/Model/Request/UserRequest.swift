@@ -24,5 +24,6 @@ enum UserRequest {
     struct ValidationEmail: Encodable {
         let email: String
     }
+    
 }
 

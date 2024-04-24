@@ -46,9 +46,10 @@ final class SettingViewController: BaseViewController {
                         NetworkManager.shared.callAPI(type: UserResponse.Join.self, router: Router.user(.withdraw))
                             .subscribe(with: self) { owner, result in
                                 switch result {
-                                case .success(let data):
+                                case .success:
                                     owner.changeSignInRootView()
                                 case .fail(let fail):
+                                    owner.showAlert(title: "오류!", message: fail.localizedDescription)
                                     print(fail)
                                 }
                             }

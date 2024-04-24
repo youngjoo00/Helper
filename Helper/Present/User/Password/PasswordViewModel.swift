@@ -37,7 +37,7 @@ final class PasswordViewModel: ViewModelType {
         input.nextButtonTap
             .withLatestFrom(input.password)
             .subscribe(with: self) { owner, password in
-                SignUpManager.shared.password = password
+                UserProfileManager.shared.password = password
                 nextButtonTapTrigger.accept(())
             }
             .disposed(by: disposeBag)

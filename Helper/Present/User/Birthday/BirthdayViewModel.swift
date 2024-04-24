@@ -43,8 +43,8 @@ final class BirthdayViewModel: ViewModelType {
         
         input.signUpButtonTap
             .withLatestFrom(date) { _, date in
-                SignUpManager.shared.birthday = date.0 + date.1 + date.2
-                let signUp = SignUpManager.shared
+                UserProfileManager.shared.birthday = date.0 + date.1 + date.2
+                let signUp = UserProfileManager.shared
                 print(signUp.birthday, signUp.phone)
                 return UserRequest.Join(email: signUp.email,
                                   password: signUp.password,
