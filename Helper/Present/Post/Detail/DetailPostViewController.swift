@@ -128,6 +128,7 @@ final class DetailPostViewController: BaseViewController {
             .drive(mainView.phoneValueLabel.rx.text)
             .disposed(by: disposeBag)
         
+        // 게시물 저장/저장취소
         output.storage
             .drive(with: self) { owner, state in
                 owner.mainView.updateStorageButton(state)
@@ -181,8 +182,6 @@ final class DetailPostViewController: BaseViewController {
         // 게시글 삭제 성공
         output.postDeleteSuccess
             .drive(with: self) { owner, _ in
-                let vc = FindingViewController()
-                vc.fetchTrigger.onNext(())
                 owner.navigationController?.popViewController(animated: true)
             }
             .disposed(by: disposeBag)

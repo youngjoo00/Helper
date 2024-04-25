@@ -30,10 +30,7 @@
 		8E17A3102BCA8FC800581B58 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A30F2BCA8FC800581B58 /* MyProfileViewController.swift */; };
 		8E17A3122BCA8FCF00581B58 /* MyProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3112BCA8FCF00581B58 /* MyProfileViewModel.swift */; };
 		8E17A3172BCAC58A00581B58 /* MyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3162BCAC58A00581B58 /* MyPostViewController.swift */; };
-		8E17A3192BCAC59400581B58 /* MyPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3182BCAC59400581B58 /* MyPostViewModel.swift */; };
-		8E17A31C2BCAC61900581B58 /* MyStoragePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A31B2BCAC61900581B58 /* MyStoragePostView.swift */; };
 		8E17A31E2BCAC62B00581B58 /* MyStoragePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A31D2BCAC62B00581B58 /* MyStoragePostViewController.swift */; };
-		8E17A3202BCAC63C00581B58 /* MyStorageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A31F2BCAC63C00581B58 /* MyStorageViewModel.swift */; };
 		8E17A3232BCAC87E00581B58 /* MyProfileTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3222BCAC87E00581B58 /* MyProfileTabViewController.swift */; };
 		8E17A32A2BCAD16E00581B58 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3292BCAD16E00581B58 /* PostView.swift */; };
 		8E17A32C2BCAD17600581B58 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A32B2BCAD17600581B58 /* PostViewController.swift */; };
@@ -135,6 +132,7 @@
 		8ED8B77B2BD91070009B4387 /* DetailEditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B77A2BD91070009B4387 /* DetailEditProfileViewController.swift */; };
 		8ED8B77D2BD9107E009B4387 /* DetailEditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B77C2BD9107E009B4387 /* DetailEditProfileViewModel.swift */; };
 		8ED8B77F2BD93A83009B4387 /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B77E2BD93A83009B4387 /* PostsView.swift */; };
+		8ED8B7862BDA1F2C009B4387 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7852BDA1F2C009B4387 /* PostsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -161,10 +159,7 @@
 		8E17A30F2BCA8FC800581B58 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		8E17A3112BCA8FCF00581B58 /* MyProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewModel.swift; sourceTree = "<group>"; };
 		8E17A3162BCAC58A00581B58 /* MyPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostViewController.swift; sourceTree = "<group>"; };
-		8E17A3182BCAC59400581B58 /* MyPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostViewModel.swift; sourceTree = "<group>"; };
-		8E17A31B2BCAC61900581B58 /* MyStoragePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStoragePostView.swift; sourceTree = "<group>"; };
 		8E17A31D2BCAC62B00581B58 /* MyStoragePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStoragePostViewController.swift; sourceTree = "<group>"; };
-		8E17A31F2BCAC63C00581B58 /* MyStorageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStorageViewModel.swift; sourceTree = "<group>"; };
 		8E17A3222BCAC87E00581B58 /* MyProfileTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTabViewController.swift; sourceTree = "<group>"; };
 		8E17A3292BCAD16E00581B58 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		8E17A32B2BCAD17600581B58 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
@@ -258,6 +253,7 @@
 		8ED8B77A2BD91070009B4387 /* DetailEditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEditProfileViewController.swift; sourceTree = "<group>"; };
 		8ED8B77C2BD9107E009B4387 /* DetailEditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEditProfileViewModel.swift; sourceTree = "<group>"; };
 		8ED8B77E2BD93A83009B4387 /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
+		8ED8B7852BDA1F2C009B4387 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -374,7 +370,6 @@
 			isa = PBXGroup;
 			children = (
 				8E17A3162BCAC58A00581B58 /* MyPostViewController.swift */,
-				8E17A3182BCAC59400581B58 /* MyPostViewModel.swift */,
 			);
 			path = MyPost;
 			sourceTree = "<group>";
@@ -382,9 +377,7 @@
 		8E17A31A2BCAC5C000581B58 /* MyStoragePost */ = {
 			isa = PBXGroup;
 			children = (
-				8E17A31B2BCAC61900581B58 /* MyStoragePostView.swift */,
 				8E17A31D2BCAC62B00581B58 /* MyStoragePostViewController.swift */,
-				8E17A31F2BCAC63C00581B58 /* MyStorageViewModel.swift */,
 			);
 			path = MyStoragePost;
 			sourceTree = "<group>";
@@ -747,6 +740,7 @@
 			isa = PBXGroup;
 			children = (
 				8ED8B77E2BD93A83009B4387 /* PostsView.swift */,
+				8ED8B7852BDA1F2C009B4387 /* PostsViewModel.swift */,
 			);
 			path = PostsView;
 			sourceTree = "<group>";
@@ -872,7 +866,6 @@
 				8E9A3FE62BCEBD98005E4F45 /* WritePostViewController.swift in Sources */,
 				8E9A3FDB2BCD9530005E4F45 /* SettingTableViewCell.swift in Sources */,
 				8EA59D152BD28284009938E0 /* String+.swift in Sources */,
-				8E17A31C2BCAC61900581B58 /* MyStoragePostView.swift in Sources */,
 				8E17A3022BCA80BF00581B58 /* FoundViewModel.swift in Sources */,
 				8E17A3122BCA8FCF00581B58 /* MyProfileViewModel.swift in Sources */,
 				8ED8B77D2BD9107E009B4387 /* DetailEditProfileViewModel.swift in Sources */,
@@ -880,7 +873,6 @@
 				8E1BAE252BC968E500A65075 /* NicknameView.swift in Sources */,
 				8E1BAE1F2BC968E500A65075 /* PasswordView.swift in Sources */,
 				8E1BADE42BC965CC00A65075 /* AppDelegate.swift in Sources */,
-				8E17A3202BCAC63C00581B58 /* MyStorageViewModel.swift in Sources */,
 				8E17A2DC2BCA267000581B58 /* RedColorLabel.swift in Sources */,
 				8E1BAE722BC97D5D00A65075 /* BaseView.swift in Sources */,
 				8E1BAE8A2BC97FF800A65075 /* PointButton.swift in Sources */,
@@ -925,12 +917,12 @@
 				8ED8B77F2BD93A83009B4387 /* PostsView.swift in Sources */,
 				8E9A3FFC2BCEE2DD005E4F45 /* ErrorResponse.swift in Sources */,
 				8E1BAE262BC968E500A65075 /* NicknameViewController.swift in Sources */,
-				8E17A3192BCAC59400581B58 /* MyPostViewModel.swift in Sources */,
 				8E887CDB2BD417D600E95008 /* MenuButton.swift in Sources */,
 				8ED8B7572BD65C9E009B4387 /* HelperString.swift in Sources */,
 				8E1BAE272BC968E500A65075 /* NicknameViewModel.swift in Sources */,
 				8E9A40102BCFBB36005E4F45 /* PostRequest.swift in Sources */,
 				8E1BADFC2BC968C100A65075 /* ReusableID.swift in Sources */,
+				8ED8B7862BDA1F2C009B4387 /* PostsViewModel.swift in Sources */,
 				8E17A3002BCA80B900581B58 /* FoundViewController.swift in Sources */,
 				8E9A3FF82BCEE2CE005E4F45 /* UserResponse.swift in Sources */,
 				8E1BAE522BC96AC500A65075 /* TabBarController.swift in Sources */,

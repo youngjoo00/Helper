@@ -125,6 +125,7 @@ final class DetailPostViewModel: ViewModelType {
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success:
+                    EventManager.shared.postWriteTrigger.onNext(())
                     postDeleteSuccess.accept(())
                 case .fail(let fail):
                     errorAlertMessage.accept(fail.localizedDescription)
@@ -144,6 +145,7 @@ final class DetailPostViewModel: ViewModelType {
                 switch result {
                 case .success(let data):
                     fetchInfoTrigger.onNext(())
+                    EventManager.shared.storageTrigger.onNext(())
                     storageSuccess.accept(data.storageStatus)
                 case .fail(let fail):
                     errorAlertMessage.accept(fail.localizedDescription)
