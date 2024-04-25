@@ -24,8 +24,10 @@ final class PhoneViewController: BaseViewController {
     
     override func bind() {
         
-        let input = PhoneViewModel.Input(phone: mainView.phoneTextField.rx.text.orEmpty.asObservable(),
-                                            nextButtonTap: mainView.nextButton.rx.tap)
+        let input = PhoneViewModel.Input(
+            phone: mainView.phoneTextField.rx.text.orEmpty.asObservable(),
+            nextButtonTap: mainView.nextButton.rx.tap
+        )
         
         let output = viewModel.transform(input: input)
         
