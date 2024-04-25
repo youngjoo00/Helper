@@ -42,8 +42,6 @@ final class PasswordViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        
-        
         return Output(isValid: isValid.asDriver(onErrorJustReturn: false),
                       description: description.asDriver(onErrorJustReturn: ""),
                       nextButtonTapTrigger: nextButtonTapTrigger.asDriver(onErrorJustReturn: ())

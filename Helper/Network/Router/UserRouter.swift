@@ -15,7 +15,7 @@ enum UserRouter {
     case withdraw
     case refresh
     case myProfile
-    case editProfile(query: UserRequest.EditPhone)
+    case editProfile(query: Encodable)
 }
 
 extension UserRouter: TargetType {

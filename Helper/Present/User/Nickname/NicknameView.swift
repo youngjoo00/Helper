@@ -54,3 +54,11 @@ final class NicknameView: BaseView {
         
     }
 }
+
+extension NicknameView {
+    
+    func configureEditProfileView() {
+        titleLabel.text = "닉네임 수정"
+        nextButton.configureView("완료", image: nil)
+    }
+}

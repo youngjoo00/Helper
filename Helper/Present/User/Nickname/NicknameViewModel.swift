@@ -17,6 +17,10 @@ final class NicknameViewModel: ViewModelType {
         let nickname: Observable<String>
         let nextButtonTap: ControlEvent<Void>
     }
+}
+
+// MARK: - SignUp
+extension NicknameViewModel {
     
     struct Output {
         let isValid: Driver<Bool>
@@ -42,30 +46,54 @@ final class NicknameViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        // 여기까지만 회원가입할지 고민
-//        input.nextButtonTap
-//            .withLatestFrom(input.nickname) { first, second in
-//                RequestModel.Join(email: SignUp.shared.email,
-//                            password: SignUp.shared.password,
-//                            nick: second,
-//                            phone: nil,
-//                            birthday: nil)
-//            }
-//            .flatMap { NetworkManager.shared.callAPI(type: ResponseModel.Join.self, router: .join(query: $0)) }
-//            .subscribe(with: self) { owner, result in
-//                switch result {
-//                case .success(let data):
-//                    print(data)
-//                case .fail(let fail):
-//                    print(fail)
-//                case .errorMessage(let message):
-//                    print(message)
-//                }
-//            }
-//            .disposed(by: disposeBag)
-        
         return Output(isValid: isValid.asDriver(onErrorJustReturn: false),
                       description: description.asDriver(onErrorJustReturn: ""),
                       nextButtonTapTrigger: nextButtonTapTrigger.asDriver(onErrorJustReturn: ()))
+    }
+}
+
+// MARK: - EditProfile
+extension NicknameViewModel {
+    
+    struct EditOutput {
+        let isValid: Driver<Bool>
+        let description: Driver<String>
+        let successTrigger: Driver<Void>
+        let errorMessage: Driver<String>
+    }
+    
+    func editTransform(input: Input) -> EditOutput {
+        
+        let successTrigger = PublishRelay<Void>()
+        let errorMessage = PublishRelay<String>()
+        
+        let isValid = input.nickname
+            .map { $0.count >= 2 }
+        
+        let description = isValid
+            .map { $0 ? "" : "닉네임은 최소 두 글자 이상입니다" }
+        
+        input.nextButtonTap
+            .withLatestFrom(input.nickname)
+            .map { UserRequest.EditNickname(nick: $0) }
+            .flatMap { NetworkManager.shared.EditProfileCallAPI(type: UserResponse.MyProfile.self, router: Router.user(.editProfile(query: $0))) }
+            .subscribe(with: self) { owner, result in
+                switch result {
+                case .success(let data):
+                    print(data)
+                    successTrigger.accept(())
+                case .fail(let fail):
+                    errorMessage.accept(fail.localizedDescription)
+                    print(fail.localizedDescription)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        return EditOutput(
+            isValid: isValid.asDriver(onErrorJustReturn: false),
+            description: description.asDriver(onErrorJustReturn: ""),
+            successTrigger: successTrigger.asDriver(onErrorDriveWith: .empty()),
+            errorMessage: errorMessage.asDriver(onErrorJustReturn: "알 수 없는 오류입니다")
+        )
     }
 }

@@ -2,20 +2,20 @@
 //  EditNicknameViewController.swift
 //  Helper
 //
-//  Created by youngjoo on 4/25/24.
+//  Created by youngjoo on 4/26/24.
 //
 
 import UIKit
 import RxSwift
 import RxCocoa
 
-final class EditPhoneViewController: BaseViewController {
+final class EditNicknameViewController: BaseViewController {
     
-    private let mainView = PhoneView()
-    private let viewModel = PhoneViewModel()
+    private let mainView = NicknameView()
+    private let viewModel = NicknameViewModel()
     
-    init(phone: String) {
-        mainView.phoneTextField.text = phone
+    init(nickname: String) {
+        mainView.nicknameTextField.text = nickname
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -35,8 +35,8 @@ final class EditPhoneViewController: BaseViewController {
     
     override func bind() {
 
-        let input = PhoneViewModel.Input(
-            phone: mainView.phoneTextField.rx.text.orEmpty.asObservable(),
+        let input = NicknameViewModel.Input(
+            nickname: mainView.nicknameTextField.rx.text.orEmpty.asObservable(),
             nextButtonTap: mainView.nextButton.rx.tap
         )
         

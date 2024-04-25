@@ -131,6 +131,7 @@
 		8ED8B77F2BD93A83009B4387 /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B77E2BD93A83009B4387 /* PostsView.swift */; };
 		8ED8B7862BDA1F2C009B4387 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7852BDA1F2C009B4387 /* PostsViewModel.swift */; };
 		8ED8B78A2BDA6C24009B4387 /* EditPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7892BDA6C24009B4387 /* EditPhoneViewController.swift */; };
+		8ED8B78C2BDACEEB009B4387 /* EditNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B78B2BDACEEB009B4387 /* EditNicknameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -250,6 +251,7 @@
 		8ED8B77E2BD93A83009B4387 /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
 		8ED8B7852BDA1F2C009B4387 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
 		8ED8B7892BDA6C24009B4387 /* EditPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhoneViewController.swift; sourceTree = "<group>"; };
+		8ED8B78B2BDACEEB009B4387 /* EditNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNicknameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -725,6 +727,7 @@
 		8ED8B7772BD9104D009B4387 /* DetailEditProfile */ = {
 			isa = PBXGroup;
 			children = (
+				8ED8B78B2BDACEEB009B4387 /* EditNicknameViewController.swift */,
 				8ED8B7892BDA6C24009B4387 /* EditPhoneViewController.swift */,
 			);
 			path = DetailEditProfile;
@@ -860,6 +863,7 @@
 				8E9A3FDB2BCD9530005E4F45 /* SettingTableViewCell.swift in Sources */,
 				8EA59D152BD28284009938E0 /* String+.swift in Sources */,
 				8E17A3022BCA80BF00581B58 /* FoundViewModel.swift in Sources */,
+				8ED8B78C2BDACEEB009B4387 /* EditNicknameViewController.swift in Sources */,
 				8E17A3122BCA8FCF00581B58 /* MyProfileViewModel.swift in Sources */,
 				8E17A31E2BCAC62B00581B58 /* MyStoragePostViewController.swift in Sources */,
 				8E1BAE252BC968E500A65075 /* NicknameView.swift in Sources */,

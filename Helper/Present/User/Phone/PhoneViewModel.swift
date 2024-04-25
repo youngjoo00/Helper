@@ -17,6 +17,10 @@ final class PhoneViewModel: ViewModelType {
         let phone: Observable<String>
         let nextButtonTap: ControlEvent<Void>
     }
+}
+
+// MARK: - SignUp
+extension PhoneViewModel {
     
     struct Output {
         let isValid: Driver<Bool>
@@ -49,6 +53,11 @@ final class PhoneViewModel: ViewModelType {
                       description: description.asDriver(onErrorJustReturn: ""),
                       nextButtonTapTrigger: nextButtonTapTrigger.asDriver(onErrorJustReturn: ()))
     }
+    
+}
+
+// MARK: - EditProfile
+extension PhoneViewModel {
     
     struct EditOutput {
         let isValid: Driver<Bool>
@@ -94,4 +103,5 @@ final class PhoneViewModel: ViewModelType {
             errorMessage: errorMessage.asDriver(onErrorJustReturn: "알 수 없는 오류입니다")
         )
     }
+    
 }
