@@ -17,6 +17,7 @@ final class EditPhoneViewController: BaseViewController {
     init(phone: String) {
         mainView.phoneTextField.text = phone
         super.init(nibName: nil, bundle: nil) // 아래에 부모 초기화구문을 넣어야하네??
+        print("1")
     }
     
     required init?(coder: NSCoder) {
@@ -25,18 +26,21 @@ final class EditPhoneViewController: BaseViewController {
     
     override func loadView() {
         view = mainView
+        print("2")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mainView.configureEditProfileView()
+        print("3")
     }
     
     override func bind() {
-        
+        print("4")
 //        // 오 뭐야 여기서 이벤트 읽네??
 //        mainView.phoneTextField.rx.text.orEmpty
+//            .debug("언제?")
 //            .subscribe(with: self) { owner, text in
 //                print(text)
 //            }

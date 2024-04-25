@@ -50,9 +50,8 @@ final class MyProfileViewModel: ViewModelType {
                 EventManager.shared.editProfileTrigger.onNext(info)
             }
             .disposed(by: disposeBag)
-            
         
-        return Output(nickname: nickname.asDriver(onErrorJustReturn: ""), 
+        return Output(nickname: nickname.asDriver(onErrorJustReturn: ""),
                       postsID: postsID,
                       editProfileTap: input.editProfileTap.asDriver()
         )

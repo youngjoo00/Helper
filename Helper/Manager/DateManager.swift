@@ -27,14 +27,20 @@ final class DateManager {
     /// 입력받은 날짜가 생년월일의 조건과 부합한지 확인
     func validationDate(year: Int, month: Int, day: Int) -> Bool {
         let calendar = Calendar.current
-        let today = Date()
         
-        // 입력한 날짜 생성
+        let today = Date()
+        let todayComponents = calendar.dateComponents([.year, .month, .day], from: today)
+        
+        // 입력한 날짜 생성 + 연도를 뺄셈하기 위해 연도 값 반환
         guard let inputDate = calendar.date(from: DateComponents(year: year, month: month, day: day)),
-              let startYear = calendar.date(from: DateComponents(year: year - 150, month: 1, day: 1)) else { return false }
+              let nowYear = todayComponents.year else { return false }
+        
+        // 뺄셈 이후 다시 비교하기 위해 Date 로 변환
+        let ableYear = nowYear - 150
+        guard let ableDate = calendar.date(from: DateComponents(year: ableYear, month: 1, day: 1)) else { return false }
         
         // 입력한 날짜가 오늘 날짜 이하면서, 150년 이내인지 확인
-        if !(inputDate <= today && inputDate >= startYear) { return false }
+        guard (inputDate <= today && inputDate >= ableDate) else { return false }
         
         // 월 범위 확인
         guard month >= 1, month <= 12 else { return false }
