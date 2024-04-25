@@ -25,5 +25,16 @@ enum UserRequest {
         let email: String
     }
     
+    struct EditNickname: Encodable {
+        let nick: String
+    }
+    
+    struct EditPhone: Encodable {
+        let phoneNum: String
+    }
+    
+    struct EditBirthDay: Encodable {
+        let birthDay: String
+    }
 }
 

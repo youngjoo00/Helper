@@ -54,3 +54,14 @@ final class PhoneView: BaseView {
         
     }
 }
+
+extension PhoneView {
+    
+    func configureSignUpView() {
+    }
+    
+    func configureEditProfileView() {
+        titleLabel.text = "휴대폰 번호 수정"
+        nextButton.configureView("완료", image: nil)
+    }
+}

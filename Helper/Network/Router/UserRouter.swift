@@ -15,6 +15,7 @@ enum UserRouter {
     case withdraw
     case refresh
     case myProfile
+    case editProfile(query: UserRequest.EditPhone)
 }
 
 extension UserRouter: TargetType {
@@ -43,6 +44,12 @@ extension UserRouter: TargetType {
             return headers
         case .myProfile:
             return baseHeader
+        case .editProfile:
+            let headers: [String: String] = [
+                HTTPHeader.sesacKey.rawValue: PrivateKey.sesac.rawValue
+            ]
+            
+            return headers
         }
     }
     
@@ -61,6 +68,8 @@ extension UserRouter: TargetType {
             return version + "/auth/refresh"
         case .myProfile:
             return version + "/users/me/profile"
+        case .editProfile:
+            return version + "/users/me/profile"
         }
     }
     
@@ -78,6 +87,8 @@ extension UserRouter: TargetType {
             return .get
         case .myProfile:
             return .get
+        case .editProfile:
+            return .put
         }
     }
     
@@ -97,6 +108,7 @@ extension UserRouter: TargetType {
         case .validationEmail(let query):
             return try? encoder.encode(query)
         case .login(let query):
+            print(query)
             return try? encoder.encode(query)
         case .withdraw:
             return nil
@@ -104,7 +116,9 @@ extension UserRouter: TargetType {
             return nil
         case .myProfile:
             return nil
-
+        case .editProfile(let query):
+            print(query)
+            return try? encoder.encode(query)
         }
     }
     

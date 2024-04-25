@@ -128,11 +128,9 @@
 		8ED8B7712BD81F36009B4387 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7702BD81F36009B4387 /* EditProfileViewController.swift */; };
 		8ED8B7732BD81F3E009B4387 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7722BD81F3E009B4387 /* EditProfileViewModel.swift */; };
 		8ED8B7752BD8F9CD009B4387 /* EditProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7742BD8F9CD009B4387 /* EditProfileTableViewCell.swift */; };
-		8ED8B7792BD91064009B4387 /* DetailEditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7782BD91064009B4387 /* DetailEditProfileView.swift */; };
-		8ED8B77B2BD91070009B4387 /* DetailEditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B77A2BD91070009B4387 /* DetailEditProfileViewController.swift */; };
-		8ED8B77D2BD9107E009B4387 /* DetailEditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B77C2BD9107E009B4387 /* DetailEditProfileViewModel.swift */; };
 		8ED8B77F2BD93A83009B4387 /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B77E2BD93A83009B4387 /* PostsView.swift */; };
 		8ED8B7862BDA1F2C009B4387 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7852BDA1F2C009B4387 /* PostsViewModel.swift */; };
+		8ED8B78A2BDA6C24009B4387 /* EditPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7892BDA6C24009B4387 /* EditPhoneViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -249,11 +247,9 @@
 		8ED8B7702BD81F36009B4387 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		8ED8B7722BD81F3E009B4387 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 		8ED8B7742BD8F9CD009B4387 /* EditProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewCell.swift; sourceTree = "<group>"; };
-		8ED8B7782BD91064009B4387 /* DetailEditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEditProfileView.swift; sourceTree = "<group>"; };
-		8ED8B77A2BD91070009B4387 /* DetailEditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEditProfileViewController.swift; sourceTree = "<group>"; };
-		8ED8B77C2BD9107E009B4387 /* DetailEditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEditProfileViewModel.swift; sourceTree = "<group>"; };
 		8ED8B77E2BD93A83009B4387 /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
 		8ED8B7852BDA1F2C009B4387 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
+		8ED8B7892BDA6C24009B4387 /* EditPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhoneViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -729,9 +725,7 @@
 		8ED8B7772BD9104D009B4387 /* DetailEditProfile */ = {
 			isa = PBXGroup;
 			children = (
-				8ED8B7782BD91064009B4387 /* DetailEditProfileView.swift */,
-				8ED8B77A2BD91070009B4387 /* DetailEditProfileViewController.swift */,
-				8ED8B77C2BD9107E009B4387 /* DetailEditProfileViewModel.swift */,
+				8ED8B7892BDA6C24009B4387 /* EditPhoneViewController.swift */,
 			);
 			path = DetailEditProfile;
 			sourceTree = "<group>";
@@ -855,7 +849,6 @@
 				8E17A2F12BCA7D9F00581B58 /* FindingView.swift in Sources */,
 				8E1BAE4D2BC969DD00A65075 /* UITextField+.swift in Sources */,
 				8E1BAE4F2BC96AA600A65075 /* DateManager.swift in Sources */,
-				8ED8B77B2BD91070009B4387 /* DetailEditProfileViewController.swift in Sources */,
 				8E17A3082BCA8F9900581B58 /* SearchViewController.swift in Sources */,
 				8E1BAE212BC968E500A65075 /* PasswordViewModel.swift in Sources */,
 				8E17A2EA2BCA59C100581B58 /* BirthdayView.swift in Sources */,
@@ -868,7 +861,6 @@
 				8EA59D152BD28284009938E0 /* String+.swift in Sources */,
 				8E17A3022BCA80BF00581B58 /* FoundViewModel.swift in Sources */,
 				8E17A3122BCA8FCF00581B58 /* MyProfileViewModel.swift in Sources */,
-				8ED8B77D2BD9107E009B4387 /* DetailEditProfileViewModel.swift in Sources */,
 				8E17A31E2BCAC62B00581B58 /* MyStoragePostViewController.swift in Sources */,
 				8E1BAE252BC968E500A65075 /* NicknameView.swift in Sources */,
 				8E1BAE1F2BC968E500A65075 /* PasswordView.swift in Sources */,
@@ -881,6 +873,7 @@
 				8EA59CE52BD19240009938E0 /* CommentRouter.swift in Sources */,
 				8E1BADFD2BC968C100A65075 /* ViewModelType.swift in Sources */,
 				8E17A2E82BCA3E6500581B58 /* UserProfileManager.swift in Sources */,
+				8ED8B78A2BDA6C24009B4387 /* EditPhoneViewController.swift in Sources */,
 				8E17A2FE2BCA80AF00581B58 /* FoundView.swift in Sources */,
 				8E17A3102BCA8FC800581B58 /* MyProfileViewController.swift in Sources */,
 				8E1BADE62BC965CC00A65075 /* SceneDelegate.swift in Sources */,
@@ -905,7 +898,6 @@
 				8E1BAE1E2BC968E500A65075 /* SignInViewModel.swift in Sources */,
 				8E1BAE702BC97D5D00A65075 /* BaseViewController.swift in Sources */,
 				8E9A3FD52BCD9498005E4F45 /* SettingView.swift in Sources */,
-				8ED8B7792BD91064009B4387 /* DetailEditProfileView.swift in Sources */,
 				8E1BAE8D2BC9800B00A65075 /* Color.swift in Sources */,
 				8E9A40162BCFE9C8005E4F45 /* WhiteButton.swift in Sources */,
 				8E1BAE352BC968EC00A65075 /* HTTPHeader.swift in Sources */,

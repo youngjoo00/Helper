@@ -24,6 +24,7 @@ final class PostsViewModel: ViewModelType {
     init(mode: PostsViewModelMode = PostsViewModelMode.finding) {
         self.mode = mode
     }
+    
     struct Input {
         let fetchPostsTrigger: Observable<Void>
         let reachedBottomTrigger: ControlEvent<Void>
@@ -47,14 +48,27 @@ final class PostsViewModel: ViewModelType {
         let isRefreshControlLoading = PublishRelay<Bool>()
         let isBottomLoading = PublishRelay<Bool>()
         
+        // 1. fetch 이벤트는 바로 보여야함
+        // 2. reachedBottom/refreshControl 은 네트워크 호출과 동시에 최소 1초 로딩
+        // 3. fetch/refresh 는 next 값이 비어있게
+        
         // loadTrigger
+//        let loadDataTrigger = Observable.merge(
+//            input.fetchPostsTrigger.do(onNext: { _ in next.onNext("") }), // 옵저버블을 중간에 안바꾸고 이벤트를 넣을 수 있음,, 너무 좋다,,
+//            input.reachedBottomTrigger.asObservable().do(onNext: { _ in isBottomLoading.accept(true)}).debounce(.seconds(1), scheduler: MainScheduler.instance),
+//            input.refreshControlTrigger.asObservable().do(onNext: { _ in
+//                next.onNext("")
+//                isRefreshControlLoading.accept(true)
+//            }).debounce(.seconds(1), scheduler: MainScheduler.instance) // 딜레이를 여기서 넣어주면 네트워크 통신 자체가 1초 밀리게 되니 문제가 있음
+//        )
+
         let loadDataTrigger = Observable.merge(
-            input.fetchPostsTrigger.do(onNext: { _ in next.onNext("") }), // 옵저버블을 중간에 안바꾸고 이벤트를 넣을 수 있음,, 너무 좋다,,
+            input.fetchPostsTrigger.do(onNext: { _ in next.onNext("") }),
             input.reachedBottomTrigger.asObservable().do(onNext: { _ in isBottomLoading.accept(true)}),
             input.refreshControlTrigger.asObservable().do(onNext: { _ in
                 next.onNext("")
                 isRefreshControlLoading.accept(true)
-            }).debounce(.seconds(1), scheduler: MainScheduler.instance)
+            })
         )
         
         switch mode {
@@ -72,7 +86,7 @@ final class PostsViewModel: ViewModelType {
                         return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.otherUserFetchPosts(next: next, userID: myID))).asObservable()
                     }
                 }
-                //.delay(.seconds(1), scheduler: MainScheduler.instance)
+                .delay(.seconds(1), scheduler: MainScheduler.instance)
                 .subscribe(with: self) { owner, result in
                     switch result {
                     case .success(let data):
@@ -148,7 +162,8 @@ final class PostsViewModel: ViewModelType {
                         isBottomLoading.accept(false)
                         return .empty()
                     } else {
-                        // MARK: - 네트워크를 호출하는 여기만 다름 -> 그럼 네트워크 요청만 뷰컨에서 보내주면 되나?
+                        // 네트워크 통신을 진행하면서 + 딜레이를 1초 맥이기
+                        // reachedBottomTrigger, refreshControlTrigger 일 때만 이렇게 진행하고, fetchTrigger 에서는 네트워크가 진행되면 안됨
                         return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.otherUserFetchPosts(next: next, userID: myID))).asObservable()
                     }
                 }
@@ -191,7 +206,6 @@ final class PostsViewModel: ViewModelType {
                         return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchStorage(next: next))).asObservable()
                     }
                 }
-                //.delay(.seconds(1), scheduler: MainScheduler.instance)
                 .subscribe(with: self) { owner, result in
                     switch result {
                     case .success(let data):

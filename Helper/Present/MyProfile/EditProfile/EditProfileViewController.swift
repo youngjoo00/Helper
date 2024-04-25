@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+// 
 final class EditProfileViewController: BaseViewController {
 
     private let mainView = EditProfileView()
@@ -44,10 +45,22 @@ final class EditProfileViewController: BaseViewController {
             .disposed(by: disposeBag)
  
         output.nicknameTapped
-            .drive(with: self) { owner, data in
+            .drive(with: self) { owner, nickname in
                 let vc = NicknameViewController()
                 vc.viewMode = .profileEdit
                 owner.transition(viewController: vc, style: .hideBottomPush)
+            }
+            .disposed(by: disposeBag)
+        
+        output.phoneTapped
+            .drive(with: self) { owner, phone in
+                owner.transition(viewController: EditPhoneViewController(phone: phone), style: .hideBottomPush)
+            }
+            .disposed(by: disposeBag)
+        
+        output.birthdayTapped
+            .drive(with: self) { owner, birthday in
+                let vc = BirthdayViewController()
             }
             .disposed(by: disposeBag)
     }
