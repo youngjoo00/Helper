@@ -14,12 +14,14 @@ final class PasswordViewModel: ViewModelType {
     var disposeBag: DisposeBag = .init()
     
     struct Input {
+        let viewWillAppearTrigger: ControlEvent<Void>
         let password: Observable<String>
         let secondPassword: Observable<String>
         let nextButtonTap: ControlEvent<Void>
     }
     
     struct Output {
+        let viewWillAppearTrigger: Driver<Void>
         let description: Driver<String>
         let secondDescription: Driver<String>
         let enableButton: Driver<Bool>
@@ -54,6 +56,7 @@ final class PasswordViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         return Output(
+            viewWillAppearTrigger: input.viewWillAppearTrigger.asDriver(), 
             description: description.asDriver(onErrorJustReturn: "알 수 없는 오류입니다."),
             secondDescription: secondDescription.asDriver(onErrorJustReturn: "알 수 없는 오류입니다."),
             enableButton: enableButton.asDriver(onErrorJustReturn: false),

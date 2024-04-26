@@ -24,24 +24,26 @@ final class BirthdayViewController: BaseViewController {
     
     override func bind() {
         
-        let input = BirthdayViewModel.Input(year: mainView.yearTextField.rx.text.orEmpty.asObservable(),
-                                            month: mainView.monthTextField.rx.text.orEmpty.asObservable(),
-                                            day: mainView.dayTextField.rx.text.orEmpty.asObservable(),
-                                            signUpButtonTap: mainView.signUpButton.rx.tap
+        let input = BirthdayViewModel.Input(
+            viewWillAppearTrigger: self.rx.viewWillAppear,
+            year: mainView.yearTextField.rx.text.orEmpty.asObservable(),
+            month: mainView.monthTextField.rx.text.orEmpty.asObservable(),
+            day: mainView.dayTextField.rx.text.orEmpty.asObservable(),
+            signUpButtonTap: mainView.signUpButton.rx.tap
         )
         
         let output = viewModel.transform(input: input)
         
+        output.viewWillAppearTrigger
+            .drive(mainView.yearTextField.rx.becomeFirstResponder)
+            .disposed(by: disposeBag)
+        
         output.nextMonthField
-            .drive(with: self) { owner, value in
-                owner.mainView.monthTextField.becomeFirstResponder()
-            }
+            .drive(mainView.monthTextField.rx.becomeFirstResponder)
             .disposed(by: disposeBag)
         
         output.nextDayField
-            .drive(with: self) { owner, value in
-                owner.mainView.dayTextField.becomeFirstResponder()
-            }
+            .drive(mainView.dayTextField.rx.becomeFirstResponder)
             .disposed(by: disposeBag)
         
         output.isValid

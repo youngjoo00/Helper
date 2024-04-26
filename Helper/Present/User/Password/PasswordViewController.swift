@@ -25,11 +25,18 @@ final class PasswordViewController: BaseViewController {
 
     override func bind() {
         
-        let input = PasswordViewModel.Input(password: mainView.passwordTextField.rx.text.orEmpty.asObservable(), 
-                                            secondPassword: mainView.secondPasswordTextField.rx.text.orEmpty.asObservable(),
-                                            nextButtonTap: mainView.nextButton.rx.tap)
+        let input = PasswordViewModel.Input(
+            viewWillAppearTrigger: self.rx.viewWillAppear,
+            password: mainView.passwordTextField.rx.text.orEmpty.asObservable(),
+            secondPassword: mainView.secondPasswordTextField.rx.text.orEmpty.asObservable(),
+            nextButtonTap: mainView.nextButton.rx.tap
+        )
         
         let output = viewModel.transform(input: input)
+        
+        output.viewWillAppearTrigger
+            .drive(mainView.passwordTextField.rx.becomeFirstResponder)
+            .disposed(by: disposeBag)
         
         output.description
             .drive(mainView.descriptionLabel.rx.text)

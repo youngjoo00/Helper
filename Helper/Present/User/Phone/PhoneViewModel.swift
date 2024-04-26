@@ -14,6 +14,7 @@ final class PhoneViewModel: ViewModelType {
     var disposeBag: RxSwift.DisposeBag = .init()
 
     struct Input {
+        let viewWillAppearTrigger: ControlEvent<Void>
         let phone: Observable<String>
         let nextButtonTap: ControlEvent<Void>
     }
@@ -23,6 +24,7 @@ final class PhoneViewModel: ViewModelType {
 extension PhoneViewModel {
     
     struct Output {
+        let viewWillAppearTrigger: Driver<Void>
         let isValid: Driver<Bool>
         let description: Driver<String>
         let nextButtonTapTrigger: Driver<Void>
@@ -49,9 +51,12 @@ extension PhoneViewModel {
             }
             .disposed(by: disposeBag)
         
-        return Output(isValid: isValid.asDriver(onErrorJustReturn: false),
-                      description: description.asDriver(onErrorJustReturn: ""),
-                      nextButtonTapTrigger: nextButtonTapTrigger.asDriver(onErrorJustReturn: ()))
+        return Output(
+            viewWillAppearTrigger: input.viewWillAppearTrigger.asDriver(),
+            isValid: isValid.asDriver(onErrorJustReturn: false),
+            description: description.asDriver(onErrorJustReturn: ""),
+            nextButtonTapTrigger: nextButtonTapTrigger.asDriver(onErrorJustReturn: ())
+        )
     }
     
 }
@@ -60,6 +65,7 @@ extension PhoneViewModel {
 extension PhoneViewModel {
     
     struct EditOutput {
+        let viewWillAppearTrigger: Driver<Void>
         let isValid: Driver<Bool>
         let description: Driver<String>
         let successTrigger: Driver<Void>
@@ -97,6 +103,7 @@ extension PhoneViewModel {
             .disposed(by: disposeBag)
         
         return EditOutput(
+            viewWillAppearTrigger: input.viewWillAppearTrigger.asDriver(),
             isValid: isValid.asDriver(onErrorJustReturn: false),
             description: description.asDriver(onErrorJustReturn: ""),
             successTrigger: successTrigger.asDriver(onErrorDriveWith: .empty()),

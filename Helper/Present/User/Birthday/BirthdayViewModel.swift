@@ -14,6 +14,7 @@ final class BirthdayViewModel: ViewModelType {
     var disposeBag: RxSwift.DisposeBag = .init()
 
     struct Input {
+        let viewWillAppearTrigger: ControlEvent<Void>
         let year: Observable<String>
         let month: Observable<String>
         let day: Observable<String>
@@ -21,8 +22,9 @@ final class BirthdayViewModel: ViewModelType {
     }
     
     struct Output {
-        let nextMonthField: Driver<Bool>
-        let nextDayField: Driver<Bool>
+        let viewWillAppearTrigger: Driver<Void>
+        let nextMonthField: Driver<Void>
+        let nextDayField: Driver<Void>
         let isValid: Driver<Bool>
         let description: Driver<String>
         let signUpButtonTapTrigger: Driver<Void>
@@ -32,27 +34,23 @@ final class BirthdayViewModel: ViewModelType {
         let signUpButtonTapTrigger = PublishRelay<Void>()
 
         // 자동으로 다음 텍스트 필드로 안내
-        let nextMonthField = PublishRelay<Bool>()
-        let nextDayField = PublishRelay<Bool>()
+        let nextMonthField = PublishRelay<Void>()
+        let nextDayField = PublishRelay<Void>()
         
         input.year
-            .map { $0.count == 4 }
+            .filter { $0.count == 4 }
+            .map { _ in }
             .take(1)
-            .subscribe(with: self) { owner, value in
-                if value {
-                    nextMonthField.accept(true)
-                }
-            }
+            .observe(on: MainScheduler.asyncInstance)
+            .bind(to: nextMonthField)
             .disposed(by: disposeBag)
         
         input.month
-            .map { $0.count == 2 }
+            .filter { $0.count == 2 }
+            .map { _ in }
             .take(1)
-            .subscribe(with: self) { owner, value in
-                if value {
-                    nextDayField.accept(true)
-                }
-            }
+            .observe(on: MainScheduler.asyncInstance)
+            .bind(to: nextDayField)
             .disposed(by: disposeBag)
         
         // 세개의 값이 다 들어온 경우 확인 시작
@@ -90,8 +88,9 @@ final class BirthdayViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         return Output(
-            nextMonthField: nextMonthField.asDriver(onErrorJustReturn: false),
-            nextDayField: nextDayField.asDriver(onErrorJustReturn: false),
+            viewWillAppearTrigger: input.viewWillAppearTrigger.asDriver(),
+            nextMonthField: nextMonthField.asDriver(onErrorDriveWith: .empty()),
+            nextDayField: nextDayField.asDriver(onErrorDriveWith: .empty()),
             isValid: isValid.asDriver(onErrorJustReturn: false),
             description: description.asDriver(onErrorJustReturn: "유효한 생년월일이 아닙니다."),
             signUpButtonTapTrigger: signUpButtonTapTrigger.asDriver(onErrorJustReturn: ()))

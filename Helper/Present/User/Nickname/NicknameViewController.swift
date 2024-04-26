@@ -24,10 +24,17 @@ final class NicknameViewController: BaseViewController {
     
     override func bind() {
         
-        let input = NicknameViewModel.Input(nickname: mainView.nicknameTextField.rx.text.orEmpty.asObservable(),
-                                            nextButtonTap: mainView.nextButton.rx.tap)
+        let input = NicknameViewModel.Input(
+            viewWillAppearTrigger: self.rx.viewWillAppear,
+            nickname: mainView.nicknameTextField.rx.text.orEmpty.asObservable(),
+            nextButtonTap: mainView.nextButton.rx.tap
+        )
         
         let output = viewModel.transform(input: input)
+        
+        output.viewWillAppearTrigger
+            .drive(mainView.nicknameTextField.rx.becomeFirstResponder)
+            .disposed(by: disposeBag)
         
         output.isValid
             .drive(mainView.nextButton.rx.isEnabled)

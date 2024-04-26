@@ -36,11 +36,16 @@ final class EditPhoneViewController: BaseViewController {
     override func bind() {
 
         let input = PhoneViewModel.Input(
+            viewWillAppearTrigger: self.rx.viewWillAppear,
             phone: mainView.phoneTextField.rx.text.orEmpty.asObservable(),
             nextButtonTap: mainView.nextButton.rx.tap
         )
         
         let output = viewModel.editTransform(input: input)
+        
+        output.viewWillAppearTrigger
+            .drive(mainView.phoneTextField.rx.becomeFirstResponder)
+            .disposed(by: disposeBag)
         
         output.isValid
             .drive(mainView.nextButton.rx.isEnabled)
