@@ -31,4 +31,8 @@ extension ProfileImageView {
         backgroundColor = .lightGray
         clipsToBounds = true
     }
+    
+    func updateImage(_ urlString: String) {
+        self.loadImage(urlString: urlString)
+    }
 }

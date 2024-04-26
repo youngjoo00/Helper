@@ -1,14 +1,14 @@
 //
-//  SearchView.swift
+//  FollowingView.swift
 //  Helper
 //
-//  Created by youngjoo on 4/13/24.
+//  Created by youngjoo on 4/27/24.
 //
 
 import UIKit
 import Then
 
-final class SearchView: BaseView {
+final class FollowingView: BaseView {
     
     override func configureHierarchy() {
         [

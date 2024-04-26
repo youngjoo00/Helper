@@ -93,7 +93,7 @@ extension PhoneViewModel {
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let data):
-                    EventManager.shared.editProfileInfoSubject.onNext(data)
+                    EventManager.shared.MyProfileInfo.onNext(data)
                     successTrigger.accept(())
                 case .fail(let fail):
                     errorMessage.accept(fail.localizedDescription)

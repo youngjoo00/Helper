@@ -134,6 +134,18 @@
 		8ED8B78C2BDACEEB009B4387 /* EditNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B78B2BDACEEB009B4387 /* EditNicknameViewController.swift */; };
 		8ED8B7962BDB9DF4009B4387 /* NumberPadTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7952BDB9DF4009B4387 /* NumberPadTextField.swift */; };
 		8ED8B7982BDBEBEC009B4387 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7972BDBEBEC009B4387 /* ProfileImageView.swift */; };
+		8ED8B7A22BDC07CE009B4387 /* FollowTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7A12BDC07CE009B4387 /* FollowTabViewController.swift */; };
+		8ED8B7A62BDC0845009B4387 /* FollowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7A52BDC0845009B4387 /* FollowerView.swift */; };
+		8ED8B7A82BDC084D009B4387 /* FollowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7A72BDC084D009B4387 /* FollowerViewController.swift */; };
+		8ED8B7AA2BDC088D009B4387 /* FollowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7A92BDC088D009B4387 /* FollowViewController.swift */; };
+		8ED8B7AD2BDC08CD009B4387 /* FollowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7AC2BDC08CD009B4387 /* FollowView.swift */; };
+		8ED8B7AF2BDC0967009B4387 /* FollowingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7AE2BDC0967009B4387 /* FollowingView.swift */; };
+		8ED8B7B12BDC0971009B4387 /* FollowingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7B02BDC0971009B4387 /* FollowingViewController.swift */; };
+		8ED8B7B32BDC0999009B4387 /* FollowerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7B22BDC0999009B4387 /* FollowerViewModel.swift */; };
+		8ED8B7B52BDC09A1009B4387 /* FollowingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7B42BDC09A1009B4387 /* FollowingViewModel.swift */; };
+		8ED8B7B72BDC0D04009B4387 /* FollowerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7B62BDC0D04009B4387 /* FollowerTableViewCell.swift */; };
+		8ED8B7BA2BDC23CB009B4387 /* OtherProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7B92BDC23CB009B4387 /* OtherProfileView.swift */; };
+		8ED8B7BC2BDC23D3009B4387 /* OtherProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7BB2BDC23D3009B4387 /* OtherProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -256,6 +268,18 @@
 		8ED8B78B2BDACEEB009B4387 /* EditNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNicknameViewController.swift; sourceTree = "<group>"; };
 		8ED8B7952BDB9DF4009B4387 /* NumberPadTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadTextField.swift; sourceTree = "<group>"; };
 		8ED8B7972BDBEBEC009B4387 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		8ED8B7A12BDC07CE009B4387 /* FollowTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowTabViewController.swift; sourceTree = "<group>"; };
+		8ED8B7A52BDC0845009B4387 /* FollowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerView.swift; sourceTree = "<group>"; };
+		8ED8B7A72BDC084D009B4387 /* FollowerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerViewController.swift; sourceTree = "<group>"; };
+		8ED8B7A92BDC088D009B4387 /* FollowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowViewController.swift; sourceTree = "<group>"; };
+		8ED8B7AC2BDC08CD009B4387 /* FollowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowView.swift; sourceTree = "<group>"; };
+		8ED8B7AE2BDC0967009B4387 /* FollowingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingView.swift; sourceTree = "<group>"; };
+		8ED8B7B02BDC0971009B4387 /* FollowingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingViewController.swift; sourceTree = "<group>"; };
+		8ED8B7B22BDC0999009B4387 /* FollowerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerViewModel.swift; sourceTree = "<group>"; };
+		8ED8B7B42BDC09A1009B4387 /* FollowingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingViewModel.swift; sourceTree = "<group>"; };
+		8ED8B7B62BDC0D04009B4387 /* FollowerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerTableViewCell.swift; sourceTree = "<group>"; };
+		8ED8B7B92BDC23CB009B4387 /* OtherProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileView.swift; sourceTree = "<group>"; };
+		8ED8B7BB2BDC23D3009B4387 /* OtherProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +383,7 @@
 				8E17A30D2BCA8FBF00581B58 /* MyProfileView.swift */,
 				8E17A30F2BCA8FC800581B58 /* MyProfileViewController.swift */,
 				8E17A3112BCA8FCF00581B58 /* MyProfileViewModel.swift */,
+				8ED8B7A02BDC072F009B4387 /* Follow */,
 				8ED8B76D2BD81F15009B4387 /* EditProfile */,
 				8E17A3212BCAC84500581B58 /* MyProfileTab */,
 				8E17A3132BCAC54F00581B58 /* MyPost */,
@@ -479,6 +504,7 @@
 				8E17A3032BCA8F2A00581B58 /* Search */,
 				8E9A3FE22BCEBCC7005E4F45 /* WritePost */,
 				8E17A3042BCA8F3400581B58 /* MyProfile */,
+				8ED8B7B82BDC239C009B4387 /* OtherProfile */,
 			);
 			path = Present;
 			sourceTree = "<group>";
@@ -748,6 +774,56 @@
 			path = PostsView;
 			sourceTree = "<group>";
 		};
+		8ED8B7A02BDC072F009B4387 /* Follow */ = {
+			isa = PBXGroup;
+			children = (
+				8ED8B7AC2BDC08CD009B4387 /* FollowView.swift */,
+				8ED8B7A92BDC088D009B4387 /* FollowViewController.swift */,
+				8ED8B7AB2BDC0894009B4387 /* FollowTab */,
+				8ED8B7A42BDC082C009B4387 /* Follower */,
+				8ED8B7A32BDC0826009B4387 /* Following */,
+			);
+			path = Follow;
+			sourceTree = "<group>";
+		};
+		8ED8B7A32BDC0826009B4387 /* Following */ = {
+			isa = PBXGroup;
+			children = (
+				8ED8B7AE2BDC0967009B4387 /* FollowingView.swift */,
+				8ED8B7B02BDC0971009B4387 /* FollowingViewController.swift */,
+				8ED8B7B42BDC09A1009B4387 /* FollowingViewModel.swift */,
+			);
+			path = Following;
+			sourceTree = "<group>";
+		};
+		8ED8B7A42BDC082C009B4387 /* Follower */ = {
+			isa = PBXGroup;
+			children = (
+				8ED8B7A52BDC0845009B4387 /* FollowerView.swift */,
+				8ED8B7A72BDC084D009B4387 /* FollowerViewController.swift */,
+				8ED8B7B22BDC0999009B4387 /* FollowerViewModel.swift */,
+				8ED8B7B62BDC0D04009B4387 /* FollowerTableViewCell.swift */,
+			);
+			path = Follower;
+			sourceTree = "<group>";
+		};
+		8ED8B7AB2BDC0894009B4387 /* FollowTab */ = {
+			isa = PBXGroup;
+			children = (
+				8ED8B7A12BDC07CE009B4387 /* FollowTabViewController.swift */,
+			);
+			path = FollowTab;
+			sourceTree = "<group>";
+		};
+		8ED8B7B82BDC239C009B4387 /* OtherProfile */ = {
+			isa = PBXGroup;
+			children = (
+				8ED8B7B92BDC23CB009B4387 /* OtherProfileView.swift */,
+				8ED8B7BB2BDC23D3009B4387 /* OtherProfileViewController.swift */,
+			);
+			path = OtherProfile;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -859,10 +935,12 @@
 				8E1BAE4D2BC969DD00A65075 /* UITextField+.swift in Sources */,
 				8E1BAE4F2BC96AA600A65075 /* DateManager.swift in Sources */,
 				8E17A3082BCA8F9900581B58 /* SearchViewController.swift in Sources */,
+				8ED8B7A62BDC0845009B4387 /* FollowerView.swift in Sources */,
 				8E1BAE212BC968E500A65075 /* PasswordViewModel.swift in Sources */,
 				8E17A2EA2BCA59C100581B58 /* BirthdayView.swift in Sources */,
 				8EA59CE92BD19D56009938E0 /* PathVersion.swift in Sources */,
 				8E1BAE802BC97D9600A65075 /* lightGrayBackgroundImageView.swift in Sources */,
+				8ED8B7B52BDC09A1009B4387 /* FollowingViewModel.swift in Sources */,
 				8E17A2F72BCA7F1D00581B58 /* PostTabViewController.swift in Sources */,
 				8E1BAE232BC968E500A65075 /* SignUpViewController.swift in Sources */,
 				8E9A3FE62BCEBD98005E4F45 /* WritePostViewController.swift in Sources */,
@@ -877,12 +955,15 @@
 				8E1BADE42BC965CC00A65075 /* AppDelegate.swift in Sources */,
 				8E17A2DC2BCA267000581B58 /* RedColorLabel.swift in Sources */,
 				8E1BAE722BC97D5D00A65075 /* BaseView.swift in Sources */,
+				8ED8B7A82BDC084D009B4387 /* FollowerViewController.swift in Sources */,
 				8E1BAE8A2BC97FF800A65075 /* PointButton.swift in Sources */,
 				8E9A3FD72BCD94A2005E4F45 /* SettingViewController.swift in Sources */,
 				8E1BAE332BC968EC00A65075 /* APIError.swift in Sources */,
 				8EA59CE52BD19240009938E0 /* CommentRouter.swift in Sources */,
+				8ED8B7AF2BDC0967009B4387 /* FollowingView.swift in Sources */,
 				8E1BADFD2BC968C100A65075 /* ViewModelType.swift in Sources */,
 				8E17A2E82BCA3E6500581B58 /* UserProfileManager.swift in Sources */,
+				8ED8B7BC2BDC23D3009B4387 /* OtherProfileViewController.swift in Sources */,
 				8ED8B78A2BDA6C24009B4387 /* EditPhoneViewController.swift in Sources */,
 				8E17A2FE2BCA80AF00581B58 /* FoundView.swift in Sources */,
 				8E17A3102BCA8FC800581B58 /* MyProfileViewController.swift in Sources */,
@@ -891,6 +972,7 @@
 				8E1BAE892BC97FF800A65075 /* PointTextField.swift in Sources */,
 				8EA59CED2BD1A64D009938E0 /* CreatorResponse.swift in Sources */,
 				8E9A3FD92BCD94A9005E4F45 /* SettingViewModel.swift in Sources */,
+				8ED8B7AD2BDC08CD009B4387 /* FollowView.swift in Sources */,
 				8ED8B76F2BD81F2D009B4387 /* EditProfileView.swift in Sources */,
 				8ED8B7752BD8F9CD009B4387 /* EditProfileTableViewCell.swift in Sources */,
 				8E17A3062BCA8F9200581B58 /* SearchView.swift in Sources */,
@@ -908,6 +990,7 @@
 				8EA59CEB2BD1A562009938E0 /* CommentResponse.swift in Sources */,
 				8E1BAE1E2BC968E500A65075 /* SignInViewModel.swift in Sources */,
 				8E1BAE702BC97D5D00A65075 /* BaseViewController.swift in Sources */,
+				8ED8B7B12BDC0971009B4387 /* FollowingViewController.swift in Sources */,
 				8E9A3FD52BCD9498005E4F45 /* SettingView.swift in Sources */,
 				8E1BAE8D2BC9800B00A65075 /* Color.swift in Sources */,
 				8E9A40162BCFE9C8005E4F45 /* WhiteButton.swift in Sources */,
@@ -917,15 +1000,18 @@
 				8E17A2DE2BCA31D400581B58 /* ViewModelType+.swift in Sources */,
 				8E9A3FF62BCEE291005E4F45 /* UserRequest.swift in Sources */,
 				8E1BAE222BC968E500A65075 /* SignUpView.swift in Sources */,
+				8ED8B7B72BDC0D04009B4387 /* FollowerTableViewCell.swift in Sources */,
 				8ED8B77F2BD93A83009B4387 /* PostsView.swift in Sources */,
 				8E9A3FFC2BCEE2DD005E4F45 /* ErrorResponse.swift in Sources */,
 				8E1BAE262BC968E500A65075 /* NicknameViewController.swift in Sources */,
 				8E887CDB2BD417D600E95008 /* MenuButton.swift in Sources */,
 				8ED8B7572BD65C9E009B4387 /* HelperString.swift in Sources */,
+				8ED8B7B32BDC0999009B4387 /* FollowerViewModel.swift in Sources */,
 				8E1BAE272BC968E500A65075 /* NicknameViewModel.swift in Sources */,
 				8E9A40102BCFBB36005E4F45 /* PostRequest.swift in Sources */,
 				8E1BADFC2BC968C100A65075 /* ReusableID.swift in Sources */,
 				8ED8B7862BDA1F2C009B4387 /* PostsViewModel.swift in Sources */,
+				8ED8B7AA2BDC088D009B4387 /* FollowViewController.swift in Sources */,
 				8E17A3002BCA80B900581B58 /* FoundViewController.swift in Sources */,
 				8E9A3FF82BCEE2CE005E4F45 /* UserResponse.swift in Sources */,
 				8E1BAE522BC96AC500A65075 /* TabBarController.swift in Sources */,
@@ -946,6 +1032,7 @@
 				8ED8B7982BDBEBEC009B4387 /* ProfileImageView.swift in Sources */,
 				8E9A3FD22BCD8455005E4F45 /* UICollectionViewLayout+.swift in Sources */,
 				8E17A3322BCAF03D00581B58 /* BaseTableView.swift in Sources */,
+				8ED8B7A22BDC07CE009B4387 /* FollowTabViewController.swift in Sources */,
 				8ED3AE1C2BD14B890040DA58 /* DetailPostView.swift in Sources */,
 				8E1BAE9E2BC99E7C00A65075 /* PointLabel.swift in Sources */,
 				8E17A2E42BCA3D7F00581B58 /* PhoneViewController.swift in Sources */,
@@ -953,6 +1040,7 @@
 				8E17A3172BCAC58A00581B58 /* MyPostViewController.swift in Sources */,
 				8E9A3FD02BCD81BA005E4F45 /* PostCollectionViewCell.swift in Sources */,
 				8E1BAE3B2BC968EC00A65075 /* UserRouter.swift in Sources */,
+				8ED8B7BA2BDC23CB009B4387 /* OtherProfileView.swift in Sources */,
 				8E1BAE862BC97FDE00A65075 /* SignInView.swift in Sources */,
 				8E17A30E2BCA8FBF00581B58 /* MyProfileView.swift in Sources */,
 			);

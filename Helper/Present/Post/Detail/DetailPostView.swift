@@ -18,6 +18,14 @@ final class DetailPostView: BaseView {
     let scrollView = UIScrollView()
     let contentView = UIView()
     
+    let profileTabGesture = UITapGestureRecognizer()
+    lazy var profileStackView = UIStackView().then {
+        $0.axis = .horizontal
+        $0.spacing = 10
+        $0.addGestureRecognizer(profileTabGesture)
+    }
+    
+    let profileImageView = ProfileImageView()
     let nicknameLabel = PointBoldLabel(fontSize: 18)
     let regDateLabel = PointLabel(fontSize: 15)
     
@@ -84,7 +92,7 @@ final class DetailPostView: BaseView {
         scrollView.addSubview(contentView)
         
         [
-            nicknameLabel,
+            profileStackView,
             regDateLabel,
             categoryLabel,
             hashTagLabel,
@@ -108,6 +116,11 @@ final class DetailPostView: BaseView {
         ].forEach { contentView.addSubview($0) }
 
         [
+            profileImageView,
+            nicknameLabel,
+        ].forEach { profileStackView.addArrangedSubview($0) }
+        
+        [
             commentWriteTextField,
             commentWriteButton,
         ].forEach { commentView.addSubview($0) }
@@ -124,18 +137,27 @@ final class DetailPostView: BaseView {
             make.width.equalToSuperview()
         }
         
-        nicknameLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(10)
+        profileStackView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(5)
             make.leading.equalTo(safeAreaLayoutGuide).inset(16)
+            make.height.equalTo(44)
+        }
+        
+        profileImageView.snp.makeConstraints { make in
+            make.size.equalTo(44)
+        }
+        
+        nicknameLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(profileImageView)
         }
         
         regDateLabel.snp.makeConstraints { make in
-            make.top.equalTo(nicknameLabel)
+            make.centerY.equalTo(profileStackView)
             make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
         }
         
         categoryLabel.snp.makeConstraints { make in
-            make.top.equalTo(nicknameLabel.snp.bottom).offset(10)
+            make.top.equalTo(profileImageView.snp.bottom).offset(10)
             make.leading.equalTo(safeAreaLayoutGuide).inset(16)
         }
         
@@ -145,7 +167,7 @@ final class DetailPostView: BaseView {
         }
         
         storageButton.snp.makeConstraints { make in
-            make.top.equalTo(categoryLabel).offset(-5)
+            make.top.equalTo(categoryLabel).offset(-8)
             make.trailing.equalTo(safeAreaLayoutGuide)
         }
         

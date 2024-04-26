@@ -25,6 +25,7 @@ final class DetailPostViewModel: ViewModelType {
     
     struct Output {
         let checkedUserID: Driver<Bool>
+        let profileImage: Driver<String>
         let nickname: Driver<String>
         let regDate: Driver<String>
         let files: Driver<[String]>
@@ -163,6 +164,10 @@ final class DetailPostViewModel: ViewModelType {
             .map { !$0 }
             .asDriver(onErrorJustReturn: false)
 
+        let profileImage = postInfo
+            .map { $0.creator.profileImage }
+            .asDriver(onErrorJustReturn: "")
+        
         let nickname = postInfo
             .map { $0.creator.nick }
             .asDriver(onErrorJustReturn: "")
@@ -219,28 +224,30 @@ final class DetailPostViewModel: ViewModelType {
             .map { $0.storage.filter { $0.checkedUserID }.count >= 1 }
             .asDriver(onErrorJustReturn: false)
         
-        return Output(checkedUserID: checkedUserID,
-                      nickname: nickname,
-                      regDate: regDate,
-                      files: files,
-                      title: title,
-                      category: category,
-                      hashTag: hashTag,
-                      feature: feature,
-                      regionLocate: regionLocate,
-                      date: date, 
-                      phone: phone,
-                      storage: storage,
-                      content: content,
-                      comments: comments,
-                      commentsCount: commentsCount, 
-                      postDeleteSuccess: postDeleteSuccess.asDriver(onErrorDriveWith: .empty()),
-                      errorAlertMessage: errorAlertMessage.asDriver(onErrorJustReturn: "알 수 없는 오류입니다"), 
-                      errorToastMessage: errorToastMessage.asDriver(onErrorJustReturn: "알 수 없는 오류입니다."),
-                      postEditMenuTap: postEditMenuTap,
-                      storageSuccess: storageSuccess.map { $0 ? "게시글을 저장했어요!" : "게시글 저장을 취소했어요!" }.asDriver(onErrorDriveWith: .empty()),
-                      commentCreateSuccess: commentCreateSuccess.asDriver(onErrorDriveWith: .empty()), 
-                      commentDeleteSuccess: commentDeleteSuccess.asDriver(onErrorDriveWith: .empty())
+        return Output(
+            checkedUserID: checkedUserID,
+            profileImage: profileImage,
+            nickname: nickname,
+            regDate: regDate,
+            files: files,
+            title: title,
+            category: category,
+            hashTag: hashTag,
+            feature: feature,
+            regionLocate: regionLocate,
+            date: date,
+            phone: phone,
+            storage: storage,
+            content: content,
+            comments: comments,
+            commentsCount: commentsCount,
+            postDeleteSuccess: postDeleteSuccess.asDriver(onErrorDriveWith: .empty()),
+            errorAlertMessage: errorAlertMessage.asDriver(onErrorJustReturn: "알 수 없는 오류입니다"),
+            errorToastMessage: errorToastMessage.asDriver(onErrorJustReturn: "알 수 없는 오류입니다."),
+            postEditMenuTap: postEditMenuTap,
+            storageSuccess: storageSuccess.map { $0 ? "게시글을 저장했어요!" : "게시글 저장을 취소했어요!" }.asDriver(onErrorDriveWith: .empty()),
+            commentCreateSuccess: commentCreateSuccess.asDriver(onErrorDriveWith: .empty()),
+            commentDeleteSuccess: commentDeleteSuccess.asDriver(onErrorDriveWith: .empty())
         )
     }
 }

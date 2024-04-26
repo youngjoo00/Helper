@@ -35,7 +35,7 @@ final class MyProfileViewModel: ViewModelType {
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let data):
-                    profileInfo.accept(data)
+                    EventManager.shared.MyProfileInfo.onNext(data)
                 case .fail(let fail):
                     print(fail.localizedDescription)
                 }
@@ -43,18 +43,10 @@ final class MyProfileViewModel: ViewModelType {
             .disposed(by: disposeBag)
 
         // 프로필 수정 시
-        EventManager.shared.editProfileInfoSubject
+        EventManager.shared.MyProfileInfo
             .compactMap { $0 }
             .subscribe(with: self) { owner, data in
                 profileInfo.accept(data)
-            }
-            .disposed(by: disposeBag)
-        
-        // 프로필 버튼 클릭 시
-        input.editProfileTap
-            .withLatestFrom(profileInfo)
-            .subscribe(with: self) { owner, data in
-                EventManager.shared.editProfileInfoSubject.onNext(data)
             }
             .disposed(by: disposeBag)
         

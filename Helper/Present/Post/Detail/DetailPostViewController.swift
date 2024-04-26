@@ -56,6 +56,12 @@ final class DetailPostViewController: BaseViewController {
             .bind(to: mainView.commentWriteSubject)
             .disposed(by: disposeBag)
         
+        mainView.profileTabGesture.rx.event
+            .subscribe(with: self) { owner, _ in
+                print("gd")
+            }
+            .disposed(by: disposeBag)
+        
         let output = viewModel.transform(input: input)
               
         output.checkedUserID
@@ -65,6 +71,12 @@ final class DetailPostViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         // MARK: - View 관련 output
+        output.profileImage
+            .drive(with: self) { owner, urlString in
+                owner.mainView.profileImageView.updateImage(urlString)
+            }
+            .disposed(by: disposeBag)
+        
         output.nickname
             .drive(mainView.nicknameLabel.rx.text)
             .disposed(by: disposeBag)

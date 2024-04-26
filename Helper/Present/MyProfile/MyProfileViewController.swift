@@ -48,7 +48,7 @@ final class MyProfileViewController: BaseViewController {
         
         mainView.followersTapGesture.rx.event
             .subscribe(with: self) { owner, _ in
-                print("gd")
+                owner.transition(viewController: FollowViewController(), style: .push)
             }
             .disposed(by: disposeBag)
         

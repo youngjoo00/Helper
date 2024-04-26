@@ -59,7 +59,7 @@ final class EditProfileViewModel: ViewModelType {
         let phoneTapped = PublishRelay<String>()
         let birthdayTapped = PublishRelay<String>()
         
-        let profileInfo = EventManager.shared.editProfileInfoSubject
+        let profileInfo = EventManager.shared.MyProfileInfo
             .compactMap { $0 }
             .do(onNext: { data in
                 profileImageString.accept(data.profileImage)
