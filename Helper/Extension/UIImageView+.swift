@@ -11,9 +11,10 @@ import Kingfisher
 extension UIImageView {
     /// Kingfisher 를 이용한 이미지 로드
     func loadImage(urlString: String) {
+        let url = urlString.isEmpty ? HelperString.blankProfileImage : urlString
         
         do {
-            let urlRequest = try Router.post(.image(url: urlString)).asURLRequest()
+            let urlRequest = try Router.post(.image(url: url)).asURLRequest()
             
             let modifier = AnyModifier { _ in
                 return urlRequest

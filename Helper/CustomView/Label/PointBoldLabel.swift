@@ -13,11 +13,12 @@ class PointBoldLabel: UILabel {
         super.init(frame: frame)
     }
     
-    convenience init(_ text: String? = nil, fontSize: CGFloat) {
+    convenience init(_ text: String? = nil, fontSize: CGFloat, alignment: NSTextAlignment = .natural) {
         self.init()
         self.text = text
         self.textColor = Color.black
         self.font = .boldSystemFont(ofSize: fontSize)
+        self.textAlignment = alignment
     }
     
     required init?(coder: NSCoder) {

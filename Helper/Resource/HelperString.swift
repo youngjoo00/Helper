@@ -35,5 +35,5 @@ enum HelperString {
     static let categoryPerson = "사람"
     static let categoryAnimal = "동물"
     static let categoryThing = "물품"
-    
+    static let blankProfileImage = "uploads/posts/helper_1714141586231.png"
 }

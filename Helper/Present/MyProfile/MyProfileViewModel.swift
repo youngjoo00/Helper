@@ -19,7 +19,7 @@ final class MyProfileViewModel: ViewModelType {
     }
     
     struct Output {
-        let nickname: Driver<String>
+        let profileInfo: Driver<UserResponse.MyProfile>
         let postsID: PublishSubject<[String]>
         let editProfileTap: Driver<Void>
     }
@@ -27,7 +27,6 @@ final class MyProfileViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         
         let profileInfo = PublishRelay<UserResponse.MyProfile>()
-        let nickname = PublishRelay<String>()
         let postsID = PublishSubject<[String]>()
         
         // viewDidLoad - myProfile 통신
@@ -36,7 +35,7 @@ final class MyProfileViewModel: ViewModelType {
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let data):
-                    handleProfileInfo(data)
+                    profileInfo.accept(data)
                 case .fail(let fail):
                     print(fail.localizedDescription)
                 }
@@ -46,27 +45,23 @@ final class MyProfileViewModel: ViewModelType {
         // 프로필 수정 시
         EventManager.shared.editProfileInfoSubject
             .compactMap { $0 }
-            .subscribe(with: self) { owner, info in
-                handleProfileInfo(info)
+            .subscribe(with: self) { owner, data in
+                profileInfo.accept(data)
             }
             .disposed(by: disposeBag)
         
         // 프로필 버튼 클릭 시
         input.editProfileTap
             .withLatestFrom(profileInfo)
-            .subscribe(with: self) { owner, info in
-                EventManager.shared.editProfileInfoSubject.onNext(info)
+            .subscribe(with: self) { owner, data in
+                EventManager.shared.editProfileInfoSubject.onNext(data)
             }
             .disposed(by: disposeBag)
         
-        func handleProfileInfo(_ info: UserResponse.MyProfile) {
-            profileInfo.accept(info)
-            nickname.accept(info.nick)
-        }
-        
-        return Output(nickname: nickname.asDriver(onErrorJustReturn: ""),
-                      postsID: postsID,
-                      editProfileTap: input.editProfileTap.asDriver()
+        return Output(
+            profileInfo: profileInfo.asDriver(onErrorDriveWith: .empty()),
+            postsID: postsID,
+            editProfileTap: input.editProfileTap.asDriver()
         )
     }
 }

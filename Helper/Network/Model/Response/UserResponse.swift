@@ -44,8 +44,8 @@ enum UserResponse {
         let phoneNum: String
         let birthDay: String
         let profileImage: String
-        let followers: [String]
-        let following: [String]
+        let followers: [friendInfo]
+        let following: [friendInfo]
         let posts: [String]
         
         enum CodingKeys: String, CodingKey {
@@ -68,9 +68,19 @@ enum UserResponse {
             self.phoneNum = try container.decodeIfPresent(String.self, forKey: UserResponse.MyProfile.CodingKeys.phoneNum) ?? ""
             self.birthDay = try container.decodeIfPresent(String.self, forKey: UserResponse.MyProfile.CodingKeys.birthDay) ?? ""
             self.profileImage = try container.decodeIfPresent(String.self, forKey: UserResponse.MyProfile.CodingKeys.profileImage) ?? ""
-            self.followers = try container.decode([String].self, forKey: UserResponse.MyProfile.CodingKeys.followers)
-            self.following = try container.decode([String].self, forKey: UserResponse.MyProfile.CodingKeys.following)
+            self.followers = try container.decode([friendInfo].self, forKey: UserResponse.MyProfile.CodingKeys.followers)
+            self.following = try container.decode([friendInfo].self, forKey: UserResponse.MyProfile.CodingKeys.following)
             self.posts = try container.decode([String].self, forKey: UserResponse.MyProfile.CodingKeys.posts)
+        }
+    }
+    
+    struct friendInfo: Decodable {
+        let userID: String
+        let nick: String
+        
+        enum CodingKeys: String, CodingKey {
+            case userID = "user_id"
+            case nick
         }
     }
     

@@ -34,13 +34,21 @@ final class MyProfileViewController: BaseViewController {
         
         let output = viewModel.transform(input: input)
         
-        output.nickname
-            .drive(mainView.nicknameLabel.rx.text)
+        output.profileInfo
+            .drive(with: self) { owner, data in
+                owner.mainView.updateView(data)
+            }
             .disposed(by: disposeBag)
         
         output.editProfileTap
             .drive(with: self) { owner, _ in
                 owner.transition(viewController: EditProfileViewController(), style: .hideBottomPush)
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.followersTapGesture.rx.event
+            .subscribe(with: self) { owner, _ in
+                print("gd")
             }
             .disposed(by: disposeBag)
         

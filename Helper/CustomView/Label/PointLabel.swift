@@ -13,11 +13,12 @@ class PointLabel: UILabel {
         super.init(frame: frame)
     }
     
-    convenience init(_ text: String? = nil, fontSize: CGFloat) {
+    convenience init(_ text: String? = nil, fontSize: CGFloat, alignment: NSTextAlignment = .natural) {
         self.init()
         self.text = text
         self.textColor = Color.black
         self.font = .systemFont(ofSize: fontSize)
+        self.textAlignment = alignment
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -133,6 +133,7 @@
 		8ED8B78A2BDA6C24009B4387 /* EditPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7892BDA6C24009B4387 /* EditPhoneViewController.swift */; };
 		8ED8B78C2BDACEEB009B4387 /* EditNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B78B2BDACEEB009B4387 /* EditNicknameViewController.swift */; };
 		8ED8B7962BDB9DF4009B4387 /* NumberPadTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7952BDB9DF4009B4387 /* NumberPadTextField.swift */; };
+		8ED8B7982BDBEBEC009B4387 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7972BDBEBEC009B4387 /* ProfileImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -254,6 +255,7 @@
 		8ED8B7892BDA6C24009B4387 /* EditPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhoneViewController.swift; sourceTree = "<group>"; };
 		8ED8B78B2BDACEEB009B4387 /* EditNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNicknameViewController.swift; sourceTree = "<group>"; };
 		8ED8B7952BDB9DF4009B4387 /* NumberPadTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadTextField.swift; sourceTree = "<group>"; };
+		8ED8B7972BDBEBEC009B4387 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -683,6 +685,7 @@
 			isa = PBXGroup;
 			children = (
 				8E1BAE782BC97D9600A65075 /* lightGrayBackgroundImageView.swift */,
+				8ED8B7972BDBEBEC009B4387 /* ProfileImageView.swift */,
 			);
 			path = ImageView;
 			sourceTree = "<group>";
@@ -940,6 +943,7 @@
 				8E17A3232BCAC87E00581B58 /* MyProfileTabViewController.swift in Sources */,
 				8E1BADF82BC966BA00A65075 /* PrivateKey.swift in Sources */,
 				8E9A40122BCFC196005E4F45 /* ImageCollectionViewCell.swift in Sources */,
+				8ED8B7982BDBEBEC009B4387 /* ProfileImageView.swift in Sources */,
 				8E9A3FD22BCD8455005E4F45 /* UICollectionViewLayout+.swift in Sources */,
 				8E17A3322BCAF03D00581B58 /* BaseTableView.swift in Sources */,
 				8ED3AE1C2BD14B890040DA58 /* DetailPostView.swift in Sources */,

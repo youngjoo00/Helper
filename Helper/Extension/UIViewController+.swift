@@ -64,6 +64,31 @@ extension UIViewController {
         alert.addAction(confirm)
         present(alert, animated: true)
     }
+    
+    /// 프로필 편집 액션 시트
+    func editProfileAcionSheet(galleryHandler: @escaping () -> Void, deleteHandler: @escaping () -> Void) {
+        
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let gallery = UIAlertAction(title: "이미지 수정", style: .default) { _ in
+            galleryHandler()
+        }
+        
+        let delete = UIAlertAction(title: "이미지 제거", style: .destructive) { _ in
+            deleteHandler()
+        }
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        actionSheet.addAction(gallery)
+        actionSheet.addAction(delete)
+        actionSheet.addAction(cancel)
+        
+        present(actionSheet, animated: true)
+    }
+    
+
+    
 }
 
 

@@ -31,10 +31,27 @@ final class EditProfileViewController: BaseViewController {
         .map { indexPath, value in (indexPath.row, value[1]) }
         
         let input = EditProfileViewModel.Input(
+            editProfileImageButtonTap: mainView.editProfileImageButton.rx.tap,
             seletedData: seletedData
         )
         
         let output = viewModel.transform(input: input)
+        
+        mainView.editProfileImageButton.rx.tap
+            .subscribe(with: self) { owner, _ in
+                owner.editProfileAcionSheet {
+                    print("갤러리")
+                } deleteHandler: {
+                    print("삭제")
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        output.profileImageString
+            .drive(with: self) { owner, data in
+                owner.mainView.updateProfileImageView(data)
+            }
+            .disposed(by: disposeBag)
         
         output.profileInfo
             .drive(mainView.profileInfoTableView.rx.items(cellIdentifier: EditProfileTableViewCell.id,
@@ -64,4 +81,3 @@ extension EditProfileViewController {
         navigationItem.titleView = mainView.naviTitle
     }
 }
-
