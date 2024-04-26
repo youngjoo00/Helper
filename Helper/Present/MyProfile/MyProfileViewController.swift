@@ -40,8 +40,7 @@ final class MyProfileViewController: BaseViewController {
         
         output.editProfileTap
             .drive(with: self) { owner, _ in
-                let vc = EditProfileViewController()
-                owner.transition(viewController: vc, style: .hideBottomPush)
+                owner.transition(viewController: EditProfileViewController(), style: .hideBottomPush)
             }
             .disposed(by: disposeBag)
         

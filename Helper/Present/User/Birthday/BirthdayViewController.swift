@@ -32,6 +32,18 @@ final class BirthdayViewController: BaseViewController {
         
         let output = viewModel.transform(input: input)
         
+        output.nextMonthField
+            .drive(with: self) { owner, value in
+                owner.mainView.monthTextField.becomeFirstResponder()
+            }
+            .disposed(by: disposeBag)
+        
+        output.nextDayField
+            .drive(with: self) { owner, value in
+                owner.mainView.dayTextField.becomeFirstResponder()
+            }
+            .disposed(by: disposeBag)
+        
         output.isValid
             .drive(mainView.signUpButton.rx.isEnabled)
             .disposed(by: disposeBag)

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 extension UITextField {
     func addLeftPadding() {
@@ -14,3 +15,13 @@ extension UITextField {
         self.leftViewMode = ViewMode.always
     }
 }
+
+// MARK: - Rx
+extension Reactive where Base: UITextField {
+    var becomeFirstResponder: Binder<Void> {
+        return Binder(self.base) { textField, _ in
+            textField.becomeFirstResponder()
+        }
+    }
+}
+

@@ -24,11 +24,17 @@ final class SignUpViewController: BaseViewController {
     
     override func bind() {
         
-        let input = SignUpViewModel.Input(email: mainView.emailTextField.rx.text.orEmpty.asObservable(),
-                                          nextButtonTapped: mainView.nextButton.rx.tap
+        let input = SignUpViewModel.Input(
+            viewWillAppearTrigger: self.rx.viewWillAppear,
+            email: mainView.emailTextField.rx.text.orEmpty.asObservable(),
+            nextButtonTapped: mainView.nextButton.rx.tap
         )
         
         let output = viewModel.transform(input: input)
+        
+        output.viewWillAppearTrigger
+            .drive(mainView.emailTextField.rx.becomeFirstResponder)
+            .disposed(by: disposeBag)
         
         // 이메일 정규식
         output.isEmailValid
@@ -39,7 +45,7 @@ final class SignUpViewController: BaseViewController {
         output.isEmailUnique
             .drive(with: self) { owner, value in
                 if value {
-                    owner.navigationController?.pushViewController(PasswordViewController(), animated: true)
+                    owner.transition(viewController: PasswordViewController(), style: .push)
                 }
             }
             .disposed(by: disposeBag)

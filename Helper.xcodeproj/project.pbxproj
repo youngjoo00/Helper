@@ -132,6 +132,7 @@
 		8ED8B7862BDA1F2C009B4387 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7852BDA1F2C009B4387 /* PostsViewModel.swift */; };
 		8ED8B78A2BDA6C24009B4387 /* EditPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7892BDA6C24009B4387 /* EditPhoneViewController.swift */; };
 		8ED8B78C2BDACEEB009B4387 /* EditNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B78B2BDACEEB009B4387 /* EditNicknameViewController.swift */; };
+		8ED8B7962BDB9DF4009B4387 /* NumberPadTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7952BDB9DF4009B4387 /* NumberPadTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -252,6 +253,7 @@
 		8ED8B7852BDA1F2C009B4387 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
 		8ED8B7892BDA6C24009B4387 /* EditPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhoneViewController.swift; sourceTree = "<group>"; };
 		8ED8B78B2BDACEEB009B4387 /* EditNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNicknameViewController.swift; sourceTree = "<group>"; };
+		8ED8B7952BDB9DF4009B4387 /* NumberPadTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -672,6 +674,7 @@
 			isa = PBXGroup;
 			children = (
 				8E1BAE872BC97FF700A65075 /* PointTextField.swift */,
+				8ED8B7952BDB9DF4009B4387 /* NumberPadTextField.swift */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -892,6 +895,7 @@
 				8E83BC482BCBC134007E1637 /* Router.swift in Sources */,
 				8ED3AE222BD15C960040DA58 /* CommentsTableViewCell.swift in Sources */,
 				8E1BAE362BC968EC00A65075 /* NetworkManager.swift in Sources */,
+				8ED8B7962BDB9DF4009B4387 /* NumberPadTextField.swift in Sources */,
 				8E17A2E22BCA3D7800581B58 /* PhoneView.swift in Sources */,
 				8E17A32A2BCAD16E00581B58 /* PostView.swift in Sources */,
 				8E1BAE712BC97D5D00A65075 /* BaseCollectionViewCell.swift in Sources */,

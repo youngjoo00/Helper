@@ -19,5 +19,6 @@ final class EventManager {
     let storageTrigger = PublishSubject<Void>()
     
     /// 프로필 수정 시 사용
-    let editProfileTrigger = BehaviorSubject<UserResponse.MyProfile?>(value: nil)
+    let editProfileInfoSubject = BehaviorSubject<UserResponse.MyProfile?>(value: nil)
+    //let editProfileTrigger = PublishSubject<UserResponse.MyProfile>()
 }

@@ -13,11 +13,13 @@ final class SignUpViewModel: ViewModelType {
     var disposeBag: DisposeBag = .init()
     
     struct Input {
+        let viewWillAppearTrigger: ControlEvent<Void>
         let email: Observable<String>
         let nextButtonTapped: ControlEvent<Void>
     }
     
     struct Output {
+        let viewWillAppearTrigger: Driver<Void>
         let isEmailValid: Driver<Bool>
         let isEmailUnique: Driver<Bool>
         let description: Driver<String>
@@ -68,6 +70,7 @@ final class SignUpViewModel: ViewModelType {
             .disposed(by: disposeBag)
 
         return Output(
+            viewWillAppearTrigger: input.viewWillAppearTrigger.asDriver(),
             isEmailValid: isEmailValid.asDriver(onErrorJustReturn: false),
             isEmailUnique: isEmailUnique.asDriver(onErrorJustReturn: false),
             description: description.asDriver(onErrorJustReturn: "")

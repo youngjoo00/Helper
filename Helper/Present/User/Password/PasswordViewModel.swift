@@ -15,12 +15,14 @@ final class PasswordViewModel: ViewModelType {
     
     struct Input {
         let password: Observable<String>
+        let secondPassword: Observable<String>
         let nextButtonTap: ControlEvent<Void>
     }
     
     struct Output {
-        let isValid: Driver<Bool>
         let description: Driver<String>
+        let secondDescription: Driver<String>
+        let enableButton: Driver<Bool>
         let nextButtonTapTrigger: Driver<Void>
     }
     
@@ -34,6 +36,15 @@ final class PasswordViewModel: ViewModelType {
         let description = isValid
             .map { $0 ? "" : "비밀번호는 최소 4자 이상입니다" }
         
+        let isSecondValid = Observable.combineLatest(input.password, input.secondPassword)
+            .map { $0 == $1 }
+        
+        let secondDescription = isSecondValid
+            .map { $0 ? "" : "비밀번호가 일치하지 않습니다" }
+                
+        let enableButton = Observable.combineLatest(isValid, isSecondValid)
+            .map { $0 && $1 }
+        
         input.nextButtonTap
             .withLatestFrom(input.password)
             .subscribe(with: self) { owner, password in
@@ -42,9 +53,11 @@ final class PasswordViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        return Output(isValid: isValid.asDriver(onErrorJustReturn: false),
-                      description: description.asDriver(onErrorJustReturn: ""),
-                      nextButtonTapTrigger: nextButtonTapTrigger.asDriver(onErrorJustReturn: ())
+        return Output(
+            description: description.asDriver(onErrorJustReturn: "알 수 없는 오류입니다."),
+            secondDescription: secondDescription.asDriver(onErrorJustReturn: "알 수 없는 오류입니다."),
+            enableButton: enableButton.asDriver(onErrorJustReturn: false),
+            nextButtonTapTrigger: nextButtonTapTrigger.asDriver(onErrorJustReturn: ())
         )
     }
 }

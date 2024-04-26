@@ -55,7 +55,7 @@ final class EditProfileViewModel: ViewModelType {
         let phoneTapped = PublishRelay<String>()
         let birthdayTapped = PublishRelay<String>()
         
-        let profileInfo = EventManager.shared.editProfileTrigger
+        let profileInfo = EventManager.shared.editProfileInfoSubject
             .compactMap { $0 }
             .map { info -> [[String]] in
                 // 인스턴스를 순회하며 1차원 배열 생성 후, 순회가 끝나면 2차원 배열로 반환

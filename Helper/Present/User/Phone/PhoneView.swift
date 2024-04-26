@@ -12,7 +12,7 @@ import RxSwift
 final class PhoneView: BaseView {
     
     let titleLabel = PointBoldLabel("휴대폰 번호 등록하기", fontSize: 30)
-    let phoneTextField = PointTextField(placeholderText: "휴대폰 번호를 입력해주세요")
+    let phoneTextField = NumberPadTextField(placeholderText: "휴대폰 번호를 입력해주세요")
     let nextButton = PointButton(title: "다음")
     let descriptionLabel = RedColorLabel("", fontSize: 15)
     
@@ -45,7 +45,7 @@ final class PhoneView: BaseView {
         
         nextButton.snp.makeConstraints { make in
             make.height.equalTo(50)
-            make.top.equalTo(phoneTextField.snp.bottom).offset(30)
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(20)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
         }
     }

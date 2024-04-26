@@ -25,23 +25,28 @@ final class PasswordViewController: BaseViewController {
 
     override func bind() {
         
-        let input = PasswordViewModel.Input(password: mainView.passwordTextField.rx.text.orEmpty.asObservable(),
+        let input = PasswordViewModel.Input(password: mainView.passwordTextField.rx.text.orEmpty.asObservable(), 
+                                            secondPassword: mainView.secondPasswordTextField.rx.text.orEmpty.asObservable(),
                                             nextButtonTap: mainView.nextButton.rx.tap)
         
         let output = viewModel.transform(input: input)
-        
-        output.nextButtonTapTrigger
-            .drive(with: self) { owner, _ in
-                owner.navigationController?.pushViewController(NicknameViewController(), animated: true)
-            }
-            .disposed(by: disposeBag)
         
         output.description
             .drive(mainView.descriptionLabel.rx.text)
             .disposed(by: disposeBag)
         
-        output.isValid
+        output.secondDescription
+            .drive(mainView.secondDescriptionLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.enableButton
             .drive(mainView.nextButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        output.nextButtonTapTrigger
+            .drive(with: self) { owner, _ in
+                owner.transition(viewController: NicknameViewController(), style: .push)
+            }
             .disposed(by: disposeBag)
     }
 }

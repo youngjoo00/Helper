@@ -11,4 +11,5 @@ enum Color {
     static let black: UIColor = .textPoint
     static let white: UIColor = .viewPoint
     static let red: UIColor = .textRed
+    static let point: UIColor = .mainPoint
 }

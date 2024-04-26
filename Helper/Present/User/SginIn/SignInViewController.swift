@@ -44,7 +44,7 @@ final class SignInViewController: BaseViewController {
         
         output.signUpButtonTapped
             .drive(with: self) { owner, _ in
-                owner.navigationController?.pushViewController(SignUpViewController(), animated: true)
+                owner.transition(viewController: SignUpViewController(), style: .push)
             }
             .disposed(by: disposeBag)
     }

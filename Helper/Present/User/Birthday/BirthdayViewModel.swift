@@ -21,6 +21,8 @@ final class BirthdayViewModel: ViewModelType {
     }
     
     struct Output {
+        let nextMonthField: Driver<Bool>
+        let nextDayField: Driver<Bool>
         let isValid: Driver<Bool>
         let description: Driver<String>
         let signUpButtonTapTrigger: Driver<Void>
@@ -29,6 +31,30 @@ final class BirthdayViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         let signUpButtonTapTrigger = PublishRelay<Void>()
 
+        // 자동으로 다음 텍스트 필드로 안내
+        let nextMonthField = PublishRelay<Bool>()
+        let nextDayField = PublishRelay<Bool>()
+        
+        input.year
+            .map { $0.count == 4 }
+            .take(1)
+            .subscribe(with: self) { owner, value in
+                if value {
+                    nextMonthField.accept(true)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        input.month
+            .map { $0.count == 2 }
+            .take(1)
+            .subscribe(with: self) { owner, value in
+                if value {
+                    nextDayField.accept(true)
+                }
+            }
+            .disposed(by: disposeBag)
+        
         // 세개의 값이 다 들어온 경우 확인 시작
         let date = Observable.combineLatest(input.year, input.month, input.day)
         
@@ -45,7 +71,6 @@ final class BirthdayViewModel: ViewModelType {
             .withLatestFrom(date) { _, date in
                 UserProfileManager.shared.birthday = date.0 + date.1 + date.2
                 let signUp = UserProfileManager.shared
-                print(signUp.birthday, signUp.phone)
                 return UserRequest.Join(email: signUp.email,
                                   password: signUp.password,
                                   nick: signUp.nick,
@@ -55,7 +80,7 @@ final class BirthdayViewModel: ViewModelType {
             .flatMap { NetworkManager.shared.callAPI(type: UserResponse.Join.self, router: Router.user(.join(query: $0))) }
             .subscribe(with: self) { owner, result in
                 switch result {
-                case .success(let data):
+                case .success:
                     print("회원가입 성공!")
                     signUpButtonTapTrigger.accept(())
                 case .fail(let fail):
@@ -64,9 +89,12 @@ final class BirthdayViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        return Output(isValid: isValid.asDriver(onErrorJustReturn: false),
-                      description: description.asDriver(onErrorJustReturn: "유효한 생년월일이 아닙니다."),
-                      signUpButtonTapTrigger: signUpButtonTapTrigger.asDriver(onErrorJustReturn: ()))
+        return Output(
+            nextMonthField: nextMonthField.asDriver(onErrorJustReturn: false),
+            nextDayField: nextDayField.asDriver(onErrorJustReturn: false),
+            isValid: isValid.asDriver(onErrorJustReturn: false),
+            description: description.asDriver(onErrorJustReturn: "유효한 생년월일이 아닙니다."),
+            signUpButtonTapTrigger: signUpButtonTapTrigger.asDriver(onErrorJustReturn: ()))
     }
     
 }

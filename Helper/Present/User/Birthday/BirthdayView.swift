@@ -12,9 +12,9 @@ import RxSwift
 final class BirthdayView: BaseView {
     
     let titleLabel = PointBoldLabel("생년월일 등록하기", fontSize: 30)
-    let yearTextField = PointTextField(placeholderText: "YYYY")
-    let monthTextField = PointTextField(placeholderText: "MM")
-    let dayTextField = PointTextField(placeholderText: "DD")
+    let yearTextField = NumberPadTextField(placeholderText: "YYYY")
+    let monthTextField = NumberPadTextField(placeholderText: "MM")
+    let dayTextField = NumberPadTextField(placeholderText: "DD")
     let signUpButton = PointButton(title: "회원가입 완료")
     let descriptionLabel = RedColorLabel("", fontSize: 15)
     
@@ -64,7 +64,7 @@ final class BirthdayView: BaseView {
         
         signUpButton.snp.makeConstraints { make in
             make.height.equalTo(50)
-            make.top.equalTo(monthTextField.snp.bottom).offset(30)
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(20)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
         }
     }

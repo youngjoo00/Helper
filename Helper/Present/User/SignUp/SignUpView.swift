@@ -45,7 +45,7 @@ final class SignUpView: BaseView {
         
         nextButton.snp.makeConstraints { make in
             make.height.equalTo(50)
-            make.top.equalTo(emailTextField.snp.bottom).offset(30)
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(20)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
         }
 

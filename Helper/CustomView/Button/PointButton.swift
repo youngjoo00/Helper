@@ -31,7 +31,7 @@ extension PointButton {
     func configureView(_ title: String?, image: UIImage?) {
         var configuration = UIButton.Configuration.gray()
         configuration.baseForegroundColor = Color.white
-        configuration.baseBackgroundColor = Color.black
+        configuration.baseBackgroundColor = Color.point
         configuration.title = title
         configuration.image = image
         configuration.imagePadding = 10
