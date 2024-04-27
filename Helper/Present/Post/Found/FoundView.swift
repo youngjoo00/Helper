@@ -30,7 +30,7 @@ final class FoundView: BaseView {
         $0.showsMenuAsPrimaryAction = true
     }
     
-    let postsView = PostsView()
+    let postsView = VerticalPostsView()
     
     override func configureHierarchy() {
         [

@@ -84,6 +84,34 @@ enum UserResponse {
         }
     }
     
+    struct OtherProfile: Decodable {
+        let userID: String
+        let nick: String
+        let profileImage: String
+        let followers: [Follow]
+        let following: [Follow]
+        let posts: [String]
+        
+        enum CodingKeys: String, CodingKey {
+            case userID = "user_id"
+            case nick
+            case profileImage
+            case followers
+            case following
+            case posts
+        }
+        
+        init(from decoder: any Decoder) throws {
+            let container: KeyedDecodingContainer<UserResponse.MyProfile.CodingKeys> = try decoder.container(keyedBy: UserResponse.MyProfile.CodingKeys.self)
+            self.userID = try container.decode(String.self, forKey: UserResponse.MyProfile.CodingKeys.userID)
+            self.nick = try container.decode(String.self, forKey: UserResponse.MyProfile.CodingKeys.nick)
+            self.profileImage = try container.decodeIfPresent(String.self, forKey: UserResponse.MyProfile.CodingKeys.profileImage) ?? ""
+            self.followers = try container.decode([Follow].self, forKey: UserResponse.MyProfile.CodingKeys.followers)
+            self.following = try container.decode([Follow].self, forKey: UserResponse.MyProfile.CodingKeys.following)
+            self.posts = try container.decode([String].self, forKey: UserResponse.MyProfile.CodingKeys.posts)
+        }
+    }
+    
     struct Refresh: Decodable {
         let accessToken: String
     }

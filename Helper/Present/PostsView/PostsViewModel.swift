@@ -10,8 +10,8 @@ import RxSwift
 import RxCocoa
 
 enum PostsViewModelMode {
-    case finding
-    case found
+    case findingAll
+    case foundAll
     case myPost
     case myStorage
 }
@@ -21,7 +21,7 @@ final class PostsViewModel: ViewModelType {
     var disposeBag: RxSwift.DisposeBag = .init()
     var mode: PostsViewModelMode
     
-    init(mode: PostsViewModelMode = PostsViewModelMode.finding) {
+    init(mode: PostsViewModelMode = PostsViewModelMode.findingAll) {
         self.mode = mode
     }
     
@@ -71,167 +71,213 @@ final class PostsViewModel: ViewModelType {
             })
         )
         
-        switch mode {
-        case .finding:
-            // fetch Post
-            loadDataTrigger
-                .withLatestFrom(next)
-                .flatMap { next -> Observable<APIResult<PostResponse.Posts>> in
-                    if next == "0" {
-                        isRefreshControlLoading.accept(false)
-                        isBottomLoading.accept(false)
-                        return .empty()
-                    } else {
-                        // MARK: - 네트워크를 호출하는 여기만 다름 -> 그럼 네트워크 요청만 뷰컨에서 보내주면 되나?
+        loadDataTrigger
+            .withLatestFrom(next)
+            .flatMap { [weak self] next -> Observable<APIResult<PostResponse.Posts>> in
+                guard let self else { return .empty() }
+                if next == "0" {
+                    isRefreshControlLoading.accept(false)
+                    isBottomLoading.accept(false)
+                    return .empty()
+                } else {
+                    switch self.mode {
+                    case .findingAll:
+                        return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchHashTag(query: PostRequest.FetchHashTag(next: next, productID: "", hashTag: HelperString.hashTagFinding)))).asObservable()
+                    case .foundAll:
+                        return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchHashTag(query: PostRequest.FetchHashTag(next: next, productID: "", hashTag: HelperString.hashTagFound)))).asObservable()
+                    case .myPost:
+                        return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.otherUserFetchPosts(next: next, userID: myID))).asObservable()
+                    case .myStorage:
                         return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.otherUserFetchPosts(next: next, userID: myID))).asObservable()
                     }
                 }
-                .delay(.seconds(1), scheduler: MainScheduler.instance)
-                .subscribe(with: self) { owner, result in
-                    switch result {
-                    case .success(let data):
-                        do {
-                            let currentNext = try next.value()
-                            if currentNext == "" {
-                                posts.accept(data.data)
-                            } else {
-                                var temp = posts.value
-                                temp.append(contentsOf: data.data)
-                                posts.accept(temp)
-                            }
-                            next.onNext(data.nextCursor)
-                        } catch {
-                            print(error)
-                            errorAlertMessage.accept("다음 페이지 로딩 중 오류가 발생했습니다.")
+            }
+            .delay(.seconds(1), scheduler: MainScheduler.instance)
+            .subscribe(with: self) { owner, result in
+                switch result {
+                case .success(let data):
+                    do {
+                        let currentNext = try next.value()
+                        if currentNext == "" {
+                            posts.accept(data.data)
+                        } else {
+                            var temp = posts.value
+                            temp.append(contentsOf: data.data)
+                            posts.accept(temp)
                         }
-                    case .fail(let fail):
-                        errorAlertMessage.accept(fail.localizedDescription)
-                        print(fail.localizedDescription)
+                        next.onNext(data.nextCursor)
+                    } catch {
+                        print(error)
+                        errorAlertMessage.accept("다음 페이지 로딩 중 오류가 발생했습니다.")
                     }
-                    isRefreshControlLoading.accept(false)
-                    isBottomLoading.accept(false)
+                case .fail(let fail):
+                    errorAlertMessage.accept(fail.localizedDescription)
+                    print(fail.localizedDescription)
                 }
-                .disposed(by: disposeBag)
-        case .found:
-            // fetch Post
-            loadDataTrigger
-                .withLatestFrom(next)
-                .flatMap { next -> Observable<APIResult<PostResponse.Posts>> in
-                    if next == "0" {
-                        isRefreshControlLoading.accept(false)
-                        isBottomLoading.accept(false)
-                        return .empty()
-                    } else {
-                        // MARK: - 네트워크를 호출하는 여기만 다름 -> 그럼 네트워크 요청만 뷰컨에서 보내주면 되나?
-                        return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.otherUserFetchPosts(next: next, userID: myID))).asObservable()
-                    }
-                }
-                //.delay(.seconds(1), scheduler: MainScheduler.instance)
-                .subscribe(with: self) { owner, result in
-                    switch result {
-                    case .success(let data):
-                        do {
-                            let currentNext = try next.value()
-                            if currentNext == "" {
-                                posts.accept(data.data)
-                            } else {
-                                var temp = posts.value
-                                temp.append(contentsOf: data.data)
-                                posts.accept(temp)
-                            }
-                            next.onNext(data.nextCursor)
-                        } catch {
-                            print(error)
-                            errorAlertMessage.accept("다음 페이지 로딩 중 오류가 발생했습니다.")
-                        }
-                    case .fail(let fail):
-                        errorAlertMessage.accept(fail.localizedDescription)
-                        print(fail.localizedDescription)
-                    }
-                    isRefreshControlLoading.accept(false)
-                    isBottomLoading.accept(false)
-                }
-                .disposed(by: disposeBag)
-        case .myPost:
-            // fetch Post
-            loadDataTrigger
-                .withLatestFrom(next)
-                .flatMap { next -> Observable<APIResult<PostResponse.Posts>> in
-                    if next == "0" {
-                        isRefreshControlLoading.accept(false)
-                        isBottomLoading.accept(false)
-                        return .empty()
-                    } else {
-                        // 네트워크 통신을 진행하면서 + 딜레이를 1초 맥이기
-                        // reachedBottomTrigger, refreshControlTrigger 일 때만 이렇게 진행하고, fetchTrigger 에서는 네트워크가 진행되면 안됨
-                        return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.otherUserFetchPosts(next: next, userID: myID))).asObservable()
-                    }
-                }
-                //.delay(.seconds(1), scheduler: MainScheduler.instance)
-                .subscribe(with: self) { owner, result in
-                    switch result {
-                    case .success(let data):
-                        do {
-                            let currentNext = try next.value()
-                            if currentNext == "" {
-                                posts.accept(data.data)
-                            } else {
-                                var temp = posts.value
-                                temp.append(contentsOf: data.data)
-                                posts.accept(temp)
-                            }
-                            next.onNext(data.nextCursor)
-                        } catch {
-                            print(error)
-                            errorAlertMessage.accept("다음 페이지 로딩 중 오류가 발생했습니다.")
-                        }
-                    case .fail(let fail):
-                        errorAlertMessage.accept(fail.localizedDescription)
-                        print(fail.localizedDescription)
-                    }
-                    isRefreshControlLoading.accept(false)
-                    isBottomLoading.accept(false)
-                }
-                .disposed(by: disposeBag)
-        case .myStorage:
-            // fetch Post
-            loadDataTrigger
-                .withLatestFrom(next)
-                .flatMap { next -> Observable<APIResult<PostResponse.Posts>> in
-                    if next == "0" {
-                        isRefreshControlLoading.accept(false)
-                        isBottomLoading.accept(false)
-                        return .empty()
-                    } else {
-                        return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchStorage(next: next))).asObservable()
-                    }
-                }
-                .subscribe(with: self) { owner, result in
-                    switch result {
-                    case .success(let data):
-                        do {
-                            let currentNext = try next.value()
-                            if currentNext == "" {
-                                posts.accept(data.data)
-                            } else {
-                                var temp = posts.value
-                                temp.append(contentsOf: data.data)
-                                posts.accept(temp)
-                            }
-                            next.onNext(data.nextCursor)
-                        } catch {
-                            print(error)
-                            errorAlertMessage.accept("다음 페이지 로딩 중 오류가 발생했습니다.")
-                        }
-                    case .fail(let fail):
-                        errorAlertMessage.accept(fail.localizedDescription)
-                        print(fail.localizedDescription)
-                    }
-                    isRefreshControlLoading.accept(false)
-                    isBottomLoading.accept(false)
-                }
-                .disposed(by: disposeBag)
-        }
+                isRefreshControlLoading.accept(false)
+                isBottomLoading.accept(false)
+            }
+            .disposed(by: disposeBag)
+        
+//        switch mode {
+//        case .findingAll:
+//            // fetch Post
+//            loadDataTrigger
+//                .withLatestFrom(next)
+//                .flatMap { next -> Observable<APIResult<PostResponse.Posts>> in
+//                    if next == "0" {
+//                        isRefreshControlLoading.accept(false)
+//                        isBottomLoading.accept(false)
+//                        return .empty()
+//                    } else {
+//                        return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchHashTag(query: PostRequest.FetchHashTag(next: next, productID: "", hashTag: HelperString.hashTagFinding)))).asObservable()
+//                    }
+//                }
+//                .delay(.seconds(1), scheduler: MainScheduler.instance)
+//                .subscribe(with: self) { owner, result in
+//                    switch result {
+//                    case .success(let data):
+//                        do {
+//                            let currentNext = try next.value()
+//                            if currentNext == "" {
+//                                posts.accept(data.data)
+//                            } else {
+//                                var temp = posts.value
+//                                temp.append(contentsOf: data.data)
+//                                posts.accept(temp)
+//                            }
+//                            next.onNext(data.nextCursor)
+//                        } catch {
+//                            print(error)
+//                            errorAlertMessage.accept("다음 페이지 로딩 중 오류가 발생했습니다.")
+//                        }
+//                    case .fail(let fail):
+//                        errorAlertMessage.accept(fail.localizedDescription)
+//                        print(fail.localizedDescription)
+//                    }
+//                    isRefreshControlLoading.accept(false)
+//                    isBottomLoading.accept(false)
+//                }
+//                .disposed(by: disposeBag)
+//        case .foundAll:
+//            // fetch Post
+//            loadDataTrigger
+//                .withLatestFrom(next)
+//                .flatMap { next -> Observable<APIResult<PostResponse.Posts>> in
+//                    if next == "0" {
+//                        isRefreshControlLoading.accept(false)
+//                        isBottomLoading.accept(false)
+//                        return .empty()
+//                    } else {
+//                        return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchHashTag(query: PostRequest.FetchHashTag(next: next, productID: "", hashTag: HelperString.hashTagFound)))).asObservable()
+//                    }
+//                }
+//                //.delay(.seconds(1), scheduler: MainScheduler.instance)
+//                .subscribe(with: self) { owner, result in
+//                    switch result {
+//                    case .success(let data):
+//                        do {
+//                            let currentNext = try next.value()
+//                            if currentNext == "" {
+//                                posts.accept(data.data)
+//                            } else {
+//                                var temp = posts.value
+//                                temp.append(contentsOf: data.data)
+//                                posts.accept(temp)
+//                            }
+//                            next.onNext(data.nextCursor)
+//                        } catch {
+//                            print(error)
+//                            errorAlertMessage.accept("다음 페이지 로딩 중 오류가 발생했습니다.")
+//                        }
+//                    case .fail(let fail):
+//                        errorAlertMessage.accept(fail.localizedDescription)
+//                        print(fail.localizedDescription)
+//                    }
+//                    isRefreshControlLoading.accept(false)
+//                    isBottomLoading.accept(false)
+//                }
+//                .disposed(by: disposeBag)
+//        case .myPost:
+//            // fetch Post
+//            loadDataTrigger
+//                .withLatestFrom(next)
+//                .flatMap { next -> Observable<APIResult<PostResponse.Posts>> in
+//                    if next == "0" {
+//                        isRefreshControlLoading.accept(false)
+//                        isBottomLoading.accept(false)
+//                        return .empty()
+//                    } else {
+//                        // 네트워크 통신을 진행하면서 + 딜레이를 1초 맥이기
+//                        // reachedBottomTrigger, refreshControlTrigger 일 때만 이렇게 진행하고, fetchTrigger 에서는 네트워크가 진행되면 안됨
+//                        return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.otherUserFetchPosts(next: next, userID: myID))).asObservable()
+//                    }
+//                }
+//                //.delay(.seconds(1), scheduler: MainScheduler.instance)
+//                .subscribe(with: self) { owner, result in
+//                    switch result {
+//                    case .success(let data):
+//                        do {
+//                            let currentNext = try next.value()
+//                            if currentNext == "" {
+//                                posts.accept(data.data)
+//                            } else {
+//                                var temp = posts.value
+//                                temp.append(contentsOf: data.data)
+//                                posts.accept(temp)
+//                            }
+//                            next.onNext(data.nextCursor)
+//                        } catch {
+//                            print(error)
+//                            errorAlertMessage.accept("다음 페이지 로딩 중 오류가 발생했습니다.")
+//                        }
+//                    case .fail(let fail):
+//                        errorAlertMessage.accept(fail.localizedDescription)
+//                        print(fail.localizedDescription)
+//                    }
+//                    isRefreshControlLoading.accept(false)
+//                    isBottomLoading.accept(false)
+//                }
+//                .disposed(by: disposeBag)
+//        case .myStorage:
+//            // fetch Post
+//            loadDataTrigger
+//                .withLatestFrom(next)
+//                .flatMap { next -> Observable<APIResult<PostResponse.Posts>> in
+//                    if next == "0" {
+//                        isRefreshControlLoading.accept(false)
+//                        isBottomLoading.accept(false)
+//                        return .empty()
+//                    } else {
+//                        return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchStorage(next: next))).asObservable()
+//                    }
+//                }
+//                .subscribe(with: self) { owner, result in
+//                    switch result {
+//                    case .success(let data):
+//                        do {
+//                            let currentNext = try next.value()
+//                            if currentNext == "" {
+//                                posts.accept(data.data)
+//                            } else {
+//                                var temp = posts.value
+//                                temp.append(contentsOf: data.data)
+//                                posts.accept(temp)
+//                            }
+//                            next.onNext(data.nextCursor)
+//                        } catch {
+//                            print(error)
+//                            errorAlertMessage.accept("다음 페이지 로딩 중 오류가 발생했습니다.")
+//                        }
+//                    case .fail(let fail):
+//                        errorAlertMessage.accept(fail.localizedDescription)
+//                        print(fail.localizedDescription)
+//                    }
+//                    isRefreshControlLoading.accept(false)
+//                    isBottomLoading.accept(false)
+//                }
+//                .disposed(by: disposeBag)
+//        }
        
         
         

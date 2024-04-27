@@ -10,7 +10,7 @@ import Then
 import RxSwift
 import RxCocoa
 
-final class MyProfileViewController: BaseViewController {
+class MyProfileViewController: BaseViewController {
     
     private let mainView = MyProfileView()
     private let viewModel = MyProfileViewModel()
@@ -70,7 +70,7 @@ final class MyProfileViewController: BaseViewController {
 // MARK: - Custom Func
 extension MyProfileViewController {
     
-    private func configureNavigationBar() {
+    func configureNavigationBar() {
         let rightBtnItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(didRightBarButtonItemTapped))
         rightBtnItem.tintColor = UIColor.black
         
@@ -86,7 +86,7 @@ extension MyProfileViewController {
 // MARK: - Add Child
 extension MyProfileViewController {
     
-    private func configureTabViewController() {
+   func configureTabViewController() {
         addChild(tabVC)
         mainView.containerView.addSubview(tabVC.view)
         

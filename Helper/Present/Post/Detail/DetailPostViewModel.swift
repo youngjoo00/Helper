@@ -21,6 +21,7 @@ final class DetailPostViewModel: ViewModelType {
         let postEditMenuTap: Observable<Void>
         let storageButtonTap: ControlEvent<Void>
         let commentDeleteTap: Observable<String>
+        let profileTapGesture: Observable<(Void)>
     }
     
     struct Output {
@@ -47,6 +48,7 @@ final class DetailPostViewModel: ViewModelType {
         let storageSuccess: Driver<String>
         let commentCreateSuccess: Driver<Void>
         let commentDeleteSuccess: Driver<Void>
+        let profileTapGesture: Driver<String>
     }
     
     func transform(input: Input) -> Output {
@@ -224,6 +226,11 @@ final class DetailPostViewModel: ViewModelType {
             .map { $0.storage.filter { $0.checkedUserID }.count >= 1 }
             .asDriver(onErrorJustReturn: false)
         
+        let profileTapGesture = input.profileTapGesture
+            .withLatestFrom(postInfo)
+            .map { $0.creator.userID }
+            .asDriver(onErrorJustReturn: "")
+        
         return Output(
             checkedUserID: checkedUserID,
             profileImage: profileImage,
@@ -247,7 +254,8 @@ final class DetailPostViewModel: ViewModelType {
             postEditMenuTap: postEditMenuTap,
             storageSuccess: storageSuccess.map { $0 ? "게시글을 저장했어요!" : "게시글 저장을 취소했어요!" }.asDriver(onErrorDriveWith: .empty()),
             commentCreateSuccess: commentCreateSuccess.asDriver(onErrorDriveWith: .empty()),
-            commentDeleteSuccess: commentDeleteSuccess.asDriver(onErrorDriveWith: .empty())
+            commentDeleteSuccess: commentDeleteSuccess.asDriver(onErrorDriveWith: .empty()),
+            profileTapGesture: profileTapGesture
         )
     }
 }

@@ -16,6 +16,7 @@ enum UserRouter {
     case refresh
     case myProfile
     case editProfile(query: Encodable)
+    case otherProfile(userID: String)
 }
 
 extension UserRouter: TargetType {
@@ -50,6 +51,8 @@ extension UserRouter: TargetType {
             ]
             
             return headers
+        case .otherProfile:
+            return baseHeader
         }
     }
     
@@ -70,6 +73,8 @@ extension UserRouter: TargetType {
             return version + "/users/me/profile"
         case .editProfile:
             return version + "/users/me/profile"
+        case .otherProfile(let userID):
+            return version + "/users" + "/\(userID)" + "/profile"
         }
     }
     
@@ -89,6 +94,8 @@ extension UserRouter: TargetType {
             return .get
         case .editProfile:
             return .put
+        case .otherProfile:
+            return .get
         }
     }
     
@@ -119,6 +126,8 @@ extension UserRouter: TargetType {
         case .editProfile(let query):
             print(query)
             return try? encoder.encode(query)
+        case .otherProfile:
+            return nil
         }
     }
     

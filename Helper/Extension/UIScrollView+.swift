@@ -24,5 +24,19 @@ extension Reactive where Base: UIScrollView {
         .map { _ in () }
         return ControlEvent(events: source)
     }
+    
+    func reachedTrailing(from space: CGFloat = 0.0) -> ControlEvent<Void> {
+        let source = contentOffset.map { [weak base] contentOffset in
+            guard let base = base else { return false }
+            let visibleWidth = base.frame.width - base.contentInset.left - base.contentInset.right
+            let x = contentOffset.x + base.contentInset.left
+            let threshold = base.contentSize.width - visibleWidth - space - 100
+            return x >= threshold
+        }
+        .distinctUntilChanged()
+        .filter { $0 }
+        .map { _ in () }
+        return ControlEvent(events: source)
+    }
 }
 

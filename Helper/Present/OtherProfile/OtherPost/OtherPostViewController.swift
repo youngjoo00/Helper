@@ -1,41 +1,32 @@
 //
-//  MyStoragePostViewController.swift
+//  OtherPostViewController.swift
 //  Helper
 //
-//  Created by youngjoo on 4/13/24.
+//  Created by youngjoo on 4/27/24.
 //
 
 import UIKit
 import RxSwift
 import RxCocoa
 
-final class MyStoragePostViewController: BaseViewController {
+final class OtherPostViewController: BaseViewController {
 
     private let postsView = VerticalPostsView()
-    private let viewModel = PostsViewModel(mode: .myStorage)
+    private let postsViewModel = PostsViewModel(mode: .myPost)
     
     let fetchPostsTrigger = PublishSubject<Void>()
     
     override func loadView() {
         view = postsView
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func bind() {
 
         EventManager.shared.postWriteTrigger
-            .subscribe(with: self) { owner, _ in
-                owner.fetchPostsTrigger.onNext(())
-            }
-            .disposed(by: disposeBag)
-        
-        
-        EventManager.shared.storageTrigger
             .subscribe(with: self) { owner, _ in
                 owner.fetchPostsTrigger.onNext(())
             }
@@ -47,7 +38,7 @@ final class MyStoragePostViewController: BaseViewController {
             refreshControlTrigger: postsView.refreshControl.rx.controlEvent(.valueChanged)
         )
         
-        let output = viewModel.transform(input: input)
+        let output = postsViewModel.transform(input: input)
         
         output.posts
             .drive(postsView.collectionView.rx.items(cellIdentifier: PostCollectionViewCell.id,

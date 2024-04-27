@@ -19,19 +19,22 @@ final class TabBarController: UITabBarController {
         UITabBar.appearance().tintColor = .black
         UITabBar.appearance().unselectedItemTintColor = .systemGray2
         
-        let firstTab = UINavigationController(rootViewController: PostViewController())
-        firstTab.tabBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house"), tag: 0)
+        let homeTab = UINavigationController(rootViewController: HomeViewController())
+        homeTab.tabBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house"), tag: 0)
         
-        let secondTab = UINavigationController(rootViewController: SearchViewController())
-        secondTab.tabBarItem = UITabBarItem(title: "검색", image: UIImage(systemName: "magnifyingglass"), tag: 1)
+        let helpTab = UINavigationController(rootViewController: PostViewController())
+        helpTab.tabBarItem = UITabBarItem(title: "Help", image: UIImage(systemName: "house"), tag: 1)
         
-        let thirdTab = UINavigationController(rootViewController: UIViewController())
-        thirdTab.tabBarItem = UITabBarItem(title: "작성", image: UIImage(systemName: "pencil"), tag: 2)
+        let writeTab = UINavigationController(rootViewController: UIViewController())
+        writeTab.tabBarItem = UITabBarItem(title: "작성", image: UIImage(systemName: "pencil"), tag: 2)
         
-        let fourTab = UINavigationController(rootViewController: MyProfileViewController())
-        fourTab.tabBarItem = UITabBarItem(title: "프로필", image: UIImage(systemName: "person"), tag: 3)
+        let searchTab = UINavigationController(rootViewController: SearchViewController())
+        searchTab.tabBarItem = UITabBarItem(title: "검색", image: UIImage(systemName: "magnifyingglass"), tag: 3)
         
-        self.viewControllers = [firstTab, secondTab, thirdTab, fourTab]
+        let myPageTab = UINavigationController(rootViewController: MyProfileViewController())
+        myPageTab.tabBarItem = UITabBarItem(title: "프로필", image: UIImage(systemName: "person"), tag: 4)
+        
+        self.viewControllers = [homeTab, helpTab, writeTab, searchTab, myPageTab]
     }
 }
 

@@ -11,7 +11,7 @@ import RxCocoa
 
 final class MyPostViewController: BaseViewController {
 
-    private let postsView = PostsView()
+    private let postsView = VerticalPostsView()
     private let postsViewModel = PostsViewModel(mode: .myPost)
     
     let fetchPostsTrigger = PublishSubject<Void>()

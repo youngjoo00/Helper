@@ -43,23 +43,19 @@ final class DetailPostViewController: BaseViewController {
         
         let commentDeleteTap = PublishSubject<String>()
         
-        let input = DetailPostViewModel.Input(postID: postIDSubject,
-                                              comment: mainView.commentWriteSubject,
-                                              commentButtonTap: mainView.commentWriteButton.rx.tap,
-                                              postDeleteTap: postDeleteTap,
-                                              postEditMenuTap: postEditMenuTap, 
-                                              storageButtonTap: mainView.storageButton.rx.tap, 
-                                              commentDeleteTap: commentDeleteTap
+        let input = DetailPostViewModel.Input(
+            postID: postIDSubject,
+            comment: mainView.commentWriteSubject,
+            commentButtonTap: mainView.commentWriteButton.rx.tap,
+            postDeleteTap: postDeleteTap,
+            postEditMenuTap: postEditMenuTap,
+            storageButtonTap: mainView.storageButton.rx.tap,
+            commentDeleteTap: commentDeleteTap,
+            profileTapGesture: mainView.profileTabGesture.rx.event.map { _ in }
         )
                 
         mainView.commentWriteTextField.rx.text.orEmpty
             .bind(to: mainView.commentWriteSubject)
-            .disposed(by: disposeBag)
-        
-        mainView.profileTabGesture.rx.event
-            .subscribe(with: self) { owner, _ in
-                print("gd")
-            }
             .disposed(by: disposeBag)
         
         let output = viewModel.transform(input: input)
@@ -67,6 +63,12 @@ final class DetailPostViewController: BaseViewController {
         output.checkedUserID
             .drive(with: self) { owner, value in
                 owner.navigationItem.rightBarButtonItem?.isHidden = value
+            }
+            .disposed(by: disposeBag)
+        
+        output.profileTapGesture
+            .drive(with: self) { owner, id in
+                owner.transition(viewController: OtherProfileViewController(userID: id), style: .push)
             }
             .disposed(by: disposeBag)
         

@@ -9,7 +9,7 @@ import UIKit
 import Tabman
 import Then
 
-final class MyProfileView: BaseView {
+class MyProfileView: BaseView {
     
     let profileImageView = ProfileImageView()
     let nicknameLabel = PointBoldLabel(fontSize: 20)

@@ -8,7 +8,7 @@
 import UIKit
 import Then
 
-final class PostsView: BaseView {
+final class VerticalPostsView: BaseView {
     
     let refreshControl = UIRefreshControl()
     
