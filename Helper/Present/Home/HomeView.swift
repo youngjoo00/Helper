@@ -11,7 +11,9 @@ import Then
 final class HomeView: BaseView {
     
     let naviTitle = PointBoldLabel("Helper", fontSize: 20)
-    let scrollView = UIScrollView()
+    let scrollView = UIScrollView().then {
+        $0.showsVerticalScrollIndicator = false
+    }
     let contentView = UIView()
     let scrollBottomSpaceView = UIView()
     

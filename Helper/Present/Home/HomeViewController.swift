@@ -18,7 +18,7 @@ final class HomeViewController: BaseViewController {
     private let findingViewModel = PostsViewModel(mode: .findingAll)
     private let foundViewModel = PostsViewModel(mode: .foundAll)
     
-    let fetchPostsTrigger = PublishSubject<Void>().debug("오?")
+    let fetchPostsTrigger = PublishSubject<Void>()
     
     override func loadView() {
         view = mainView
@@ -27,7 +27,6 @@ final class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //fetchPostsTrigger.onNext(())
         configureNavigationView()
     }
     

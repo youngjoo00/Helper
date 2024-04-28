@@ -89,7 +89,7 @@ final class PostsViewModel: ViewModelType {
                     case .myPost:
                         return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.otherUserFetchPosts(next: next, userID: myID))).asObservable()
                     case .myStorage:
-                        return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.otherUserFetchPosts(next: next, userID: myID))).asObservable()
+                        return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchStorage(next: next))).asObservable()
                     case .feed:
                         return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchFeed(query: PostRequest.FetchFeed(next: next, productID: HelperString.productID)))).asObservable()
                     }

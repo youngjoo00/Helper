@@ -36,6 +36,7 @@ final class FeedTableViewCell: BaseTableViewCell {
     let pageControl = UIPageControl().then {
         $0.currentPageIndicatorTintColor = .black
         $0.pageIndicatorTintColor = .lightGray
+        $0.hidesForSinglePage = true
     }
     
     let commentButton = ImageButton(image: UIImage(systemName: "message"))
@@ -139,6 +140,14 @@ final class FeedTableViewCell: BaseTableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
+        let subviews = imageStackView.arrangedSubviews
+        for subview in subviews {
+            // 스택뷰의 배열에서만 제거
+            imageStackView.removeArrangedSubview(subview)
+            // 실제 화면에 보이는 뷰 제거
+            subview.removeFromSuperview()
+        }
+        
         disposeBag = DisposeBag()
     }
     
@@ -153,10 +162,11 @@ extension FeedTableViewCell {
         
         titleLabel.text = data.title
         hashTagLabel.text = data.hashTags.description
+        pageControl.numberOfPages = data.files.count
     }
     
     private func configureImageView(_ files: [String]) {
-        files.map { file in
+        files.forEach { file in
             // 이미지뷰를 넣고, 해당 이미지뷰를 로드진행
             let feedImageView = lightGrayBackgroundImageView()
             feedImageView.snp.makeConstraints { make in

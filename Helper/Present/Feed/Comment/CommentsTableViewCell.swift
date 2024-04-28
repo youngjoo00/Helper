@@ -13,6 +13,7 @@ import RxCocoa
 final class CommentsTableViewCell: BaseTableViewCell {
     
     lazy var deleteSubject = PublishSubject<String>()
+    
     private var commentID = ""
     private let nicknameLabel = PointBoldLabel("닉네임", fontSize: 18)
     private let regDateLabel = PointLabel("20시간 전", fontSize: 15)

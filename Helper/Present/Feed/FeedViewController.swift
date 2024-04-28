@@ -46,9 +46,31 @@ final class FeedViewController: BaseViewController {
             .drive(mainView.tableView.rx.items(cellIdentifier: FeedTableViewCell.id,
                                                     cellType: FeedTableViewCell.self)) { row, item, cell in
                 cell.updateView(item)
+                
+                // 현재 페이지
+                cell.scrollView.rx.didEndDecelerating
+                    .subscribe(with: self) { owner, _ in
+                        let currentPage = cell.scrollView.contentOffset.x / cell.scrollView.frame.width
+                        cell.pageControl.currentPage = Int(currentPage)
+                    }
+                    .disposed(by: cell.disposeBag)
+                
+                cell.commentButton.rx.tap
+                    .subscribe(with: self) { owner, _ in
+                        let vc = CommentViewController(item.postID)
+                        if let sheet = vc.sheetPresentationController {
+                            sheet.detents = [.medium(), .large()]
+                            // 스크롤할때 확장하지 않도록
+                            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+                            sheet.prefersGrabberVisible = true
+                            sheet.preferredCornerRadius = 30
+                        }
+                        owner.present(vc, animated: true)
+                    }
+                    .disposed(by: cell.disposeBag)
             }
             .disposed(by: disposeBag)
-
+        
         // refreshControl
         output.isRefreshControlLoading
             .drive(mainView.refreshControl.rx.isRefreshing)

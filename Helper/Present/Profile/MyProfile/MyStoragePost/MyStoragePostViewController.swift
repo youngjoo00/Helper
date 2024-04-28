@@ -28,13 +28,14 @@ final class MyStoragePostViewController: BaseViewController {
     
     override func bind() {
 
+        // write 이벤트 감지
         EventManager.shared.postWriteTrigger
             .subscribe(with: self) { owner, _ in
                 owner.fetchPostsTrigger.onNext(())
             }
             .disposed(by: disposeBag)
         
-        
+        // storage 이벤트 감지
         EventManager.shared.storageTrigger
             .subscribe(with: self) { owner, _ in
                 owner.fetchPostsTrigger.onNext(())
