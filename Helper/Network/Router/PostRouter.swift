@@ -20,6 +20,7 @@ enum PostRouter {
     case storage(query: PostRequest.StorageStatus, id: String)
     case fetchStorage(next: String)
     case otherUserFetchPosts(next: String, userID: String)
+    case fetchFeed(query: PostRequest.FetchFeed)
 }
 
 extension PostRouter: TargetType {
@@ -33,7 +34,7 @@ extension PostRouter: TargetType {
             HTTPHeader.sesacKey.rawValue: PrivateKey.sesac.rawValue
         ]
         switch self {
-        case .fetchHashTag, .postID, .create, .update, .delete, .storage, .fetchStorage, .otherUserFetchPosts:
+        case .fetchHashTag, .postID, .create, .update, .delete, .storage, .fetchStorage, .otherUserFetchPosts, .fetchFeed:
             return baseHeader
         case .image:
             var headers = baseHeader
@@ -70,6 +71,8 @@ extension PostRouter: TargetType {
             return version + posts + "/likes" + "/me"
         case .otherUserFetchPosts(let next, let userID):
             return version + posts + "/users" + "/\(userID)"
+        case .fetchFeed:
+            return version + posts
         }
     }
     
@@ -95,6 +98,8 @@ extension PostRouter: TargetType {
             return .get
         case .otherUserFetchPosts:
             return .get
+        case .fetchFeed:
+            return .get
         }
     }
     
@@ -103,7 +108,7 @@ extension PostRouter: TargetType {
         case .fetchHashTag(let query):
             return [
                 URLQueryItem(name: "next", value: query.next),
-                URLQueryItem(name: "limit", value: "50"),
+                URLQueryItem(name: "limit", value: "10"),
                 URLQueryItem(name: "product_id", value: query.productID),
                 URLQueryItem(name: "hashTag", value: query.hashTag)
             ]
@@ -112,19 +117,25 @@ extension PostRouter: TargetType {
         case .fetchStorage(let next):
             return [
                 URLQueryItem(name: "next", value: next),
-                URLQueryItem(name: "limit", value: "50"),
+                URLQueryItem(name: "limit", value: "10"),
             ]
         case .otherUserFetchPosts(let next, let id):
             return [
                 URLQueryItem(name: "next", value: next),
-                URLQueryItem(name: "limit", value: "6"),
+                URLQueryItem(name: "limit", value: "10"),
+            ]
+        case .fetchFeed(let query):
+            return [
+                URLQueryItem(name: "next", value: query.next),
+                URLQueryItem(name: "limit", value: "10"),
+                URLQueryItem(name: "product_id", value: query.productID),
             ]
         }
     }
     
     var parameters: String? {
         switch self {
-        case .fetchHashTag, .postID, .image, .uploadImage, .create, .update, .delete, .storage, .fetchStorage, .otherUserFetchPosts:
+        case .fetchHashTag, .postID, .image, .uploadImage, .create, .update, .delete, .storage, .fetchStorage, .otherUserFetchPosts, .fetchFeed:
             return nil
         }
     }
@@ -151,6 +162,8 @@ extension PostRouter: TargetType {
         case .fetchStorage(next: let next):
             return nil
         case .otherUserFetchPosts:
+            return nil
+        case .fetchFeed:
             return nil
         }
     }

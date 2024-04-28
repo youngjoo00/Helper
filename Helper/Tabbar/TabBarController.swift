@@ -30,7 +30,7 @@ final class TabBarController: UITabBarController {
         let writeTab = UINavigationController(rootViewController: UIViewController())
         writeTab.tabBarItem = UITabBarItem(title: "Post", image: UIImage(systemName: "pencil"), tag: 2)
         
-        let searchTab = UINavigationController(rootViewController: SearchViewController())
+        let searchTab = UINavigationController(rootViewController: FeedViewController())
         searchTab.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "book.pages"), tag: 3)
         
         let myPageTab = UINavigationController(rootViewController: MyProfileViewController())

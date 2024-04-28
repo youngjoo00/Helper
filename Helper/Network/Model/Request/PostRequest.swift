@@ -16,9 +16,18 @@ enum PostRequest {
         
         enum CodingKeys: String, CodingKey {
             case next
-            case limit
             case productID = "product_id"
             case hashTag
+        }
+    }
+    
+    struct FetchFeed {
+        let next: String
+        let productID: String
+        
+        enum CodingKeys: String, CodingKey {
+            case next
+            case productID = "product_id"
         }
     }
     

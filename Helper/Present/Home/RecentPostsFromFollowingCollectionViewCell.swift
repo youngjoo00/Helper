@@ -13,39 +13,40 @@ import RxCocoa
 final class RecentPostsFromFollowingCollectionViewCell: BaseCollectionViewCell {
    
     private let profileImageView = ProfileImageView()
-    private let nicknameLabel = PointBoldLabel("닉네임", fontSize: 18)
+    private let nicknameLabel = PointBoldLabel("닉네임", fontSize: 15)
 
-    private let postsImage = lightGrayBackgroundImageView()
+    private let feedImageView = lightGrayBackgroundImageView()
     
     override func configureHierarchy() {
         [
             profileImageView,
             nicknameLabel,
-            postsImage,
+            feedImageView,
         ].forEach { contentView.addSubview($0) }
     }
     
     override func configureLayout() {
         
         profileImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(5)
-            make.leading.equalToSuperview().offset(5)
-            make.size.equalTo(30)
+            make.top.equalToSuperview().offset(3)
+            make.leading.equalToSuperview().offset(3)
+            make.size.equalTo(25)
         }
         
         nicknameLabel.snp.makeConstraints { make in
             make.centerY.equalTo(profileImageView)
             make.leading.equalTo(profileImageView.snp.trailing).offset(5)
+            make.trailing.equalToSuperview().offset(-1)
         }
         
-        postsImage.snp.makeConstraints { make in
+        feedImageView.snp.makeConstraints { make in
             make.top.equalTo(profileImageView.snp.bottom).offset(5)
-            make.bottom.horizontalEdges.equalToSuperview()
+            make.horizontalEdges.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
     }
     
     override func configureView() {
-    
     }
     
     override func prepareForReuse() {
@@ -58,7 +59,8 @@ final class RecentPostsFromFollowingCollectionViewCell: BaseCollectionViewCell {
 extension RecentPostsFromFollowingCollectionViewCell {
     
     func updateView(_ data: PostResponse.FetchPost) {
-        profileImageView.loadImage(urlString: "")
+        profileImageView.loadImage(urlString: data.creator.profileImage)
         nicknameLabel.text = data.creator.nick
+        feedImageView.loadImage(urlString: data.files[0])
     }
 }

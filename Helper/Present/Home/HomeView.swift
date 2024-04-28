@@ -16,9 +16,7 @@ final class HomeView: BaseView {
     let scrollBottomSpaceView = UIView()
     
     let recentPostsFollowingTitleLabel = PointBoldLabel("팔로잉 최근 게시물", fontSize: 18)
-    let recentPostsFollowingView = HorizontalPostsView(collectionViewCellType: RecentPostsFromFollowingCollectionViewCell.self).then {
-        $0.backgroundColor = .gray
-    }
+    let recentPostsFollowingView = HorizontalPostsView(collectionViewCellType: RecentPostsFromFollowingCollectionViewCell.self)
     
     let recentPostsFindingTitleLabel = PointBoldLabel("찾고있어요 최근 게시물", fontSize: 18)
     let recentPostsFindingView = HorizontalPostsView(collectionViewCellType: PostCollectionViewCell.self)
@@ -63,7 +61,7 @@ final class HomeView: BaseView {
         recentPostsFollowingView.snp.makeConstraints { make in
             make.top.equalTo(recentPostsFollowingTitleLabel.snp.bottom).offset(5)
             make.horizontalEdges.equalToSuperview()
-            make.height.equalTo(UIScreen.main.bounds.width / 3)
+            make.height.equalTo(UIScreen.main.bounds.width / 3 * 1.3)
         }
         
         recentPostsFindingTitleLabel.snp.makeConstraints { make in

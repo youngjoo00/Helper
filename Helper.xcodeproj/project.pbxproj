@@ -164,6 +164,7 @@
 		8ED8B7EE2BDE30F1009B4387 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7ED2BDE30F1009B4387 /* FeedView.swift */; };
 		8ED8B7F02BDE30F9009B4387 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7EF2BDE30F8009B4387 /* FeedViewController.swift */; };
 		8ED8B7F22BDE30FE009B4387 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7F12BDE30FE009B4387 /* FeedViewModel.swift */; };
+		8ED8B7F42BDE3EC9009B4387 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7F32BDE3EC9009B4387 /* FeedTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -316,6 +317,7 @@
 		8ED8B7ED2BDE30F1009B4387 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		8ED8B7EF2BDE30F8009B4387 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		8ED8B7F12BDE30FE009B4387 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		8ED8B7F32BDE3EC9009B4387 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -929,6 +931,7 @@
 				8ED8B7ED2BDE30F1009B4387 /* FeedView.swift */,
 				8ED8B7EF2BDE30F8009B4387 /* FeedViewController.swift */,
 				8ED8B7F12BDE30FE009B4387 /* FeedViewModel.swift */,
+				8ED8B7F32BDE3EC9009B4387 /* FeedTableViewCell.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -1119,6 +1122,7 @@
 				8EA59CEB2BD1A562009938E0 /* CommentResponse.swift in Sources */,
 				8E1BAE1E2BC968E500A65075 /* SignInViewModel.swift in Sources */,
 				8E1BAE702BC97D5D00A65075 /* BaseViewController.swift in Sources */,
+				8ED8B7F42BDE3EC9009B4387 /* FeedTableViewCell.swift in Sources */,
 				8ED8B7B12BDC0971009B4387 /* FollowingViewController.swift in Sources */,
 				8E9A3FD52BCD9498005E4F45 /* SettingView.swift in Sources */,
 				8E1BAE8D2BC9800B00A65075 /* Color.swift in Sources */,

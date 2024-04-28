@@ -14,10 +14,11 @@ final class HomeViewController: BaseViewController {
     private let mainView = HomeView()
     private let viewModel = HomeViewModel()
     
+    private let feedViewModel = PostsViewModel(mode: .feed)
     private let findingViewModel = PostsViewModel(mode: .findingAll)
     private let foundViewModel = PostsViewModel(mode: .foundAll)
     
-    let fetchPostsTrigger = PublishSubject<Void>()
+    let fetchPostsTrigger = PublishSubject<Void>().debug("오?")
     
     override func loadView() {
         view = mainView
@@ -26,11 +27,12 @@ final class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchPostsTrigger.onNext(())
+        //fetchPostsTrigger.onNext(())
         configureNavigationView()
     }
     
     override func bind() {
+        feedBind()
         findingBind()
         foundBind()
     }
@@ -39,6 +41,45 @@ final class HomeViewController: BaseViewController {
 
 // MARK: - Binding
 extension HomeViewController {
+    
+    // MARK: - Feed
+    func feedBind() {
+        
+        let input = PostsViewModel.Input(
+            fetchPostsTrigger: fetchPostsTrigger,
+            reachedBottomTrigger: mainView.recentPostsFollowingView.collectionView.rx.reachedTrailing(),
+            refreshControlTrigger: mainView.recentPostsFollowingView.refreshControl.rx.controlEvent(.valueChanged)
+        )
+        
+        let output = feedViewModel.transform(input: input)
+        
+        output.posts
+            .debug("뭘까요")
+            .drive(mainView.recentPostsFollowingView.collectionView.rx.items(cellIdentifier: RecentPostsFromFollowingCollectionViewCell.id,
+                                                    cellType: RecentPostsFromFollowingCollectionViewCell.self)) { row, item, cell in
+                cell.updateView(item)
+            }
+            .disposed(by: disposeBag)
+
+        // refreshControl
+        output.isRefreshControlLoading
+            .drive(mainView.recentPostsFollowingView.refreshControl.rx.isRefreshing)
+            .disposed(by: disposeBag)
+
+        // bottomIndicator
+        output.isBottomLoading
+            .drive(mainView.recentPostsFollowingView.activityIndicator.rx.isAnimating)
+            .disposed(by: disposeBag)
+        
+        // Transition DetailVC
+        mainView.recentPostsFollowingView.collectionView.rx.modelSelected(PostResponse.FetchPost.self)
+            .subscribe(with: self) { owner, data in
+                let vc = DetailPostViewController()
+                vc.postID = data.postID
+                owner.transition(viewController: vc, style: .hideBottomPush)
+            }
+            .disposed(by: disposeBag)
+    }
     
     // MARK: - Finding
     func findingBind() {

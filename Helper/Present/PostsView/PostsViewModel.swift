@@ -14,6 +14,7 @@ enum PostsViewModelMode {
     case foundAll
     case myPost
     case myStorage
+    case feed
 }
 
 final class PostsViewModel: ViewModelType {
@@ -89,6 +90,8 @@ final class PostsViewModel: ViewModelType {
                         return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.otherUserFetchPosts(next: next, userID: myID))).asObservable()
                     case .myStorage:
                         return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.otherUserFetchPosts(next: next, userID: myID))).asObservable()
+                    case .feed:
+                        return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchFeed(query: PostRequest.FetchFeed(next: next, productID: HelperString.productID)))).asObservable()
                     }
                 }
             }
