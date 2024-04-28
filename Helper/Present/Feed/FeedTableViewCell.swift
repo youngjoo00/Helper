@@ -22,13 +22,17 @@ final class FeedTableViewCell: BaseTableViewCell {
     let nicknameLabel = PointBoldLabel(fontSize: 18)
     let regDateLabel = PointLabel(fontSize: 15)
 
-    let imageCollectionView = BaseCollectionView(frame: .zero, collectionViewLayout: .imageCollectionViewLayout()).then {
-        $0.register(DetailPostCollectionViewCell.self, forCellWithReuseIdentifier: DetailPostCollectionViewCell.id)
+    let scrollView = UIScrollView().then {
         $0.showsHorizontalScrollIndicator = false
+        $0.bounces = false
         $0.isPagingEnabled = true
-        $0.backgroundColor = .gray
     }
     
+    let imageStackView = UIStackView().then {
+        $0.axis = .horizontal
+        $0.backgroundColor = .purple
+    }
+        
     let pageControl = UIPageControl().then {
         $0.currentPageIndicatorTintColor = .black
         $0.pageIndicatorTintColor = .lightGray
@@ -48,7 +52,7 @@ final class FeedTableViewCell: BaseTableViewCell {
         [
             profileStackView,
             regDateLabel,
-            imageCollectionView,
+            scrollView,
             storageButton,
             commentButton,
             pageControl,
@@ -60,6 +64,11 @@ final class FeedTableViewCell: BaseTableViewCell {
             profileImageView,
             nicknameLabel,
         ].forEach { profileStackView.addArrangedSubview($0) }
+        
+        [
+            imageStackView
+        ].forEach { scrollView.addSubview($0) }
+        
     }
     
     override func configureLayout() {
@@ -82,10 +91,15 @@ final class FeedTableViewCell: BaseTableViewCell {
             make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
         }
         
-        imageCollectionView.snp.makeConstraints { make in
+        scrollView.snp.makeConstraints { make in
             make.top.equalTo(profileStackView.snp.bottom).offset(10)
             make.horizontalEdges.equalToSuperview()
             make.height.equalTo(UIScreen.main.bounds.width)
+        }
+        
+        imageStackView.snp.makeConstraints { make in
+            make.height.equalToSuperview()
+            make.edges.equalToSuperview()
         }
         
         pageControl.snp.makeConstraints { make in
@@ -94,13 +108,13 @@ final class FeedTableViewCell: BaseTableViewCell {
         }
         
         commentButton.snp.makeConstraints { make in
-            make.top.equalTo(imageCollectionView.snp.bottom).offset(5)
+            make.top.equalTo(scrollView.snp.bottom).offset(5)
             make.leading.equalTo(safeAreaLayoutGuide).offset(5)
             make.size.equalTo(44)
         }
         
         storageButton.snp.makeConstraints { make in
-            make.top.equalTo(imageCollectionView.snp.bottom).offset(5)
+            make.top.equalTo(scrollView.snp.bottom).offset(5)
             make.trailing.equalTo(safeAreaLayoutGuide)
             make.size.equalTo(44)
         }
@@ -133,12 +147,23 @@ final class FeedTableViewCell: BaseTableViewCell {
 extension FeedTableViewCell {
     
     func updateView(_ data: PostResponse.FetchPost) {
-        //imageView.loadImage(urlString: data.files[0])
-        
+        configureImageView(data.files)
         nicknameLabel.text = data.creator.nick
         profileImageView.loadImage(urlString: data.creator.profileImage)
         
         titleLabel.text = data.title
         hashTagLabel.text = data.hashTags.description
+    }
+    
+    private func configureImageView(_ files: [String]) {
+        files.map { file in
+            // 이미지뷰를 넣고, 해당 이미지뷰를 로드진행
+            let feedImageView = lightGrayBackgroundImageView()
+            feedImageView.snp.makeConstraints { make in
+                make.size.equalTo(UIScreen.main.bounds.width)
+            }
+            imageStackView.addArrangedSubview(feedImageView)
+            feedImageView.loadImage(urlString: file)
+        }
     }
 }
