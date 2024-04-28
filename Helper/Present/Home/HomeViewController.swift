@@ -27,6 +27,7 @@ final class HomeViewController: BaseViewController {
         super.viewDidLoad()
         
         fetchPostsTrigger.onNext(())
+        configureNavigationView()
     }
     
     override func bind() {
@@ -113,5 +114,12 @@ extension HomeViewController {
                 owner.transition(viewController: vc, style: .hideBottomPush)
             }
             .disposed(by: disposeBag)
+    }
+}
+
+extension HomeViewController {
+    
+    private func configureNavigationView() {
+        navigationItem.titleView = mainView.naviTitle
     }
 }

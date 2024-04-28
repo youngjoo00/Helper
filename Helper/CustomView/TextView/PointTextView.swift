@@ -17,6 +17,7 @@ class PointTextView: UITextView {
         layer.borderWidth = 1
         layer.borderColor = Color.black.cgColor
         self.textContainer.lineFragmentPadding = 10
+        font = .systemFont(ofSize: 15)
     }
     
     @available(*, unavailable)

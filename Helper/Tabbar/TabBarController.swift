@@ -10,48 +10,59 @@ import PhotosUI
 
 final class TabBarController: UITabBarController {
     
+    var selectedWriteMode: WriteMode = .help
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.delegate = self
         
         UITabBar.appearance().backgroundColor = .white
-        UITabBar.appearance().tintColor = .black
+        UITabBar.appearance().tintColor = Color.point
         UITabBar.appearance().unselectedItemTintColor = .systemGray2
         
         let homeTab = UINavigationController(rootViewController: HomeViewController())
-        homeTab.tabBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house"), tag: 0)
+        homeTab.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
         
         let helpTab = UINavigationController(rootViewController: PostViewController())
-        helpTab.tabBarItem = UITabBarItem(title: "Help", image: UIImage(systemName: "house"), tag: 1)
+        helpTab.tabBarItem = UITabBarItem(title: " Help", image: UIImage(systemName: "hands.clap"), tag: 1)
         
         let writeTab = UINavigationController(rootViewController: UIViewController())
-        writeTab.tabBarItem = UITabBarItem(title: "작성", image: UIImage(systemName: "pencil"), tag: 2)
+        writeTab.tabBarItem = UITabBarItem(title: "Post", image: UIImage(systemName: "pencil"), tag: 2)
         
         let searchTab = UINavigationController(rootViewController: SearchViewController())
-        searchTab.tabBarItem = UITabBarItem(title: "검색", image: UIImage(systemName: "magnifyingglass"), tag: 3)
+        searchTab.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "book.pages"), tag: 3)
         
         let myPageTab = UINavigationController(rootViewController: MyProfileViewController())
-        myPageTab.tabBarItem = UITabBarItem(title: "프로필", image: UIImage(systemName: "person"), tag: 4)
+        myPageTab.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 4)
         
         self.viewControllers = [homeTab, helpTab, writeTab, searchTab, myPageTab]
     }
 }
 
 
+
+
 // MARK: - Tabbar Delegate
 extension TabBarController: UITabBarControllerDelegate {
+
+    enum WriteMode {
+        case help
+        case feed
+    }
+    
     // tag 2번 선택 시 PHPickerVC present
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if viewController.tabBarItem.tag == 2 {
-            var configuration = PHPickerConfiguration()
-            configuration.selectionLimit = 5
-            configuration.filter = .images
             
-            let picker = PHPickerViewController(configuration: configuration)
-            picker.delegate = self
-            picker.modalPresentationStyle = .fullScreen
-            present(picker, animated: true, completion: nil)
+            writeModeAcionSheet {
+                self.selectedWriteMode = .help
+                self.presentPHPicker()
+            } feedHandler: {
+                self.selectedWriteMode = .feed
+                self.presentPHPicker()
+            }
+
             return false
         }
         return true
@@ -82,14 +93,25 @@ extension TabBarController: PHPickerViewControllerDelegate {
                             
                             DispatchQueue.main.async {
                                 if images.count == results.count {
-                                    let writePostVC = WritePostViewController()
-                                    writePostVC.selectedImages = images
-                                    writePostVC.postMode = .create
-                                    writePostVC.hidesBottomBarWhenPushed = true
-                                    
-                                    if let navController = self.selectedViewController as? UINavigationController {
-                                        navController.pushViewController(writePostVC, animated: true)
+                                    switch self.selectedWriteMode {
+                                    case .help:
+                                        let writePostVC = WritePostViewController()
+                                        writePostVC.selectedImages = images
+                                        writePostVC.postMode = .create
+                                        writePostVC.hidesBottomBarWhenPushed = true
+                                        
+                                        if let navController = self.selectedViewController as? UINavigationController {
+                                            navController.pushViewController(writePostVC, animated: true)
+                                        }
+                                    case .feed:
+                                        let writeFeedVC = WriteFeedViewController(selectedImages: images, postMode: .create)
+                                        writeFeedVC.hidesBottomBarWhenPushed = true
+                                        
+                                        if let navController = self.selectedViewController as? UINavigationController {
+                                            navController.pushViewController(writeFeedVC, animated: true)
+                                        }
                                     }
+                                    
                                 }
                             }
                         }
@@ -102,3 +124,39 @@ extension TabBarController: PHPickerViewControllerDelegate {
     }
 }
 
+extension TabBarController {
+    
+    /// 포스트 작성 모드 선택하는 액션시트
+    func writeModeAcionSheet(helpHandler: @escaping () -> Void, feedHandler: @escaping () -> Void) {
+        
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let help = UIAlertAction(title: "Help 게시물 작성", style: .default) { _ in
+            helpHandler()
+        }
+        
+        let feed = UIAlertAction(title: "Feed 게시물 작성", style: .default) { _ in
+            feedHandler()
+        }
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        actionSheet.addAction(help)
+        actionSheet.addAction(feed)
+        actionSheet.addAction(cancel)
+        
+        present(actionSheet, animated: true)
+    }
+    
+    func presentPHPicker() {
+        var configuration = PHPickerConfiguration()
+        configuration.selectionLimit = 5
+        configuration.filter = .images
+        
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        picker.modalPresentationStyle = .fullScreen
+        present(picker, animated: true)
+    }
+    
+}

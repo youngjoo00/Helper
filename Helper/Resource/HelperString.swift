@@ -35,5 +35,10 @@ enum HelperString {
     static let categoryPerson = "사람"
     static let categoryAnimal = "동물"
     static let categoryThing = "물품"
+    
+    /// 비어있는 이미지 URL
     static let blankProfileImage = "uploads/posts/helper_1714141586231.png"
+    
+    /// 피드 전용 Product ID
+    static let productID = "Helper_Feed"
 }
