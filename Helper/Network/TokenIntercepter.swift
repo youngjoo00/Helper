@@ -8,6 +8,7 @@
 import Alamofire
 import Foundation
 import RxSwift
+import UIKit
 
 final class TokenIntercepter: RequestInterceptor {
     
@@ -27,6 +28,7 @@ final class TokenIntercepter: RequestInterceptor {
     func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
         let statusCode: Int = request.response?.statusCode ?? 0
         print(#function, statusCode)
+        
         if statusCode == 419 {
             refreshToken { isSuccess in
                 if isSuccess {
@@ -46,18 +48,34 @@ final class TokenIntercepter: RequestInterceptor {
         do {
             let urlRequest = try UserRouter.refresh.asURLRequest()
             AF.request(urlRequest)
-                .responseDecodable(of: UserResponse.Refresh.self) { response in
+                .validate(statusCode: 200..<300)
+                .responseData { response in
                     switch response.result {
                     case .success(let data):
-                        UserDefaultsManager.shared.saveToken(data.accessToken)
-                        completion(true)
-                    case .failure(let fail):
-                        if response.response?.statusCode == 418 {
-                            print("로그인부터 다시 하세요")
-                        } else {
-                            print(fail)
+                        do {
+                            let response = try JSONDecoder().decode(UserResponse.Refresh.self, from: data)
+                            UserDefaultsManager.shared.saveToken(response.accessToken)
+                            completion(true)
+                        } catch {
+                            print("서버 통신 성공 케이스: ", error)
+                            completion(false)
                         }
-                        completion(false)
+                    case .failure:
+                        if let data = response.data {
+                            do {
+                                let responseErrorMessage = try JSONDecoder().decode(ErrorResponse.ErrorMessage.self, from: data)
+                                completion(false)
+                                print("서버 에러 메세지: ", responseErrorMessage)
+                                if response.response?.statusCode == 418 {
+                                    DispatchQueue.main.async {
+                                        NotificationCenter.default.post(name: .loginSessionExpired, object: nil)
+                                    }
+                                }
+                            } catch {
+                                print("서버 통신 실패 케이스: ", error)
+                                completion(false)
+                            }
+                        }
                     }
                 }
         } catch {

@@ -9,7 +9,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-
 extension UIViewController {
     func changeHomeRootView() {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }

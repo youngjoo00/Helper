@@ -30,10 +30,8 @@ final class HomeViewController: BaseViewController {
     }
     
     override func bind() {
-        
         findingBind()
         foundBind()
-        
     }
 }
 
@@ -44,7 +42,6 @@ extension HomeViewController {
     // MARK: - Finding
     func findingBind() {
         
-        // finding, found 전체 조회 10개씩 콜하고, 새로고침 후 연결
         let input = PostsViewModel.Input(
             fetchPostsTrigger: fetchPostsTrigger,
             reachedBottomTrigger: mainView.recentPostsFindingView.collectionView.rx.reachedTrailing(),
@@ -83,7 +80,6 @@ extension HomeViewController {
     // MARK: - Found
     func foundBind() {
         
-        // finding, found 전체 조회 10개씩 콜하고, 새로고침 후 연결
         let input = PostsViewModel.Input(
             fetchPostsTrigger: fetchPostsTrigger,
             reachedBottomTrigger: mainView.recentPostsFoundView.collectionView.rx.reachedTrailing(),

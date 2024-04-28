@@ -19,6 +19,14 @@ class BaseViewController: UIViewController {
         view.backgroundColor = .white
         bind()
         configureNavigationBackButton()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleLoginSessionExpired), name: .loginSessionExpired, object: nil)
+    }
+    
+    @objc func handleLoginSessionExpired(_ notification: Notification) {
+        showAlert(title: "안내", message: "로그인 세션이 만료되었습니다. 다시 로그인해 주세요.") {
+            self.changeSignInRootView()
+        }
     }
 
     func showTaost(_ message: String) {
@@ -31,5 +39,9 @@ class BaseViewController: UIViewController {
         // 백버튼 처리
         self.navigationController?.navigationBar.tintColor = Color.black
         self.navigationController?.navigationBar.topItem?.title = ""
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }

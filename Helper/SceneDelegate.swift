@@ -19,24 +19,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: scene)
 
+        let vc = InitailViewController()
+        
+        window?.rootViewController = vc
+        window?.makeKeyAndVisible()
         // 임시
 //        window?.rootViewController = BirthdayViewController()
 //        window?.makeKeyAndVisible()
-        
-        // 여기도 바꿔야함
-        NetworkManager.shared.callAPI(type: UserResponse.MyProfile.self, router: Router.user(.myProfile))
-            .subscribe(with: self) { owner, result in
-                switch result {
-                case .success(let data):
-                    owner.window?.rootViewController = TabBarController()
-                    UserDefaultsManager.shared.saveUserID(data.userID)
-                case .fail(let fail):
-                    print(fail.localizedDescription)
-                    owner.window?.rootViewController = UINavigationController(rootViewController: SignInViewController())
-                }
-                owner.window?.makeKeyAndVisible()
-            }
-            .disposed(by: disposebag)
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
