@@ -13,8 +13,10 @@ final class FeedViewController: BaseViewController {
 
     private let mainView = FeedView()
     private let postsViewModel = PostsViewModel(mode: .feed)
+    private let feedViewModel = FeedViewModel()
     
-    let fetchPostsTrigger = PublishSubject<Void>()
+    private let fetchPostsTrigger = PublishSubject<Void>()
+    private let storageButtonTap = PublishSubject<PostResponse.FetchPost>()
     
     override func loadView() {
         view = mainView
@@ -24,11 +26,27 @@ final class FeedViewController: BaseViewController {
         super.viewDidLoad()
         
         configureNavigationBar()
+        fetchPostsTrigger.onNext(())
     }
     
     override func bind() {
-        
+        feedBind()
+        postsBind()
+    }
+}
+
+
+// MARK: - Bind
+extension FeedViewController {
+    
+    private func postsBind() {
         EventManager.shared.postWriteTrigger
+            .subscribe(with: self) { owner, _ in
+                owner.fetchPostsTrigger.onNext(())
+            }
+            .disposed(by: disposeBag)
+        
+        EventManager.shared.storageTrigger
             .subscribe(with: self) { owner, _ in
                 owner.fetchPostsTrigger.onNext(())
             }
@@ -68,6 +86,14 @@ final class FeedViewController: BaseViewController {
                         owner.present(vc, animated: true)
                     }
                     .disposed(by: cell.disposeBag)
+                
+                // 셀을 탭하면 id 값 갖고 저장 네트워크 호출
+                // 결과는 여기 뷰컨의 아웃풋에서 토스트메세지
+                cell.storageButton.rx.tap
+                    .subscribe(with: self) { owner, _ in
+                        owner.storageButtonTap.onNext(item)
+                    }
+                    .disposed(by: cell.disposeBag)
             }
             .disposed(by: disposeBag)
         
@@ -90,8 +116,28 @@ final class FeedViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
     }
+    
+    private func feedBind() {
+        
+        let input = FeedViewModel.Input(
+            storageButtonTap: storageButtonTap
+        )
+        
+        let output = feedViewModel.transform(input: input)
+
+        // 게시물 저장 성공
+        output.storageSuccess
+            .drive(with: self) { owner, message in
+                owner.showTaost(message)
+            }
+            .disposed(by: disposeBag)
+        
+    }
+    
 }
 
+
+// MARK: - Navigation UI
 extension FeedViewController {
     
     func configureNavigationBar() {

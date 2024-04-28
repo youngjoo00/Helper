@@ -8,6 +8,7 @@
 import UIKit
 import Then
 import Kingfisher
+import RxSwift
 
 final class PostCollectionViewCell: BaseCollectionViewCell {
     
@@ -95,41 +96,39 @@ final class PostCollectionViewCell: BaseCollectionViewCell {
     override func configureView() {
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        disposeBag = DisposeBag()
+    }
 }
 
 extension PostCollectionViewCell {
     
     func updateView(_ data: PostResponse.FetchPost) {
         imageView.loadImage(urlString: data.files[0])
-        
         titleLabel.text = data.title
         dateLabel.text = data.date
+        featureLabel.text = data.feature
         
-        checkEmptyData(data)
-    }
+        let featureTextIsEmpty = data.feature.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
 
-    private func checkEmptyData(_ data: PostResponse.FetchPost) {
-        let featureIsEmpty = data.feature.isEmpty
-        
-        if featureIsEmpty {
-            featureLabel.snp.remakeConstraints { make in
-                make.top.equalTo(titleLabel.snp.bottom)
-                make.horizontalEdges.equalToSuperview().inset(5)
-                make.height.equalTo(0)
-            }
-            
+        // featureLabel의 텍스트 여부에 따라 레이아웃 조정
+        if featureTextIsEmpty {
             dateLabel.snp.remakeConstraints { make in
                 make.top.equalTo(titleLabel.snp.bottom).offset(5)
                 make.leading.equalTo(dateImageView.snp.trailing).offset(5)
                 make.trailing.equalToSuperview().offset(-5)
             }
         } else {
-            featureLabel.text = data.feature
+            dateLabel.snp.remakeConstraints { make in
+                make.top.equalTo(featureLabel.snp.bottom).offset(5)
+                make.leading.equalTo(dateImageView.snp.trailing).offset(5)
+                make.trailing.equalToSuperview().offset(-5)
+            }
         }
-
-        // trimmingCharacters 으로 공백 문자, 줄바꿈문자를 제외시키고 남은 문자열이 비어있는지 확인
+        
         locateLabel.text = data.locate.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? "없음" : data.locate
-
     }
-    
+
 }

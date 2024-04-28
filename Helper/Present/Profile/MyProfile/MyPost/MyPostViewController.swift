@@ -22,6 +22,8 @@ final class MyPostViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchPostsTrigger.onNext(())
     }
     
     override func bind() {

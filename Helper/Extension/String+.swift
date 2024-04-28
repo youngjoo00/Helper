@@ -8,6 +8,7 @@
 import Foundation
 
 extension String {
+    /// 현재 ID 와 동일한지 확인
     var checkedUserID: Bool {
         return self == UserDefaultsManager.shared.getUserID() ? true : false
     }

@@ -141,7 +141,7 @@ final class DetailPostViewModel: ViewModelType {
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .withLatestFrom(Observable.combineLatest(input.postID, postInfo))
             .flatMap { postID, postInfo in
-                let state = postInfo.storage.filter { $0.checkedUserID }.count >= 1
+                let state = postInfo.storage.listCheckedUserID
                 return NetworkManager.shared.callAPI(type: PostResponse.StorageStatus.self, router: Router.post(.storage(query: PostRequest.StorageStatus(storageStatus: !state), id: postID)))
             }
             .subscribe(with: self) { owner, result in

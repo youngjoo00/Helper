@@ -50,52 +50,49 @@ final class PostsViewModel: ViewModelType {
         let isBottomLoading = PublishRelay<Bool>()
         
         // 1. fetch 이벤트는 바로 보여야함
-        // 2. reachedBottom/refreshControl 은 네트워크 호출과 동시에 최소 1초 로딩
+        // 2. reachedBottom/refreshControl 은 네트워크 호출과 동시에 최소 1초 로딩 -> 이거 어떻게 하는거지?
         // 3. fetch/refresh 는 next 값이 비어있게
         
-        // loadTrigger
-//        let loadDataTrigger = Observable.merge(
-//            input.fetchPostsTrigger.do(onNext: { _ in next.onNext("") }), // 옵저버블을 중간에 안바꾸고 이벤트를 넣을 수 있음,, 너무 좋다,,
-//            input.reachedBottomTrigger.asObservable().do(onNext: { _ in isBottomLoading.accept(true)}).debounce(.seconds(1), scheduler: MainScheduler.instance),
-//            input.refreshControlTrigger.asObservable().do(onNext: { _ in
-//                next.onNext("")
-//                isRefreshControlLoading.accept(true)
-//            }).debounce(.seconds(1), scheduler: MainScheduler.instance) // 딜레이를 여기서 넣어주면 네트워크 통신 자체가 1초 밀리게 되니 문제가 있음
-//        )
-
-        let loadDataTrigger = Observable.merge(
-            input.fetchPostsTrigger.do(onNext: { _ in next.onNext("") }),
-            input.reachedBottomTrigger.asObservable().do(onNext: { _ in isBottomLoading.accept(true)}),
-            input.refreshControlTrigger.asObservable().do(onNext: { _ in
+        let fetchPosts = input.fetchPostsTrigger
+            .do(onNext: { _ in next.onNext("") })
+            .debug("fetch")
+        
+        let reachedBottom = input.reachedBottomTrigger
+            .withLatestFrom(next)
+            .filter { $0 != "0" && $0 != "" } // next 값이 "", "0"이 아닌 경우에만 진행
+            .do(onNext: { _ in isBottomLoading.accept(true) })
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .map { _ in }
+            .debug("reachedBottom")
+        
+        let refreshControl = input.refreshControlTrigger
+            .do(onNext: { _ in
                 next.onNext("")
-                isRefreshControlLoading.accept(true)
-            })
-        )
+                isRefreshControlLoading.accept(true) })
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .map { _ in }
+        
+        // loadTrigger
+        let loadDataTrigger = Observable.merge(fetchPosts, reachedBottom, refreshControl)
         
         loadDataTrigger
             .withLatestFrom(next)
             .flatMap { [weak self] next -> Observable<APIResult<PostResponse.Posts>> in
                 guard let self else { return .empty() }
-                if next == "0" {
-                    isRefreshControlLoading.accept(false)
-                    isBottomLoading.accept(false)
-                    return .empty()
-                } else {
-                    switch self.mode {
-                    case .findingAll:
-                        return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchHashTag(query: PostRequest.FetchHashTag(next: next, productID: "", hashTag: HelperString.hashTagFinding)))).asObservable()
-                    case .foundAll:
-                        return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchHashTag(query: PostRequest.FetchHashTag(next: next, productID: "", hashTag: HelperString.hashTagFound)))).asObservable()
-                    case .myPost:
-                        return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.otherUserFetchPosts(next: next, userID: myID))).asObservable()
-                    case .myStorage:
-                        return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchStorage(next: next))).asObservable()
-                    case .feed:
-                        return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchFeed(query: PostRequest.FetchFeed(next: next, productID: HelperString.productID)))).asObservable()
-                    }
+                switch self.mode {
+                case .findingAll:
+                    return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchHashTag(query: PostRequest.FetchHashTag(next: next, productID: "", hashTag: HelperString.hashTagFinding)))).asObservable()
+                case .foundAll:
+                    return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchHashTag(query: PostRequest.FetchHashTag(next: next, productID: "", hashTag: HelperString.hashTagFound)))).asObservable()
+                case .myPost:
+                    return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.otherUserFetchPosts(next: next, userID: myID))).asObservable()
+                case .myStorage:
+                    return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchStorage(next: next))).asObservable()
+                case .feed:
+                    return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchFeed(query: PostRequest.FetchFeed(next: next, productID: HelperString.productID)))).asObservable()
+                    
                 }
             }
-            .delay(.seconds(1), scheduler: MainScheduler.instance)
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let data):

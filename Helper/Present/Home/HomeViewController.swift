@@ -28,6 +28,7 @@ final class HomeViewController: BaseViewController {
         super.viewDidLoad()
         
         configureNavigationView()
+        fetchPostsTrigger.onNext(())
     }
     
     override func bind() {

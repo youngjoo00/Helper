@@ -163,6 +163,9 @@ extension FeedTableViewCell {
         titleLabel.text = data.title
         hashTagLabel.text = data.hashTags.description
         pageControl.numberOfPages = data.files.count
+        
+        let state = data.storage.listCheckedUserID
+        storageButton.configureView(image: UIImage(systemName: state ? "bookmark.fill" : "bookmark"))
     }
     
     private func configureImageView(_ files: [String]) {

@@ -15,6 +15,8 @@ final class CommentsTableViewCell: BaseTableViewCell {
     lazy var deleteSubject = PublishSubject<String>()
     
     private var commentID = ""
+    
+    private let profileImageView = ProfileImageView()
     private let nicknameLabel = PointBoldLabel("닉네임", fontSize: 18)
     private let regDateLabel = PointLabel("20시간 전", fontSize: 15)
     private let editButton = ImageButton(image: UIImage(systemName: "ellipsis.circle")).then {
@@ -26,6 +28,7 @@ final class CommentsTableViewCell: BaseTableViewCell {
 
     override func configureHierarchy() {
         [
+            profileImageView,
             nicknameLabel,
             regDateLabel,
             commentLabel,
@@ -34,9 +37,16 @@ final class CommentsTableViewCell: BaseTableViewCell {
     }
     
     override func configureLayout() {
-        nicknameLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(5)
+        
+        profileImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(10)
             make.leading.equalTo(safeAreaLayoutGuide).offset(16)
+            make.size.equalTo(33)
+        }
+        
+        nicknameLabel.snp.makeConstraints { make in
+            make.top.equalTo(profileImageView)
+            make.leading.equalTo(profileImageView.snp.trailing).offset(10)
         }
         
         regDateLabel.snp.makeConstraints { make in
@@ -51,9 +61,10 @@ final class CommentsTableViewCell: BaseTableViewCell {
         }
         
         commentLabel.snp.makeConstraints { make in
-            make.top.equalTo(nicknameLabel.snp.bottom).offset(10)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
-            make.bottom.equalToSuperview().offset(-5)
+            make.top.equalTo(nicknameLabel.snp.bottom).offset(5)
+            make.leading.equalTo(nicknameLabel)
+            make.trailing.equalTo(safeAreaLayoutGuide).inset(16)
+            make.bottom.equalToSuperview().offset(-10)
         }
     }
     
@@ -78,6 +89,7 @@ extension CommentsTableViewCell {
     
     func updateView(_ data: Comments) {
         commentID = data.commentID
+        profileImageView.loadImage(urlString: data.creator.profileImage)
         nicknameLabel.text = data.creator.nick
         regDateLabel.text = DateManager.shared.dateFormat(data.createdAt)
         commentLabel.text = data.content
