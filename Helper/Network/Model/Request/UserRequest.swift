@@ -24,6 +24,10 @@ enum UserRequest {
     struct ValidationEmail: Encodable {
         let email: String
     }
+
+    struct EditProfileImage: Encodable {
+        let profile: String
+    }
     
     struct EditNickname: Encodable {
         let nick: String

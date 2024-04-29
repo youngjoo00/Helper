@@ -8,11 +8,14 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import PhotosUI
 
 final class EditProfileViewController: BaseViewController {
 
     private let mainView = EditProfileView()
     private let viewModel = EditProfileViewModel()
+    
+    let editProfileImage = PublishSubject<Data>()
     
     override func loadView() {
         view = mainView
@@ -31,28 +34,33 @@ final class EditProfileViewController: BaseViewController {
         .map { indexPath, value in (indexPath.row, value[1]) }
         
         let input = EditProfileViewModel.Input(
-            editProfileImageButtonTap: mainView.editProfileImageButton.rx.tap,
+            editProfileImage: editProfileImage,
             seletedData: seletedData
         )
         
         let output = viewModel.transform(input: input)
         
+        // 프로필 이미지 버튼 클릭
         mainView.editProfileImageButton.rx.tap
             .subscribe(with: self) { owner, _ in
                 owner.editProfileAcionSheet {
-                    print("갤러리")
+                    owner.presentPHPicker()
                 } deleteHandler: {
-                    print("삭제")
+                    if let image = UIImage(named: "BlankProfileImage"), let imageData = image.pngData() {
+                        owner.editProfileImage.onNext(imageData)
+                    }
                 }
             }
             .disposed(by: disposeBag)
         
+        // 프로필 이미지 변경
         output.profileImageString
             .drive(with: self) { owner, data in
                 owner.mainView.updateProfileImageView(data)
             }
             .disposed(by: disposeBag)
         
+        // 프로필 테이블뷰
         output.profileInfo
             .drive(mainView.profileInfoTableView.rx.items(cellIdentifier: EditProfileTableViewCell.id,
                                                cellType: EditProfileTableViewCell.self)) { row, item, cell in
@@ -71,6 +79,19 @@ final class EditProfileViewController: BaseViewController {
                 owner.transition(viewController: EditPhoneViewController(phone: phone), style: .hideBottomPush)
             }
             .disposed(by: disposeBag)
+        
+        output.successTrigger
+            .drive(with: self) { owner, _ in
+                owner.showTaost("프로필 이미지 편집 성공!")
+            }
+            .disposed(by: disposeBag)
+        
+        output.errorToastMessage
+            .drive(with: self) { owner, message in
+                owner.showTaost(message)
+            }
+            .disposed(by: disposeBag)
+        
     }
 }
 
@@ -79,5 +100,43 @@ extension EditProfileViewController {
     
     private func configureNavigation() {
         navigationItem.titleView = mainView.naviTitle
+    }
+}
+
+extension EditProfileViewController: PHPickerViewControllerDelegate {
+    
+    func presentPHPicker() {
+        var configuration = PHPickerConfiguration()
+        configuration.selectionLimit = 1
+        configuration.filter = .images
+        
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        picker.modalPresentationStyle = .fullScreen
+        present(picker, animated: true)
+    }
+    
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        
+        picker.dismiss(animated: true)
+        
+        // 선택한 사진이 있는지 확인
+        let itemProvider = results.first?.itemProvider
+        
+        // 확인해서 옵셔널 바인딩 후 -> Image 인지 확인한다.
+        if let itemProvider = itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
+            
+            // 이미지를 불러온다.
+            itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
+                guard let self else { return }
+                DispatchQueue.main.async {
+                    if let image = image as? UIImage {
+                        if let imageData = image.pngData() {
+                            self.editProfileImage.onNext(imageData)
+                        }
+                    }
+                }
+            }
+        }
     }
 }

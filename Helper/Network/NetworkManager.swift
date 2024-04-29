@@ -118,7 +118,7 @@ final class NetworkManager {
                                                  fileName: "helper.png",
                                                  mimeType: "image/png")
                     }
-                }, to: url, headers: urlRequest.headers, interceptor: TokenIntercepter())
+                }, to: url, method: router.method, headers: urlRequest.headers, interceptor: TokenIntercepter())
                 .validate(statusCode: 200..<300)
                 .responseData { response in
                     switch response.result {
@@ -153,7 +153,7 @@ final class NetworkManager {
     }
     
     /// multipart
-    func multipartCallAPI<T: Decodable, U: TargetType>(type: T.Type, router: U) -> Single<APIResult<T>> {
+    func editprofileImageCall<T: Decodable, U: TargetType>(type: T.Type, router: U, imageData: Data) -> Single<APIResult<T>> {
         return Single.create { single in
             do {
                 let urlRequest = try router.asURLRequest()
@@ -167,14 +167,19 @@ final class NetworkManager {
                     // 인코딩된 data 타입을 다시 딕셔너리로 바꾸려면 JSONSerialization 로만 가능하다고 함
                     // 1. jsonObject 로 변환 시킨 값을 타입 캐스팅을 이용해 딕셔너리 형태로 변환 후
                     // 2. 키는 빼오고, value 값을 다시 데이터로 변환해서 넣어준다
-                    if let body = router.body, let jsonObject = try? JSONSerialization.jsonObject(with: body, options: []) as? [String: String] {
-                            for (key, value) in jsonObject {
-                                if let valueData = value.data(using: .utf8) {
-                                    // func append(_ data: Data,withName name: String)
-                                    multipartFormData.append(valueData, withName: key)
-                                }
-                            }
-                        }
+//                    if let body = router.body, let jsonObject = try? JSONSerialization.jsonObject(with: body, options: []) as? [String: String] {
+//                            for (key, value) in jsonObject {
+//                                if let valueData = value.data(using: .utf8) {
+//                                    // func append(_ data: Data,withName name: String)
+//                                    multipartFormData.append(valueData, withName: key)
+//                                }
+//                            }
+//                        }
+                    
+                    multipartFormData.append(imageData,
+                                             withName: "profile",
+                                             fileName: "helper.png",
+                                             mimeType: "image/png")
                 }, to: url, method: router.method, headers: urlRequest.headers, interceptor: TokenIntercepter())
                 .validate(statusCode: 200..<300)
                 .responseData { response in

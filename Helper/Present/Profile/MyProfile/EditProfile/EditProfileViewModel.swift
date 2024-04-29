@@ -39,17 +39,18 @@ final class EditProfileViewModel: ViewModelType {
     var disposeBag: RxSwift.DisposeBag = .init()
     
     struct Input {
-        let editProfileImageButtonTap: ControlEvent<Void>
+        let editProfileImage: Observable<Data>
         let seletedData: Observable<(Int, String)>
     }
     
     struct Output {
-        let editProfileImageButtonTap: Driver<Void>
         let profileImageString: Driver<String>
         let profileInfo: Driver<[[String]]>
         let nicknameTapped: Driver<String>
         let phoneTapped: Driver<String>
         let birthdayTapped: Driver<String>
+        let successTrigger: Driver<Void>
+        let errorToastMessage: Driver<String>
     }
     
     func transform(input: Input) -> Output {
@@ -58,6 +59,8 @@ final class EditProfileViewModel: ViewModelType {
         let nicknameTapped = PublishRelay<String>()
         let phoneTapped = PublishRelay<String>()
         let birthdayTapped = PublishRelay<String>()
+        let successTrigger = PublishRelay<Void>()
+        let errorToastMessage = PublishRelay<String>()
         
         let profileInfo = EventManager.shared.MyProfileInfo
             .compactMap { $0 }
@@ -83,13 +86,29 @@ final class EditProfileViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
         
+        // 이미지 수정 API
+        input.editProfileImage
+            .flatMap { NetworkManager.shared.editprofileImageCall(type: UserResponse.MyProfile.self, router: Router.user(.editProfile(query: UserRequest.EditProfileImage(profile: ""))), imageData: $0) }
+            .subscribe(with: self) { owner, result in
+                switch result {
+                case .success(let data):
+                    EventManager.shared.MyProfileInfo.onNext(data)
+                    successTrigger.accept(())
+                case .fail(let fail):
+                    errorToastMessage.accept(fail.localizedDescription)
+                    print(fail.localizedDescription)
+                }
+            }
+            .disposed(by: disposeBag)
+        
         return Output(
-            editProfileImageButtonTap: input.editProfileImageButtonTap.asDriver(), 
             profileImageString: profileImageString.asDriver(onErrorJustReturn: ""),
             profileInfo: profileInfo.asDriver(onErrorJustReturn: []),
             nicknameTapped: nicknameTapped.asDriver(onErrorDriveWith: .empty()),
             phoneTapped: phoneTapped.asDriver(onErrorDriveWith: .empty()),
-            birthdayTapped: birthdayTapped.asDriver(onErrorDriveWith: .empty())
+            birthdayTapped: birthdayTapped.asDriver(onErrorDriveWith: .empty()),
+            successTrigger: successTrigger.asDriver(onErrorDriveWith: .empty()),
+            errorToastMessage: errorToastMessage.asDriver(onErrorJustReturn: "알 수 없는 오류입니다.")
         )
     }
     

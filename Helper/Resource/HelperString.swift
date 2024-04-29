@@ -39,6 +39,9 @@ enum HelperString {
     /// 비어있는 이미지 URL
     static let blankProfileImage = "uploads/posts/helper_1714141586231.png"
     
+    /// 에셋 기본 프로필 이미지
+    static let blankAssetImage = "BlankProfileImage"
+    
     /// 피드 전용 Product ID
     static let productID = "Helper_Feed"
 }
