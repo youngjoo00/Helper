@@ -179,4 +179,27 @@ extension FeedTableViewCell {
             feedImageView.loadImage(urlString: file)
         }
     }
+    
+//    private func configureEditButton() {
+//        
+//        let menuItems = [
+//            UIAction(title: "수정", image: UIImage(systemName: "pencil")) { [weak self] _ in
+//                guard let self else { return }
+//                self.feedEditTap.onNext(())
+//            },
+//            UIAction(title: "삭제", image: UIImage(systemName: "trash"), attributes: .destructive) { [weak self] _ in
+//                guard let self else { return }
+//                self.showAlert(title: "삭제", message: "게시물을 삭제하시겠습니까?", btnTitle: "삭제") {
+//                    self.feedDeleteTap.onNext(())
+//                }
+//            }
+//        ]
+//        
+//        let menu = UIMenu(title: "", image: nil, identifier: nil, options: [], children: menuItems)
+//        
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "",
+//                                                                 image: UIImage(systemName: "line.3.horizontal"),
+//                                                                 primaryAction: nil,
+//                                                                 menu: menu)
+//    }
 }

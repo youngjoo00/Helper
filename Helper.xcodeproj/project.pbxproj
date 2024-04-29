@@ -172,6 +172,9 @@
 		8ED8B8002BDE8EB5009B4387 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7FF2BDE8EB5009B4387 /* CommentView.swift */; };
 		8ED8B8022BDE908C009B4387 /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8012BDE908C009B4387 /* CommentViewModel.swift */; };
 		8ED8B8042BDEB99C009B4387 /* Array<String>+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8032BDEB99C009B4387 /* Array<String>+.swift */; };
+		8ED8B8A32BDFACD5009B4387 /* ProfilePostsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8A22BDFACD5009B4387 /* ProfilePostsCollectionViewCell.swift */; };
+		8ED8B8A52BDFADAB009B4387 /* ProfilePostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8A42BDFADAB009B4387 /* ProfilePostsView.swift */; };
+		8ED8B8A72BDFB04D009B4387 /* PointBackgroundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8A62BDFB04D009B4387 /* PointBackgroundLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -332,6 +335,9 @@
 		8ED8B7FF2BDE8EB5009B4387 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		8ED8B8012BDE908C009B4387 /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
 		8ED8B8032BDEB99C009B4387 /* Array<String>+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array<String>+.swift"; sourceTree = "<group>"; };
+		8ED8B8A22BDFACD5009B4387 /* ProfilePostsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostsCollectionViewCell.swift; sourceTree = "<group>"; };
+		8ED8B8A42BDFADAB009B4387 /* ProfilePostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostsView.swift; sourceTree = "<group>"; };
+		8ED8B8A62BDFB04D009B4387 /* PointBackgroundLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointBackgroundLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -750,6 +756,7 @@
 				8E1BAE9D2BC99E7C00A65075 /* PointLabel.swift */,
 				8E1BAE9F2BC99F3200A65075 /* PointBoldLabel.swift */,
 				8E17A2DB2BCA267000581B58 /* RedColorLabel.swift */,
+				8ED8B8A62BDFB04D009B4387 /* PointBackgroundLabel.swift */,
 			);
 			path = Label;
 			sourceTree = "<group>";
@@ -777,6 +784,7 @@
 			children = (
 				8E9A3FCF2BCD81BA005E4F45 /* PostCollectionViewCell.swift */,
 				8E9A40112BCFC196005E4F45 /* ImageCollectionViewCell.swift */,
+				8ED8B8A22BDFACD5009B4387 /* ProfilePostsCollectionViewCell.swift */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -824,6 +832,7 @@
 		8ED8B7842BD94963009B4387 /* PostsView */ = {
 			isa = PBXGroup;
 			children = (
+				8ED8B8A42BDFADAB009B4387 /* ProfilePostsView.swift */,
 				8ED8B77E2BD93A83009B4387 /* VerticalPostsView.swift */,
 				8ED8B7D62BDD26F5009B4387 /* HorizontalPostsView.swift */,
 				8ED8B7852BDA1F2C009B4387 /* PostsViewModel.swift */,
@@ -1081,6 +1090,7 @@
 				8E1BAE3A2BC968EC00A65075 /* TokenIntercepter.swift in Sources */,
 				8E17A3362BCAF33200581B58 /* PostRouter.swift in Sources */,
 				8E1BAE732BC97D5D00A65075 /* BaseTableViewCell.swift in Sources */,
+				8ED8B8A52BDFADAB009B4387 /* ProfilePostsView.swift in Sources */,
 				8E17A3302BCAF03300581B58 /* BaseCollectionView.swift in Sources */,
 				8ED8B7F72BDE81AB009B4387 /* DetailFeedView.swift in Sources */,
 				8E17A2F32BCA7DA800581B58 /* FindingViewController.swift in Sources */,
@@ -1155,6 +1165,7 @@
 				8ED8B7962BDB9DF4009B4387 /* NumberPadTextField.swift in Sources */,
 				8E17A2E22BCA3D7800581B58 /* PhoneView.swift in Sources */,
 				8E17A32A2BCAD16E00581B58 /* PostView.swift in Sources */,
+				8ED8B8A72BDFB04D009B4387 /* PointBackgroundLabel.swift in Sources */,
 				8ED8B7D02BDCF803009B4387 /* HomeViewModel.swift in Sources */,
 				8E1BAE712BC97D5D00A65075 /* BaseCollectionViewCell.swift in Sources */,
 				8ED8B8042BDEB99C009B4387 /* Array<String>+.swift in Sources */,
@@ -1166,6 +1177,7 @@
 				8E1BAE702BC97D5D00A65075 /* BaseViewController.swift in Sources */,
 				8ED8B7F42BDE3EC9009B4387 /* FeedTableViewCell.swift in Sources */,
 				8ED8B7B12BDC0971009B4387 /* FollowingViewController.swift in Sources */,
+				8ED8B8A32BDFACD5009B4387 /* ProfilePostsCollectionViewCell.swift in Sources */,
 				8E9A3FD52BCD9498005E4F45 /* SettingView.swift in Sources */,
 				8E1BAE8D2BC9800B00A65075 /* Color.swift in Sources */,
 				8ED8B7D52BDCFC8E009B4387 /* RecentPostsFromFollowingCollectionViewCell.swift in Sources */,

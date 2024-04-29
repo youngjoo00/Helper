@@ -9,6 +9,20 @@ import UIKit
 
 extension UICollectionViewLayout {
     
+    static func profilePostsCollectionViewLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewFlowLayout()
+        let spacing: CGFloat = 1
+        
+        let cellWidth = (UIScreen.main.bounds.width - (spacing * 4)) / 3
+        let cellhieght = cellWidth
+        
+        layout.itemSize = CGSize(width: cellWidth, height: cellhieght)
+        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        layout.minimumLineSpacing = spacing
+        layout.minimumInteritemSpacing = spacing
+        return layout
+    }
+    
     static func horizontalCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10

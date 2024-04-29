@@ -107,6 +107,7 @@ extension PostCollectionViewCell {
     
     func updateView(_ data: PostResponse.FetchPost) {
         imageView.loadImage(urlString: data.files[0])
+        
         titleLabel.text = data.title
         dateLabel.text = data.date
         featureLabel.text = data.feature

@@ -11,7 +11,7 @@ import RxCocoa
 
 final class MyPostViewController: BaseViewController {
 
-    private let postsView = VerticalPostsView()
+    private let postsView = ProfilePostsView()
     private let postsViewModel = PostsViewModel(mode: .myPost)
     
     let fetchPostsTrigger = PublishSubject<Void>()
@@ -43,8 +43,8 @@ final class MyPostViewController: BaseViewController {
         let output = postsViewModel.transform(input: input)
         
         output.posts
-            .drive(postsView.collectionView.rx.items(cellIdentifier: PostCollectionViewCell.id,
-                                                    cellType: PostCollectionViewCell.self)) { row, item, cell in
+            .drive(postsView.collectionView.rx.items(cellIdentifier: ProfilePostsCollectionViewCell.id,
+                                                    cellType: ProfilePostsCollectionViewCell.self)) { row, item, cell in
                 cell.updateView(item)
             }
             .disposed(by: disposeBag)
