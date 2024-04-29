@@ -12,9 +12,10 @@ import RxCocoa
 enum PostsViewModelMode {
     case findingAll
     case foundAll
-    case myPost
+    case myPosts
     case myStorage
     case feed
+    case otherUserPosts(userID: String)
 }
 
 final class PostsViewModel: ViewModelType {
@@ -76,6 +77,7 @@ final class PostsViewModel: ViewModelType {
         let loadDataTrigger = Observable.merge(fetchPosts, reachedBottom, refreshControl)
         
         loadDataTrigger
+            .debug("오는건가여?")
             .withLatestFrom(next)
             .flatMap { [weak self] next -> Observable<APIResult<PostResponse.Posts>> in
                 guard let self else { return .empty() }
@@ -84,13 +86,14 @@ final class PostsViewModel: ViewModelType {
                     return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchHashTag(query: PostRequest.FetchHashTag(next: next, productID: "", hashTag: HelperString.hashTagFinding)))).asObservable()
                 case .foundAll:
                     return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchHashTag(query: PostRequest.FetchHashTag(next: next, productID: "", hashTag: HelperString.hashTagFound)))).asObservable()
-                case .myPost:
+                case .myPosts:
                     return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.otherUserFetchPosts(next: next, userID: myID))).asObservable()
                 case .myStorage:
                     return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchStorage(next: next))).asObservable()
                 case .feed:
                     return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchFeed(query: PostRequest.FetchFeed(next: next, productID: HelperString.productID)))).asObservable()
-                    
+                case .otherUserPosts(let userID):
+                    return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.otherUserFetchPosts(next: next, userID: userID))).asObservable()
                 }
             }
             .subscribe(with: self) { owner, result in

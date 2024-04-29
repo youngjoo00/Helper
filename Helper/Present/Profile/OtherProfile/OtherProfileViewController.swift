@@ -14,11 +14,14 @@ final class OtherProfileViewController: BaseViewController {
     
     private let mainView = OtherProfileView()
     private let viewModel = OtherProfileViewModel()
-    private let tabVC = OtherProfileTabViewController()
+    private var postsViewModel: PostsViewModel
+    
     private let userID = BehaviorSubject(value: "")
+    private let fetchPostsTrigger = PublishSubject<Void>()
     
     init(userID: String) {
         self.userID.onNext(userID)
+        self.postsViewModel = .init(mode: .otherUserPosts(userID: userID))
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -32,10 +35,20 @@ final class OtherProfileViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTabViewController()
+        
+        fetchPostsTrigger.onNext(())
     }
     
     override func bind() {
+        otherProfileBind()
+        postsBind()
+    }
+    
+}
+
+extension OtherProfileViewController {
+    
+    private func otherProfileBind() {
         let input = OtherProfileViewModel.Input(userID: userID)
         
         let output = viewModel.transform(input: input)
@@ -47,20 +60,50 @@ final class OtherProfileViewController: BaseViewController {
             .disposed(by: disposeBag)
     }
     
-}
+    private func postsBind() {
+        EventManager.shared.postWriteTrigger
+            .subscribe(with: self) { owner, _ in
+                owner.fetchPostsTrigger.onNext(())
+            }
+            .disposed(by: disposeBag)
+        
+        let input = PostsViewModel.Input(
+            fetchPostsTrigger: fetchPostsTrigger,
+            reachedBottomTrigger: mainView.profilePostsView.collectionView.rx.reachedBottom(),
+            refreshControlTrigger: mainView.profilePostsView.refreshControl.rx.controlEvent(.valueChanged)
+        )
+        
+        let output = postsViewModel.transform(input: input)
+        
+        output.posts
+            .debug("들어오나요?")
+            .drive(mainView.profilePostsView.collectionView.rx.items(cellIdentifier: ProfilePostsCollectionViewCell.id,
+                                                    cellType: ProfilePostsCollectionViewCell.self)) { row, item, cell in
+                cell.updateView(item)
+            }
+            .disposed(by: disposeBag)
 
-// MARK: - Add Child
-extension OtherProfileViewController {
-    
-    func configureTabViewController() {
-        addChild(tabVC)
-        mainView.containerView.addSubview(tabVC.view)
+        // refreshControl
+        output.isRefreshControlLoading
+            .drive(mainView.profilePostsView.refreshControl.rx.isRefreshing)
+            .disposed(by: disposeBag)
+
+        // bottomIndicator
+        output.isBottomLoading
+            .drive(mainView.profilePostsView.activityIndicator.rx.isAnimating)
+            .disposed(by: disposeBag)
         
-        tabVC.view.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        tabVC.didMove(toParent: self)
+        // Transition DetailVC
+        mainView.profilePostsView.collectionView.rx.modelSelected(PostResponse.FetchPost.self)
+            .subscribe(with: self) { owner, data in
+                if data.checkedPostsKind {
+                    owner.transition(viewController: DetailFeedViewController(feedID: data.postID), style: .hideBottomPush)
+                } else {
+                    let vc = DetailPostViewController()
+                    vc.postID = data.postID
+                    owner.transition(viewController: vc, style: .hideBottomPush)
+                }
+            }
+            .disposed(by: disposeBag)
     }
-    
 }

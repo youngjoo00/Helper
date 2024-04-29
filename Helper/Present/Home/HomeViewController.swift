@@ -59,7 +59,6 @@ extension HomeViewController {
         let output = feedViewModel.transform(input: input)
         
         output.posts
-            .debug("뭘까요")
             .drive(mainView.recentPostsFollowingView.collectionView.rx.items(cellIdentifier: RecentPostsFromFollowingCollectionViewCell.id,
                                                     cellType: RecentPostsFromFollowingCollectionViewCell.self)) { row, item, cell in
                 cell.updateView(item)

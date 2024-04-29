@@ -9,6 +9,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+protocol passProfileTabDelegate: AnyObject {
+    func transtionProfile(_ viewController: UIViewController)
+}
+
 final class FeedViewController: BaseViewController {
 
     private let mainView = FeedView()
@@ -76,6 +80,7 @@ extension FeedViewController {
                 cell.commentButton.rx.tap
                     .subscribe(with: self) { owner, _ in
                         let vc = CommentViewController(item.postID)
+                        vc.profileTabDelegate = owner
                         if let sheet = vc.sheetPresentationController {
                             sheet.detents = [.medium(), .large()]
                             // 스크롤할때 확장하지 않도록
@@ -92,6 +97,12 @@ extension FeedViewController {
                 cell.storageButton.rx.tap
                     .subscribe(with: self) { owner, _ in
                         owner.storageButtonTap.onNext(item)
+                    }
+                    .disposed(by: cell.disposeBag)
+                
+                cell.profileTabGesture.rx.event
+                    .subscribe(with: self) { owner, _ in
+                        owner.transition(viewController: item.creator.userID.checkedProfile, style: .push)
                     }
                     .disposed(by: cell.disposeBag)
             }
@@ -132,5 +143,11 @@ extension FeedViewController {
     
     func configureNavigationBar() {
         navigationItem.titleView = mainView.navTitle
+    }
+}
+
+extension FeedViewController: passProfileTabDelegate {
+    func transtionProfile(_ viewController: UIViewController) {
+        transition(viewController: viewController, style: .push)
     }
 }

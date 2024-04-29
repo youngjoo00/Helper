@@ -107,28 +107,28 @@ extension PostRouter: TargetType {
         switch self {
         case .fetchHashTag(let query):
             return [
-                URLQueryItem(name: "next", value: query.next),
-                URLQueryItem(name: "limit", value: "10"),
-                URLQueryItem(name: "product_id", value: query.productID),
-                URLQueryItem(name: "hashTag", value: query.hashTag)
+                URLQueryItem(name: QueryItem.next.rawValue, value: query.next),
+                URLQueryItem(name: QueryItem.limit.rawValue, value: QueryItem.limitValue.rawValue),
+                URLQueryItem(name: QueryItem.productID.rawValue, value: query.productID),
+                URLQueryItem(name: QueryItem.hashTag.rawValue, value: query.hashTag)
             ]
         case .postID, .image, .uploadImage, .create, .update, .delete, .storage:
             return nil
         case .fetchStorage(let next):
             return [
-                URLQueryItem(name: "next", value: next),
-                URLQueryItem(name: "limit", value: "10"),
+                URLQueryItem(name: QueryItem.next.rawValue, value: next),
+                URLQueryItem(name: QueryItem.limit.rawValue, value: QueryItem.limitValue.rawValue),
             ]
         case .otherUserFetchPosts(let next, let id):
             return [
-                URLQueryItem(name: "next", value: next),
-                URLQueryItem(name: "limit", value: "10"),
+                URLQueryItem(name: QueryItem.next.rawValue, value: next),
+                URLQueryItem(name: QueryItem.limit.rawValue, value: QueryItem.limitValue.rawValue),
             ]
         case .fetchFeed(let query):
             return [
-                URLQueryItem(name: "next", value: query.next),
-                URLQueryItem(name: "limit", value: "10"),
-                URLQueryItem(name: "product_id", value: query.productID),
+                URLQueryItem(name: QueryItem.next.rawValue, value: query.next),
+                URLQueryItem(name: QueryItem.limit.rawValue, value: QueryItem.limitValue.rawValue),
+                URLQueryItem(name: QueryItem.productID.rawValue, value: query.productID),
             ]
         }
     }

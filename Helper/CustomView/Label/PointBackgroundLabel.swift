@@ -20,7 +20,7 @@ class PointBackgroundLabel: UILabel {
         self.text = text
         self.textColor = Color.white
         self.backgroundColor = Color.point
-        self.font = .systemFont(ofSize: fontSize)
+        self.font = .boldSystemFont(ofSize: fontSize)
         self.textAlignment = alignment
         setupRoundedCorners()
     }

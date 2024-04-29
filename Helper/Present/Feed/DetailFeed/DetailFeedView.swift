@@ -191,12 +191,7 @@ final class DetailFeedView: BaseView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        //commentsTableViewHeightUpdate()
-        
-        UIView.performWithoutAnimation {
-                commentsTableViewHeightUpdate()
-                self.layoutIfNeeded() // 필요한 경우
-            }
+        commentsTableViewHeightUpdate()
     }
     
 }

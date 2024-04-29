@@ -53,10 +53,10 @@ class OtherProfileView: BaseView {
     let followersTapGesture = UITapGestureRecognizer()
     let followersLabel = PointLabel("팔로잉", fontSize: 18)
     let followersValueLabel = PointBoldLabel(fontSize: 20)
-    
     let followButton = PointButton(title: "팔로우")
     
-    let containerView = UIView()
+    let profilePostsLabel = PointBoldLabel("게시물", fontSize: 17)
+    let profilePostsView = ProfilePostsView()
     
     override func configureHierarchy() {
         [
@@ -64,7 +64,8 @@ class OtherProfileView: BaseView {
             nicknameLabel,
             contentStackView,
             followButton,
-            containerView,
+            profilePostsLabel,
+            profilePostsView
         ].forEach { addSubview($0) }
         
         [
@@ -114,9 +115,14 @@ class OtherProfileView: BaseView {
             make.height.equalTo(44)
         }
         
-        containerView.snp.makeConstraints { make in
-            make.top.equalTo(followButton.snp.bottom).offset(10)
-            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
+        profilePostsLabel.snp.makeConstraints { make in
+            make.top.equalTo(followButton.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+        }
+        
+        profilePostsView.snp.makeConstraints { make in
+            make.top.equalTo(profilePostsLabel.snp.bottom).offset(15)
+            make.horizontalEdges.bottom.equalToSuperview()
         }
         
     }

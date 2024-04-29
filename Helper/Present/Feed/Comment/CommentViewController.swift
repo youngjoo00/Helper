@@ -16,6 +16,8 @@ final class CommentViewController: BaseViewController {
     private let postID = BehaviorSubject(value: "")
     private let fetchPostsTrigger = BehaviorSubject<Void>(value: ())
     
+    var profileTabDelegate: passProfileTabDelegate?
+    
     init(_ postID: String) {
         self.postID.onNext(postID)
         self.fetchPostsTrigger.onNext(())
@@ -53,7 +55,7 @@ final class CommentViewController: BaseViewController {
             commentButtonTap: mainView.commentWriteButton.rx.tap, 
             commentDeleteTap: commentDeleteTap
         )
-        
+
         let output = viewModel.transform(input: input)
         
         mainView.commentWriteTextField.rx.text.orEmpty
@@ -69,6 +71,13 @@ final class CommentViewController: BaseViewController {
                 // deleteMenu 선택 시 commentID 방출
                 cell.deleteSubject
                     .bind(to: commentDeleteTap)
+                    .disposed(by: cell.disposeBag)
+                
+                cell.profileTabGesture.rx.event
+                    .subscribe(with: self) { owner, _ in
+                        // 어 이거 어떻게하지?
+//                        owner.transition(viewController: item.creator.userID.checkedProfile, style: .push)
+                    }
                     .disposed(by: cell.disposeBag)
             }
             .disposed(by: disposeBag)

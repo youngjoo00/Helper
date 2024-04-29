@@ -20,7 +20,6 @@ final class CommentViewModel: ViewModelType {
         let comment: Observable<String>
         let commentButtonTap: ControlEvent<Void>
         let commentDeleteTap: Observable<String>
-        //let profileTapGesture: Observable<Void>
     }
     
     struct Output {
@@ -31,7 +30,6 @@ final class CommentViewModel: ViewModelType {
         let errorToastMessage: Driver<String>
         let commentCreateSuccess: Driver<Void>
         let commentDeleteSuccess: Driver<Void>
-        //let profileTapGesture: Driver<String>
     }
     
     func transform(input: Input) -> Output {
@@ -114,7 +112,7 @@ final class CommentViewModel: ViewModelType {
         let comments = postInfo
             .map { $0.comments }
             .asDriver(onErrorJustReturn: [])
-        
+//        
 //        let profileTapGesture = input.profileTapGesture
 //            .withLatestFrom(postInfo)
 //            .map { $0.creator.userID }
@@ -128,7 +126,6 @@ final class CommentViewModel: ViewModelType {
             errorToastMessage: errorToastMessage.asDriver(onErrorJustReturn: "알 수 없는 오류입니다."),
             commentCreateSuccess: commentCreateSuccess.asDriver(onErrorDriveWith: .empty()),
             commentDeleteSuccess: commentDeleteSuccess.asDriver(onErrorDriveWith: .empty())
-            //profileTapGesture: profileTapGesture
         )
     }
 }

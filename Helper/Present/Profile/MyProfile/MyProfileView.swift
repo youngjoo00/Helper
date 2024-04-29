@@ -108,9 +108,10 @@ class MyProfileView: BaseView {
         }
         
         profileEditButton.snp.makeConstraints { make in
-            make.top.equalTo(nicknameLabel.snp.bottom).offset(20)
-            make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
+            make.top.equalTo(nicknameLabel.snp.bottom).offset(10)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(16)
             make.height.equalTo(44)
+            make.width.equalTo(150)
         }
         
         containerView.snp.makeConstraints { make in

@@ -147,8 +147,6 @@
 		8ED8B7BA2BDC23CB009B4387 /* OtherProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7B92BDC23CB009B4387 /* OtherProfileView.swift */; };
 		8ED8B7BC2BDC23D3009B4387 /* OtherProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7BB2BDC23D3009B4387 /* OtherProfileViewController.swift */; };
 		8ED8B7BE2BDCA161009B4387 /* OtherProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7BD2BDCA161009B4387 /* OtherProfileViewModel.swift */; };
-		8ED8B7C02BDCAAD5009B4387 /* OtherProfileTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7BF2BDCAAD5009B4387 /* OtherProfileTabViewController.swift */; };
-		8ED8B7C42BDCAB66009B4387 /* OtherPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7C32BDCAB66009B4387 /* OtherPostViewController.swift */; };
 		8ED8B7CC2BDCF7EF009B4387 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7CB2BDCF7EF009B4387 /* HomeView.swift */; };
 		8ED8B7CE2BDCF7F6009B4387 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7CD2BDCF7F6009B4387 /* HomeViewController.swift */; };
 		8ED8B7D02BDCF803009B4387 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7CF2BDCF803009B4387 /* HomeViewModel.swift */; };
@@ -176,6 +174,8 @@
 		8ED8B8A52BDFADAB009B4387 /* ProfilePostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8A42BDFADAB009B4387 /* ProfilePostsView.swift */; };
 		8ED8B8A72BDFB04D009B4387 /* PointBackgroundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8A62BDFB04D009B4387 /* PointBackgroundLabel.swift */; };
 		8ED8B8A92BDFB507009B4387 /* CheckedPostsKind+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8A82BDFB507009B4387 /* CheckedPostsKind+.swift */; };
+		8ED8B8AB2BDFBED6009B4387 /* QueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8AA2BDFBED6009B4387 /* QueryItem.swift */; };
+		8ED8B8AD2BDFD3F0009B4387 /* ProfileTapGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8AC2BDFD3F0009B4387 /* ProfileTapGesture.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -311,8 +311,6 @@
 		8ED8B7B92BDC23CB009B4387 /* OtherProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileView.swift; sourceTree = "<group>"; };
 		8ED8B7BB2BDC23D3009B4387 /* OtherProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileViewController.swift; sourceTree = "<group>"; };
 		8ED8B7BD2BDCA161009B4387 /* OtherProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileViewModel.swift; sourceTree = "<group>"; };
-		8ED8B7BF2BDCAAD5009B4387 /* OtherProfileTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileTabViewController.swift; sourceTree = "<group>"; };
-		8ED8B7C32BDCAB66009B4387 /* OtherPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherPostViewController.swift; sourceTree = "<group>"; };
 		8ED8B7CB2BDCF7EF009B4387 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8ED8B7CD2BDCF7F6009B4387 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8ED8B7CF2BDCF803009B4387 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -340,6 +338,8 @@
 		8ED8B8A42BDFADAB009B4387 /* ProfilePostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostsView.swift; sourceTree = "<group>"; };
 		8ED8B8A62BDFB04D009B4387 /* PointBackgroundLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointBackgroundLabel.swift; sourceTree = "<group>"; };
 		8ED8B8A82BDFB507009B4387 /* CheckedPostsKind+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheckedPostsKind+.swift"; sourceTree = "<group>"; };
+		8ED8B8AA2BDFBED6009B4387 /* QueryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryItem.swift; sourceTree = "<group>"; };
+		8ED8B8AC2BDFD3F0009B4387 /* ProfileTapGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTapGesture.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -373,6 +373,7 @@
 				8E1BAE2F2BC968EB00A65075 /* TargetType.swift */,
 				8E1BAE2B2BC968EB00A65075 /* HTTPHeader.swift */,
 				8EA59CE82BD19D56009938E0 /* PathVersion.swift */,
+				8ED8B8AA2BDFBED6009B4387 /* QueryItem.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -622,6 +623,7 @@
 				8ED8B7D82BDD477C009B4387 /* UIWindow+.swift */,
 				8ED8B7DC2BDD52B3009B4387 /* Notification+.swift */,
 				8ED8B8A82BDFB507009B4387 /* CheckedPostsKind+.swift */,
+				8ED8B8AC2BDFD3F0009B4387 /* ProfileTapGesture.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -890,26 +892,8 @@
 				8ED8B7B92BDC23CB009B4387 /* OtherProfileView.swift */,
 				8ED8B7BB2BDC23D3009B4387 /* OtherProfileViewController.swift */,
 				8ED8B7BD2BDCA161009B4387 /* OtherProfileViewModel.swift */,
-				8ED8B7C12BDCAADB009B4387 /* OtherProfileTab */,
-				8ED8B7C22BDCAB3B009B4387 /* OtherPost */,
 			);
 			path = OtherProfile;
-			sourceTree = "<group>";
-		};
-		8ED8B7C12BDCAADB009B4387 /* OtherProfileTab */ = {
-			isa = PBXGroup;
-			children = (
-				8ED8B7BF2BDCAAD5009B4387 /* OtherProfileTabViewController.swift */,
-			);
-			path = OtherProfileTab;
-			sourceTree = "<group>";
-		};
-		8ED8B7C22BDCAB3B009B4387 /* OtherPost */ = {
-			isa = PBXGroup;
-			children = (
-				8ED8B7C32BDCAB66009B4387 /* OtherPostViewController.swift */,
-			);
-			path = OtherPost;
 			sourceTree = "<group>";
 		};
 		8ED8B7CA2BDCF7E0009B4387 /* Home */ = {
@@ -1103,7 +1087,6 @@
 				8E1BAE202BC968E500A65075 /* PasswordViewController.swift in Sources */,
 				8E17A2EE2BCA59D000581B58 /* BirthdayViewModel.swift in Sources */,
 				8E1BAE3E2BC968F100A65075 /* UserDefaultsManager.swift in Sources */,
-				8ED8B7C42BDCAB66009B4387 /* OtherPostViewController.swift in Sources */,
 				8ED8B8022BDE908C009B4387 /* CommentViewModel.swift in Sources */,
 				8E1BAE242BC968E500A65075 /* SignUpViewModel.swift in Sources */,
 				8E17A2F12BCA7D9F00581B58 /* FindingView.swift in Sources */,
@@ -1131,6 +1114,7 @@
 				8E1BAE252BC968E500A65075 /* NicknameView.swift in Sources */,
 				8E1BAE1F2BC968E500A65075 /* PasswordView.swift in Sources */,
 				8E1BADE42BC965CC00A65075 /* AppDelegate.swift in Sources */,
+				8ED8B8AD2BDFD3F0009B4387 /* ProfileTapGesture.swift in Sources */,
 				8E17A2DC2BCA267000581B58 /* RedColorLabel.swift in Sources */,
 				8E1BAE722BC97D5D00A65075 /* BaseView.swift in Sources */,
 				8ED8B7E82BDE223D009B4387 /* WriteFeedViewController.swift in Sources */,
@@ -1163,6 +1147,7 @@
 				8ED8B7E22BDD5C5C009B4387 /* InitailView.swift in Sources */,
 				8ED8B7FB2BDE81C3009B4387 /* DetailFeedViewModel.swift in Sources */,
 				8ED3AE222BD15C960040DA58 /* CommentsTableViewCell.swift in Sources */,
+				8ED8B8AB2BDFBED6009B4387 /* QueryItem.swift in Sources */,
 				8ED8B7EA2BDE2243009B4387 /* WriteFeedViewModel.swift in Sources */,
 				8E1BAE362BC968EC00A65075 /* NetworkManager.swift in Sources */,
 				8ED8B7962BDB9DF4009B4387 /* NumberPadTextField.swift in Sources */,
@@ -1205,7 +1190,6 @@
 				8E1BADFC2BC968C100A65075 /* ReusableID.swift in Sources */,
 				8ED8B7862BDA1F2C009B4387 /* PostsViewModel.swift in Sources */,
 				8ED8B7AA2BDC088D009B4387 /* FollowViewController.swift in Sources */,
-				8ED8B7C02BDCAAD5009B4387 /* OtherProfileTabViewController.swift in Sources */,
 				8E17A3002BCA80B900581B58 /* FoundViewController.swift in Sources */,
 				8E9A3FF82BCEE2CE005E4F45 /* UserResponse.swift in Sources */,
 				8ED8B7CE2BDCF7F6009B4387 /* HomeViewController.swift in Sources */,

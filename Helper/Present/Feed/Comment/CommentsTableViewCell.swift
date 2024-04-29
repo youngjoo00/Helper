@@ -16,8 +16,16 @@ final class CommentsTableViewCell: BaseTableViewCell {
     
     private var commentID = ""
     
-    private let profileImageView = ProfileImageView()
-    private let nicknameLabel = PointBoldLabel("닉네임", fontSize: 18)
+    lazy var profileStackView = UIStackView().then {
+        $0.axis = .horizontal
+        $0.spacing = 10
+        $0.alignment = .top
+        $0.addGestureRecognizer(profileTabGesture)
+    }
+    let profileTabGesture = UITapGestureRecognizer()
+    let profileImageView = ProfileImageView()
+    let nicknameLabel = PointBoldLabel(fontSize: 18)
+
     private let regDateLabel = PointLabel("20시간 전", fontSize: 15)
     private let editButton = ImageButton(image: UIImage(systemName: "ellipsis.circle")).then {
         $0.showsMenuAsPrimaryAction = true
@@ -28,25 +36,29 @@ final class CommentsTableViewCell: BaseTableViewCell {
 
     override func configureHierarchy() {
         [
-            profileImageView,
-            nicknameLabel,
+            profileStackView,
             regDateLabel,
             commentLabel,
             editButton
         ].forEach { contentView.addSubview($0) }
+        
+        [
+            profileImageView,
+            nicknameLabel,
+        ].forEach { profileStackView.addArrangedSubview($0) }
     }
     
     override func configureLayout() {
         
-        profileImageView.snp.makeConstraints { make in
+        profileStackView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(10)
-            make.leading.equalTo(safeAreaLayoutGuide).offset(16)
-            make.size.equalTo(33)
+            make.leading.equalTo(safeAreaLayoutGuide).inset(16)
+            make.height.equalTo(33)
         }
         
-        nicknameLabel.snp.makeConstraints { make in
-            make.top.equalTo(profileImageView)
-            make.leading.equalTo(profileImageView.snp.trailing).offset(10)
+        profileImageView.snp.makeConstraints { make in
+            make.top.equalTo(nicknameLabel)
+            make.size.equalTo(33)
         }
         
         regDateLabel.snp.makeConstraints { make in

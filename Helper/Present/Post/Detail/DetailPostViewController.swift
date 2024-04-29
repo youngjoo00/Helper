@@ -68,7 +68,7 @@ final class DetailPostViewController: BaseViewController {
         
         output.profileTapGesture
             .drive(with: self) { owner, id in
-                owner.transition(viewController: OtherProfileViewController(userID: id), style: .push)
+                owner.transition(viewController: id.checkedProfile, style: .push)
             }
             .disposed(by: disposeBag)
         
@@ -162,6 +162,12 @@ final class DetailPostViewController: BaseViewController {
                 // deleteMenu 선택 시 commentID 방출
                 cell.deleteSubject
                     .bind(to: commentDeleteTap)
+                    .disposed(by: cell.disposeBag)
+                
+                cell.profileTabGesture.rx.event
+                    .subscribe(with: self) { owner, _ in
+                        owner.transition(viewController: item.creator.userID.checkedProfile, style: .push)
+                    }
                     .disposed(by: cell.disposeBag)
             }
             .disposed(by: disposeBag)
