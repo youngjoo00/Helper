@@ -175,6 +175,7 @@
 		8ED8B8A32BDFACD5009B4387 /* ProfilePostsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8A22BDFACD5009B4387 /* ProfilePostsCollectionViewCell.swift */; };
 		8ED8B8A52BDFADAB009B4387 /* ProfilePostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8A42BDFADAB009B4387 /* ProfilePostsView.swift */; };
 		8ED8B8A72BDFB04D009B4387 /* PointBackgroundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8A62BDFB04D009B4387 /* PointBackgroundLabel.swift */; };
+		8ED8B8A92BDFB507009B4387 /* CheckedPostsKind+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8A82BDFB507009B4387 /* CheckedPostsKind+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -338,6 +339,7 @@
 		8ED8B8A22BDFACD5009B4387 /* ProfilePostsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostsCollectionViewCell.swift; sourceTree = "<group>"; };
 		8ED8B8A42BDFADAB009B4387 /* ProfilePostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostsView.swift; sourceTree = "<group>"; };
 		8ED8B8A62BDFB04D009B4387 /* PointBackgroundLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointBackgroundLabel.swift; sourceTree = "<group>"; };
+		8ED8B8A82BDFB507009B4387 /* CheckedPostsKind+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheckedPostsKind+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -619,6 +621,7 @@
 				8ED8B7582BD6913D009B4387 /* UIScrollView+.swift */,
 				8ED8B7D82BDD477C009B4387 /* UIWindow+.swift */,
 				8ED8B7DC2BDD52B3009B4387 /* Notification+.swift */,
+				8ED8B8A82BDFB507009B4387 /* CheckedPostsKind+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1167,6 +1170,7 @@
 				8E17A32A2BCAD16E00581B58 /* PostView.swift in Sources */,
 				8ED8B8A72BDFB04D009B4387 /* PointBackgroundLabel.swift in Sources */,
 				8ED8B7D02BDCF803009B4387 /* HomeViewModel.swift in Sources */,
+				8ED8B8A92BDFB507009B4387 /* CheckedPostsKind+.swift in Sources */,
 				8E1BAE712BC97D5D00A65075 /* BaseCollectionViewCell.swift in Sources */,
 				8ED8B8042BDEB99C009B4387 /* Array<String>+.swift in Sources */,
 				8E17A2EC2BCA59C800581B58 /* BirthdayViewController.swift in Sources */,

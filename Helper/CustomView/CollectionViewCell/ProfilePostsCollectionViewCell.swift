@@ -48,7 +48,7 @@ extension ProfilePostsCollectionViewCell {
     func updateView(_ data: PostResponse.FetchPost) {
         imageView.loadImage(urlString: data.files[0])
         
-        if data.date.isEmpty {
+        if data.checkedPostsKind {
             postsKindLabel.text = "Feed"
         } else {
             postsKindLabel.text = "Help"

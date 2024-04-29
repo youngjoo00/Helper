@@ -71,9 +71,13 @@ final class MyStoragePostViewController: BaseViewController {
         // Transition DetailVC
         postsView.collectionView.rx.modelSelected(PostResponse.FetchPost.self)
             .subscribe(with: self) { owner, data in
-                let vc = DetailPostViewController()
-                vc.postID = data.postID
-                owner.transition(viewController: vc, style: .hideBottomPush)
+                if data.checkedPostsKind {
+                    owner.transition(viewController: DetailFeedViewController(feedID: data.postID), style: .hideBottomPush)
+                } else {
+                    let vc = DetailPostViewController()
+                    vc.postID = data.postID
+                    owner.transition(viewController: vc, style: .hideBottomPush)
+                }
             }
             .disposed(by: disposeBag)
     }
