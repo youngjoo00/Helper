@@ -35,6 +35,12 @@ final class HomeViewController: BaseViewController {
         feedBind()
         findingBind()
         foundBind()
+        
+        EventManager.shared.postWriteTrigger
+            .subscribe(with: self) { owner, _ in
+                owner.fetchPostsTrigger.onNext(())
+            }
+            .disposed(by: disposeBag)
     }
 }
 
@@ -44,7 +50,6 @@ extension HomeViewController {
     
     // MARK: - Feed
     func feedBind() {
-        
         let input = PostsViewModel.Input(
             fetchPostsTrigger: fetchPostsTrigger,
             reachedBottomTrigger: mainView.recentPostsFollowingView.collectionView.rx.reachedTrailing(),
@@ -74,9 +79,7 @@ extension HomeViewController {
         // Transition DetailVC
         mainView.recentPostsFollowingView.collectionView.rx.modelSelected(PostResponse.FetchPost.self)
             .subscribe(with: self) { owner, data in
-                let vc = DetailPostViewController()
-                vc.postID = data.postID
-                owner.transition(viewController: vc, style: .hideBottomPush)
+                owner.transition(viewController: DetailFeedViewController(feedID: data.postID), style: .hideBottomPush)
             }
             .disposed(by: disposeBag)
     }

@@ -21,7 +21,7 @@ final class DetailPostViewModel: ViewModelType {
         let postEditMenuTap: Observable<Void>
         let storageButtonTap: ControlEvent<Void>
         let commentDeleteTap: Observable<String>
-        let profileTapGesture: Observable<(Void)>
+        let profileTapGesture: Observable<Void>
     }
     
     struct Output {

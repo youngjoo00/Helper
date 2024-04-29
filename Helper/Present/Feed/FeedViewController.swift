@@ -106,15 +106,6 @@ extension FeedViewController {
         output.isBottomLoading
             .drive(mainView.activityIndicator.rx.isAnimating)
             .disposed(by: disposeBag)
-        
-        // Transition DetailVC
-        mainView.tableView.rx.modelSelected(PostResponse.FetchPost.self)
-            .subscribe(with: self) { owner, data in
-                let vc = DetailPostViewController()
-                vc.postID = data.postID
-                owner.transition(viewController: vc, style: .hideBottomPush)
-            }
-            .disposed(by: disposeBag)
     }
     
     private func feedBind() {
@@ -131,7 +122,6 @@ extension FeedViewController {
                 owner.showTaost(message)
             }
             .disposed(by: disposeBag)
-        
     }
     
 }
