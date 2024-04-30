@@ -20,7 +20,6 @@ final class OtherProfileViewModel: ViewModelType {
     
     struct Output {
         let profileInfo: Driver<UserResponse.OtherProfile>
-        let postsID: PublishSubject<[String]>
         let checkedFollow: Driver<Bool>
         let errorAlertMessage: Driver<String>
     }
@@ -28,15 +27,12 @@ final class OtherProfileViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         
         let profileInfo = PublishRelay<UserResponse.OtherProfile>()
-        let postsID = PublishSubject<[String]>()
-        
-        let myInfo = EventManager.shared.myProfileInfo.compactMap { $0 }.debug("인포느 몇번?")
-        
+        let myInfo = EventManager.shared.myProfileInfo.compactMap { $0 }
+        let checkedFollow = PublishRelay<Bool>()
         let errorAlertMessage = PublishRelay<String>()
         
         // 다른 유저 프로필 조회
         input.fetchOtherProfile
-            .debug("너는 몇번하니?")
             .flatMap { NetworkManager.shared.callAPI(type: UserResponse.OtherProfile.self, router: Router.user(.otherProfile(userID: $0))) }
             .subscribe(with: self) { owner, result in
                 switch result {
@@ -49,13 +45,16 @@ final class OtherProfileViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        // 팔로우 중인지 확인
-        let checkedFollow = profileInfo
-            .withLatestFrom(myInfo) { otherInfo, myInfo in
-                return myInfo.following.filter { $0.userID == otherInfo.userID }.count >= 1
+        // 나와 팔로우 여부 확인
+        Observable.combineLatest(profileInfo, myInfo)
+            .debug("여긴 뭘까?")
+            .subscribe(with: self) { owner, info in
+                let (other, my) = info
+                let isFollow = my.following.filter({ $0.userID == other.userID }).count >= 1
+                checkedFollow.accept(isFollow)
             }
-            .debug("팔로우 체크됐?")
-
+            .disposed(by: disposeBag)
+        
         // 팔로우 API
         input.followTap
             .withLatestFrom(Observable.combineLatest(checkedFollow, input.fetchOtherProfile))
@@ -80,7 +79,6 @@ final class OtherProfileViewModel: ViewModelType {
     
         return Output(
             profileInfo: profileInfo.asDriver(onErrorDriveWith: .empty()),
-            postsID: postsID,
             checkedFollow: checkedFollow.asDriver(onErrorJustReturn: false),
             errorAlertMessage: errorAlertMessage.asDriver(onErrorJustReturn: "알 수 없는 오류입니다.")
         )

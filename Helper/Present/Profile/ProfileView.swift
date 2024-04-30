@@ -1,18 +1,19 @@
 //
-//  OtherProfileView.swift
+//  ProfileView.swift
 //  Helper
 //
-//  Created by youngjoo on 4/27/24.
+//  Created by youngjoo on 4/30/24.
 //
 
 import UIKit
 import Tabman
 import Then
 
-class OtherProfileView: BaseView {
+class ProfileView: BaseView {
     
     let profileImageView = ProfileImageView()
     let nicknameLabel = PointBoldLabel(fontSize: 20)
+    let profileEditButton = PointButton(title: "프로필 수정")
     
     let contentStackView = UIStackView().then {
         $0.axis = .horizontal
@@ -54,19 +55,12 @@ class OtherProfileView: BaseView {
     let followersLabel = PointLabel("팔로워", fontSize: 18)
     let followersValueLabel = PointBoldLabel(fontSize: 20)
     
-    let followButton = PointButton(title: "팔로우")
-    
-    let profilePostsLabel = PointBoldLabel("게시물", fontSize: 17)
-    let profilePostsView = ProfilePostsView()
-    
     override func configureHierarchy() {
         [
             profileImageView,
             nicknameLabel,
             contentStackView,
-            followButton,
-            profilePostsLabel,
-            profilePostsView
+            profileEditButton,
         ].forEach { addSubview($0) }
         
         [
@@ -110,20 +104,11 @@ class OtherProfileView: BaseView {
             make.trailing.equalTo(safeAreaLayoutGuide).offset(-20)
         }
         
-        followButton.snp.makeConstraints { make in
+        profileEditButton.snp.makeConstraints { make in
             make.top.equalTo(nicknameLabel.snp.bottom).offset(10)
-            make.horizontalEdges.equalToSuperview().inset(16)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(16)
             make.height.equalTo(44)
-        }
-        
-        profilePostsLabel.snp.makeConstraints { make in
-            make.top.equalTo(followButton.snp.bottom).offset(20)
-            make.centerX.equalToSuperview()
-        }
-        
-        profilePostsView.snp.makeConstraints { make in
-            make.top.equalTo(profilePostsLabel.snp.bottom).offset(15)
-            make.horizontalEdges.bottom.equalToSuperview()
+            make.width.equalTo(150)
         }
         
     }
@@ -133,21 +118,13 @@ class OtherProfileView: BaseView {
     }
 }
 
-extension OtherProfileView {
+extension ProfileView {
     
-    func updateView(_ profileData: UserResponse.OtherProfile) {
+    func updateView(_ profileData: UserResponse.MyProfile) {
         profileImageView.loadImage(urlString: profileData.profileImage)
         nicknameLabel.text = profileData.nick
         postsValueLabel.text = profileData.posts.count.description
         followingValueLabel.text = profileData.following.count.description
         followersValueLabel.text = profileData.followers.count.description
-    }
-    
-    func updateFollowButton(_ data: Bool) {
-        if data {
-            followButton.configureView("팔로잉", image: UIImage(systemName: "checkmark"))
-        } else {
-            followButton.configureView("팔로우", image: nil)
-        }
     }
 }

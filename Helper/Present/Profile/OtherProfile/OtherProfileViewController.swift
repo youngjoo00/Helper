@@ -17,7 +17,7 @@ final class OtherProfileViewController: BaseViewController {
     private var postsViewModel: PostsViewModel
     
     private let userID: String
-    private let fetchOtherProfile = BehaviorSubject(value: "")
+    private let fetchOtherProfile = BehaviorSubject<String>(value: "")
     private let fetchPostsTrigger = PublishSubject<Void>()
     
     init(userID: String) {

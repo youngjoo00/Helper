@@ -40,7 +40,7 @@ class MyProfileView: BaseView {
     }
     
     let followingTapGesture = UITapGestureRecognizer()
-    let followingLabel = PointLabel("팔로워", fontSize: 18)
+    let followingLabel = PointLabel("팔로잉", fontSize: 18)
     let followingValueLabel = PointBoldLabel(fontSize: 20)
     
     lazy var followerStackView = UIStackView().then {
@@ -52,7 +52,7 @@ class MyProfileView: BaseView {
     }
     
     let followersTapGesture = UITapGestureRecognizer()
-    let followersLabel = PointLabel("팔로잉", fontSize: 18)
+    let followersLabel = PointLabel("팔로워", fontSize: 18)
     let followersValueLabel = PointBoldLabel(fontSize: 20)
     
     let containerView = UIView()

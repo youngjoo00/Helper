@@ -62,7 +62,7 @@ final class PostsViewModel: ViewModelType {
             .withLatestFrom(next)
             .filter { $0 != "0" && $0 != "" } // next 값이 "", "0"이 아닌 경우에만 진행
             .do(onNext: { _ in isBottomLoading.accept(true) })
-            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .debounce(.seconds(1), scheduler: MainScheduler.instance) // 지금은 1초를 무조건 기다렸다가 방출함
             .map { _ in }
             .debug("reachedBottom")
         

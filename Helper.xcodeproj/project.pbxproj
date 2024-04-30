@@ -178,6 +178,7 @@
 		8ED8B8AD2BDFD3F0009B4387 /* ProfileTapGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8AC2BDFD3F0009B4387 /* ProfileTapGesture.swift */; };
 		8ED8B8AF2BDFF927009B4387 /* FollowRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8AE2BDFF927009B4387 /* FollowRouter.swift */; };
 		8ED8B8B12BDFFA92009B4387 /* FollowResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8B02BDFFA92009B4387 /* FollowResponse.swift */; };
+		8ED8B8C32BE0F096009B4387 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8C22BE0F096009B4387 /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -344,6 +345,7 @@
 		8ED8B8AC2BDFD3F0009B4387 /* ProfileTapGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTapGesture.swift; sourceTree = "<group>"; };
 		8ED8B8AE2BDFF927009B4387 /* FollowRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowRouter.swift; sourceTree = "<group>"; };
 		8ED8B8B02BDFFA92009B4387 /* FollowResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowResponse.swift; sourceTree = "<group>"; };
+		8ED8B8C22BE0F096009B4387 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -935,6 +937,7 @@
 		8ED8B7E42BDE21F9009B4387 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				8ED8B8C22BE0F096009B4387 /* ProfileView.swift */,
 				8E17A3042BCA8F3400581B58 /* MyProfile */,
 				8ED8B7B82BDC239C009B4387 /* OtherProfile */,
 			);
@@ -1087,6 +1090,7 @@
 				8E17A3302BCAF03300581B58 /* BaseCollectionView.swift in Sources */,
 				8ED8B7F72BDE81AB009B4387 /* DetailFeedView.swift in Sources */,
 				8E17A2F32BCA7DA800581B58 /* FindingViewController.swift in Sources */,
+				8ED8B8C32BE0F096009B4387 /* ProfileView.swift in Sources */,
 				8ED8B7E62BDE2235009B4387 /* WriteFeedView.swift in Sources */,
 				8E1BAE392BC968EC00A65075 /* TargetType.swift in Sources */,
 				8E17A30C2BCA8FA900581B58 /* SearchViewModel.swift in Sources */,

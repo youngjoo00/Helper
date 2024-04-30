@@ -31,6 +31,7 @@ final class InitailViewController: BaseViewController {
                         owner.changeHomeRootView()
                     case .fail(let fail):
                         print(fail.localizedDescription)
+                        owner.changeSignInRootView()
                     }
                 }
                 .disposed(by: disposeBag)
