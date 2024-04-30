@@ -12,6 +12,7 @@ enum Router {
     case user(UserRouter)
     case post(PostRouter)
     case comment(CommentRouter)
+    case follow(FollowRouter)
 }
 
 extension Router: TargetType {
@@ -24,6 +25,8 @@ extension Router: TargetType {
             return postRouter.baseURL
         case .comment(let commentRouter):
             return commentRouter.baseURL
+        case .follow(let followRouter):
+            return followRouter.baseURL
         }
     }
 
@@ -35,6 +38,8 @@ extension Router: TargetType {
             return postRouter.header
         case .comment(let commentRouter):
             return commentRouter.header
+        case .follow(let followRouter):
+            return followRouter.header
         }
     }
 
@@ -46,6 +51,8 @@ extension Router: TargetType {
             return postRouter.path
         case .comment(let commentRouter):
             return commentRouter.path
+        case .follow(let followRouter):
+            return followRouter.path
         }
     }
 
@@ -57,6 +64,8 @@ extension Router: TargetType {
             return postRouter.method
         case .comment(let commentRouter):
             return commentRouter.method
+        case .follow(let followRouter):
+            return followRouter.method
         }
     }
 
@@ -68,6 +77,8 @@ extension Router: TargetType {
             return postRouter.queryItems
         case .comment(let commentRouter):
             return commentRouter.queryItems
+        case .follow(let followRouter):
+            return followRouter.queryItems
         }
     }
 
@@ -79,6 +90,8 @@ extension Router: TargetType {
             return postRouter.parameters
         case .comment(let commentRouter):
             return commentRouter.parameters
+        case .follow(let followRouter):
+            return followRouter.parameters
         }
     }
 
@@ -90,6 +103,8 @@ extension Router: TargetType {
             return postRouter.body
         case .comment(let commentRouter):
             return commentRouter.body
+        case .follow(let followRouter):
+            return followRouter.body
         }
     }
 }

@@ -53,6 +53,7 @@ class OtherProfileView: BaseView {
     let followersTapGesture = UITapGestureRecognizer()
     let followersLabel = PointLabel("팔로잉", fontSize: 18)
     let followersValueLabel = PointBoldLabel(fontSize: 20)
+    
     let followButton = PointButton(title: "팔로우")
     
     let profilePostsLabel = PointBoldLabel("게시물", fontSize: 17)
@@ -140,5 +141,13 @@ extension OtherProfileView {
         postsValueLabel.text = profileData.posts.count.description
         followingValueLabel.text = profileData.following.count.description
         followersValueLabel.text = profileData.followers.count.description
+    }
+    
+    func updateFollowButton(_ data: Bool) {
+        if data {
+            followButton.configureView("팔로잉", image: UIImage(systemName: "checkmark"))
+        } else {
+            followButton.configureView("팔로우", image: nil)
+        }
     }
 }

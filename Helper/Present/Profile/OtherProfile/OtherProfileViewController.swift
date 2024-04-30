@@ -16,11 +16,13 @@ final class OtherProfileViewController: BaseViewController {
     private let viewModel = OtherProfileViewModel()
     private var postsViewModel: PostsViewModel
     
-    private let userID = BehaviorSubject(value: "")
+    private let userID: String
+    private let fetchOtherProfile = BehaviorSubject(value: "")
     private let fetchPostsTrigger = PublishSubject<Void>()
     
     init(userID: String) {
-        self.userID.onNext(userID)
+        self.userID = userID
+        self.fetchOtherProfile.onNext(userID)
         self.postsViewModel = .init(mode: .otherUserPosts(userID: userID))
         super.init(nibName: nil, bundle: nil)
     }
@@ -49,13 +51,35 @@ final class OtherProfileViewController: BaseViewController {
 extension OtherProfileViewController {
     
     private func otherProfileBind() {
-        let input = OtherProfileViewModel.Input(userID: userID)
+        
+        EventManager.shared.followTrigger
+            .subscribe(with: self) { owner, _ in
+                owner.fetchOtherProfile.onNext(owner.userID)
+            }
+            .disposed(by: disposeBag)
+        
+        let input = OtherProfileViewModel.Input(
+            fetchOtherProfile: fetchOtherProfile,
+            followTap: mainView.followButton.rx.tap
+        )
         
         let output = viewModel.transform(input: input)
         
         output.profileInfo
             .drive(with: self) { owner, info in
                 owner.mainView.updateView(info)
+            }
+            .disposed(by: disposeBag)
+        
+        output.checkedFollow
+            .drive(with: self) { owner, value in
+                owner.mainView.updateFollowButton(value)
+            }
+            .disposed(by: disposeBag)
+        
+        output.errorAlertMessage
+            .drive(with: self) { owner, message in
+                owner.showAlert(title: "오류!", message: message)
             }
             .disposed(by: disposeBag)
     }
@@ -76,7 +100,6 @@ extension OtherProfileViewController {
         let output = postsViewModel.transform(input: input)
         
         output.posts
-            .debug("들어오나요?")
             .drive(mainView.profilePostsView.collectionView.rx.items(cellIdentifier: ProfilePostsCollectionViewCell.id,
                                                     cellType: ProfilePostsCollectionViewCell.self)) { row, item, cell in
                 cell.updateView(item)

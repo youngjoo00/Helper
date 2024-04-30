@@ -77,7 +77,6 @@ final class PostsViewModel: ViewModelType {
         let loadDataTrigger = Observable.merge(fetchPosts, reachedBottom, refreshControl)
         
         loadDataTrigger
-            .debug("오는건가여?")
             .withLatestFrom(next)
             .flatMap { [weak self] next -> Observable<APIResult<PostResponse.Posts>> in
                 guard let self else { return .empty() }

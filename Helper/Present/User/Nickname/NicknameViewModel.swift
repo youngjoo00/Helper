@@ -86,7 +86,7 @@ extension NicknameViewModel {
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let data):
-                    EventManager.shared.MyProfileInfo.onNext(data)
+                    EventManager.shared.myProfileInfo.onNext(data)
                     successTrigger.accept(())
                 case .fail(let fail):
                     errorMessage.accept(fail.localizedDescription)

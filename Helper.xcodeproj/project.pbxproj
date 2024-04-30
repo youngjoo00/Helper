@@ -176,6 +176,8 @@
 		8ED8B8A92BDFB507009B4387 /* CheckedPostsKind+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8A82BDFB507009B4387 /* CheckedPostsKind+.swift */; };
 		8ED8B8AB2BDFBED6009B4387 /* QueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8AA2BDFBED6009B4387 /* QueryItem.swift */; };
 		8ED8B8AD2BDFD3F0009B4387 /* ProfileTapGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8AC2BDFD3F0009B4387 /* ProfileTapGesture.swift */; };
+		8ED8B8AF2BDFF927009B4387 /* FollowRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8AE2BDFF927009B4387 /* FollowRouter.swift */; };
+		8ED8B8B12BDFFA92009B4387 /* FollowResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8B02BDFFA92009B4387 /* FollowResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -340,6 +342,8 @@
 		8ED8B8A82BDFB507009B4387 /* CheckedPostsKind+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheckedPostsKind+.swift"; sourceTree = "<group>"; };
 		8ED8B8AA2BDFBED6009B4387 /* QueryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryItem.swift; sourceTree = "<group>"; };
 		8ED8B8AC2BDFD3F0009B4387 /* ProfileTapGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTapGesture.swift; sourceTree = "<group>"; };
+		8ED8B8AE2BDFF927009B4387 /* FollowRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowRouter.swift; sourceTree = "<group>"; };
+		8ED8B8B02BDFFA92009B4387 /* FollowResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -370,6 +374,7 @@
 				8E1BAE312BC968EB00A65075 /* UserRouter.swift */,
 				8E17A3352BCAF33200581B58 /* PostRouter.swift */,
 				8EA59CE42BD19240009938E0 /* CommentRouter.swift */,
+				8ED8B8AE2BDFF927009B4387 /* FollowRouter.swift */,
 				8E1BAE2F2BC968EB00A65075 /* TargetType.swift */,
 				8E1BAE2B2BC968EB00A65075 /* HTTPHeader.swift */,
 				8EA59CE82BD19D56009938E0 /* PathVersion.swift */,
@@ -739,6 +744,7 @@
 				8E9A3FF92BCEE2D5005E4F45 /* PostResponse.swift */,
 				8EA59CEA2BD1A562009938E0 /* CommentResponse.swift */,
 				8EA59CEC2BD1A64D009938E0 /* CreatorResponse.swift */,
+				8ED8B8B02BDFFA92009B4387 /* FollowResponse.swift */,
 				8E9A3FFB2BCEE2DC005E4F45 /* ErrorResponse.swift */,
 			);
 			path = Response;
@@ -1098,6 +1104,7 @@
 				8ED8B7A62BDC0845009B4387 /* FollowerView.swift in Sources */,
 				8E1BAE212BC968E500A65075 /* PasswordViewModel.swift in Sources */,
 				8E17A2EA2BCA59C100581B58 /* BirthdayView.swift in Sources */,
+				8ED8B8AF2BDFF927009B4387 /* FollowRouter.swift in Sources */,
 				8EA59CE92BD19D56009938E0 /* PathVersion.swift in Sources */,
 				8ED8B7DF2BDD5BC0009B4387 /* InitailViewController.swift in Sources */,
 				8E1BAE802BC97D9600A65075 /* lightGrayBackgroundImageView.swift in Sources */,
@@ -1129,6 +1136,7 @@
 				8E1BADFD2BC968C100A65075 /* ViewModelType.swift in Sources */,
 				8E17A2E82BCA3E6500581B58 /* UserProfileManager.swift in Sources */,
 				8ED8B7BC2BDC23D3009B4387 /* OtherProfileViewController.swift in Sources */,
+				8ED8B8B12BDFFA92009B4387 /* FollowResponse.swift in Sources */,
 				8ED8B78A2BDA6C24009B4387 /* EditPhoneViewController.swift in Sources */,
 				8E17A2FE2BCA80AF00581B58 /* FoundView.swift in Sources */,
 				8E17A3102BCA8FC800581B58 /* MyProfileViewController.swift in Sources */,

@@ -62,7 +62,7 @@ final class EditProfileViewModel: ViewModelType {
         let successTrigger = PublishRelay<Void>()
         let errorToastMessage = PublishRelay<String>()
         
-        let profileInfo = EventManager.shared.MyProfileInfo
+        let profileInfo = EventManager.shared.myProfileInfo
             .compactMap { $0 }
             .do(onNext: { data in
                 profileImageString.accept(data.profileImage)
@@ -92,7 +92,7 @@ final class EditProfileViewModel: ViewModelType {
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let data):
-                    EventManager.shared.MyProfileInfo.onNext(data)
+                    EventManager.shared.myProfileInfo.onNext(data)
                     successTrigger.accept(())
                 case .fail(let fail):
                     errorToastMessage.accept(fail.localizedDescription)

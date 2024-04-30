@@ -16,11 +16,13 @@ extension UIViewController {
         let tabbar = TabBarController()
         sceneDelegate?.window?.rootViewController = tabbar
         sceneDelegate?.window?.makeKey()
+        EventManager.shared.myProfileInfoTrigger.onNext(())
     }
     
     func changeSignInRootView() {
         UserDefaultsManager.shared.saveTokens("", refreshToken: "")
         UserDefaultsManager.shared.saveUserID("")
+        EventManager.shared.myProfileInfo.onNext(nil)
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
         let sceneDelegate = windowScene.delegate as? SceneDelegate
         let nav = UINavigationController(rootViewController: SignInViewController())
@@ -85,9 +87,7 @@ extension UIViewController {
         
         present(actionSheet, animated: true)
     }
-    
 
-    
 }
 
 
@@ -103,5 +103,3 @@ extension Reactive where Base: UIViewController {
         return ControlEvent(events: source)
     }
 }
-
-

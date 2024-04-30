@@ -25,7 +25,7 @@ final class FollowerViewModel: ViewModelType {
         
         let followers = BehaviorRelay<[UserResponse.Follow]>(value: [])
         
-        EventManager.shared.MyProfileInfo
+        EventManager.shared.myProfileInfo
             .compactMap { $0 }
             .subscribe(with: self) { owner, data in
                 followers.accept(data.followers)
