@@ -14,13 +14,13 @@ struct DisplayFollow {
     let isFollowing: Bool
 }
 
-final class FollowerViewModel: ViewModelType {
+final class FollowViewModel: ViewModelType {
     
     var disposeBag: RxSwift.DisposeBag = .init()
-    var userID: String
+    var followViewMode: FollowViewMode
     
-    init(userID: String) {
-        self.userID = userID
+    init(followViewMode: FollowViewMode) {
+        self.followViewMode = followViewMode
     }
     
     struct Input {
@@ -49,7 +49,7 @@ final class FollowerViewModel: ViewModelType {
         input.fetchProfileTrigger
             .withUnretained(self)
             .flatMap { owner, userID in
-                NetworkManager.shared.callAPI(type: UserResponse.OtherProfile.self, router: Router.user(.otherProfile(userID: owner.userID))) }
+                NetworkManager.shared.callAPI(type: UserResponse.OtherProfile.self, router: Router.user(.otherProfile(userID: owner.followViewMode.userID))) }
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let data):
@@ -61,14 +61,25 @@ final class FollowerViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         // 팔로잉 여부 확인 후 데이터 모델 방출
-        Observable.combineLatest(myProfileInfo, responseProfileData)
+        Observable.zip(myProfileInfo, responseProfileData)
             .subscribe(with: self) { owner, data in
                 let (myProfileInfo, responseProfileData) = data
-                let result = FollowManager.shared.checkedFollowingList(myProfileInfo.following, otherFollowList: responseProfileData.followers)
+                
                 var displayModel: [DisplayFollow] = []
-                // 스위프트 언어에 zip 메서드가 있었네..?
-                for (data, result) in zip(responseProfileData.followers, result) {
-                    displayModel.append(DisplayFollow(follow: data, isFollowing: result))
+
+                switch owner.followViewMode {
+                case .follower:
+                    let result = FollowManager.shared.checkedFollowingList(myProfileInfo.following, otherFollowList: responseProfileData.followers)
+                    
+                    for (data, result) in zip(responseProfileData.followers, result) {
+                        displayModel.append(DisplayFollow(follow: data, isFollowing: result))
+                    }
+                case .following:
+                    let result = FollowManager.shared.checkedFollowingList(myProfileInfo.following, otherFollowList: responseProfileData.following)
+                    
+                    for (data, result) in zip(responseProfileData.following, result) {
+                        displayModel.append(DisplayFollow(follow: data, isFollowing: result))
+                    }
                 }
                 followers.accept(displayModel)
                 isRefreshLoading.accept(false)
@@ -89,8 +100,9 @@ final class FollowerViewModel: ViewModelType {
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success:
+                    // 팔로우 진행 시 모든 화면 동기화를 위해 myInfo, follow Trigger 실행
                     EventManager.shared.myProfileInfoTrigger.onNext(())
-                    //EventManager.shared.followTrigger.onNext(())
+                    EventManager.shared.followTrigger.onNext(())
                 case .fail(let fail):
                     print(fail.localizedDescription)
                     errorAlertMessage.accept(fail.localizedDescription)

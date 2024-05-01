@@ -10,7 +10,7 @@ import Then
 import RxSwift
 import RxCocoa
 
-final class FollowerTableViewCell: BaseTableViewCell {
+final class FollowTableViewCell: BaseTableViewCell {
    
     private let profileImageView = ProfileImageView()
     private let nicknameLabel = PointBoldLabel("닉네임", fontSize: 18)
@@ -53,7 +53,7 @@ final class FollowerTableViewCell: BaseTableViewCell {
     }
 }
 
-extension FollowerTableViewCell {
+extension FollowTableViewCell {
     
     func updateView(_ data: DisplayFollow) {
         profileImageView.loadImage(urlString: data.follow.profileImage)

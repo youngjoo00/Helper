@@ -9,7 +9,7 @@ import UIKit
 import Tabman
 import Then
 
-final class FollowView: BaseView {
+final class FollowContainerView: BaseView {
     
     let navTitle = PointBoldLabel("팔로우", fontSize: 20)
     let containerView = UIView()

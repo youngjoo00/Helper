@@ -8,7 +8,7 @@
 import UIKit
 import Then
 
-final class FollowerView: BaseView {
+final class FollowView: BaseView {
     
     let searchBar = UISearchBar().then {
         $0.searchBarStyle = .minimal
@@ -17,7 +17,7 @@ final class FollowerView: BaseView {
     
     let refreshControl = UIRefreshControl()
     lazy var followerTableView = BaseTableView().then {
-        $0.register(FollowerTableViewCell.self, forCellReuseIdentifier: FollowerTableViewCell.id)
+        $0.register(FollowTableViewCell.self, forCellReuseIdentifier: FollowTableViewCell.id)
         $0.separatorStyle = .none
         $0.rowHeight = 70
         $0.refreshControl = refreshControl

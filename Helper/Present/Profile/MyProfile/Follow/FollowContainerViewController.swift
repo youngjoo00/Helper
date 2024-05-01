@@ -32,9 +32,9 @@ enum FollowViewMode {
     }
 }
 
-final class FollowViewController: BaseViewController {
+final class FollowContainerViewController: BaseViewController {
 
-    private let mainView = FollowView()
+    private let mainView = FollowContainerView()
     private var tabVC: FollowTabViewController
     
     init(_ viewMode: FollowViewMode) {
@@ -63,7 +63,7 @@ final class FollowViewController: BaseViewController {
 }
 
 // MARK: - Custom Func
-extension FollowViewController {
+extension FollowContainerViewController {
     
     private func configureTabViewController() {
 

@@ -51,8 +51,10 @@ extension FollowTabViewController {
     
     private func configureView() {
         
-        let followerVC = FollowerViewController(userID: viewMode.userID)
-        let followingVC = FollowingViewController()
+        // 같은 뷰컨을 사용하자
+        // userID 는 같이 들어가는데 모드가 다름
+        let followerVC = FollowViewController(followViewMode: .follower(userID: viewMode.userID))
+        let followingVC = FollowViewController(followViewMode: .following(userID: viewMode.userID))
         
         viewControllers.append(contentsOf: [followerVC, followingVC])
         

@@ -49,14 +49,14 @@ final class MyProfileViewController: BaseViewController {
         // 팔로워 Tap
         mainView.profileView.followersTapGesture.rx.event
             .subscribe(with: self) { owner, _ in
-                owner.transition(viewController: FollowViewController(.follower(userID: UserDefaultsManager.shared.getUserID())), style: .push)
+                owner.transition(viewController: FollowContainerViewController(.follower(userID: UserDefaultsManager.shared.getUserID())), style: .push)
             }
             .disposed(by: disposeBag)
         
         // 팔로잉 Tap
         mainView.profileView.followingTapGesture.rx.event
             .subscribe(with: self) { owner, _ in
-                owner.transition(viewController: FollowViewController(.following(userID: UserDefaultsManager.shared.getUserID())), style: .push)
+                owner.transition(viewController: FollowContainerViewController(.following(userID: UserDefaultsManager.shared.getUserID())), style: .push)
             }
             .disposed(by: disposeBag)
         // 나중에 자식으로 보내주게 된다면 씁시다..

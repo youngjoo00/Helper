@@ -9,14 +9,14 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class FollowerViewController: BaseViewController {
+final class FollowViewController: BaseViewController {
 
-    private let mainView = FollowerView()
-    private var viewModel: FollowerViewModel
+    private let mainView = FollowView()
+    private var viewModel: FollowViewModel
     private let fetchProfileTrigger = PublishSubject<Void>()
     
-    init(userID: String) {
-        self.viewModel = .init(userID: userID)
+    init(followViewMode: FollowViewMode) {
+        self.viewModel = .init(followViewMode: followViewMode)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -36,13 +36,18 @@ final class FollowerViewController: BaseViewController {
     
     override func bind() {
         
+        EventManager.shared.followTrigger
+            .bind(to: fetchProfileTrigger)
+            .disposed(by: disposeBag)
+        
         let followTap = PublishSubject<DisplayFollow>()
         
-        let input = FollowerViewModel.Input(
+        let input = FollowViewModel.Input(
             fetchProfileTrigger: fetchProfileTrigger,
             followTap: followTap
         )
         
+        // followTableView refresh
         mainView.refreshControl.rx.controlEvent(.valueChanged)
             .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .map { _ in () }
@@ -58,8 +63,8 @@ final class FollowerViewController: BaseViewController {
         let output = viewModel.transform(input: input)
         
         output.followers
-            .drive(mainView.followerTableView.rx.items(cellIdentifier: FollowerTableViewCell.id,
-                                                       cellType: FollowerTableViewCell.self)) { row, item, cell in
+            .drive(mainView.followerTableView.rx.items(cellIdentifier: FollowTableViewCell.id,
+                                                       cellType: FollowTableViewCell.self)) { row, item, cell in
                 cell.updateView(item)
                 
                 cell.followButton.rx.tap
