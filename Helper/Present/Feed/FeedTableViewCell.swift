@@ -144,7 +144,7 @@ final class FeedTableViewCell: BaseTableViewCell {
     }
     
     override func configureView() {
-        configureEditButton()
+        
     }
     
     override func prepareForReuse() {
@@ -176,6 +176,14 @@ extension FeedTableViewCell {
         regDateLabel.text = DateManager.shared.dateFormat(data.createdAt)
         let state = data.storage.listCheckedUserID
         storageButton.configureView(image: UIImage(systemName: state ? "bookmark.fill" : "bookmark"))
+        
+        if data.creator.userID.checkedUserID {
+            configureEditButton()
+            editButton.isHidden = false
+        } else {
+            editButton.isHidden = true
+        }
+        
     }
     
     private func configureImageView(_ files: [String]) {
