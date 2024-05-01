@@ -11,6 +11,9 @@ import RxSwift
 
 final class FeedTableViewCell: BaseTableViewCell {
 
+    let editMenuTap = PublishSubject<Void>()
+    let deleteMenuTap = PublishSubject<Void>()
+    
     let profileTabGesture = UITapGestureRecognizer()
     lazy var profileStackView = UIStackView().then {
         $0.axis = .horizontal
@@ -49,6 +52,7 @@ final class FeedTableViewCell: BaseTableViewCell {
         $0.numberOfLines = 0
     }
     
+    let editButton = ImageButton(image: UIImage(systemName: "line.3.horizontal"))
     override func configureHierarchy() {
         [
             profileStackView,
@@ -59,6 +63,7 @@ final class FeedTableViewCell: BaseTableViewCell {
             pageControl,
             titleLabel,
             hashTagLabel,
+            editButton,
         ].forEach { contentView.addSubview($0) }
 
         [
@@ -87,9 +92,9 @@ final class FeedTableViewCell: BaseTableViewCell {
             make.centerY.equalTo(profileImageView)
         }
         
-        regDateLabel.snp.makeConstraints { make in
+        editButton.snp.makeConstraints { make in
             make.centerY.equalTo(profileStackView)
-            make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-5)
         }
         
         scrollView.snp.makeConstraints { make in
@@ -128,13 +133,18 @@ final class FeedTableViewCell: BaseTableViewCell {
         hashTagLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(10)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
+        }
+        
+        regDateLabel.snp.makeConstraints { make in
+            make.top.equalTo(hashTagLabel.snp.bottom).offset(10)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(16)
             make.bottom.equalToSuperview().offset(-10)
         }
         
     }
     
     override func configureView() {
-        
+        configureEditButton()
     }
     
     override func prepareForReuse() {
@@ -163,7 +173,7 @@ extension FeedTableViewCell {
         titleLabel.text = data.title
         hashTagLabel.text = data.hashTags.description
         pageControl.numberOfPages = data.files.count
-        
+        regDateLabel.text = DateManager.shared.dateFormat(data.createdAt)
         let state = data.storage.listCheckedUserID
         storageButton.configureView(image: UIImage(systemName: state ? "bookmark.fill" : "bookmark"))
     }
@@ -180,26 +190,20 @@ extension FeedTableViewCell {
         }
     }
     
-//    private func configureEditButton() {
-//        
-//        let menuItems = [
-//            UIAction(title: "수정", image: UIImage(systemName: "pencil")) { [weak self] _ in
-//                guard let self else { return }
-//                self.feedEditTap.onNext(())
-//            },
-//            UIAction(title: "삭제", image: UIImage(systemName: "trash"), attributes: .destructive) { [weak self] _ in
-//                guard let self else { return }
-//                self.showAlert(title: "삭제", message: "게시물을 삭제하시겠습니까?", btnTitle: "삭제") {
-//                    self.feedDeleteTap.onNext(())
-//                }
-//            }
-//        ]
-//        
-//        let menu = UIMenu(title: "", image: nil, identifier: nil, options: [], children: menuItems)
-//        
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "",
-//                                                                 image: UIImage(systemName: "line.3.horizontal"),
-//                                                                 primaryAction: nil,
-//                                                                 menu: menu)
-//    }
+    private func configureEditButton() {
+        let menuItems = [
+            UIAction(title: "수정", image: UIImage(systemName: "pencil")) { [weak self] _ in
+                guard let self = self else { return }
+                self.editMenuTap.onNext(())
+            },
+            UIAction(title: "삭제", image: UIImage(systemName: "trash"), attributes: .destructive) { [weak self] _ in
+                guard let self = self else { return }
+                self.deleteMenuTap.onNext(())
+            }
+        ]
+        
+        let menu = UIMenu(title: "", children: menuItems)
+        editButton.menu = menu
+        editButton.showsMenuAsPrimaryAction = true // 버튼 탭 시 메뉴 표시
+    }
 }

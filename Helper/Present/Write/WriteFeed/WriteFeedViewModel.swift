@@ -12,9 +12,17 @@ import RxCocoa
 final class WriteFeedViewModel: ViewModelType {
     
     var disposeBag: RxSwift.DisposeBag = .init()
+    var postMode: PostMode
+    var postInfo: PostResponse.FetchPost?
+    var postID: String
+    
+    init(postID: String = "", postMode: PostMode = .create, postInfo: PostResponse.FetchPost?) {
+        self.postMode = postMode
+        self.postInfo = postInfo
+        self.postID = postID
+    }
     
     struct Input {
-        let postMode: Observable<PostMode>
         let dataList: PublishSubject<[Data]>
         let title: Observable<String>
         let hashTag: Observable<String>
@@ -25,7 +33,6 @@ final class WriteFeedViewModel: ViewModelType {
         let errorAlertMessage: Driver<String>
         let errorToastMessage: Driver<String>
         let isWriteComplete: Driver<String>
-//        let postInfo: Driver<PostResponse.FetchPost>
         let files: Driver<[String]>
     }
     
@@ -36,15 +43,10 @@ final class WriteFeedViewModel: ViewModelType {
         let files = BehaviorRelay<[String]>(value: [])
         let isWriteComplete = PublishRelay<String>()
 
-        //        let postInfo = input.postInfo
-//            .compactMap { $0 }
-        
-//        postInfo
-//            .subscribe(onNext: { data in
-//                files.accept(data.files)
-//            })
-//            .disposed(by: disposeBag)
-        
+        if let postInfo {
+            files.accept(postInfo.files)
+        }
+
         // 이미지 업로드
         input.dataList
             .flatMap { NetworkManager.shared.imageUpload(type: PostResponse.FilesModel.self, router: Router.post(.uploadImage), imageDataList: $0) }
@@ -80,10 +82,7 @@ final class WriteFeedViewModel: ViewModelType {
             }
        
         
-        let createAPI = PublishSubject<PostRequest.Write>()
-        //let updateAPI = PublishSubject<(PostRequest.Feed, String)>()
-
-        //let requestData = Observable.combineLatest(requestModel, input.postMode, input.postInfo)
+        let writeAPI = PublishSubject<PostRequest.Write>()
         
         input.completeButtonTap
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
@@ -92,42 +91,40 @@ final class WriteFeedViewModel: ViewModelType {
                 if requestModel.title.isEmpty {
                     errorToastMessage.accept("내용은 필수입니다.")
                 } else {
-                    createAPI.onNext(requestModel)
+                    writeAPI.onNext(requestModel)
                 }
             }
             .disposed(by: disposeBag)
         
-        createAPI
-            .flatMap { NetworkManager.shared.callAPI(type: PostResponse.FetchPost.self, router: Router.post(.create(query: $0))) }
+        writeAPI
+            .withUnretained(self)
+            .flatMap { owner, requestModel in
+                switch owner.postMode {
+                case .create:
+                    NetworkManager.shared.callAPI(type: PostResponse.FetchPost.self, router: Router.post(.create(query: requestModel)))
+                case .update:
+                    NetworkManager.shared.callAPI(type: PostResponse.FetchPost.self, router: Router.post(.update(query: requestModel, id: owner.postID)))
+                }
+            }
             .subscribe(with: self) { owner, reslut in
                 switch reslut {
                 case .success:
-                    isWriteComplete.accept("작성")
+                    switch owner.postMode {
+                    case .create:
+                        isWriteComplete.accept("작성")
+                    case .update:
+                        isWriteComplete.accept("수정")
+                    }
                 case .fail(let error):
                     errorAlertMessage.accept(error.localizedDescription)
                 }
             }
             .disposed(by: disposeBag)
-        
-//        updateAPI
-//            .flatMap { requestModel, postID in
-//                NetworkManager.shared.callAPI(type: PostResponse.FetchPost.self, router: Router.post(.update(query: requestModel, id: postID)))
-//            }
-//            .subscribe(with: self) { owner, reslut in
-//                switch reslut {
-//                case .success:
-//                    isWriteComplete.accept("수정")
-//                case .fail(let error):
-//                    errorAlertMessage.accept(error.localizedDescription)
-//                }
-//            }
-//            .disposed(by: disposeBag)
 
         return Output(
             errorAlertMessage: errorAlertMessage.asDriver(onErrorJustReturn: "알 수 없는 오류입니다."),
             errorToastMessage: errorToastMessage.asDriver(onErrorJustReturn: "알 수 없는 오류입니다."),
             isWriteComplete: isWriteComplete.asDriver(onErrorJustReturn: "알 수 없는 오류입니다."),
-//            postInfo: postInfo.asDriver(onErrorDriveWith: .empty()),
             files: files.asDriver(onErrorJustReturn: [])
         )
     }

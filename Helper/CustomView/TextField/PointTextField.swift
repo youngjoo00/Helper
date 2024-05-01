@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PointTextField: UITextField {
+final class PointTextField: UITextField {
     
     init(placeholderText: String) {
         super.init(frame: .zero)

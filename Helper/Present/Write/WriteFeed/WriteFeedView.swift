@@ -89,3 +89,11 @@ final class WriteFeedView: BaseView {
         }
     }
 }
+
+extension WriteFeedView {
+    
+    func updateView(_ postInfo: PostResponse.FetchPost) {        
+        titleTextView.text = postInfo.title
+        completeButton.configuration?.title = "수정하기"
+    }
+}

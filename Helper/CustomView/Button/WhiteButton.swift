@@ -8,7 +8,7 @@
 import UIKit
 import Then
 
-class WhiteButton: UIButton {
+final class WhiteButton: UIButton {
 
     override init(frame: CGRect) {
         super.init(frame: frame)

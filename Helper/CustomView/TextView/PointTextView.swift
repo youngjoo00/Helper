@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PointTextView: UITextView {
+final class PointTextView: UITextView {
     
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)

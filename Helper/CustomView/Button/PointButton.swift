@@ -8,7 +8,7 @@
 import UIKit
 import Then
 
-class PointButton: UIButton {
+final class PointButton: UIButton {
 
     override init(frame: CGRect) {
         super.init(frame: frame)

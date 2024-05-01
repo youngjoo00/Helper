@@ -15,9 +15,7 @@ final class CommentViewController: BaseViewController {
     private let viewModel = CommentViewModel()
     private let postID = BehaviorSubject(value: "")
     private let fetchPostsTrigger = BehaviorSubject<Void>(value: ())
-    
-    var profileTabDelegate: passProfileTabDelegate?
-    
+        
     init(_ postID: String) {
         self.postID.onNext(postID)
         self.fetchPostsTrigger.onNext(())

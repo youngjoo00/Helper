@@ -9,10 +9,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol passProfileTabDelegate: AnyObject {
-    func transtionProfile(_ viewController: UIViewController)
-}
-
 final class FeedViewController: BaseViewController {
 
     private let mainView = FeedView()
@@ -21,6 +17,7 @@ final class FeedViewController: BaseViewController {
     
     private let fetchPostsTrigger = PublishSubject<Void>()
     private let storageButtonTap = PublishSubject<PostResponse.FetchPost>()
+    private let deleteMenuTap = PublishSubject<PostResponse.FetchPost>()
     
     override func loadView() {
         view = mainView
@@ -56,6 +53,8 @@ extension FeedViewController {
             }
             .disposed(by: disposeBag)
         
+        let deleteMenuTap = PublishSubject<PostResponse.FetchPost>()
+        
         let input = PostsViewModel.Input(
             fetchPostsTrigger: fetchPostsTrigger,
             reachedBottomTrigger: mainView.tableView.rx.reachedBottom(),
@@ -80,7 +79,6 @@ extension FeedViewController {
                 cell.commentButton.rx.tap
                     .subscribe(with: self) { owner, _ in
                         let vc = CommentViewController(item.postID)
-                        vc.profileTabDelegate = owner
                         if let sheet = vc.sheetPresentationController {
                             sheet.detents = [.medium(), .large()]
                             // 스크롤할때 확장하지 않도록
@@ -100,9 +98,23 @@ extension FeedViewController {
                     }
                     .disposed(by: cell.disposeBag)
                 
+                // 프로필 화면
                 cell.profileTabGesture.rx.event
                     .subscribe(with: self) { owner, _ in
                         owner.transition(viewController: item.creator.userID.checkedProfile, style: .push)
+                    }
+                    .disposed(by: cell.disposeBag)
+                
+                cell.editMenuTap
+                    .subscribe(with: self) { owner, _ in
+                        let vc = WriteFeedViewController(selectedImages: [], postMode: .update, postInfo: item)
+                        owner.transition(viewController: vc, style: .hideBottomPush)
+                    }
+                    .disposed(by: cell.disposeBag)
+                
+                cell.deleteMenuTap
+                    .subscribe(with: self) { owner, _ in
+                        owner.deleteMenuTap.onNext(item)
                     }
                     .disposed(by: cell.disposeBag)
             }
@@ -122,7 +134,8 @@ extension FeedViewController {
     private func feedBind() {
         
         let input = FeedViewModel.Input(
-            storageButtonTap: storageButtonTap
+            storageButtonTap: storageButtonTap,
+            deleteMenuTap: deleteMenuTap
         )
         
         let output = feedViewModel.transform(input: input)
@@ -133,6 +146,19 @@ extension FeedViewController {
                 owner.showTaost(message)
             }
             .disposed(by: disposeBag)
+
+        output.postDeleteSuccess
+            .drive(with: self) { owner, message in
+                owner.showTaost(message)
+            }
+            .disposed(by: disposeBag)
+        
+        output.errorAlertMessage
+            .drive(with: self) { owner, message in
+                owner.showAlert(title: "오류!", message: message)
+            }
+            .disposed(by: disposeBag)
+        
     }
     
 }
@@ -143,11 +169,5 @@ extension FeedViewController {
     
     func configureNavigationBar() {
         navigationItem.titleView = mainView.navTitle
-    }
-}
-
-extension FeedViewController: passProfileTabDelegate {
-    func transtionProfile(_ viewController: UIViewController) {
-        transition(viewController: viewController, style: .push)
     }
 }

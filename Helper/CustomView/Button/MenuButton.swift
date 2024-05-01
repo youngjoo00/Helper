@@ -9,7 +9,7 @@
 import UIKit
 import Then
 
-class MenuButton: UIButton {
+final class MenuButton: UIButton {
 
     override init(frame: CGRect) {
         super.init(frame: frame)

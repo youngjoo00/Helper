@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NumberPadTextField: UITextField {
+final class NumberPadTextField: UITextField {
     
     init(placeholderText: String) {
         super.init(frame: .zero)

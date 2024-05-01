@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PointBackgroundLabel: UILabel {
+final class PointBackgroundLabel: UILabel {
     
     private var padding = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
    

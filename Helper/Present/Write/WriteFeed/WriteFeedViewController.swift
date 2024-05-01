@@ -12,19 +12,24 @@ import RxCocoa
 final class WriteFeedViewController: BaseViewController {
 
     private let mainView = WriteFeedView()
-    private var viewModel = WriteFeedViewModel()
+    private var viewModel: WriteFeedViewModel
     
     // 이미지 converting
     private let dataListSubject = PublishSubject<[Data]>()
     var selectedImages: [UIImage] = []
     
     var postMode: PostMode
-    var postInfo: PostResponse.FetchPost?
     
     init(selectedImages: [UIImage], postMode: PostMode, postInfo: PostResponse.FetchPost? = nil) {
         self.selectedImages = selectedImages
         self.postMode = postMode
-        self.postInfo = postInfo
+        
+        if let postInfo {
+            mainView.updateView(postInfo)
+            viewModel = .init(postID: postInfo.postID ,postMode: .update, postInfo: postInfo)
+        } else {
+            viewModel = .init(postMode: .create, postInfo: nil)
+        }
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -76,7 +81,6 @@ final class WriteFeedViewController: BaseViewController {
     override func bind() {
 
         let input = WriteFeedViewModel.Input(
-            postMode: .just(postMode), 
             dataList: dataListSubject,
             title: mainView.titleTextView.rx.text.orEmpty.asObservable(),
             hashTag: mainView.hashTagTextField.rx.text.orEmpty.asObservable(),
@@ -85,12 +89,6 @@ final class WriteFeedViewController: BaseViewController {
         
         // MARK: - output
         let output = viewModel.transform(input: input)
-        
-//        output.postInfo
-//            .drive(with: self) { owner, data in
-//                owner.mainView.updateView(data)
-//            }
-//            .disposed(by: disposeBag)
         
         // 이미지 콜렉션뷰
         output.files

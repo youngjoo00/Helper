@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RedColorLabel: UILabel {
+final class RedColorLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

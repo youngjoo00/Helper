@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PointLabel: UILabel {
+final class PointLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
