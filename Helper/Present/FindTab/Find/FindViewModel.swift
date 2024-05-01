@@ -22,8 +22,7 @@ final class FindViewModel: ViewModelType {
         let fetchPostsTrigger: Observable<Void>
         let reachedBottomTrigger: ControlEvent<Void>
         let refreshControlTrigger: ControlEvent<Void>
-        let region: Observable<String>
-        let category: ControlProperty<Int>
+        let productID: Observable<String>
     }
     
     struct Output {
@@ -35,42 +34,12 @@ final class FindViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
    
-        let myID = UserDefaultsManager.shared.getUserID()
         let posts: BehaviorRelay<[PostResponse.FetchPost]> = BehaviorRelay(value: [])
         let next = BehaviorSubject(value: "")
         
         let errorAlertMessage = PublishRelay<String>()
         let isRefreshControlLoading = PublishRelay<Bool>()
         let isBottomLoading = PublishRelay<Bool>()
-        
-        let category = input.category
-            .map { value in
-                switch value {
-                case 0:
-                    return HelperString.categoryPerson
-                case 1:
-                    return HelperString.categoryAnimal
-                case 2:
-                    return HelperString.categoryThing
-                default:
-                    return HelperString.categoryPerson
-                }
-            }
-        
-
-        let requestModel = Observable.combineLatest(next, input.region, category)
-            .withUnretained(self)
-            .map { owner, data in
-                let (next, region, category) = data
-                let productID = "\(region)_\(category)"
-                
-                switch owner.findViewMode {
-                case .finding:
-                    return PostRequest.FetchHashTag(next: next, productID: productID, hashTag: HelperString.hashTagFinding)
-                case .found:
-                    return PostRequest.FetchHashTag(next: next, productID: productID, hashTag: HelperString.hashTagFound)
-                }
-            }
         
         let fetchPosts = input.fetchPostsTrigger
             .do(onNext: { _ in next.onNext("") })
@@ -90,13 +59,27 @@ final class FindViewModel: ViewModelType {
                 isRefreshControlLoading.accept(true) })
             .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .map { _ in }
+            .debug("refresh")
         
         // loadTrigger
         let loadDataTrigger = Observable.merge(fetchPosts, reachedBottom, refreshControl)
         
         loadDataTrigger
-            .withLatestFrom(requestModel)
-            .flatMap { NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchHashTag(query: $0))) }
+            .withLatestFrom(Observable.combineLatest(next, input.productID))
+            .flatMapLatest { [weak self] (next, productID) -> Observable<APIResult<PostResponse.Posts>> in
+                guard let self = self else { return Observable.empty() }
+                print(productID)
+                let requestModel = {
+                    switch self.findViewMode {
+                    case .finding:
+                        return PostRequest.FetchHashTag(next: next, productID: productID, hashTag: HelperString.hashTagFinding)
+                    case .found:
+                        return PostRequest.FetchHashTag(next: next, productID: productID, hashTag: HelperString.hashTagFound)
+                    }
+                }()
+                
+                return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchHashTag(query: requestModel))).asObservable()
+            }
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let data):

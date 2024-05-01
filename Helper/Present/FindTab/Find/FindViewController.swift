@@ -9,12 +9,31 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+enum Category: Int {
+    case person = 0
+    case animal = 1
+    case item = 2
+    
+    var title: String {
+        switch self {
+        case .person:
+            return "사람"
+        case .animal:
+            return "동물"
+        case .item:
+            return "물품"
+        }
+    }
+}
+
+
 final class FindViewController: BaseViewController {
 
     private let mainView = FindView()
     private let findViewMode: FindViewModel
-
-    let fetchPostsTrigger = PublishSubject<Void>()
+    
+    private let fetchPostsTrigger = PublishSubject<Void>()
+    private let prouctID = BehaviorSubject(value: "")
     
     init(_ findViewMode: FindViewMode) {
         self.findViewMode = .init(findViewMode)
@@ -33,12 +52,21 @@ final class FindViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        fetchPostsTrigger.onNext(())
     }
     
     override func bind() {
-        
+
         EventManager.shared.postWriteTrigger
-            .subscribe(with: self) { owner, _ in
+            .bind(to: fetchPostsTrigger)
+            .disposed(by: disposeBag)
+        
+        Observable.combineLatest(mainView.regionSubject, mainView.categorySegmentControl.rx.selectedSegmentIndex)
+            .subscribe(with: self) { owner, data in
+                guard let selectedCategory = Category(rawValue: data.1) else { return }
+
+                let id = "\(data.0)_\(selectedCategory.title)"
+                owner.prouctID.onNext(id)
                 owner.fetchPostsTrigger.onNext(())
             }
             .disposed(by: disposeBag)
@@ -46,9 +74,8 @@ final class FindViewController: BaseViewController {
         let input = FindViewModel.Input(
             fetchPostsTrigger: fetchPostsTrigger,
             reachedBottomTrigger: mainView.findView.collectionView.rx.reachedBottom(),
-            refreshControlTrigger: mainView.findView.refreshControl.rx.controlEvent(.valueChanged),
-            region: mainView.regionSubject,
-            category: mainView.categorySegmentControl.rx.selectedSegmentIndex
+            refreshControlTrigger: mainView.findView.refreshControl.rx.controlEvent(.valueChanged), 
+            productID: prouctID
         )
         
         let output = findViewMode.transform(input: input)
@@ -68,13 +95,6 @@ final class FindViewController: BaseViewController {
         // refreshControl
         output.isRefreshControlLoading
             .drive(mainView.findView.refreshControl.rx.isRefreshing)
-            .disposed(by: disposeBag)
-
-        // viewDidLoad 부터 fetchTrigger 를 여기서 담당함
-        Observable.combineLatest(mainView.regionSubject, mainView.categorySegmentControl.rx.selectedSegmentIndex)
-            .subscribe(with: self) { owner, _ in
-                owner.fetchPostsTrigger.onNext(())
-            }
             .disposed(by: disposeBag)
         
         // Transition DetailVC

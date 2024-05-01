@@ -14,6 +14,9 @@ final class EventManager {
     
     private let disposeBag = DisposeBag()
     
+    /// find 화면에서 requestModel 변경 시 사용
+    let findFetchTrigger = PublishSubject<Void>()
+    
     /// 게시물 작성/수정/삭제 시 사용
     let postWriteTrigger = PublishSubject<Void>()
     
