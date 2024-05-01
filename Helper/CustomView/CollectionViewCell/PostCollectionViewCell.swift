@@ -12,6 +12,8 @@ import RxSwift
 
 final class PostCollectionViewCell: BaseCollectionViewCell {
     
+    let postsCompleteLabel = PointBackgroundLabel(fontSize: 17)
+    
     let imageView = lightGrayBackgroundImageView().then {
         $0.clipsToBounds = true
         $0.layer.cornerRadius = 8
@@ -38,6 +40,7 @@ final class PostCollectionViewCell: BaseCollectionViewCell {
     override func configureHierarchy() {
         [
             imageView,
+            postsCompleteLabel,
             titleLabel,
             featureLabel,
             dateImageView,
@@ -52,6 +55,10 @@ final class PostCollectionViewCell: BaseCollectionViewCell {
         imageView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalToSuperview()
             make.height.equalToSuperview().dividedBy(2)
+        }
+        
+        postsCompleteLabel.snp.makeConstraints { make in
+            make.top.leading.equalToSuperview()
         }
         
         titleLabel.snp.makeConstraints { make in
@@ -107,6 +114,14 @@ extension PostCollectionViewCell {
     
     func updateView(_ data: PostResponse.FetchPost) {
         imageView.loadImage(urlString: data.files[0])
+        
+        if (!data.complete.isEmpty) {
+            postsCompleteLabel.text = "완료"
+            postsCompleteLabel.isHidden = false
+        } else {
+            postsCompleteLabel.text = ""
+            postsCompleteLabel.isHidden = true
+        }
         
         titleLabel.text = data.title
         dateLabel.text = data.date

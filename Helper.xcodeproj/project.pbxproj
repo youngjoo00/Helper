@@ -168,12 +168,12 @@
 		8ED8B8AF2BDFF927009B4387 /* FollowRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8AE2BDFF927009B4387 /* FollowRouter.swift */; };
 		8ED8B8B12BDFFA92009B4387 /* FollowResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8B02BDFFA92009B4387 /* FollowResponse.swift */; };
 		8ED8B8C32BE0F096009B4387 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8C22BE0F096009B4387 /* ProfileView.swift */; };
-		8ED8B8C62BE0FF43009B4387 /* FlexLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 8ED8B8C52BE0FF43009B4387 /* FlexLayout */; };
-		8ED8B8D52BE10E53009B4387 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 8ED8B8D42BE10E53009B4387 /* PinLayout */; };
 		8ED8B8D92BE13790009B4387 /* StackProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8D82BE13790009B4387 /* StackProfileView.swift */; };
 		8ED8B8DB2BE137C3009B4387 /* BaseStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8DA2BE137C3009B4387 /* BaseStackView.swift */; };
 		8ED8B8DD2BE16C63009B4387 /* FollowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8DC2BE16C63009B4387 /* FollowManager.swift */; };
 		8ED8B8DF2BE205C3009B4387 /* FollowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8DE2BE205C3009B4387 /* FollowButton.swift */; };
+		8ED8B8E22BE29F16009B4387 /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = 8ED8B8E12BE29F16009B4387 /* Hero */; };
+		8ED8B8E42BE2B767009B4387 /* CompleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8E32BE2B767009B4387 /* CompleteButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -334,6 +334,7 @@
 		8ED8B8DA2BE137C3009B4387 /* BaseStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStackView.swift; sourceTree = "<group>"; };
 		8ED8B8DC2BE16C63009B4387 /* FollowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowManager.swift; sourceTree = "<group>"; };
 		8ED8B8DE2BE205C3009B4387 /* FollowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowButton.swift; sourceTree = "<group>"; };
+		8ED8B8E32BE2B767009B4387 /* CompleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,16 +343,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E1BAE632BC97C4F00A65075 /* RxRelay in Frameworks */,
+				8ED8B8E22BE29F16009B4387 /* Hero in Frameworks */,
 				8E1BAE5E2BC97C3200A65075 /* Kingfisher in Frameworks */,
 				8E1BAE5B2BC97C2A00A65075 /* Alamofire in Frameworks */,
 				8E1BAE612BC97C4F00A65075 /* RxCocoa in Frameworks */,
 				8E1BAE6B2BC97CD500A65075 /* Tabman in Frameworks */,
 				8E9A40192BCFFADE005E4F45 /* IQKeyboardManagerSwift in Frameworks */,
-				8ED8B8D52BE10E53009B4387 /* PinLayout in Frameworks */,
 				8E1BAE582BC97C2100A65075 /* Toast in Frameworks */,
 				8E1BAE552BC97C1500A65075 /* Then in Frameworks */,
 				8E1BAE652BC97C4F00A65075 /* RxSwift in Frameworks */,
-				8ED8B8C62BE0FF43009B4387 /* FlexLayout in Frameworks */,
 				8E1BAE992BC993C100A65075 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -729,6 +729,7 @@
 				8EA59D0C2BD25B3C009938E0 /* ImageButton.swift */,
 				8E887CDA2BD417D600E95008 /* MenuButton.swift */,
 				8ED8B8DE2BE205C3009B4387 /* FollowButton.swift */,
+				8ED8B8E32BE2B767009B4387 /* CompleteButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -973,8 +974,7 @@
 				8E1BAE6A2BC97CD500A65075 /* Tabman */,
 				8E1BAE982BC993C100A65075 /* SnapKit */,
 				8E9A40182BCFFADE005E4F45 /* IQKeyboardManagerSwift */,
-				8ED8B8C52BE0FF43009B4387 /* FlexLayout */,
-				8ED8B8D42BE10E53009B4387 /* PinLayout */,
+				8ED8B8E12BE29F16009B4387 /* Hero */,
 			);
 			productName = Helper;
 			productReference = 8E1BADE02BC965CC00A65075 /* Helper.app */;
@@ -1013,8 +1013,7 @@
 				8E1BAE692BC97CD500A65075 /* XCRemoteSwiftPackageReference "Tabman" */,
 				8E1BAE972BC993C100A65075 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				8E9A40172BCFFADD005E4F45 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
-				8ED8B8C42BE0FF43009B4387 /* XCRemoteSwiftPackageReference "FlexLayout" */,
-				8ED8B8D32BE10E53009B4387 /* XCRemoteSwiftPackageReference "PinLayout" */,
+				8ED8B8E02BE29F15009B4387 /* XCRemoteSwiftPackageReference "Hero" */,
 			);
 			productRefGroup = 8E1BADE12BC965CC00A65075 /* Products */;
 			projectDirPath = "";
@@ -1072,6 +1071,7 @@
 				8E17A2EA2BCA59C100581B58 /* BirthdayView.swift in Sources */,
 				8ED8B8AF2BDFF927009B4387 /* FollowRouter.swift in Sources */,
 				8EA59CE92BD19D56009938E0 /* PathVersion.swift in Sources */,
+				8ED8B8E42BE2B767009B4387 /* CompleteButton.swift in Sources */,
 				8ED8B7DF2BDD5BC0009B4387 /* InitailViewController.swift in Sources */,
 				8E1BAE802BC97D9600A65075 /* lightGrayBackgroundImageView.swift in Sources */,
 				8ED8B8DB2BE137C3009B4387 /* BaseStackView.swift in Sources */,
@@ -1487,20 +1487,12 @@
 				minimumVersion = 7.0.0;
 			};
 		};
-		8ED8B8C42BE0FF43009B4387 /* XCRemoteSwiftPackageReference "FlexLayout" */ = {
+		8ED8B8E02BE29F15009B4387 /* XCRemoteSwiftPackageReference "Hero" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/layoutBox/FlexLayout.git";
+			repositoryURL = "https://github.com/HeroTransitions/Hero.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.7;
-			};
-		};
-		8ED8B8D32BE10E53009B4387 /* XCRemoteSwiftPackageReference "PinLayout" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/layoutBox/PinLayout.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.10.5;
+				minimumVersion = 1.6.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1556,15 +1548,10 @@
 			package = 8E9A40172BCFFADD005E4F45 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
 		};
-		8ED8B8C52BE0FF43009B4387 /* FlexLayout */ = {
+		8ED8B8E12BE29F16009B4387 /* Hero */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8ED8B8C42BE0FF43009B4387 /* XCRemoteSwiftPackageReference "FlexLayout" */;
-			productName = FlexLayout;
-		};
-		8ED8B8D42BE10E53009B4387 /* PinLayout */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8ED8B8D32BE10E53009B4387 /* XCRemoteSwiftPackageReference "PinLayout" */;
-			productName = PinLayout;
+			package = 8ED8B8E02BE29F15009B4387 /* XCRemoteSwiftPackageReference "Hero" */;
+			productName = Hero;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

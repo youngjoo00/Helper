@@ -77,4 +77,12 @@ enum PostRequest {
         }
     }
     
+    struct CompleteStatus: Encodable {
+        let completeStatus: Bool
+        
+        enum CodingKeys: String, CodingKey {
+            case completeStatus = "like_status"
+        }
+    }
+    
 }

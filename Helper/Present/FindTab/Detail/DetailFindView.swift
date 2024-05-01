@@ -32,6 +32,7 @@ final class DetailFindView: BaseView {
     let categoryLabel = PointLabel(fontSize: 16)
     let hashTagLabel = PointLabel(fontSize: 16)
     let storageButton = ImageButton(image: UIImage(systemName: "bookmark"))
+    let completeButton = CompleteButton()
     
     let imageCollectionView = BaseCollectionView(frame: .zero, collectionViewLayout: .imageCollectionViewLayout()).then {
         $0.register(DetailFindCollectionViewCell.self, forCellWithReuseIdentifier: DetailFindCollectionViewCell.id)
@@ -97,6 +98,7 @@ final class DetailFindView: BaseView {
             categoryLabel,
             hashTagLabel,
             storageButton,
+            completeButton,
             imageCollectionView,
             pageControl,
             titleLabel,
@@ -169,6 +171,12 @@ final class DetailFindView: BaseView {
         storageButton.snp.makeConstraints { make in
             make.top.equalTo(categoryLabel).offset(-8)
             make.trailing.equalTo(safeAreaLayoutGuide)
+        }
+        
+        completeButton.snp.makeConstraints { make in
+            make.centerY.equalTo(hashTagLabel).offset(-1)
+            make.leading.equalTo(hashTagLabel.snp.trailing).offset(15)
+            make.height.equalTo(30)
         }
         
         imageCollectionView.snp.makeConstraints { make in
@@ -315,6 +323,10 @@ extension DetailFindView {
     
     func updateStorageButton(_ state: Bool) {
         storageButton.configureView(image: UIImage(systemName: state ? "bookmark.fill" : "bookmark"))
+    }
+    
+    func updateCompleteButton(_ state: Bool) {
+        completeButton.configureView(state)
     }
     
     func updateCommentTextField() {

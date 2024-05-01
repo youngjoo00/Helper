@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Hero
 
 final class CommentViewController: BaseViewController {
 
@@ -73,8 +74,14 @@ final class CommentViewController: BaseViewController {
                 
                 cell.profileTabGesture.rx.event
                     .subscribe(with: self) { owner, _ in
-                        // 어 이거 어떻게하지?
-//                        owner.transition(viewController: item.creator.userID.checkedProfile, style: .push)
+                        let vc = item.creator.userID.checkedProfile
+                        vc.isHeroEnabled = true
+                        // 푸쉬와 유사한 전환 스타일 설정
+                        vc.modalPresentationStyle = .fullScreen
+                        vc.hero.modalAnimationType = .push(direction: .left)
+
+                        // 프로필 화면 표시
+                        owner.present(vc, animated: true, completion: nil)
                     }
                     .disposed(by: cell.disposeBag)
             }

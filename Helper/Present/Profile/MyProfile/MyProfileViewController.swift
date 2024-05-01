@@ -9,6 +9,7 @@ import UIKit
 import Then
 import RxSwift
 import RxCocoa
+import Hero
 
 final class MyProfileViewController: BaseViewController {
     
@@ -24,6 +25,7 @@ final class MyProfileViewController: BaseViewController {
         super.viewDidLoad()
         configureTabViewController()
         configureNavigationBar()
+        
     }
     
     override func bind() {
@@ -106,5 +108,5 @@ extension MyProfileViewController {
         
         tabVC.didMove(toParent: self)
     }
-    
+
 }

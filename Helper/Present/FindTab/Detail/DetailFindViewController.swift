@@ -50,6 +50,7 @@ final class DetailFindViewController: BaseViewController {
             postDeleteTap: postDeleteTap,
             postEditMenuTap: postEditMenuTap,
             storageButtonTap: mainView.storageButton.rx.tap,
+            completeButtonTap: mainView.completeButton.rx.tap,
             commentDeleteTap: commentDeleteTap,
             profileTapGesture: mainView.profileTabGesture.rx.event.map { _ in }
         )
@@ -63,6 +64,7 @@ final class DetailFindViewController: BaseViewController {
         output.checkedUserID
             .drive(with: self) { owner, value in
                 owner.navigationItem.rightBarButtonItem?.isHidden = value
+                owner.mainView.completeButton.isUserInteractionEnabled = !value
             }
             .disposed(by: disposeBag)
         
@@ -146,6 +148,13 @@ final class DetailFindViewController: BaseViewController {
         output.storage
             .drive(with: self) { owner, state in
                 owner.mainView.updateStorageButton(state)
+            }
+            .disposed(by: disposeBag)
+        
+        // 완료버튼
+        output.complete
+            .drive(with: self) { owner, state in
+                owner.mainView.updateCompleteButton(state)
             }
             .disposed(by: disposeBag)
         

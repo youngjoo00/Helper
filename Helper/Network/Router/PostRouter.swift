@@ -18,6 +18,7 @@ enum PostRouter {
     case update(query: PostRequest.Write, id: String)
     case delete(id: String)
     case storage(query: PostRequest.StorageStatus, id: String)
+    case complete(query: PostRequest.CompleteStatus, id: String)
     case fetchStorage(next: String)
     case otherUserFetchPosts(next: String, userID: String)
     case fetchFeed(query: PostRequest.FetchFeed)
@@ -34,7 +35,7 @@ extension PostRouter: TargetType {
             HTTPHeader.sesacKey.rawValue: PrivateKey.sesac.rawValue
         ]
         switch self {
-        case .fetchHashTag, .postID, .create, .update, .delete, .storage, .fetchStorage, .otherUserFetchPosts, .fetchFeed:
+        case .fetchHashTag, .postID, .create, .update, .delete, .storage, .complete, .fetchStorage, .otherUserFetchPosts, .fetchFeed:
             return baseHeader
         case .image:
             var headers = baseHeader
@@ -67,6 +68,8 @@ extension PostRouter: TargetType {
             return version + posts + "/\(id)"
         case .storage(let query, let id):
             return version + posts + "/\(id)" + "/like"
+        case .complete(let query, let id):
+            return version + posts + "/\(id)" + "/like-2"
         case .fetchStorage:
             return version + posts + "/likes" + "/me"
         case .otherUserFetchPosts(let next, let userID):
@@ -100,6 +103,8 @@ extension PostRouter: TargetType {
             return .get
         case .fetchFeed:
             return .get
+        case .complete:
+            return .post
         }
     }
     
@@ -112,7 +117,7 @@ extension PostRouter: TargetType {
                 URLQueryItem(name: QueryItem.productID.rawValue, value: query.productID),
                 URLQueryItem(name: QueryItem.hashTag.rawValue, value: query.hashTag)
             ]
-        case .postID, .image, .uploadImage, .create, .update, .delete, .storage:
+        case .postID, .image, .uploadImage, .create, .update, .delete, .storage, .complete:
             return nil
         case .fetchStorage(let next):
             return [
@@ -135,7 +140,7 @@ extension PostRouter: TargetType {
     
     var parameters: String? {
         switch self {
-        case .fetchHashTag, .postID, .image, .uploadImage, .create, .update, .delete, .storage, .fetchStorage, .otherUserFetchPosts, .fetchFeed:
+        case .fetchHashTag, .postID, .image, .uploadImage, .create, .update, .delete, .storage, .fetchStorage, .otherUserFetchPosts, .fetchFeed, .complete:
             return nil
         }
     }
@@ -158,6 +163,8 @@ extension PostRouter: TargetType {
         case .delete:
             return nil
         case .storage(let query, let id):
+            return try? encoder.encode(query)
+        case .complete(let query, let id):
             return try? encoder.encode(query)
         case .fetchStorage(next: let next):
             return nil

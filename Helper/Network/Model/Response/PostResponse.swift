@@ -32,7 +32,7 @@ enum PostResponse {
         let creator: Creator
         let files: [String]
         let storage: [String]
-        let likes2: [String]
+        let complete: [String]
         let hashTags: [String]
         let comments: [Comments]
         
@@ -70,7 +70,7 @@ enum PostResponse {
             creator = try container.decode(Creator.self, forKey: .creator)
             files = try container.decode([String].self, forKey: .files)
             storage = try container.decode([String].self, forKey: .storage)
-            likes2 = try container.decode([String].self, forKey: .likes2)
+            complete = try container.decode([String].self, forKey: .likes2)
             hashTags = try container.decode([String].self, forKey: .hashTags)
             comments = try container.decode([Comments].self, forKey: .comments)
         }
@@ -86,6 +86,14 @@ enum PostResponse {
         
         enum CodingKeys: String, CodingKey {
             case storageStatus = "like_status"
+        }
+    }
+    
+    struct CompleteStatus: Decodable {
+        let completeStatus: Bool
+        
+        enum CodingKeys: String, CodingKey {
+            case completeStatus = "like_status"
         }
     }
 }

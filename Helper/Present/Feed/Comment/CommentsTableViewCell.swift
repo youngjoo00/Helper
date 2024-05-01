@@ -110,7 +110,7 @@ extension CommentsTableViewCell {
     
     private func configureMenu(_ button: UIButton, menuTitle: String, actions: [String]) {
         let actions = actions.map { title in
-            UIAction(title: title) { [weak self] _ in
+            UIAction(title: "삭제", image: UIImage(systemName: "trash"), attributes: .destructive) { [weak self] _ in
                 guard let self else { return }
                 self.deleteSubject.onNext(commentID)
             }

@@ -20,6 +20,7 @@ final class DetailFindViewModel: ViewModelType {
         let postDeleteTap: Observable<Void>
         let postEditMenuTap: Observable<Void>
         let storageButtonTap: ControlEvent<Void>
+        let completeButtonTap: ControlEvent<Void>
         let commentDeleteTap: Observable<String>
         let profileTapGesture: Observable<Void>
     }
@@ -38,6 +39,7 @@ final class DetailFindViewModel: ViewModelType {
         let date: Driver<String>
         let phone: Driver<String>
         let storage: Driver<Bool>
+        let complete: Driver<Bool>
         let content: Driver<String>
         let comments: Driver<[Comments]>
         let commentsCount: Driver<String>
@@ -156,6 +158,25 @@ final class DetailFindViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
+        // 게시물 완료 처리
+        input.completeButtonTap
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
+            .withLatestFrom(Observable.combineLatest(input.postID, postInfo))
+            .flatMap { postID, postInfo in
+                let state = postInfo.complete.listCheckedUserID
+                return NetworkManager.shared.callAPI(type: PostResponse.CompleteStatus.self, router: Router.post(.complete(query: PostRequest.CompleteStatus(completeStatus: !state), id: postID)))
+            }
+            .subscribe(with: self) { owner, result in
+                switch result {
+                case .success(let data):
+                    fetchInfoTrigger.onNext(())
+                    EventManager.shared.postWriteTrigger.onNext(())
+                case .fail(let fail):
+                    errorAlertMessage.accept(fail.localizedDescription)
+                }
+            }
+            .disposed(by: disposeBag)
+        
         let postEditMenuTap = input.postEditMenuTap
             .withLatestFrom(postInfo)
             .asDriver(onErrorDriveWith: .empty())
@@ -226,6 +247,10 @@ final class DetailFindViewModel: ViewModelType {
             .map { $0.storage.filter { $0.checkedUserID }.count >= 1 }
             .asDriver(onErrorJustReturn: false)
         
+        let complete = postInfo
+            .map { !($0.complete.isEmpty) }
+            .asDriver(onErrorJustReturn: false)
+        
         let profileTapGesture = input.profileTapGesture
             .withLatestFrom(postInfo)
             .map { $0.creator.userID }
@@ -244,7 +269,8 @@ final class DetailFindViewModel: ViewModelType {
             regionLocate: regionLocate,
             date: date,
             phone: phone,
-            storage: storage,
+            storage: storage, 
+            complete: complete,
             content: content,
             comments: comments,
             commentsCount: commentsCount,
