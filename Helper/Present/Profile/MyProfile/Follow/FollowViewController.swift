@@ -7,13 +7,45 @@
 
 import UIKit
 import Then
-import SnapKit
+
+/** 
+ 팔로우 화면전환 모드
+ - userID: 연관 값으로 사용하며, userID 연산 프로퍼티로 값 추출 가능
+ - modeIndex: follower 0번, follwing 1번
+ */
+enum FollowViewMode {
+    case follower(userID: String)
+    case following(userID: String)
+    
+    var modeIndex: Int {
+        switch self {
+        case .follower: return 0
+        case .following: return 1
+        }
+    }
+    
+    var userID: String {
+        switch self {
+        case .follower(let userID), .following(let userID):
+            return userID
+        }
+    }
+}
 
 final class FollowViewController: BaseViewController {
 
     private let mainView = FollowView()
-    private var tabVC = FollowTabViewController()
-
+    private var tabVC: FollowTabViewController
+    
+    init(_ viewMode: FollowViewMode) {
+        tabVC = FollowTabViewController(viewMode: viewMode)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func loadView() {
         view = mainView
     }

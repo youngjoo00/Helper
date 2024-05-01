@@ -7,6 +7,14 @@
 
 import Foundation
 
+protocol ProfileDisplayable: Decodable {
+    var nick: String { get }
+    var profileImage: String { get }
+    var followers: [UserResponse.Follow] { get }
+    var following: [UserResponse.Follow] { get }
+    var posts: [String] { get }
+}
+
 enum UserResponse {
     struct Join: Decodable {
         let userID: String
@@ -37,7 +45,7 @@ enum UserResponse {
         let message: String
     }
     
-    struct MyProfile: Decodable {
+    struct MyProfile: Decodable, ProfileDisplayable {
         let userID: String
         let email: String
         let nick: String
@@ -77,14 +85,23 @@ enum UserResponse {
     struct Follow: Decodable {
         let userID: String
         let nick: String
+        let profileImage: String
         
         enum CodingKeys: String, CodingKey {
             case userID = "user_id"
             case nick
+            case profileImage
+        }
+        
+        init(from decoder: any Decoder) throws {
+            let container: KeyedDecodingContainer<UserResponse.Follow.CodingKeys> = try decoder.container(keyedBy: UserResponse.Follow.CodingKeys.self)
+            self.userID = try container.decode(String.self, forKey: UserResponse.Follow.CodingKeys.userID)
+            self.nick = try container.decode(String.self, forKey: UserResponse.Follow.CodingKeys.nick)
+            self.profileImage = try container.decodeIfPresent(String.self, forKey: UserResponse.Follow.CodingKeys.profileImage) ?? ""
         }
     }
     
-    struct OtherProfile: Decodable {
+    struct OtherProfile: Decodable, ProfileDisplayable {
         let userID: String
         let nick: String
         let profileImage: String

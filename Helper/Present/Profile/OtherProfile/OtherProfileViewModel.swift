@@ -47,7 +47,6 @@ final class OtherProfileViewModel: ViewModelType {
         
         // 나와 팔로우 여부 확인
         Observable.combineLatest(profileInfo, myInfo)
-            .debug("여긴 뭘까?")
             .subscribe(with: self) { owner, info in
                 let (other, my) = info
                 let isFollow = my.following.filter({ $0.userID == other.userID }).count >= 1

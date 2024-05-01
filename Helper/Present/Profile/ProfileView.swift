@@ -6,14 +6,12 @@
 //
 
 import UIKit
-import Tabman
 import Then
 
-class ProfileView: BaseView {
+final class ProfileView: BaseView {
     
     let profileImageView = ProfileImageView()
     let nicknameLabel = PointBoldLabel(fontSize: 20)
-    let profileEditButton = PointButton(title: "프로필 수정")
     
     let contentStackView = UIStackView().then {
         $0.axis = .horizontal
@@ -60,7 +58,6 @@ class ProfileView: BaseView {
             profileImageView,
             nicknameLabel,
             contentStackView,
-            profileEditButton,
         ].forEach { addSubview($0) }
         
         [
@@ -95,6 +92,7 @@ class ProfileView: BaseView {
         
         nicknameLabel.snp.makeConstraints { make in
             make.top.equalTo(profileImageView.snp.bottom).offset(5)
+            make.height.equalTo(20)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
         }
         
@@ -103,14 +101,6 @@ class ProfileView: BaseView {
             make.leading.equalTo(profileImageView.snp.trailing).offset(20)
             make.trailing.equalTo(safeAreaLayoutGuide).offset(-20)
         }
-        
-        profileEditButton.snp.makeConstraints { make in
-            make.top.equalTo(nicknameLabel.snp.bottom).offset(10)
-            make.leading.equalTo(safeAreaLayoutGuide).offset(16)
-            make.height.equalTo(44)
-            make.width.equalTo(150)
-        }
-        
     }
     
     override func configureView() {
@@ -120,7 +110,7 @@ class ProfileView: BaseView {
 
 extension ProfileView {
     
-    func updateView(_ profileData: UserResponse.MyProfile) {
+    func updateView<T: ProfileDisplayable>(_ profileData: T) {
         profileImageView.loadImage(urlString: profileData.profileImage)
         nicknameLabel.text = profileData.nick
         postsValueLabel.text = profileData.posts.count.description

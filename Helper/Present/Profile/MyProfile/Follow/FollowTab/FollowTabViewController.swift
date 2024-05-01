@@ -12,6 +12,7 @@ import Pageboy
 final class FollowTabViewController: TabmanViewController {
     
     var viewControllers: [UIViewController] = []
+    var viewMode: FollowViewMode
     
     let bar = TMBar.ButtonBar().then {
         $0.backgroundView.style = .blur(style: .regular)
@@ -29,6 +30,15 @@ final class FollowTabViewController: TabmanViewController {
         $0.layout.transitionStyle = .snap
     }
     
+    init(viewMode: FollowViewMode) {
+        self.viewMode = viewMode
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
@@ -40,7 +50,8 @@ final class FollowTabViewController: TabmanViewController {
 extension FollowTabViewController {
     
     private func configureView() {
-        let followerVC = FollowerViewController()
+        
+        let followerVC = FollowerViewController(userID: viewMode.userID)
         let followingVC = FollowingViewController()
         
         viewControllers.append(contentsOf: [followerVC, followingVC])
@@ -80,6 +91,6 @@ extension FollowTabViewController: PageboyViewControllerDataSource {
     }
     
     func defaultPage(for pageboyViewController: PageboyViewController) -> PageboyViewController.Page? {
-        return .at(index: 0)
+        return .at(index: viewMode.modeIndex)
     }
 }

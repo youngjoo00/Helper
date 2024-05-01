@@ -10,7 +10,7 @@ import Then
 import RxSwift
 import RxCocoa
 
-class MyProfileViewController: BaseViewController {
+final class MyProfileViewController: BaseViewController {
     
     private let mainView = MyProfileView()
     private let viewModel = MyProfileViewModel()
@@ -36,7 +36,7 @@ class MyProfileViewController: BaseViewController {
         
         output.profileInfo
             .drive(with: self) { owner, data in
-                owner.mainView.updateView(data)
+                owner.mainView.profileView.updateView(data)
             }
             .disposed(by: disposeBag)
         
@@ -46,12 +46,19 @@ class MyProfileViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        mainView.followersTapGesture.rx.event
+        // 팔로워 Tap
+        mainView.profileView.followersTapGesture.rx.event
             .subscribe(with: self) { owner, _ in
-                owner.transition(viewController: FollowViewController(), style: .push)
+                owner.transition(viewController: FollowViewController(.follower(userID: UserDefaultsManager.shared.getUserID())), style: .push)
             }
             .disposed(by: disposeBag)
         
+        // 팔로잉 Tap
+        mainView.profileView.followingTapGesture.rx.event
+            .subscribe(with: self) { owner, _ in
+                owner.transition(viewController: FollowViewController(.following(userID: UserDefaultsManager.shared.getUserID())), style: .push)
+            }
+            .disposed(by: disposeBag)
         // 나중에 자식으로 보내주게 된다면 씁시다..
         // 탭맨으로 자식 VC 를 놨다면 반드시 반드시 반드시 값 넘길때 자식VC 로 넘기자.,.., (여기에 24시간 사용)
 //        output.postsID

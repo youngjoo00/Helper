@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 extension PostResponse.FetchPost {
     /**
      게시물 종류 확인

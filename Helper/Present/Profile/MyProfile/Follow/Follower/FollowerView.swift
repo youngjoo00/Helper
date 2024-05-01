@@ -15,10 +15,12 @@ final class FollowerView: BaseView {
         $0.placeholder = "닉네임을 검색해보세요"
     }
     
-    let followerTableView = BaseTableView().then {
+    let refreshControl = UIRefreshControl()
+    lazy var followerTableView = BaseTableView().then {
         $0.register(FollowerTableViewCell.self, forCellReuseIdentifier: FollowerTableViewCell.id)
         $0.separatorStyle = .none
         $0.rowHeight = 70
+        $0.refreshControl = refreshControl
     }
     
     override func configureHierarchy() {

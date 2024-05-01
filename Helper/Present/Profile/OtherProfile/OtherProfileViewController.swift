@@ -67,7 +67,7 @@ extension OtherProfileViewController {
         
         output.profileInfo
             .drive(with: self) { owner, info in
-                owner.mainView.updateView(info)
+                owner.mainView.profileView.updateView(info)
             }
             .disposed(by: disposeBag)
         

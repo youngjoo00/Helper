@@ -14,8 +14,8 @@ final class FollowerTableViewCell: BaseTableViewCell {
    
     private let profileImageView = ProfileImageView()
     private let nicknameLabel = PointBoldLabel("닉네임", fontSize: 18)
-    private let followButton = PointButton(title: "팔로워")
-
+    let followButton = FollowButton()
+    
     override func configureHierarchy() {
         [
             profileImageView,
@@ -55,8 +55,13 @@ final class FollowerTableViewCell: BaseTableViewCell {
 
 extension FollowerTableViewCell {
     
-    func updateView(_ data: UserResponse.Follow) {
-        profileImageView.loadImage(urlString: "")
-        nicknameLabel.text = data.nick
+    func updateView(_ data: DisplayFollow) {
+        profileImageView.loadImage(urlString: data.follow.profileImage)
+        nicknameLabel.text = data.follow.nick
+        updateFollowButton(data.isFollowing)
+    }
+    
+    private func updateFollowButton(_ data: Bool) {
+        followButton.configureView(data)
     }
 }

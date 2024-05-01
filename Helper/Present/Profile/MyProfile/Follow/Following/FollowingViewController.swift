@@ -20,4 +20,17 @@ final class FollowingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+//    override func bind() {
+//        let input = FollowerViewModel.Input()
+//        
+//        let output = viewModel.transform(input: input)
+//        
+//        output.followers
+//            .drive(mainView.followerTableView.rx.items(cellIdentifier: FollowerTableViewCell.id,
+//                                                       cellType: FollowerTableViewCell.self)) { row, item, cell in
+//                cell.updateView(item)
+//            }
+//            .disposed(by: disposeBag)
+//    }
 }

@@ -35,6 +35,7 @@ extension PointButton {
         configuration.title = title
         configuration.image = image
         configuration.imagePadding = 10
+        configuration.imagePlacement = .trailing
         clipsToBounds = true
         layer.cornerRadius = 16
         self.configuration = configuration

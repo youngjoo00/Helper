@@ -52,7 +52,7 @@ final class CommentViewController: BaseViewController {
             fetchPostsTrigger: fetchPostsTrigger,
             reachedBottomTrigger: mainView.commentsTableView.rx.reachedBottom(),
             comment: mainView.commentWriteSubject,
-            commentButtonTap: mainView.commentWriteButton.rx.tap, 
+            commentButtonTap: mainView.commentWriteButton.rx.tap,
             commentDeleteTap: commentDeleteTap
         )
 
