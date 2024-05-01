@@ -10,7 +10,7 @@ import Then
 import RxSwift
 import RxCocoa
 
-final class WritePostView: BaseView {
+final class WriteFindView: BaseView {
     
     lazy var hashTagSubject = BehaviorSubject<String>(value: hashtagButton.configuration?.title ?? "")
     lazy var categorySubject = BehaviorSubject<String>(value: categoryButton.configuration?.title ?? "")
@@ -261,7 +261,7 @@ final class WritePostView: BaseView {
 }
 
 // MARK: - Custom Func
-extension WritePostView {
+extension WriteFindView {
     private func configureMenu(_ button: UIButton, menuTitle: String, actions: [String]) {
         let actions = actions.map { title in
             UIAction(title: title) { [weak self] _ in

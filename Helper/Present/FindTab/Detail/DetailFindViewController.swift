@@ -232,7 +232,7 @@ final class DetailFindViewController: BaseViewController {
         // 게시물 수정 클릭
         output.postEditMenuTap
             .drive(with: self) { owner, data in
-                let vc = WritePostViewController()
+                let vc = WriteFindViewController()
                 vc.postInfo = data
                 vc.postMode = .update
                 owner.navigationController?.pushViewController(vc, animated: true)

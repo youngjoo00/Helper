@@ -20,9 +20,6 @@
 		8E17A2F32BCA7DA800581B58 /* FindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A2F22BCA7DA800581B58 /* FindViewController.swift */; };
 		8E17A2F52BCA7DAE00581B58 /* FindViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A2F42BCA7DAE00581B58 /* FindViewModel.swift */; };
 		8E17A2F72BCA7F1D00581B58 /* FindTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A2F62BCA7F1D00581B58 /* FindTabViewController.swift */; };
-		8E17A3062BCA8F9200581B58 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3052BCA8F9200581B58 /* SearchView.swift */; };
-		8E17A3082BCA8F9900581B58 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3072BCA8F9900581B58 /* SearchViewController.swift */; };
-		8E17A30C2BCA8FA900581B58 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A30B2BCA8FA900581B58 /* SearchViewModel.swift */; };
 		8E17A30E2BCA8FBF00581B58 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A30D2BCA8FBF00581B58 /* MyProfileView.swift */; };
 		8E17A3102BCA8FC800581B58 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A30F2BCA8FC800581B58 /* MyProfileViewController.swift */; };
 		8E17A3122BCA8FCF00581B58 /* MyProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3112BCA8FCF00581B58 /* MyProfileViewModel.swift */; };
@@ -93,9 +90,9 @@
 		8E9A3FD72BCD94A2005E4F45 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FD62BCD94A2005E4F45 /* SettingViewController.swift */; };
 		8E9A3FD92BCD94A9005E4F45 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FD82BCD94A9005E4F45 /* SettingViewModel.swift */; };
 		8E9A3FDB2BCD9530005E4F45 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FDA2BCD9530005E4F45 /* SettingTableViewCell.swift */; };
-		8E9A3FE42BCEBD8F005E4F45 /* WritePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FE32BCEBD8F005E4F45 /* WritePostView.swift */; };
-		8E9A3FE62BCEBD98005E4F45 /* WritePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FE52BCEBD98005E4F45 /* WritePostViewController.swift */; };
-		8E9A3FE82BCEBDA8005E4F45 /* WritePostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FE72BCEBDA8005E4F45 /* WritePostViewModel.swift */; };
+		8E9A3FE42BCEBD8F005E4F45 /* WriteFindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FE32BCEBD8F005E4F45 /* WriteFindView.swift */; };
+		8E9A3FE62BCEBD98005E4F45 /* WriteFindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FE52BCEBD98005E4F45 /* WriteFindViewController.swift */; };
+		8E9A3FE82BCEBDA8005E4F45 /* WriteFindViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FE72BCEBDA8005E4F45 /* WriteFindViewModel.swift */; };
 		8E9A3FF62BCEE291005E4F45 /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FF52BCEE291005E4F45 /* UserRequest.swift */; };
 		8E9A3FF82BCEE2CE005E4F45 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FF72BCEE2CE005E4F45 /* UserResponse.swift */; };
 		8E9A3FFA2BCEE2D5005E4F45 /* PostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FF92BCEE2D5005E4F45 /* PostResponse.swift */; };
@@ -193,9 +190,6 @@
 		8E17A2F22BCA7DA800581B58 /* FindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindViewController.swift; sourceTree = "<group>"; };
 		8E17A2F42BCA7DAE00581B58 /* FindViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindViewModel.swift; sourceTree = "<group>"; };
 		8E17A2F62BCA7F1D00581B58 /* FindTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindTabViewController.swift; sourceTree = "<group>"; };
-		8E17A3052BCA8F9200581B58 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		8E17A3072BCA8F9900581B58 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		8E17A30B2BCA8FA900581B58 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		8E17A30D2BCA8FBF00581B58 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		8E17A30F2BCA8FC800581B58 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		8E17A3112BCA8FCF00581B58 /* MyProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewModel.swift; sourceTree = "<group>"; };
@@ -259,9 +253,9 @@
 		8E9A3FD62BCD94A2005E4F45 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		8E9A3FD82BCD94A9005E4F45 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		8E9A3FDA2BCD9530005E4F45 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
-		8E9A3FE32BCEBD8F005E4F45 /* WritePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritePostView.swift; sourceTree = "<group>"; };
-		8E9A3FE52BCEBD98005E4F45 /* WritePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritePostViewController.swift; sourceTree = "<group>"; };
-		8E9A3FE72BCEBDA8005E4F45 /* WritePostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritePostViewModel.swift; sourceTree = "<group>"; };
+		8E9A3FE32BCEBD8F005E4F45 /* WriteFindView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteFindView.swift; sourceTree = "<group>"; };
+		8E9A3FE52BCEBD98005E4F45 /* WriteFindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteFindViewController.swift; sourceTree = "<group>"; };
+		8E9A3FE72BCEBDA8005E4F45 /* WriteFindViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteFindViewModel.swift; sourceTree = "<group>"; };
 		8E9A3FF52BCEE291005E4F45 /* UserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
 		8E9A3FF72BCEE2CE005E4F45 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		8E9A3FF92BCEE2D5005E4F45 /* PostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResponse.swift; sourceTree = "<group>"; };
@@ -390,17 +384,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		8E17A2EF2BCA7D8D00581B58 /* Post */ = {
+		8E17A2EF2BCA7D8D00581B58 /* FindTab */ = {
 			isa = PBXGroup;
 			children = (
 				8E17A3292BCAD16E00581B58 /* FindContainerView.swift */,
 				8E17A32B2BCAD17600581B58 /* FindContainerViewController.swift */,
-				8ED8B7842BD94963009B4387 /* PostsView */,
 				8E17A2FA2BCA7F7800581B58 /* PostTab */,
-				8E17A2FB2BCA808700581B58 /* Finding */,
+				8E17A2FB2BCA808700581B58 /* Find */,
 				8ED3AE1A2BD14B670040DA58 /* Detail */,
 			);
-			path = Post;
+			path = FindTab;
 			sourceTree = "<group>";
 		};
 		8E17A2FA2BCA7F7800581B58 /* PostTab */ = {
@@ -411,24 +404,14 @@
 			path = PostTab;
 			sourceTree = "<group>";
 		};
-		8E17A2FB2BCA808700581B58 /* Finding */ = {
+		8E17A2FB2BCA808700581B58 /* Find */ = {
 			isa = PBXGroup;
 			children = (
 				8E17A2F02BCA7D9F00581B58 /* FindView.swift */,
 				8E17A2F22BCA7DA800581B58 /* FindViewController.swift */,
 				8E17A2F42BCA7DAE00581B58 /* FindViewModel.swift */,
 			);
-			path = Finding;
-			sourceTree = "<group>";
-		};
-		8E17A3032BCA8F2A00581B58 /* Search */ = {
-			isa = PBXGroup;
-			children = (
-				8E17A3052BCA8F9200581B58 /* SearchView.swift */,
-				8E17A3072BCA8F9900581B58 /* SearchViewController.swift */,
-				8E17A30B2BCA8FA900581B58 /* SearchViewModel.swift */,
-			);
-			path = Search;
+			path = Find;
 			sourceTree = "<group>";
 		};
 		8E17A3042BCA8F3400581B58 /* MyProfile */ = {
@@ -554,11 +537,11 @@
 			children = (
 				8ED8B7E02BDD5BCA009B4387 /* Initail */,
 				8E1BAE842BC97F0400A65075 /* User */,
-				8ED8B7CA2BDCF7E0009B4387 /* Home */,
-				8E17A2EF2BCA7D8D00581B58 /* Post */,
+				8ED8B7CA2BDCF7E0009B4387 /* HomeTab */,
+				8ED8B7842BD94963009B4387 /* Posts */,
+				8E17A2EF2BCA7D8D00581B58 /* FindTab */,
 				8ED8B7EB2BDE30A0009B4387 /* Feed */,
 				8ED8B7EC2BDE30C2009B4387 /* Write */,
-				8E17A3032BCA8F2A00581B58 /* Search */,
 				8ED8B7E42BDE21F9009B4387 /* Profile */,
 			);
 			path = Present;
@@ -705,14 +688,14 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
-		8E9A3FE22BCEBCC7005E4F45 /* WritePost */ = {
+		8E9A3FE22BCEBCC7005E4F45 /* WriteFind */ = {
 			isa = PBXGroup;
 			children = (
-				8E9A3FE32BCEBD8F005E4F45 /* WritePostView.swift */,
-				8E9A3FE52BCEBD98005E4F45 /* WritePostViewController.swift */,
-				8E9A3FE72BCEBDA8005E4F45 /* WritePostViewModel.swift */,
+				8E9A3FE32BCEBD8F005E4F45 /* WriteFindView.swift */,
+				8E9A3FE52BCEBD98005E4F45 /* WriteFindViewController.swift */,
+				8E9A3FE72BCEBDA8005E4F45 /* WriteFindViewModel.swift */,
 			);
-			path = WritePost;
+			path = WriteFind;
 			sourceTree = "<group>";
 		};
 		8E9A3FF32BCEE25A005E4F45 /* Request */ = {
@@ -829,7 +812,7 @@
 			path = DetailEditProfile;
 			sourceTree = "<group>";
 		};
-		8ED8B7842BD94963009B4387 /* PostsView */ = {
+		8ED8B7842BD94963009B4387 /* Posts */ = {
 			isa = PBXGroup;
 			children = (
 				8ED8B8A42BDFADAB009B4387 /* ProfilePostsView.swift */,
@@ -837,7 +820,7 @@
 				8ED8B7D62BDD26F5009B4387 /* HorizontalPostsView.swift */,
 				8ED8B7852BDA1F2C009B4387 /* PostsViewModel.swift */,
 			);
-			path = PostsView;
+			path = Posts;
 			sourceTree = "<group>";
 		};
 		8ED8B7A02BDC072F009B4387 /* Follow */ = {
@@ -880,14 +863,14 @@
 			path = OtherProfile;
 			sourceTree = "<group>";
 		};
-		8ED8B7CA2BDCF7E0009B4387 /* Home */ = {
+		8ED8B7CA2BDCF7E0009B4387 /* HomeTab */ = {
 			isa = PBXGroup;
 			children = (
 				8ED8B7CB2BDCF7EF009B4387 /* HomeView.swift */,
 				8ED8B7CD2BDCF7F6009B4387 /* HomeViewController.swift */,
 				8ED8B7D42BDCFC8E009B4387 /* RecentPostsFromFollowingCollectionViewCell.swift */,
 			);
-			path = Home;
+			path = HomeTab;
 			sourceTree = "<group>";
 		};
 		8ED8B7E02BDD5BCA009B4387 /* Initail */ = {
@@ -936,7 +919,7 @@
 		8ED8B7EC2BDE30C2009B4387 /* Write */ = {
 			isa = PBXGroup;
 			children = (
-				8E9A3FE22BCEBCC7005E4F45 /* WritePost */,
+				8E9A3FE22BCEBCC7005E4F45 /* WriteFind */,
 				8ED8B7E32BDE21D5009B4387 /* WriteFeed */,
 			);
 			path = Write;
@@ -1074,7 +1057,6 @@
 				8ED8B8DD2BE16C63009B4387 /* CheckedFollowingList+.swift in Sources */,
 				8ED8B7E62BDE2235009B4387 /* WriteFeedView.swift in Sources */,
 				8E1BAE392BC968EC00A65075 /* TargetType.swift in Sources */,
-				8E17A30C2BCA8FA900581B58 /* SearchViewModel.swift in Sources */,
 				8E1BAE202BC968E500A65075 /* PasswordViewController.swift in Sources */,
 				8E17A2EE2BCA59D000581B58 /* BirthdayViewModel.swift in Sources */,
 				8E1BAE3E2BC968F100A65075 /* UserDefaultsManager.swift in Sources */,
@@ -1085,7 +1067,6 @@
 				8ED8B7DD2BDD52B3009B4387 /* Notification+.swift in Sources */,
 				8E1BAE4D2BC969DD00A65075 /* UITextField+.swift in Sources */,
 				8E1BAE4F2BC96AA600A65075 /* DateManager.swift in Sources */,
-				8E17A3082BCA8F9900581B58 /* SearchViewController.swift in Sources */,
 				8ED8B7A62BDC0845009B4387 /* FollowView.swift in Sources */,
 				8E1BAE212BC968E500A65075 /* PasswordViewModel.swift in Sources */,
 				8E17A2EA2BCA59C100581B58 /* BirthdayView.swift in Sources */,
@@ -1096,7 +1077,7 @@
 				8ED8B8DB2BE137C3009B4387 /* BaseStackView.swift in Sources */,
 				8E17A2F72BCA7F1D00581B58 /* FindTabViewController.swift in Sources */,
 				8E1BAE232BC968E500A65075 /* SignUpViewController.swift in Sources */,
-				8E9A3FE62BCEBD98005E4F45 /* WritePostViewController.swift in Sources */,
+				8E9A3FE62BCEBD98005E4F45 /* WriteFindViewController.swift in Sources */,
 				8E9A3FDB2BCD9530005E4F45 /* SettingTableViewCell.swift in Sources */,
 				8EA59D152BD28284009938E0 /* String+.swift in Sources */,
 				8ED8B78C2BDACEEB009B4387 /* EditNicknameViewController.swift in Sources */,
@@ -1130,7 +1111,6 @@
 				8ED8B7AD2BDC08CD009B4387 /* FollowContainerView.swift in Sources */,
 				8ED8B76F2BD81F2D009B4387 /* EditProfileView.swift in Sources */,
 				8ED8B7752BD8F9CD009B4387 /* EditProfileTableViewCell.swift in Sources */,
-				8E17A3062BCA8F9200581B58 /* SearchView.swift in Sources */,
 				8EA59CE72BD196FF009938E0 /* CommentRequest.swift in Sources */,
 				8E83BC482BCBC134007E1637 /* Router.swift in Sources */,
 				8ED8B7E22BDD5C5C009B4387 /* InitailView.swift in Sources */,
@@ -1160,7 +1140,7 @@
 				8E9A40162BCFE9C8005E4F45 /* WhiteButton.swift in Sources */,
 				8E1BAE352BC968EC00A65075 /* HTTPHeader.swift in Sources */,
 				8E9A40142BCFD3D3005E4F45 /* PointTextView.swift in Sources */,
-				8E9A3FE42BCEBD8F005E4F45 /* WritePostView.swift in Sources */,
+				8E9A3FE42BCEBD8F005E4F45 /* WriteFindView.swift in Sources */,
 				8E17A2DE2BCA31D400581B58 /* ViewModelType+.swift in Sources */,
 				8E9A3FF62BCEE291005E4F45 /* UserRequest.swift in Sources */,
 				8E1BAE222BC968E500A65075 /* SignUpView.swift in Sources */,
@@ -1182,7 +1162,7 @@
 				8ED8B7CE2BDCF7F6009B4387 /* HomeViewController.swift in Sources */,
 				8E1BAE522BC96AC500A65075 /* TabBarController.swift in Sources */,
 				8ED8B7592BD6913D009B4387 /* UIScrollView+.swift in Sources */,
-				8E9A3FE82BCEBDA8005E4F45 /* WritePostViewModel.swift in Sources */,
+				8E9A3FE82BCEBDA8005E4F45 /* WriteFindViewModel.swift in Sources */,
 				8ED8B7712BD81F36009B4387 /* EditProfileViewController.swift in Sources */,
 				8E1BAEA02BC99F3200A65075 /* PointBoldLabel.swift in Sources */,
 				8E9A3FFA2BCEE2D5005E4F45 /* PostResponse.swift in Sources */,

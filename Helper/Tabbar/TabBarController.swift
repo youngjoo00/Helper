@@ -95,7 +95,7 @@ extension TabBarController: PHPickerViewControllerDelegate {
                                 if images.count == results.count {
                                     switch self.selectedWriteMode {
                                     case .help:
-                                        let writePostVC = WritePostViewController()
+                                        let writePostVC = WriteFindViewController()
                                         writePostVC.selectedImages = images
                                         writePostVC.postMode = .create
                                         writePostVC.hidesBottomBarWhenPushed = true

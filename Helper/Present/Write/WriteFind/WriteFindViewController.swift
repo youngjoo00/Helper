@@ -14,10 +14,10 @@ enum PostMode {
     case update
 }
 
-final class WritePostViewController: BaseViewController {
+final class WriteFindViewController: BaseViewController {
 
-    private let mainView = WritePostView()
-    private var viewModel = WritePostViewModel()
+    private let mainView = WriteFindView()
+    private var viewModel = WriteFindViewModel()
     
     private let dataListSubject = PublishSubject<[Data]>()
     var selectedImages: [UIImage] = []
@@ -66,7 +66,7 @@ final class WritePostViewController: BaseViewController {
     
     override func bind() {
 
-        let input = WritePostViewModel.Input(
+        let input = WriteFindViewModel.Input(
             postMode: .just(postMode),
             postInfo: .just(postInfo),
             dataList: dataListSubject,
@@ -151,7 +151,7 @@ final class WritePostViewController: BaseViewController {
 
 
 // MARK: - Custom Func
-extension WritePostViewController {
+extension WriteFindViewController {
     
     private func convertImagesToData() {
         var dataList: [Data] = []

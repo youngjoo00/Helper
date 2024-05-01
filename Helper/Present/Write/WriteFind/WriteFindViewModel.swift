@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class WritePostViewModel: ViewModelType {
+final class WriteFindViewModel: ViewModelType {
     
     var disposeBag: RxSwift.DisposeBag = .init()
     
