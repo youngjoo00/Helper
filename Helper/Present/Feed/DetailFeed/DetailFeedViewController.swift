@@ -9,7 +9,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-// MARK: - 코드 중복되는거 싹 다 갈아 엎어야함
 final class DetailFeedViewController: BaseViewController {
 
     private let mainView = DetailFeedView()
@@ -42,6 +41,7 @@ final class DetailFeedViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
         feedIDSubject.onNext(feedID)
     }
     
@@ -131,6 +131,14 @@ final class DetailFeedViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        // 게시물 수정
+        output.feedEditTap
+            .drive(with: self) { owner, info in
+                let vc = WriteFeedViewController(selectedImages: [], postMode: .update, postInfo: info)
+                owner.transition(viewController: vc, style: .hideBottomPush)
+            }
+            .disposed(by: disposeBag)
+        
         // 댓글 TableView 구성
         output.comments
             .drive(mainView.commentsTableView.rx.items(cellIdentifier: CommentsTableViewCell.id,
@@ -207,15 +215,7 @@ final class DetailFeedViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        // 게시물 수정 클릭
-//        output.postEditMenuTap
-//            .drive(with: self) { owner, data in
-//                let vc = WritePostViewController()
-//                vc.postInfo = data
-//                vc.postMode = .update
-//                owner.navigationController?.pushViewController(vc, animated: true)
-//            }
-//            .disposed(by: disposeBag)
+        
     }
 }
 

@@ -52,9 +52,7 @@ extension FeedViewController {
                 owner.fetchPostsTrigger.onNext(())
             }
             .disposed(by: disposeBag)
-        
-        let deleteMenuTap = PublishSubject<PostResponse.FetchPost>()
-        
+                
         let input = PostsViewModel.Input(
             fetchPostsTrigger: fetchPostsTrigger,
             reachedBottomTrigger: mainView.tableView.rx.reachedBottom(),
@@ -105,6 +103,7 @@ extension FeedViewController {
                     }
                     .disposed(by: cell.disposeBag)
                 
+                // 게시물 수정
                 cell.editMenuTap
                     .subscribe(with: self) { owner, _ in
                         let vc = WriteFeedViewController(selectedImages: [], postMode: .update, postInfo: item)
@@ -112,9 +111,12 @@ extension FeedViewController {
                     }
                     .disposed(by: cell.disposeBag)
                 
+                // 게시물 삭제
                 cell.deleteMenuTap
                     .subscribe(with: self) { owner, _ in
-                        owner.deleteMenuTap.onNext(item)
+                        owner.showAlert(title: nil, message: "게시물을 삭제하시겠습니까?", btnTitle: "삭제") {
+                            owner.deleteMenuTap.onNext(item)
+                        }
                     }
                     .disposed(by: cell.disposeBag)
             }
@@ -140,7 +142,6 @@ extension FeedViewController {
         
         let output = feedViewModel.transform(input: input)
 
-        // 게시물 저장 성공
         output.storageSuccess
             .drive(with: self) { owner, message in
                 owner.showTaost(message)
