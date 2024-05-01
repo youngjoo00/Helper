@@ -97,6 +97,20 @@ extension OtherProfileViewController {
             refreshControlTrigger: mainView.profilePostsView.refreshControl.rx.controlEvent(.valueChanged)
         )
         
+        // 팔로워 Tap
+        mainView.profileView.followersTapGesture.rx.event
+            .subscribe(with: self) { owner, _ in
+                owner.transition(viewController: FollowContainerViewController(.follower(userID: owner.userID)), style: .push)
+            }
+            .disposed(by: disposeBag)
+        
+        // 팔로잉 Tap
+        mainView.profileView.followingTapGesture.rx.event
+            .subscribe(with: self) { owner, _ in
+                owner.transition(viewController: FollowContainerViewController(.following(userID: owner.userID)), style: .push)
+            }
+            .disposed(by: disposeBag)
+        
         let output = postsViewModel.transform(input: input)
         
         output.posts

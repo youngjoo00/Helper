@@ -27,10 +27,25 @@ final class MyProfileViewController: BaseViewController {
     }
     
     override func bind() {
+        
         let input = MyProfileViewModel.Input(
             viewDidLoadTrigger: Observable.just(()),
             editProfileTap: mainView.profileEditButton.rx.tap
         )
+        
+        // 팔로워 Tap
+        mainView.profileView.followersTapGesture.rx.event
+            .subscribe(with: self) { owner, _ in
+                owner.transition(viewController: FollowContainerViewController(.follower(userID: UserDefaultsManager.shared.getUserID())), style: .push)
+            }
+            .disposed(by: disposeBag)
+        
+        // 팔로잉 Tap
+        mainView.profileView.followingTapGesture.rx.event
+            .subscribe(with: self) { owner, _ in
+                owner.transition(viewController: FollowContainerViewController(.following(userID: UserDefaultsManager.shared.getUserID())), style: .push)
+            }
+            .disposed(by: disposeBag)
         
         let output = viewModel.transform(input: input)
         
@@ -46,19 +61,7 @@ final class MyProfileViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        // 팔로워 Tap
-        mainView.profileView.followersTapGesture.rx.event
-            .subscribe(with: self) { owner, _ in
-                owner.transition(viewController: FollowContainerViewController(.follower(userID: UserDefaultsManager.shared.getUserID())), style: .push)
-            }
-            .disposed(by: disposeBag)
-        
-        // 팔로잉 Tap
-        mainView.profileView.followingTapGesture.rx.event
-            .subscribe(with: self) { owner, _ in
-                owner.transition(viewController: FollowContainerViewController(.following(userID: UserDefaultsManager.shared.getUserID())), style: .push)
-            }
-            .disposed(by: disposeBag)
+
         // 나중에 자식으로 보내주게 된다면 씁시다..
         // 탭맨으로 자식 VC 를 놨다면 반드시 반드시 반드시 값 넘길때 자식VC 로 넘기자.,.., (여기에 24시간 사용)
 //        output.postsID

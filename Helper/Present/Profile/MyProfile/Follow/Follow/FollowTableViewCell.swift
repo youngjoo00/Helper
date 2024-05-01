@@ -58,10 +58,20 @@ extension FollowTableViewCell {
     func updateView(_ data: DisplayFollow) {
         profileImageView.loadImage(urlString: data.follow.profileImage)
         nicknameLabel.text = data.follow.nick
-        updateFollowButton(data.isFollowing)
+        updateFollowButton(data)
     }
     
-    private func updateFollowButton(_ data: Bool) {
-        followButton.configureView(data)
+//    private func updateFollowButton(_ data: Bool) {
+//        followButton.configureView(data)
+//    }
+    
+    private func updateFollowButton(_ data: DisplayFollow) {
+        if data.follow.userID.checkedUserID {
+            followButton.isHidden = true
+        } else {
+            followButton.isHidden = false
+            followButton.configureView(data.isFollowing)
+        }
+        
     }
 }
