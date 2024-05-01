@@ -136,7 +136,7 @@ extension OtherProfileViewController {
                 if data.checkedPostsKind {
                     owner.transition(viewController: DetailFeedViewController(feedID: data.postID), style: .hideBottomPush)
                 } else {
-                    let vc = DetailPostViewController()
+                    let vc = DetailFindViewController()
                     vc.postID = data.postID
                     owner.transition(viewController: vc, style: .hideBottomPush)
                 }

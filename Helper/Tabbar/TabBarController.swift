@@ -24,7 +24,7 @@ final class TabBarController: UITabBarController {
         let homeTab = UINavigationController(rootViewController: HomeViewController())
         homeTab.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
         
-        let helpTab = UINavigationController(rootViewController: PostViewController())
+        let helpTab = UINavigationController(rootViewController: FindContainerViewController())
         helpTab.tabBarItem = UITabBarItem(title: " Help", image: UIImage(systemName: "hands.clap"), tag: 1)
         
         let writeTab = UINavigationController(rootViewController: UIViewController())

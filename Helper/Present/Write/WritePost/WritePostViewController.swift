@@ -56,7 +56,7 @@ final class WritePostViewController: BaseViewController {
         case .create:
             // 부모 뷰 컨트롤러나 네비게이션 스택에서 제거될 때 true 가 되면서 실행
             if self.isMovingFromParent {
-                self.tabBarController?.selectedIndex = 0
+                self.tabBarController?.selectedIndex = 1
             }
         case .update:
             return

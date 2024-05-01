@@ -12,7 +12,6 @@ import RxCocoa
 final class HomeViewController: BaseViewController {
 
     private let mainView = HomeView()
-    private let viewModel = HomeViewModel()
     
     private let feedViewModel = PostsViewModel(mode: .feed)
     private let findingViewModel = PostsViewModel(mode: .findingAll)
@@ -114,7 +113,7 @@ extension HomeViewController {
         // Transition DetailVC
         mainView.recentPostsFindingView.collectionView.rx.modelSelected(PostResponse.FetchPost.self)
             .subscribe(with: self) { owner, data in
-                let vc = DetailPostViewController()
+                let vc = DetailFindViewController()
                 vc.postID = data.postID
                 owner.transition(viewController: vc, style: .hideBottomPush)
             }
@@ -152,7 +151,7 @@ extension HomeViewController {
         // Transition DetailVC
         mainView.recentPostsFoundView.collectionView.rx.modelSelected(PostResponse.FetchPost.self)
             .subscribe(with: self) { owner, data in
-                let vc = DetailPostViewController()
+                let vc = DetailFindViewController()
                 vc.postID = data.postID
                 owner.transition(viewController: vc, style: .hideBottomPush)
             }

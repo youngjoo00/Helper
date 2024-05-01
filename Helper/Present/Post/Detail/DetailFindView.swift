@@ -11,7 +11,7 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-final class DetailPostView: BaseView {
+final class DetailFindView: BaseView {
 
     lazy var commentWriteSubject = BehaviorSubject<String>(value: commentWriteTextField.text ?? "")
     
@@ -34,7 +34,7 @@ final class DetailPostView: BaseView {
     let storageButton = ImageButton(image: UIImage(systemName: "bookmark"))
     
     let imageCollectionView = BaseCollectionView(frame: .zero, collectionViewLayout: .imageCollectionViewLayout()).then {
-        $0.register(DetailPostCollectionViewCell.self, forCellWithReuseIdentifier: DetailPostCollectionViewCell.id)
+        $0.register(DetailFindCollectionViewCell.self, forCellWithReuseIdentifier: DetailFindCollectionViewCell.id)
         $0.showsHorizontalScrollIndicator = false
         $0.isPagingEnabled = true
     }
@@ -296,7 +296,7 @@ final class DetailPostView: BaseView {
 }
 
 // MARK: - Custom Func
-extension DetailPostView {
+extension DetailFindView {
     
     // 콘텐츠 높이에 맞게 테이블뷰 높이 설정
     func commentsTableViewHeightUpdate() {

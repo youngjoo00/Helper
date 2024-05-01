@@ -95,8 +95,8 @@ final class DetailFeedViewController: BaseViewController {
         
         // 이미지 콜렉션뷰
         output.files
-            .drive(mainView.imageCollectionView.rx.items(cellIdentifier: DetailPostCollectionViewCell.id,
-                                                         cellType: DetailPostCollectionViewCell.self)) { row, item, cell in
+            .drive(mainView.imageCollectionView.rx.items(cellIdentifier: DetailFindCollectionViewCell.id,
+                                                         cellType: DetailFindCollectionViewCell.self)) { row, item, cell in
                 cell.updateView(item)
             }
             .disposed(by: disposeBag)

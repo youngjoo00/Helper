@@ -9,7 +9,7 @@ import UIKit
 import Then
 import Kingfisher
 
-final class DetailPostCollectionViewCell: BaseCollectionViewCell {
+final class DetailFindCollectionViewCell: BaseCollectionViewCell {
     
     let imageView = lightGrayBackgroundImageView()
         
@@ -30,7 +30,7 @@ final class DetailPostCollectionViewCell: BaseCollectionViewCell {
     }
 }
 
-extension DetailPostCollectionViewCell {
+extension DetailFindCollectionViewCell {
     
     func updateView(_ file: String) {
         imageView.loadImage(urlString: file)

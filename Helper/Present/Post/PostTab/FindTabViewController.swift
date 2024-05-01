@@ -9,7 +9,12 @@ import UIKit
 import Tabman
 import Pageboy
 
-final class PostTabViewController: TabmanViewController {
+enum FindViewMode {
+    case finding
+    case found
+}
+
+final class FindTabViewController: TabmanViewController {
     
     var viewControllers: [UIViewController] = []
     
@@ -37,11 +42,11 @@ final class PostTabViewController: TabmanViewController {
 }
 
 // MARK: - Custom Func
-extension PostTabViewController {
+extension FindTabViewController {
     
     private func configureView() {
-        let findingVC = FindingViewController()
-        let foundVC = FoundViewController()
+        let findingVC = FindViewController(.finding)
+        let foundVC = FindViewController(.found)
         
         viewControllers.append(contentsOf: [findingVC, foundVC])
         
@@ -51,7 +56,7 @@ extension PostTabViewController {
 }
 
 // MARK: - Tabman DataSource
-extension PostTabViewController: TMBarDataSource {
+extension FindTabViewController: TMBarDataSource {
     
     func barItem(for bar: TMBar, at index: Int) -> TMBarItemable {
         switch index {
@@ -68,7 +73,7 @@ extension PostTabViewController: TMBarDataSource {
 
 
 // MARK: - PageBody
-extension PostTabViewController: PageboyViewControllerDataSource {
+extension FindTabViewController: PageboyViewControllerDataSource {
 
     func numberOfViewControllers(in pageboyViewController: PageboyViewController) -> Int {
         return viewControllers.count

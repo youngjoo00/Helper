@@ -10,6 +10,8 @@ import Then
 
 final class VerticalPostsView: BaseView {
     
+    var collectionViewCellType: BaseCollectionViewCell.Type
+    
     let refreshControl = UIRefreshControl()
     
     let activityIndicator = UIActivityIndicatorView(style: .medium).then {
@@ -17,8 +19,18 @@ final class VerticalPostsView: BaseView {
     }
     
     lazy var collectionView = BaseCollectionView(frame: .zero, collectionViewLayout: .postCollectionViewLayout()).then {
-        $0.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: PostCollectionViewCell.id)
+        $0.register(collectionViewCellType.self, forCellWithReuseIdentifier: collectionViewCellType.id)
         $0.refreshControl = refreshControl
+    }
+    
+    init(collectionViewCellType: BaseCollectionViewCell.Type) {
+        self.collectionViewCellType = collectionViewCellType
+        
+        super.init(frame: .zero)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func configureHierarchy() {

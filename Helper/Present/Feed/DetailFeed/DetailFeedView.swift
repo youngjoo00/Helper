@@ -30,7 +30,7 @@ final class DetailFeedView: BaseView {
     let storageButton = ImageButton(image: UIImage(systemName: "bookmark"))
     
     let imageCollectionView = BaseCollectionView(frame: .zero, collectionViewLayout: .imageCollectionViewLayout()).then {
-        $0.register(DetailPostCollectionViewCell.self, forCellWithReuseIdentifier: DetailPostCollectionViewCell.id)
+        $0.register(DetailFindCollectionViewCell.self, forCellWithReuseIdentifier: DetailFindCollectionViewCell.id)
         $0.showsHorizontalScrollIndicator = false
         $0.isPagingEnabled = true
     }

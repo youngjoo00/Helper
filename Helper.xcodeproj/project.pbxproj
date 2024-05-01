@@ -16,13 +16,10 @@
 		8E17A2EA2BCA59C100581B58 /* BirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A2E92BCA59C100581B58 /* BirthdayView.swift */; };
 		8E17A2EC2BCA59C800581B58 /* BirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A2EB2BCA59C800581B58 /* BirthdayViewController.swift */; };
 		8E17A2EE2BCA59D000581B58 /* BirthdayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A2ED2BCA59D000581B58 /* BirthdayViewModel.swift */; };
-		8E17A2F12BCA7D9F00581B58 /* FindingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A2F02BCA7D9F00581B58 /* FindingView.swift */; };
-		8E17A2F32BCA7DA800581B58 /* FindingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A2F22BCA7DA800581B58 /* FindingViewController.swift */; };
-		8E17A2F52BCA7DAE00581B58 /* FindingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A2F42BCA7DAE00581B58 /* FindingViewModel.swift */; };
-		8E17A2F72BCA7F1D00581B58 /* PostTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A2F62BCA7F1D00581B58 /* PostTabViewController.swift */; };
-		8E17A2FE2BCA80AF00581B58 /* FoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A2FD2BCA80AF00581B58 /* FoundView.swift */; };
-		8E17A3002BCA80B900581B58 /* FoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A2FF2BCA80B900581B58 /* FoundViewController.swift */; };
-		8E17A3022BCA80BF00581B58 /* FoundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3012BCA80BF00581B58 /* FoundViewModel.swift */; };
+		8E17A2F12BCA7D9F00581B58 /* FindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A2F02BCA7D9F00581B58 /* FindView.swift */; };
+		8E17A2F32BCA7DA800581B58 /* FindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A2F22BCA7DA800581B58 /* FindViewController.swift */; };
+		8E17A2F52BCA7DAE00581B58 /* FindViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A2F42BCA7DAE00581B58 /* FindViewModel.swift */; };
+		8E17A2F72BCA7F1D00581B58 /* FindTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A2F62BCA7F1D00581B58 /* FindTabViewController.swift */; };
 		8E17A3062BCA8F9200581B58 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3052BCA8F9200581B58 /* SearchView.swift */; };
 		8E17A3082BCA8F9900581B58 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3072BCA8F9900581B58 /* SearchViewController.swift */; };
 		8E17A30C2BCA8FA900581B58 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A30B2BCA8FA900581B58 /* SearchViewModel.swift */; };
@@ -32,8 +29,8 @@
 		8E17A3172BCAC58A00581B58 /* MyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3162BCAC58A00581B58 /* MyPostViewController.swift */; };
 		8E17A31E2BCAC62B00581B58 /* MyStoragePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A31D2BCAC62B00581B58 /* MyStoragePostViewController.swift */; };
 		8E17A3232BCAC87E00581B58 /* MyProfileTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3222BCAC87E00581B58 /* MyProfileTabViewController.swift */; };
-		8E17A32A2BCAD16E00581B58 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3292BCAD16E00581B58 /* PostView.swift */; };
-		8E17A32C2BCAD17600581B58 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A32B2BCAD17600581B58 /* PostViewController.swift */; };
+		8E17A32A2BCAD16E00581B58 /* FindContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3292BCAD16E00581B58 /* FindContainerView.swift */; };
+		8E17A32C2BCAD17600581B58 /* FindContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A32B2BCAD17600581B58 /* FindContainerViewController.swift */; };
 		8E17A3302BCAF03300581B58 /* BaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A32F2BCAF03300581B58 /* BaseCollectionView.swift */; };
 		8E17A3322BCAF03D00581B58 /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3312BCAF03D00581B58 /* BaseTableView.swift */; };
 		8E17A3362BCAF33200581B58 /* PostRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A3352BCAF33200581B58 /* PostRouter.swift */; };
@@ -115,11 +112,11 @@
 		8EA59CED2BD1A64D009938E0 /* CreatorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA59CEC2BD1A64D009938E0 /* CreatorResponse.swift */; };
 		8EA59D0D2BD25B3C009938E0 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA59D0C2BD25B3C009938E0 /* ImageButton.swift */; };
 		8EA59D152BD28284009938E0 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA59D142BD28284009938E0 /* String+.swift */; };
-		8ED3AE1C2BD14B890040DA58 /* DetailPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3AE1B2BD14B890040DA58 /* DetailPostView.swift */; };
-		8ED3AE1E2BD14B920040DA58 /* DetailPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3AE1D2BD14B920040DA58 /* DetailPostViewController.swift */; };
-		8ED3AE202BD14B9B0040DA58 /* DetailPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3AE1F2BD14B9B0040DA58 /* DetailPostViewModel.swift */; };
+		8ED3AE1C2BD14B890040DA58 /* DetailFindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3AE1B2BD14B890040DA58 /* DetailFindView.swift */; };
+		8ED3AE1E2BD14B920040DA58 /* DetailFindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3AE1D2BD14B920040DA58 /* DetailFindViewController.swift */; };
+		8ED3AE202BD14B9B0040DA58 /* DetailFindViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3AE1F2BD14B9B0040DA58 /* DetailFindViewModel.swift */; };
 		8ED3AE222BD15C960040DA58 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3AE212BD15C960040DA58 /* CommentsTableViewCell.swift */; };
-		8ED3AE242BD171C10040DA58 /* DetailPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3AE232BD171C10040DA58 /* DetailPostCollectionViewCell.swift */; };
+		8ED3AE242BD171C10040DA58 /* DetailFindCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3AE232BD171C10040DA58 /* DetailFindCollectionViewCell.swift */; };
 		8ED8B7432BD556BC009B4387 /* TransitionStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7422BD556BC009B4387 /* TransitionStyle.swift */; };
 		8ED8B7572BD65C9E009B4387 /* HelperString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7562BD65C9E009B4387 /* HelperString.swift */; };
 		8ED8B7592BD6913D009B4387 /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7582BD6913D009B4387 /* UIScrollView+.swift */; };
@@ -146,7 +143,6 @@
 		8ED8B7BE2BDCA161009B4387 /* OtherProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7BD2BDCA161009B4387 /* OtherProfileViewModel.swift */; };
 		8ED8B7CC2BDCF7EF009B4387 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7CB2BDCF7EF009B4387 /* HomeView.swift */; };
 		8ED8B7CE2BDCF7F6009B4387 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7CD2BDCF7F6009B4387 /* HomeViewController.swift */; };
-		8ED8B7D02BDCF803009B4387 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7CF2BDCF803009B4387 /* HomeViewModel.swift */; };
 		8ED8B7D52BDCFC8E009B4387 /* RecentPostsFromFollowingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7D42BDCFC8E009B4387 /* RecentPostsFromFollowingCollectionViewCell.swift */; };
 		8ED8B7D72BDD26F5009B4387 /* HorizontalPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7D62BDD26F5009B4387 /* HorizontalPostsView.swift */; };
 		8ED8B7D92BDD477C009B4387 /* UIWindow+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7D82BDD477C009B4387 /* UIWindow+.swift */; };
@@ -193,13 +189,10 @@
 		8E17A2E92BCA59C100581B58 /* BirthdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayView.swift; sourceTree = "<group>"; };
 		8E17A2EB2BCA59C800581B58 /* BirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewController.swift; sourceTree = "<group>"; };
 		8E17A2ED2BCA59D000581B58 /* BirthdayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewModel.swift; sourceTree = "<group>"; };
-		8E17A2F02BCA7D9F00581B58 /* FindingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindingView.swift; sourceTree = "<group>"; };
-		8E17A2F22BCA7DA800581B58 /* FindingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindingViewController.swift; sourceTree = "<group>"; };
-		8E17A2F42BCA7DAE00581B58 /* FindingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindingViewModel.swift; sourceTree = "<group>"; };
-		8E17A2F62BCA7F1D00581B58 /* PostTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTabViewController.swift; sourceTree = "<group>"; };
-		8E17A2FD2BCA80AF00581B58 /* FoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundView.swift; sourceTree = "<group>"; };
-		8E17A2FF2BCA80B900581B58 /* FoundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundViewController.swift; sourceTree = "<group>"; };
-		8E17A3012BCA80BF00581B58 /* FoundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundViewModel.swift; sourceTree = "<group>"; };
+		8E17A2F02BCA7D9F00581B58 /* FindView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindView.swift; sourceTree = "<group>"; };
+		8E17A2F22BCA7DA800581B58 /* FindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindViewController.swift; sourceTree = "<group>"; };
+		8E17A2F42BCA7DAE00581B58 /* FindViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindViewModel.swift; sourceTree = "<group>"; };
+		8E17A2F62BCA7F1D00581B58 /* FindTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindTabViewController.swift; sourceTree = "<group>"; };
 		8E17A3052BCA8F9200581B58 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		8E17A3072BCA8F9900581B58 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8E17A30B2BCA8FA900581B58 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
@@ -209,8 +202,8 @@
 		8E17A3162BCAC58A00581B58 /* MyPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostViewController.swift; sourceTree = "<group>"; };
 		8E17A31D2BCAC62B00581B58 /* MyStoragePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStoragePostViewController.swift; sourceTree = "<group>"; };
 		8E17A3222BCAC87E00581B58 /* MyProfileTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTabViewController.swift; sourceTree = "<group>"; };
-		8E17A3292BCAD16E00581B58 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
-		8E17A32B2BCAD17600581B58 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		8E17A3292BCAD16E00581B58 /* FindContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindContainerView.swift; sourceTree = "<group>"; };
+		8E17A32B2BCAD17600581B58 /* FindContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindContainerViewController.swift; sourceTree = "<group>"; };
 		8E17A32F2BCAF03300581B58 /* BaseCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
 		8E17A3312BCAF03D00581B58 /* BaseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
 		8E17A3352BCAF33200581B58 /* PostRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRouter.swift; sourceTree = "<group>"; };
@@ -284,11 +277,11 @@
 		8EA59CEC2BD1A64D009938E0 /* CreatorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorResponse.swift; sourceTree = "<group>"; };
 		8EA59D0C2BD25B3C009938E0 /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
 		8EA59D142BD28284009938E0 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
-		8ED3AE1B2BD14B890040DA58 /* DetailPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostView.swift; sourceTree = "<group>"; };
-		8ED3AE1D2BD14B920040DA58 /* DetailPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewController.swift; sourceTree = "<group>"; };
-		8ED3AE1F2BD14B9B0040DA58 /* DetailPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewModel.swift; sourceTree = "<group>"; };
+		8ED3AE1B2BD14B890040DA58 /* DetailFindView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFindView.swift; sourceTree = "<group>"; };
+		8ED3AE1D2BD14B920040DA58 /* DetailFindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFindViewController.swift; sourceTree = "<group>"; };
+		8ED3AE1F2BD14B9B0040DA58 /* DetailFindViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFindViewModel.swift; sourceTree = "<group>"; };
 		8ED3AE212BD15C960040DA58 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
-		8ED3AE232BD171C10040DA58 /* DetailPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostCollectionViewCell.swift; sourceTree = "<group>"; };
+		8ED3AE232BD171C10040DA58 /* DetailFindCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFindCollectionViewCell.swift; sourceTree = "<group>"; };
 		8ED8B7422BD556BC009B4387 /* TransitionStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionStyle.swift; sourceTree = "<group>"; };
 		8ED8B7562BD65C9E009B4387 /* HelperString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperString.swift; sourceTree = "<group>"; };
 		8ED8B7582BD6913D009B4387 /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
@@ -315,7 +308,6 @@
 		8ED8B7BD2BDCA161009B4387 /* OtherProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileViewModel.swift; sourceTree = "<group>"; };
 		8ED8B7CB2BDCF7EF009B4387 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8ED8B7CD2BDCF7F6009B4387 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		8ED8B7CF2BDCF803009B4387 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8ED8B7D42BDCFC8E009B4387 /* RecentPostsFromFollowingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentPostsFromFollowingCollectionViewCell.swift; sourceTree = "<group>"; };
 		8ED8B7D62BDD26F5009B4387 /* HorizontalPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalPostsView.swift; sourceTree = "<group>"; };
 		8ED8B7D82BDD477C009B4387 /* UIWindow+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+.swift"; sourceTree = "<group>"; };
@@ -401,11 +393,11 @@
 		8E17A2EF2BCA7D8D00581B58 /* Post */ = {
 			isa = PBXGroup;
 			children = (
-				8E17A3292BCAD16E00581B58 /* PostView.swift */,
-				8E17A32B2BCAD17600581B58 /* PostViewController.swift */,
+				8E17A3292BCAD16E00581B58 /* FindContainerView.swift */,
+				8E17A32B2BCAD17600581B58 /* FindContainerViewController.swift */,
+				8ED8B7842BD94963009B4387 /* PostsView */,
 				8E17A2FA2BCA7F7800581B58 /* PostTab */,
 				8E17A2FB2BCA808700581B58 /* Finding */,
-				8E17A2FC2BCA809200581B58 /* Found */,
 				8ED3AE1A2BD14B670040DA58 /* Detail */,
 			);
 			path = Post;
@@ -414,7 +406,7 @@
 		8E17A2FA2BCA7F7800581B58 /* PostTab */ = {
 			isa = PBXGroup;
 			children = (
-				8E17A2F62BCA7F1D00581B58 /* PostTabViewController.swift */,
+				8E17A2F62BCA7F1D00581B58 /* FindTabViewController.swift */,
 			);
 			path = PostTab;
 			sourceTree = "<group>";
@@ -422,21 +414,11 @@
 		8E17A2FB2BCA808700581B58 /* Finding */ = {
 			isa = PBXGroup;
 			children = (
-				8E17A2F02BCA7D9F00581B58 /* FindingView.swift */,
-				8E17A2F22BCA7DA800581B58 /* FindingViewController.swift */,
-				8E17A2F42BCA7DAE00581B58 /* FindingViewModel.swift */,
+				8E17A2F02BCA7D9F00581B58 /* FindView.swift */,
+				8E17A2F22BCA7DA800581B58 /* FindViewController.swift */,
+				8E17A2F42BCA7DAE00581B58 /* FindViewModel.swift */,
 			);
 			path = Finding;
-			sourceTree = "<group>";
-		};
-		8E17A2FC2BCA809200581B58 /* Found */ = {
-			isa = PBXGroup;
-			children = (
-				8E17A2FD2BCA80AF00581B58 /* FoundView.swift */,
-				8E17A2FF2BCA80B900581B58 /* FoundViewController.swift */,
-				8E17A3012BCA80BF00581B58 /* FoundViewModel.swift */,
-			);
-			path = Found;
 			sourceTree = "<group>";
 		};
 		8E17A3032BCA8F2A00581B58 /* Search */ = {
@@ -575,7 +557,6 @@
 				8ED8B7CA2BDCF7E0009B4387 /* Home */,
 				8E17A2EF2BCA7D8D00581B58 /* Post */,
 				8ED8B7EB2BDE30A0009B4387 /* Feed */,
-				8ED8B7842BD94963009B4387 /* PostsView */,
 				8ED8B7EC2BDE30C2009B4387 /* Write */,
 				8E17A3032BCA8F2A00581B58 /* Search */,
 				8ED8B7E42BDE21F9009B4387 /* Profile */,
@@ -819,10 +800,10 @@
 		8ED3AE1A2BD14B670040DA58 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				8ED3AE1B2BD14B890040DA58 /* DetailPostView.swift */,
-				8ED3AE1D2BD14B920040DA58 /* DetailPostViewController.swift */,
-				8ED3AE1F2BD14B9B0040DA58 /* DetailPostViewModel.swift */,
-				8ED3AE232BD171C10040DA58 /* DetailPostCollectionViewCell.swift */,
+				8ED3AE1B2BD14B890040DA58 /* DetailFindView.swift */,
+				8ED3AE1D2BD14B920040DA58 /* DetailFindViewController.swift */,
+				8ED3AE1F2BD14B9B0040DA58 /* DetailFindViewModel.swift */,
+				8ED3AE232BD171C10040DA58 /* DetailFindCollectionViewCell.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -904,7 +885,6 @@
 			children = (
 				8ED8B7CB2BDCF7EF009B4387 /* HomeView.swift */,
 				8ED8B7CD2BDCF7F6009B4387 /* HomeViewController.swift */,
-				8ED8B7CF2BDCF803009B4387 /* HomeViewModel.swift */,
 				8ED8B7D42BDCFC8E009B4387 /* RecentPostsFromFollowingCollectionViewCell.swift */,
 			);
 			path = Home;
@@ -1080,8 +1060,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E17A32C2BCAD17600581B58 /* PostViewController.swift in Sources */,
-				8E17A2F52BCA7DAE00581B58 /* FindingViewModel.swift in Sources */,
+				8E17A32C2BCAD17600581B58 /* FindContainerViewController.swift in Sources */,
+				8E17A2F52BCA7DAE00581B58 /* FindViewModel.swift in Sources */,
 				8E1BAE1D2BC968E500A65075 /* SignInViewController.swift in Sources */,
 				8E1BAE3A2BC968EC00A65075 /* TokenIntercepter.swift in Sources */,
 				8E17A3362BCAF33200581B58 /* PostRouter.swift in Sources */,
@@ -1089,7 +1069,7 @@
 				8ED8B8A52BDFADAB009B4387 /* ProfilePostsView.swift in Sources */,
 				8E17A3302BCAF03300581B58 /* BaseCollectionView.swift in Sources */,
 				8ED8B7F72BDE81AB009B4387 /* DetailFeedView.swift in Sources */,
-				8E17A2F32BCA7DA800581B58 /* FindingViewController.swift in Sources */,
+				8E17A2F32BCA7DA800581B58 /* FindViewController.swift in Sources */,
 				8ED8B8C32BE0F096009B4387 /* ProfileView.swift in Sources */,
 				8ED8B8DD2BE16C63009B4387 /* CheckedFollowingList+.swift in Sources */,
 				8ED8B7E62BDE2235009B4387 /* WriteFeedView.swift in Sources */,
@@ -1100,7 +1080,7 @@
 				8E1BAE3E2BC968F100A65075 /* UserDefaultsManager.swift in Sources */,
 				8ED8B8022BDE908C009B4387 /* CommentViewModel.swift in Sources */,
 				8E1BAE242BC968E500A65075 /* SignUpViewModel.swift in Sources */,
-				8E17A2F12BCA7D9F00581B58 /* FindingView.swift in Sources */,
+				8E17A2F12BCA7D9F00581B58 /* FindView.swift in Sources */,
 				8ED8B8002BDE8EB5009B4387 /* CommentView.swift in Sources */,
 				8ED8B7DD2BDD52B3009B4387 /* Notification+.swift in Sources */,
 				8E1BAE4D2BC969DD00A65075 /* UITextField+.swift in Sources */,
@@ -1114,12 +1094,11 @@
 				8ED8B7DF2BDD5BC0009B4387 /* InitailViewController.swift in Sources */,
 				8E1BAE802BC97D9600A65075 /* lightGrayBackgroundImageView.swift in Sources */,
 				8ED8B8DB2BE137C3009B4387 /* BaseStackView.swift in Sources */,
-				8E17A2F72BCA7F1D00581B58 /* PostTabViewController.swift in Sources */,
+				8E17A2F72BCA7F1D00581B58 /* FindTabViewController.swift in Sources */,
 				8E1BAE232BC968E500A65075 /* SignUpViewController.swift in Sources */,
 				8E9A3FE62BCEBD98005E4F45 /* WritePostViewController.swift in Sources */,
 				8E9A3FDB2BCD9530005E4F45 /* SettingTableViewCell.swift in Sources */,
 				8EA59D152BD28284009938E0 /* String+.swift in Sources */,
-				8E17A3022BCA80BF00581B58 /* FoundViewModel.swift in Sources */,
 				8ED8B78C2BDACEEB009B4387 /* EditNicknameViewController.swift in Sources */,
 				8E17A3122BCA8FCF00581B58 /* MyProfileViewModel.swift in Sources */,
 				8E17A31E2BCAC62B00581B58 /* MyStoragePostViewController.swift in Sources */,
@@ -1141,7 +1120,6 @@
 				8ED8B7BC2BDC23D3009B4387 /* OtherProfileViewController.swift in Sources */,
 				8ED8B8B12BDFFA92009B4387 /* FollowResponse.swift in Sources */,
 				8ED8B78A2BDA6C24009B4387 /* EditPhoneViewController.swift in Sources */,
-				8E17A2FE2BCA80AF00581B58 /* FoundView.swift in Sources */,
 				8E17A3102BCA8FC800581B58 /* MyProfileViewController.swift in Sources */,
 				8E1BADE62BC965CC00A65075 /* SceneDelegate.swift in Sources */,
 				8ED8B7432BD556BC009B4387 /* TransitionStyle.swift in Sources */,
@@ -1163,15 +1141,14 @@
 				8E1BAE362BC968EC00A65075 /* NetworkManager.swift in Sources */,
 				8ED8B7962BDB9DF4009B4387 /* NumberPadTextField.swift in Sources */,
 				8E17A2E22BCA3D7800581B58 /* PhoneView.swift in Sources */,
-				8E17A32A2BCAD16E00581B58 /* PostView.swift in Sources */,
+				8E17A32A2BCAD16E00581B58 /* FindContainerView.swift in Sources */,
 				8ED8B8A72BDFB04D009B4387 /* PointBackgroundLabel.swift in Sources */,
-				8ED8B7D02BDCF803009B4387 /* HomeViewModel.swift in Sources */,
 				8ED8B8A92BDFB507009B4387 /* CheckedPostsKind+.swift in Sources */,
 				8E1BAE712BC97D5D00A65075 /* BaseCollectionViewCell.swift in Sources */,
 				8ED8B8042BDEB99C009B4387 /* Array<String>+.swift in Sources */,
 				8E17A2EC2BCA59C800581B58 /* BirthdayViewController.swift in Sources */,
 				8E17A2E62BCA3D8600581B58 /* PhoneViewModel.swift in Sources */,
-				8ED3AE1E2BD14B920040DA58 /* DetailPostViewController.swift in Sources */,
+				8ED3AE1E2BD14B920040DA58 /* DetailFindViewController.swift in Sources */,
 				8EA59CEB2BD1A562009938E0 /* CommentResponse.swift in Sources */,
 				8E1BAE1E2BC968E500A65075 /* SignInViewModel.swift in Sources */,
 				8E1BAE702BC97D5D00A65075 /* BaseViewController.swift in Sources */,
@@ -1201,7 +1178,6 @@
 				8ED8B8D92BE13790009B4387 /* StackProfileView.swift in Sources */,
 				8ED8B7862BDA1F2C009B4387 /* PostsViewModel.swift in Sources */,
 				8ED8B7AA2BDC088D009B4387 /* FollowContainerViewController.swift in Sources */,
-				8E17A3002BCA80B900581B58 /* FoundViewController.swift in Sources */,
 				8E9A3FF82BCEE2CE005E4F45 /* UserResponse.swift in Sources */,
 				8ED8B7CE2BDCF7F6009B4387 /* HomeViewController.swift in Sources */,
 				8E1BAE522BC96AC500A65075 /* TabBarController.swift in Sources */,
@@ -1214,8 +1190,8 @@
 				8ED8B76C2BD80FFD009B4387 /* EventManager.swift in Sources */,
 				8EA59D0D2BD25B3C009938E0 /* ImageButton.swift in Sources */,
 				8ED8B7FD2BDE8E87009B4387 /* CommentViewController.swift in Sources */,
-				8ED3AE202BD14B9B0040DA58 /* DetailPostViewModel.swift in Sources */,
-				8ED3AE242BD171C10040DA58 /* DetailPostCollectionViewCell.swift in Sources */,
+				8ED3AE202BD14B9B0040DA58 /* DetailFindViewModel.swift in Sources */,
+				8ED3AE242BD171C10040DA58 /* DetailFindCollectionViewCell.swift in Sources */,
 				8ED8B7D72BDD26F5009B4387 /* HorizontalPostsView.swift in Sources */,
 				8ED8B7F92BDE81B5009B4387 /* DetailFeedViewController.swift in Sources */,
 				8ED8B7BE2BDCA161009B4387 /* OtherProfileViewModel.swift in Sources */,
@@ -1229,7 +1205,7 @@
 				8E9A3FD22BCD8455005E4F45 /* UICollectionViewLayout+.swift in Sources */,
 				8E17A3322BCAF03D00581B58 /* BaseTableView.swift in Sources */,
 				8ED8B7A22BDC07CE009B4387 /* FollowTabViewController.swift in Sources */,
-				8ED3AE1C2BD14B890040DA58 /* DetailPostView.swift in Sources */,
+				8ED3AE1C2BD14B890040DA58 /* DetailFindView.swift in Sources */,
 				8E1BAE9E2BC99E7C00A65075 /* PointLabel.swift in Sources */,
 				8E17A2E42BCA3D7F00581B58 /* PhoneViewController.swift in Sources */,
 				8E9A3FCC2BCD7255005E4F45 /* UIImageView+.swift in Sources */,

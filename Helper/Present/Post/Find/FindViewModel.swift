@@ -1,36 +1,29 @@
 //
-//  PostsViewModel.swift
+//  PostViewModel.swift
 //  Helper
 //
-//  Created by youngjoo on 4/25/24.
+//  Created by youngjoo on 4/13/24.
 //
 
 import Foundation
 import RxSwift
 import RxCocoa
 
-enum PostsViewModelMode {
-    case findingAll
-    case foundAll
-    case myPosts
-    case myStorage
-    case feed
-    case otherUserPosts(userID: String)
-}
-
-final class PostsViewModel: ViewModelType {
+final class FindViewModel: ViewModelType {
     
     var disposeBag: RxSwift.DisposeBag = .init()
-    var mode: PostsViewModelMode
+    private var findViewMode: FindViewMode
     
-    init(mode: PostsViewModelMode = PostsViewModelMode.findingAll) {
-        self.mode = mode
+    init(_ findViewMode: FindViewMode) {
+        self.findViewMode = findViewMode
     }
     
     struct Input {
         let fetchPostsTrigger: Observable<Void>
         let reachedBottomTrigger: ControlEvent<Void>
         let refreshControlTrigger: ControlEvent<Void>
+        let region: Observable<String>
+        let category: ControlProperty<Int>
     }
     
     struct Output {
@@ -50,9 +43,34 @@ final class PostsViewModel: ViewModelType {
         let isRefreshControlLoading = PublishRelay<Bool>()
         let isBottomLoading = PublishRelay<Bool>()
         
-        // 1. fetch 이벤트는 바로 보여야함
-        // 2. reachedBottom/refreshControl 은 네트워크 호출과 동시에 최소 1초 로딩 -> 이거 어떻게 하는거지?
-        // 3. fetch/refresh 는 next 값이 비어있게
+        let category = input.category
+            .map { value in
+                switch value {
+                case 0:
+                    return HelperString.categoryPerson
+                case 1:
+                    return HelperString.categoryAnimal
+                case 2:
+                    return HelperString.categoryThing
+                default:
+                    return HelperString.categoryPerson
+                }
+            }
+        
+
+        let requestModel = Observable.combineLatest(next, input.region, category)
+            .withUnretained(self)
+            .map { owner, data in
+                let (next, region, category) = data
+                let productID = "\(region)_\(category)"
+                
+                switch owner.findViewMode {
+                case .finding:
+                    return PostRequest.FetchHashTag(next: next, productID: productID, hashTag: HelperString.hashTagFinding)
+                case .found:
+                    return PostRequest.FetchHashTag(next: next, productID: productID, hashTag: HelperString.hashTagFound)
+                }
+            }
         
         let fetchPosts = input.fetchPostsTrigger
             .do(onNext: { _ in next.onNext("") })
@@ -77,24 +95,8 @@ final class PostsViewModel: ViewModelType {
         let loadDataTrigger = Observable.merge(fetchPosts, reachedBottom, refreshControl)
         
         loadDataTrigger
-            .withLatestFrom(next)
-            .flatMap { [weak self] next -> Observable<APIResult<PostResponse.Posts>> in
-                guard let self else { return .empty() }
-                switch self.mode {
-                case .findingAll:
-                    return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchHashTag(query: PostRequest.FetchHashTag(next: next, productID: "", hashTag: HelperString.hashTagFinding)))).asObservable()
-                case .foundAll:
-                    return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchHashTag(query: PostRequest.FetchHashTag(next: next, productID: "", hashTag: HelperString.hashTagFound)))).asObservable()
-                case .myPosts:
-                    return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.otherUserFetchPosts(next: next, userID: myID))).asObservable()
-                case .myStorage:
-                    return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchStorage(next: next))).asObservable()
-                case .feed:
-                    return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchFeed(query: PostRequest.FetchFeed(next: next, productID: HelperString.productID)))).asObservable()
-                case .otherUserPosts(let userID):
-                    return NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.otherUserFetchPosts(next: next, userID: userID))).asObservable()
-                }
-            }
+            .withLatestFrom(requestModel)
+            .flatMap { NetworkManager.shared.callAPI(type: PostResponse.Posts.self, router: Router.post(.fetchHashTag(query: $0))) }
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let data):

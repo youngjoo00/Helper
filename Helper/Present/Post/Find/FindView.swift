@@ -1,5 +1,5 @@
 //
-//  FoundView.swift
+//  PostView.swift
 //  Helper
 //
 //  Created by youngjoo on 4/13/24.
@@ -10,11 +10,9 @@ import Then
 import RxSwift
 import RxCocoa
 
-final class FoundView: BaseView {
+final class FindView: BaseView {
 
     lazy var regionSubject = BehaviorSubject(value: regionButton.configuration?.title ?? "")
-    
-    let refreshControl = UIRefreshControl()
     
     let categorySegmentControl = UISegmentedControl().then {
         $0.insertSegment(withTitle: HelperString.categoryPerson, at: 0, animated: false)
@@ -30,13 +28,13 @@ final class FoundView: BaseView {
         $0.showsMenuAsPrimaryAction = true
     }
     
-    let postsView = VerticalPostsView()
+    let findView = VerticalPostsView(collectionViewCellType: PostCollectionViewCell.self)
     
     override func configureHierarchy() {
         [
             categorySegmentControl,
             regionButton,
-            postsView
+            findView
         ].forEach { addSubview($0) }
     }
     
@@ -54,7 +52,7 @@ final class FoundView: BaseView {
             make.height.equalTo(44)
         }
         
-        postsView.snp.makeConstraints { make in
+        findView.snp.makeConstraints { make in
             make.top.equalTo(categorySegmentControl.snp.bottom).offset(10)
             make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
         }
@@ -65,7 +63,7 @@ final class FoundView: BaseView {
     }
 }
 
-extension FoundView {
+extension FindView {
     private func configureMenu(_ button: UIButton, menuTitle: String, actions: [String]) {
         let actions = actions.map { title in
             UIAction(title: title) { [weak self] _ in

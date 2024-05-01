@@ -9,10 +9,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class DetailPostViewController: BaseViewController {
+final class DetailFindViewController: BaseViewController {
 
-    private let mainView = DetailPostView()
-    private let viewModel = DetailPostViewModel()
+    private let mainView = DetailFindView()
+    private let viewModel = DetailFindViewModel()
     private let postIDSubject = PublishSubject<String>()
     private let postDeleteTap = PublishSubject<Void>()
     private let postEditMenuTap = PublishSubject<Void>()
@@ -43,7 +43,7 @@ final class DetailPostViewController: BaseViewController {
         
         let commentDeleteTap = PublishSubject<String>()
         
-        let input = DetailPostViewModel.Input(
+        let input = DetailFindViewModel.Input(
             postID: postIDSubject,
             comment: mainView.commentWriteSubject,
             commentButtonTap: mainView.commentWriteButton.rx.tap,
@@ -89,8 +89,8 @@ final class DetailPostViewController: BaseViewController {
         
         // 이미지 콜렉션뷰
         output.files
-            .drive(mainView.imageCollectionView.rx.items(cellIdentifier: DetailPostCollectionViewCell.id,
-                                                         cellType: DetailPostCollectionViewCell.self)) { row, item, cell in
+            .drive(mainView.imageCollectionView.rx.items(cellIdentifier: DetailFindCollectionViewCell.id,
+                                                         cellType: DetailFindCollectionViewCell.self)) { row, item, cell in
                 cell.updateView(item)
             }
             .disposed(by: disposeBag)
@@ -242,7 +242,7 @@ final class DetailPostViewController: BaseViewController {
 }
 
 // MARK: - Custom Func
-extension DetailPostViewController {
+extension DetailFindViewController {
     
     private func configureNavigationBar() {
         

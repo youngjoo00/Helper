@@ -53,7 +53,7 @@ final class CommentViewController: BaseViewController {
             commentButtonTap: mainView.commentWriteButton.rx.tap,
             commentDeleteTap: commentDeleteTap
         )
-
+        
         let output = viewModel.transform(input: input)
         
         mainView.commentWriteTextField.rx.text.orEmpty

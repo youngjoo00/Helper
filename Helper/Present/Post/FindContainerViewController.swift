@@ -9,10 +9,10 @@ import UIKit
 import Then
 import SnapKit
 
-final class PostViewController: BaseViewController {
+final class FindContainerViewController: BaseViewController {
 
-    private let mainView = PostView()
-    private var tabVC = PostTabViewController()
+    private let mainView = FindContainerView()
+    private var tabVC = FindTabViewController()
 
     override func loadView() {
         view = mainView
@@ -31,7 +31,7 @@ final class PostViewController: BaseViewController {
 }
 
 // MARK: - Custom Func
-extension PostViewController {
+extension FindContainerViewController {
     
     private func configureTabViewController() {
 

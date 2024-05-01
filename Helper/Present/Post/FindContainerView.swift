@@ -9,7 +9,7 @@ import UIKit
 import Tabman
 import Then
 
-final class PostView: BaseView {
+final class FindContainerView: BaseView {
     
     let navTitle = PointBoldLabel("게시판", fontSize: 20)
     let containerView = UIView()
