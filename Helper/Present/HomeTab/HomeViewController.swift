@@ -9,6 +9,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+protocol BindPostWrite { }
+
 final class HomeViewController: BaseViewController {
 
     private let mainView = HomeView()

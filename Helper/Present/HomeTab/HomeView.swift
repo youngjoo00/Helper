@@ -61,7 +61,7 @@ final class HomeView: BaseView {
         }
         
         recentPostsFollowingView.snp.makeConstraints { make in
-            make.top.equalTo(recentPostsFollowingTitleLabel.snp.bottom).offset(5)
+            make.top.equalTo(recentPostsFollowingTitleLabel.snp.bottom).offset(15)
             make.horizontalEdges.equalToSuperview()
             make.height.equalTo(UIScreen.main.bounds.width / 3 * 1.3)
         }

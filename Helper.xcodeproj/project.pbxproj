@@ -174,6 +174,7 @@
 		8ED8B8DF2BE205C3009B4387 /* FollowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8DE2BE205C3009B4387 /* FollowButton.swift */; };
 		8ED8B8E22BE29F16009B4387 /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = 8ED8B8E12BE29F16009B4387 /* Hero */; };
 		8ED8B8E42BE2B767009B4387 /* CompleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8E32BE2B767009B4387 /* CompleteButton.swift */; };
+		8ED8B8E62BE34E0F009B4387 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8E52BE34E0F009B4387 /* SeparatorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -335,6 +336,7 @@
 		8ED8B8DC2BE16C63009B4387 /* FollowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowManager.swift; sourceTree = "<group>"; };
 		8ED8B8DE2BE205C3009B4387 /* FollowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowButton.swift; sourceTree = "<group>"; };
 		8ED8B8E32BE2B767009B4387 /* CompleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteButton.swift; sourceTree = "<group>"; };
+		8ED8B8E52BE34E0F009B4387 /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -473,7 +475,6 @@
 		8E1BADE22BC965CC00A65075 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				8E1BAE512BC96AC500A65075 /* Tabbar */,
 				8E1BAE182BC968E500A65075 /* Present */,
 				8E1BAE322BC968EB00A65075 /* Network */,
 				8E1BAE432BC968F900A65075 /* Extension */,
@@ -535,6 +536,7 @@
 		8E1BAE182BC968E500A65075 /* Present */ = {
 			isa = PBXGroup;
 			children = (
+				8E1BAE512BC96AC500A65075 /* Tabbar */,
 				8ED8B7E02BDD5BCA009B4387 /* Initail */,
 				8E1BAE842BC97F0400A65075 /* User */,
 				8ED8B7842BD94963009B4387 /* Posts */,
@@ -574,6 +576,7 @@
 		8E1BAE412BC968F900A65075 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				8ED8B8E72BE34E12009B4387 /* UIView */,
 				8EA59D0E2BD25B43009938E0 /* Button */,
 				8EA59D0F2BD25B4F009938E0 /* Label */,
 				8EA59D102BD25B5B009938E0 /* TextField */,
@@ -947,6 +950,14 @@
 			path = Comment;
 			sourceTree = "<group>";
 		};
+		8ED8B8E72BE34E12009B4387 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				8ED8B8E52BE34E0F009B4387 /* SeparatorView.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1108,6 +1119,7 @@
 				8EA59CED2BD1A64D009938E0 /* CreatorResponse.swift in Sources */,
 				8E9A3FD92BCD94A9005E4F45 /* SettingViewModel.swift in Sources */,
 				8ED8B7F22BDE30FE009B4387 /* FeedViewModel.swift in Sources */,
+				8ED8B8E62BE34E0F009B4387 /* SeparatorView.swift in Sources */,
 				8ED8B7AD2BDC08CD009B4387 /* FollowContainerView.swift in Sources */,
 				8ED8B76F2BD81F2D009B4387 /* EditProfileView.swift in Sources */,
 				8ED8B7752BD8F9CD009B4387 /* EditProfileTableViewCell.swift in Sources */,

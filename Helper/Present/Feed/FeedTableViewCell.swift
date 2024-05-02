@@ -121,7 +121,7 @@ final class FeedTableViewCell: BaseTableViewCell {
         
         storageButton.snp.makeConstraints { make in
             make.top.equalTo(scrollView.snp.bottom).offset(5)
-            make.trailing.equalTo(safeAreaLayoutGuide)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-5)
             make.size.equalTo(44)
         }
         

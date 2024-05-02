@@ -47,6 +47,8 @@ final class DetailFindView: BaseView {
     
     let titleLabel = PointLabel(fontSize: 20)
     
+    let infoTopSeparatorView = SeparatorView()
+    
     let featureLabel = PointLabel("특징", fontSize: 17)
     let featureValueLabel = PointLabel(fontSize: 17).then {
         $0.numberOfLines = 0
@@ -63,10 +65,14 @@ final class DetailFindView: BaseView {
     let phoneLabel = PointLabel("연락처", fontSize: 17)
     let phoneValueLabel = PointLabel("연락처", fontSize: 17)
     
-    let contentLabel = PointLabel("내용", fontSize: 17)
+    let infoBottomSeparatorView = SeparatorView()
+    
+    let contentLabel = PointLabel("상세내용", fontSize: 17)
     let contentValueLabel = PointLabel(fontSize: 17).then {
         $0.numberOfLines = 0
     }
+    
+    let contentBottomSeparatorView = SeparatorView()
 
     let commentsLabel = PointLabel("0개의 댓글", fontSize: 17)
     let commentsTableView = BaseTableView().then {
@@ -74,6 +80,7 @@ final class DetailFindView: BaseView {
         $0.estimatedRowHeight = 44
         $0.rowHeight = UITableView.automaticDimension
         $0.isScrollEnabled = false
+        $0.separatorStyle = .none
     }
     
     let commentView = UIView().then {
@@ -102,6 +109,7 @@ final class DetailFindView: BaseView {
             imageCollectionView,
             pageControl,
             titleLabel,
+            infoTopSeparatorView,
             featureLabel,
             featureValueLabel,
             regionLocateLabel,
@@ -110,8 +118,10 @@ final class DetailFindView: BaseView {
             dateValueLabel,
             phoneLabel,
             phoneValueLabel,
+            infoBottomSeparatorView,
             contentLabel,
             contentValueLabel,
+            contentBottomSeparatorView,
             commentsLabel,
             commentsTableView,
             scrollBottomSpaceView,
@@ -195,6 +205,12 @@ final class DetailFindView: BaseView {
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
         }
         
+        infoTopSeparatorView.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            make.horizontalEdges.equalToSuperview().inset(16)
+            make.height.equalTo(1)
+        }
+        
         featureLabel.snp.makeConstraints { make in
             make.top.equalTo(featureValueLabel)
             make.leading.equalTo(safeAreaLayoutGuide).offset(16)
@@ -202,7 +218,7 @@ final class DetailFindView: BaseView {
         }
         
         featureValueLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            make.top.equalTo(infoTopSeparatorView.snp.bottom).offset(10)
             make.leading.equalTo(featureLabel.snp.trailing)
             make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
         }
@@ -243,10 +259,15 @@ final class DetailFindView: BaseView {
             make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
         }
         
-        contentLabel.snp.makeConstraints { make in
+        infoBottomSeparatorView.snp.makeConstraints { make in
             make.top.equalTo(phoneValueLabel.snp.bottom).offset(10)
+            make.height.equalTo(1)
+            make.horizontalEdges.equalToSuperview().inset(16)
+        }
+        
+        contentLabel.snp.makeConstraints { make in
+            make.top.equalTo(infoBottomSeparatorView.snp.bottom).offset(10)
             make.leading.equalTo(safeAreaLayoutGuide).offset(16)
-            make.width.equalTo(featureLabel)
         }
         
         contentValueLabel.snp.makeConstraints { make in
@@ -254,8 +275,14 @@ final class DetailFindView: BaseView {
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
         }
         
+        contentBottomSeparatorView.snp.makeConstraints { make in
+            make.top.equalTo(contentValueLabel.snp.bottom).offset(10)
+            make.horizontalEdges.equalToSuperview().inset(16)
+            make.height.equalTo(1)
+        }
+        
         commentsLabel.snp.makeConstraints { make in
-            make.top.equalTo(contentValueLabel.snp.bottom).offset(15)
+            make.top.equalTo(contentBottomSeparatorView.snp.bottom).offset(15)
             make.leading.equalTo(safeAreaLayoutGuide).offset(16)
         }
         

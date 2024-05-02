@@ -20,6 +20,7 @@ final class HorizontalPostsView: BaseView {
     
     lazy var collectionView = BaseCollectionView(frame: .zero, collectionViewLayout: .horizontalCollectionViewLayout()).then {
         $0.register(collectionViewCellType.self, forCellWithReuseIdentifier: collectionViewCellType.id)
+        $0.showsHorizontalScrollIndicator = false
     }
     
     init(collectionViewCellType: BaseCollectionViewCell.Type) {

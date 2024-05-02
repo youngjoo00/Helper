@@ -53,6 +53,7 @@ final class DetailFindViewModel: ViewModelType {
         let profileTapGesture: Driver<String>
     }
     
+    var testId = ""
     func transform(input: Input) -> Output {
         
         let postInfo = PublishSubject<PostResponse.FetchPost>()
