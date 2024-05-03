@@ -82,6 +82,7 @@
 		8E1BAE9E2BC99E7C00A65075 /* PointLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE9D2BC99E7C00A65075 /* PointLabel.swift */; };
 		8E1BAEA02BC99F3200A65075 /* PointBoldLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE9F2BC99F3200A65075 /* PointBoldLabel.swift */; };
 		8E75974C2BE5385600CE1F55 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75974B2BE5385600CE1F55 /* HomeViewModel.swift */; };
+		8E75974E2BE54C8B00CE1F55 /* BaseViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75974D2BE54C8B00CE1F55 /* BaseViewController+.swift */; };
 		8E83BC482BCBC134007E1637 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E83BC472BCBC134007E1637 /* Router.swift */; };
 		8E887CDB2BD417D600E95008 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E887CDA2BD417D600E95008 /* MenuButton.swift */; };
 		8E9A3FCC2BCD7255005E4F45 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FCB2BCD7255005E4F45 /* UIImageView+.swift */; };
@@ -249,6 +250,7 @@
 		8E1BAE9D2BC99E7C00A65075 /* PointLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointLabel.swift; sourceTree = "<group>"; };
 		8E1BAE9F2BC99F3200A65075 /* PointBoldLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointBoldLabel.swift; sourceTree = "<group>"; };
 		8E75974B2BE5385600CE1F55 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		8E75974D2BE54C8B00CE1F55 /* BaseViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseViewController+.swift"; sourceTree = "<group>"; };
 		8E83BC472BCBC134007E1637 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8E887CDA2BD417D600E95008 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		8E9A3FCB2BCD7255005E4F45 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
@@ -486,8 +488,6 @@
 				8E1BAE432BC968F900A65075 /* Extension */,
 				8E1BAE3D2BC968F100A65075 /* Singleton */,
 				8E1BADFB2BC968C100A65075 /* Protocol */,
-				8E1BAE492BC9690900A65075 /* Base */,
-				8E1BAE412BC968F900A65075 /* CustomView */,
 				8E1BAE8C2BC9800B00A65075 /* Resource */,
 				8E1BADE32BC965CC00A65075 /* AppDelegate.swift */,
 				8E1BADE52BC965CC00A65075 /* SceneDelegate.swift */,
@@ -551,6 +551,8 @@
 				8ED8B7EB2BDE30A0009B4387 /* Feed */,
 				8ED8B7EC2BDE30C2009B4387 /* Write */,
 				8ED8B7E42BDE21F9009B4387 /* Profile */,
+				8E1BAE492BC9690900A65075 /* Base */,
+				8E1BAE412BC968F900A65075 /* CustomView */,
 			);
 			path = Present;
 			sourceTree = "<group>";
@@ -599,6 +601,7 @@
 			children = (
 				8E1BAE4C2BC969DD00A65075 /* UITextField+.swift */,
 				8E1BAE422BC968F900A65075 /* UIViewController+.swift */,
+				8E75974D2BE54C8B00CE1F55 /* BaseViewController+.swift */,
 				8E17A2DD2BCA31D400581B58 /* ViewModelType+.swift */,
 				8E9A3FCB2BCD7255005E4F45 /* UIImageView+.swift */,
 				8E9A3FD12BCD8455005E4F45 /* UICollectionViewLayout+.swift */,
@@ -1181,6 +1184,7 @@
 				8ED8B8D92BE13790009B4387 /* StackProfileView.swift in Sources */,
 				8ED8B7862BDA1F2C009B4387 /* PostsViewModel.swift in Sources */,
 				8ED8B7AA2BDC088D009B4387 /* FollowContainerViewController.swift in Sources */,
+				8E75974E2BE54C8B00CE1F55 /* BaseViewController+.swift in Sources */,
 				8E9A3FF82BCEE2CE005E4F45 /* UserResponse.swift in Sources */,
 				8ED8B7CE2BDCF7F6009B4387 /* HomeViewController.swift in Sources */,
 				8E1BAE522BC96AC500A65075 /* TabBarController.swift in Sources */,
