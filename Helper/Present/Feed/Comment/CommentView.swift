@@ -23,6 +23,7 @@ final class CommentView: BaseView {
         $0.register(CommentsTableViewCell.self, forCellReuseIdentifier: CommentsTableViewCell.id)
         $0.estimatedRowHeight = 44
         $0.rowHeight = UITableView.automaticDimension
+        $0.separatorStyle = .none
     }
     
     let commentView = UIView().then {

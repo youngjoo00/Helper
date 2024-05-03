@@ -35,7 +35,7 @@ extension MenuButton {
         configuration.baseBackgroundColor = Color.white
         configuration.title = title
         configuration.image = UIImage(systemName: "chevron.down")
-        configuration.imagePadding = 10
+        configuration.imagePadding = 5
         configuration.imagePlacement = .trailing
         clipsToBounds = true
         layer.borderWidth = 1

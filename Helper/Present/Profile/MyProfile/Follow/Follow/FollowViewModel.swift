@@ -26,10 +26,11 @@ final class FollowViewModel: ViewModelType {
     struct Input {
         let fetchProfileTrigger: Observable<Void>
         let followTap: Observable<DisplayFollow>
+        let searchBar: Observable<String>
     }
     
     struct Output {
-        let followers: Driver<[DisplayFollow]>
+        let followerList: Driver<[DisplayFollow]>
         let errorAlertMessage: Driver<String>
         let isRefreshLoading: Driver<Bool>
     }
@@ -40,6 +41,7 @@ final class FollowViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         
         let followers = BehaviorRelay<[DisplayFollow]>(value: [])
+        
         let myProfileInfo = EventManager.shared.myProfileInfo.compactMap { $0 }
         let responseProfileData = PublishSubject<UserResponse.OtherProfile>()
         let errorAlertMessage = PublishRelay<String>()
@@ -62,6 +64,7 @@ final class FollowViewModel: ViewModelType {
         
         // 팔로잉 여부 확인 후 데이터 모델 방출
         Observable.zip(myProfileInfo, responseProfileData)
+            .debug("뭘까요??")
             .subscribe(with: self) { owner, data in
                 let (myProfileInfo, responseProfileData) = data
                 
@@ -110,9 +113,19 @@ final class FollowViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
+        // followers 배열에 있는 닉네임중에 서치바에 있는 텍스트와 겹치는게 있는지 확인
+        let followerList = Observable.combineLatest(input.searchBar, followers) { search, followers in
+                if search.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    return followers
+                } else {
+                    return followers.filter { $0.follow.nick.contains(search) }
+                }
+            }
+        
+        
         return Output(
-            followers: followers.asDriver(onErrorJustReturn: []), 
-            errorAlertMessage: errorAlertMessage.asDriver(onErrorJustReturn: "알 수 없는 오류입니다."), 
+            followerList: followerList.asDriver(onErrorJustReturn: []),
+            errorAlertMessage: errorAlertMessage.asDriver(onErrorJustReturn: "알 수 없는 오류입니다."),
             isRefreshLoading: isRefreshLoading.asDriver(onErrorJustReturn: false)
         )
     }

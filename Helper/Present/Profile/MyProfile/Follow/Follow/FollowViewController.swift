@@ -44,14 +44,18 @@ final class FollowViewController: BaseViewController {
         
         let input = FollowViewModel.Input(
             fetchProfileTrigger: fetchProfileTrigger,
-            followTap: followTap
+            followTap: followTap,
+            searchBar: mainView.searchBar.rx.text.orEmpty.asObservable()
         )
         
         // followTableView refresh
         mainView.refreshControl.rx.controlEvent(.valueChanged)
             .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .map { _ in () }
-            .bind(to: fetchProfileTrigger)
+            .bind(with: self) { owner, _ in
+                owner.fetchProfileTrigger.onNext(())
+                EventManager.shared.myProfileInfoTrigger.onNext(())
+            }
             .disposed(by: disposeBag)
         
         mainView.followerTableView.rx.modelSelected(DisplayFollow.self)
@@ -62,7 +66,7 @@ final class FollowViewController: BaseViewController {
         
         let output = viewModel.transform(input: input)
         
-        output.followers
+        output.followerList
             .drive(mainView.followerTableView.rx.items(cellIdentifier: FollowTableViewCell.id,
                                                        cellType: FollowTableViewCell.self)) { row, item, cell in
                 cell.updateView(item)
