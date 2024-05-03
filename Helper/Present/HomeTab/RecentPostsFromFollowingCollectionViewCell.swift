@@ -12,16 +12,21 @@ import RxCocoa
 
 final class RecentPostsFromFollowingCollectionViewCell: BaseCollectionViewCell {
    
+    private let postsKindLabel = PointBackgroundLabel(fontSize: 15)
     private let profileImageView = ProfileImageView()
     private let nicknameLabel = PointBoldLabel("닉네임", fontSize: 15)
 
-    private let feedImageView = lightGrayBackgroundImageView()
+    private let feedImageView = lightGrayBackgroundImageView().then {
+        $0.clipsToBounds = true
+        $0.layer.cornerRadius = 8
+    }
     
     override func configureHierarchy() {
         [
             profileImageView,
             nicknameLabel,
             feedImageView,
+            postsKindLabel,
         ].forEach { contentView.addSubview($0) }
     }
     
@@ -37,6 +42,10 @@ final class RecentPostsFromFollowingCollectionViewCell: BaseCollectionViewCell {
             make.centerY.equalTo(profileImageView)
             make.leading.equalTo(profileImageView.snp.trailing).offset(5)
             make.trailing.equalToSuperview().offset(-1)
+        }
+        
+        postsKindLabel.snp.makeConstraints { make in
+            make.top.leading.equalTo(feedImageView)
         }
         
         feedImageView.snp.makeConstraints { make in
@@ -61,6 +70,12 @@ extension RecentPostsFromFollowingCollectionViewCell {
     func updateView(_ data: PostResponse.FetchPost) {
         profileImageView.loadImage(urlString: data.creator.profileImage)
         nicknameLabel.text = data.creator.nick
-        feedImageView.loadImage(urlString: data.files[0])
+        feedImageView.loadImage(urlString: data.files.first ?? "")
+        
+        if data.checkedPostsKind {
+            postsKindLabel.text = "Feed"
+        } else {
+            postsKindLabel.text = "Help"
+        }
     }
 }

@@ -20,17 +20,12 @@ final class WriteFeedView: BaseView {
     let titleLabel = PointLabel("내용*", fontSize: 18)
     let titleTextView = PointTextView()
     
-    let hashTagLabel = PointLabel("해시태그", fontSize: 18)
-    let hashTagTextField = PointTextField(placeholderText: "#해시태그를 작성해보세요")
-    
     let completeButton = PointButton(title: "등록하기")
     override func configureHierarchy() {
         [
             collectionView,
             titleLabel,
             titleTextView,
-            hashTagLabel,
-            hashTagTextField,
             completeButton
         ].forEach { addSubview($0) }
     }
@@ -52,17 +47,6 @@ final class WriteFeedView: BaseView {
             make.top.equalTo(titleLabel.snp.bottom).offset(10)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
             make.height.equalTo(150)
-        }
-        
-        hashTagLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleTextView.snp.bottom).offset(20)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
-        }
-        
-        hashTagTextField.snp.makeConstraints { make in
-            make.top.equalTo(hashTagLabel.snp.bottom).offset(10)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
-            make.height.equalTo(44)
         }
         
         completeButton.snp.makeConstraints { make in

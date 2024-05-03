@@ -157,7 +157,7 @@ extension WriteFindViewController {
         var dataList: [Data] = []
         
         for image in selectedImages {
-            if let data = image.pngData() {
+            if let data = image.jpegData(compressionQuality: 0.7) {
                 dataList.append(data)
             }
         }

@@ -83,7 +83,6 @@ final class WriteFeedViewController: BaseViewController {
         let input = WriteFeedViewModel.Input(
             dataList: dataListSubject,
             title: mainView.titleTextView.rx.text.orEmpty.asObservable(),
-            hashTag: mainView.hashTagTextField.rx.text.orEmpty.asObservable(),
             completeButtonTap: mainView.completeButton.rx.tap
         )
         
@@ -135,7 +134,7 @@ extension WriteFeedViewController {
         var dataList: [Data] = []
         
         for image in selectedImages {
-            if let data = image.pngData() {
+            if let data = image.jpegData(compressionQuality: 0.7) {
                 dataList.append(data)
             }
         }

@@ -46,7 +46,7 @@ final class ProfilePostsCollectionViewCell: BaseCollectionViewCell {
 extension ProfilePostsCollectionViewCell {
     
     func updateView(_ data: PostResponse.FetchPost) {
-        imageView.loadImage(urlString: data.files[0])
+        imageView.loadImage(urlString: data.files.first ?? "")
         
         if data.checkedPostsKind {
             postsKindLabel.text = "Feed"

@@ -25,7 +25,6 @@ final class WriteFeedViewModel: ViewModelType {
     struct Input {
         let dataList: PublishSubject<[Data]>
         let title: Observable<String>
-        let hashTag: Observable<String>
         let completeButtonTap: ControlEvent<Void>
     }
     
@@ -64,13 +63,13 @@ final class WriteFeedViewModel: ViewModelType {
         // title 이 비어있으면 안됨
         // Request Model
         let requestModel = Observable.combineLatest(input.title, files)
-            .withLatestFrom(input.hashTag) { firstValue, hashTag in
-                let (title, files) = firstValue
+            .map { value in
+                let (title, files) = value
                 
                 // 일단 작성요청 모델 통일
                 return PostRequest.Write(
                     title: title,
-                    hashTag: hashTag,
+                    hashTag: "",
                     feature: "",
                     locate: "",
                     date: "",

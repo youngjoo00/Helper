@@ -48,10 +48,6 @@ final class FeedTableViewCell: BaseTableViewCell {
         $0.numberOfLines = 0
     }
     
-    let hashTagLabel = PointLabel(fontSize: 15).then {
-        $0.numberOfLines = 0
-    }
-    
     let editButton = ImageButton(image: UIImage(systemName: "line.3.horizontal"))
     override func configureHierarchy() {
         [
@@ -62,7 +58,6 @@ final class FeedTableViewCell: BaseTableViewCell {
             commentButton,
             pageControl,
             titleLabel,
-            hashTagLabel,
             editButton,
         ].forEach { contentView.addSubview($0) }
 
@@ -130,15 +125,10 @@ final class FeedTableViewCell: BaseTableViewCell {
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
         }
         
-        hashTagLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(10)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
-        }
-        
         regDateLabel.snp.makeConstraints { make in
-            make.top.equalTo(hashTagLabel.snp.bottom).offset(10)
+            make.top.equalTo(titleLabel.snp.bottom).offset(10)
             make.leading.equalTo(safeAreaLayoutGuide).offset(16)
-            make.bottom.equalToSuperview().offset(-10)
+            make.bottom.equalToSuperview().offset(-20)
         }
         
     }
@@ -171,7 +161,6 @@ extension FeedTableViewCell {
         profileImageView.loadImage(urlString: data.creator.profileImage)
         
         titleLabel.text = data.title
-        hashTagLabel.text = data.hashTags.description
         pageControl.numberOfPages = data.files.count
         regDateLabel.text = DateManager.shared.dateFormat(data.createdAt)
         let state = data.storage.listCheckedUserID

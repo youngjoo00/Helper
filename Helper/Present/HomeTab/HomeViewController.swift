@@ -41,8 +41,11 @@ final class HomeViewController: BaseViewController {
             .bind(to: fetchPostsTrigger)
             .disposed(by: disposeBag)
         
-        EventManager.shared.followTrigger
-            .bind(to: fetchPostsTrigger)
+        EventManager.shared.myProfileInfo
+            .skip(1)
+            .subscribe(with: self) { owner, _ in
+                owner.fetchPostsTrigger.onNext(())
+            }
             .disposed(by: disposeBag)
     }
 }
@@ -69,7 +72,13 @@ extension HomeViewController {
         // Transition DetailVC
         mainView.recentPostsFollowingView.collectionView.rx.modelSelected(PostResponse.FetchPost.self)
             .subscribe(with: self) { owner, data in
-                owner.transition(viewController: DetailFeedViewController(feedID: data.postID), style: .hideBottomPush)
+                if data.checkedPostsKind {
+                    owner.transition(viewController: DetailFeedViewController(feedID: data.postID), style: .hideBottomPush)
+                } else {
+                    let vc = DetailFindViewController()
+                    vc.postID = data.postID
+                    owner.transition(viewController: vc, style: .hideBottomPush)
+                }
             }
             .disposed(by: disposeBag)
         
@@ -116,6 +125,7 @@ extension HomeViewController {
                 owner.transition(viewController: vc, style: .hideBottomPush)
             }
             .disposed(by: disposeBag)
+        
     }
     
     // MARK: - Found

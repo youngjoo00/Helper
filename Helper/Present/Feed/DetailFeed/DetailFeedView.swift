@@ -41,7 +41,6 @@ final class DetailFeedView: BaseView {
     }
     
     let titleLabel = PointLabel(fontSize: 20)
-    let hashTagLabel = PointLabel(fontSize: 16)
     
     let commentsLabel = PointLabel("0개의 댓글", fontSize: 17)
     let commentsTableView = BaseTableView().then {
@@ -70,7 +69,6 @@ final class DetailFeedView: BaseView {
         [
             profileStackView,
             regDateLabel,
-            hashTagLabel,
             storageButton,
             imageCollectionView,
             pageControl,
@@ -142,13 +140,8 @@ final class DetailFeedView: BaseView {
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
         }
         
-        hashTagLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(16)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
-        }
-        
         commentsLabel.snp.makeConstraints { make in
-            make.top.equalTo(hashTagLabel.snp.bottom).offset(15)
+            make.top.equalTo(titleLabel.snp.bottom).offset(30)
             make.leading.equalTo(safeAreaLayoutGuide).offset(16)
         }
         

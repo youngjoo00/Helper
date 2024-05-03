@@ -113,7 +113,7 @@ final class PostCollectionViewCell: BaseCollectionViewCell {
 extension PostCollectionViewCell {
     
     func updateView(_ data: PostResponse.FetchPost) {
-        imageView.loadImage(urlString: data.files[0])
+        imageView.loadImage(urlString: data.files.first ?? "")
         
         if (!data.complete.isEmpty) {
             postsCompleteLabel.text = "완료"

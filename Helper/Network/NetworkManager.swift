@@ -115,8 +115,8 @@ final class NetworkManager {
                     for data in imageDataList {
                         multipartFormData.append(data,
                                                  withName: "files",
-                                                 fileName: "helper.png",
-                                                 mimeType: "image/png")
+                                                 fileName: "helper.jpg",
+                                                 mimeType: "image/jpg")
                     }
                 }, to: url, method: router.method, headers: urlRequest.headers, interceptor: TokenIntercepter())
                 .validate(statusCode: 200..<300)
@@ -178,8 +178,8 @@ final class NetworkManager {
                     
                     multipartFormData.append(imageData,
                                              withName: "profile",
-                                             fileName: "helper.png",
-                                             mimeType: "image/png")
+                                             fileName: "helper.jpg",
+                                             mimeType: "image/jpg")
                 }, to: url, method: router.method, headers: urlRequest.headers, interceptor: TokenIntercepter())
                 .validate(statusCode: 200..<300)
                 .responseData { response in

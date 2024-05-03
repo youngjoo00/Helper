@@ -46,7 +46,7 @@ final class EditProfileViewController: BaseViewController {
                 owner.editProfileAcionSheet {
                     owner.presentPHPicker()
                 } deleteHandler: {
-                    if let image = UIImage(named: "BlankProfileImage"), let imageData = image.pngData() {
+                    if let image = UIImage(named: "BlankProfileImage"), let imageData = image.jpegData(compressionQuality: 0.7) {
                         owner.editProfileImage.onNext(imageData)
                     }
                 }
@@ -131,7 +131,7 @@ extension EditProfileViewController: PHPickerViewControllerDelegate {
                 guard let self else { return }
                 DispatchQueue.main.async {
                     if let image = image as? UIImage {
-                        if let imageData = image.pngData() {
+                        if let imageData = image.jpegData(compressionQuality: 0.7) {
                             self.editProfileImage.onNext(imageData)
                         }
                     }
