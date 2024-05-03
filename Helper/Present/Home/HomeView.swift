@@ -11,11 +11,18 @@ import Then
 final class HomeView: BaseView {
     
     let naviTitle = PointBoldLabel("Helper", fontSize: 20)
-    let scrollView = UIScrollView().then {
+    let refreshControl = UIRefreshControl()
+    lazy var scrollView = UIScrollView().then {
         $0.showsVerticalScrollIndicator = false
+        $0.refreshControl = refreshControl
     }
     let contentView = UIView()
     let scrollBottomSpaceView = UIView()
+    
+    let postsStackView = UIStackView().then {
+        $0.axis = .vertical
+        $0.spacing = 20
+    }
     
     let recentPostsFollowingTitleLabel = PointBoldLabel("팔로잉 최근 게시물", fontSize: 18)
     let recentPostsFollowingView = HorizontalPostsView(collectionViewCellType: RecentPostsFromFollowingCollectionViewCell.self)
@@ -34,14 +41,18 @@ final class HomeView: BaseView {
         scrollView.addSubview(contentView)
         
         [
+            postsStackView,
+            scrollBottomSpaceView,
+        ].forEach { contentView.addSubview($0) }
+        
+        [
             recentPostsFollowingTitleLabel,
             recentPostsFollowingView,
             recentPostsFindingTitleLabel,
             recentPostsFindingView,
             recentPostsFoundTitleLabel,
             recentPostsFoundView,
-            scrollBottomSpaceView,
-        ].forEach { contentView.addSubview($0) }
+        ].forEach { postsStackView.addArrangedSubview($0) }
     }
     
     override func configureLayout() {
@@ -55,8 +66,14 @@ final class HomeView: BaseView {
             make.width.equalToSuperview()
         }
         
-        recentPostsFollowingTitleLabel.snp.makeConstraints { make in
+        postsStackView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
+            make.horizontalEdges.equalToSuperview()
+            make.bottom.equalTo(scrollBottomSpaceView)
+        }
+        
+        recentPostsFollowingTitleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview()
             make.leading.equalTo(safeAreaLayoutGuide).offset(16)
         }
         

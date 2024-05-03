@@ -14,6 +14,7 @@ protocol BindPostWrite { }
 final class HomeViewController: BaseViewController {
 
     private let mainView = HomeView()
+    private let homeViewModel = HomeViewModel()
     
     private let recentPostsFromFollowingViewModel = RecentPostsFromFollowingViewModel()
     private let findingViewModel = PostsViewModel(mode: .findingAll)
@@ -33,6 +34,7 @@ final class HomeViewController: BaseViewController {
     }
     
     override func bind() {
+        homeBind()
         recentPostsFromFollowingBind()
         findingBind()
         foundBind()
@@ -47,12 +49,33 @@ final class HomeViewController: BaseViewController {
                 owner.fetchPostsTrigger.onNext(())
             }
             .disposed(by: disposeBag)
+        
     }
 }
 
 
 // MARK: - Binding
 extension HomeViewController {
+    
+    // MARK: - Home
+    func homeBind() {
+        let input = HomeViewModel.Input(refreshControlTrigger: mainView.refreshControl.rx.controlEvent(.valueChanged))
+        
+        let output = homeViewModel.transform(input: input)
+        
+        output.isFollowingEmpty
+            .drive(with: self) { owner, value in
+                owner.mainView.recentPostsFollowingTitleLabel.isHidden = value
+                owner.mainView.recentPostsFollowingView.isHidden = value
+            }
+            .disposed(by: disposeBag)
+        output.refreshControlTrigger
+            .drive(with: self) { owner, _ in
+                owner.fetchPostsTrigger.onNext(())
+                owner.mainView.refreshControl.endRefreshing()
+            }
+            .disposed(by: disposeBag)
+    }
     
     // MARK: - Feed
     func recentPostsFromFollowingBind() {

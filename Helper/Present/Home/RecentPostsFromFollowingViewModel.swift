@@ -26,6 +26,7 @@ final class RecentPostsFromFollowingViewModel: ViewModelType {
    
         let posts: BehaviorRelay<[PostResponse.FetchPost]> = BehaviorRelay(value: [])
         let errorToastMessage = PublishRelay<String>()
+        let isRefreshControlLoading = PublishRelay<Bool>()
         
         let info = EventManager.shared.myProfileInfo
             .compactMap { $0 }
@@ -66,6 +67,7 @@ final class RecentPostsFromFollowingViewModel: ViewModelType {
             }
             .subscribe(with: self) { owner, recentPost in
                 posts.accept(recentPost)
+                isRefreshControlLoading.accept(false)
             }
             .disposed(by: disposeBag)
         
