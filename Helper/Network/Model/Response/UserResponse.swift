@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ProfileDisplayable: Decodable {
+protocol ProfileDisplayable: Codable {
     var nick: String { get }
     var profileImage: String { get }
     var followers: [UserResponse.Follow] { get }
@@ -45,7 +45,7 @@ enum UserResponse {
         let message: String
     }
     
-    struct MyProfile: Decodable, ProfileDisplayable {
+    struct MyProfile: Codable, ProfileDisplayable {
         let userID: String
         let email: String
         let nick: String
@@ -82,7 +82,7 @@ enum UserResponse {
         }
     }
     
-    struct Follow: Decodable {
+    struct Follow: Codable {
         let userID: String
         let nick: String
         let profileImage: String
@@ -101,7 +101,7 @@ enum UserResponse {
         }
     }
     
-    struct OtherProfile: Decodable, ProfileDisplayable {
+    struct OtherProfile: Codable, ProfileDisplayable {
         let userID: String
         let nick: String
         let profileImage: String

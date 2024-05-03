@@ -9,4 +9,5 @@ import Foundation
 
 extension Notification.Name {
     static let loginSessionExpired = Notification.Name("loginSessionExpiredNotification")
+    static let unknownError = Notification.Name("unknownError")
 }

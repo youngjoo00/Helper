@@ -9,17 +9,37 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-extension UIViewController {
+extension BaseViewController {
     func changeHomeRootView() {
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-        let sceneDelegate = windowScene.delegate as? SceneDelegate
-        let tabbar = TabBarController()
-        sceneDelegate?.window?.rootViewController = tabbar
-        sceneDelegate?.window?.makeKey()
-        EventManager.shared.myProfileInfoTrigger.onNext(())
+        NetworkManager.shared.callAPI(type: UserResponse.MyProfile.self, router: Router.user(.myProfile))
+            .subscribe(with: self) { owner, result in
+                LoadingIndicatorManager.shared.hideIndicator()
+                switch result {
+                case .success(let data):
+                    UserDefaultsManager.shared.saveUserID(data.userID)
+                    EventManager.shared.myProfileInfo.onNext(data)
+                    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+                    let sceneDelegate = windowScene.delegate as? SceneDelegate
+                    let tabbar = TabBarController()
+                    sceneDelegate?.window?.rootViewController = tabbar
+                    sceneDelegate?.window?.makeKey()
+                case .fail(let fail):
+                    owner.showAlert(title: "오류!", message: fail.localizedDescription) {
+                        owner.changeSignInRootView()
+                    }
+                }
+            } onFailure: { owner, error in
+                owner.showAlert(title: "오류!", message: error.localizedDescription) {
+                    owner.changeSignInRootView()
+                }
+            } onDisposed: { _ in
+                print("dispose")
+            }
+            .disposed(by: disposeBag)
     }
     
     func changeSignInRootView() {
+        LoadingIndicatorManager.shared.hideIndicator()
         UserDefaultsManager.shared.saveTokens("", refreshToken: "")
         UserDefaultsManager.shared.saveUserID("")
         EventManager.shared.myProfileInfo.onNext(nil)

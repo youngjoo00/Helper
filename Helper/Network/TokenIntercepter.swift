@@ -70,6 +70,10 @@ final class TokenIntercepter: RequestInterceptor {
                                     DispatchQueue.main.async {
                                         NotificationCenter.default.post(name: .loginSessionExpired, object: nil)
                                     }
+                                } else {
+                                    DispatchQueue.main.async {
+                                        NotificationCenter.default.post(name: .loginSessionExpired, object: nil)
+                                    }
                                 }
                             } catch {
                                 print("서버 통신 실패 케이스: ", error)

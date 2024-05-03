@@ -41,9 +41,7 @@ final class CommentViewController: BaseViewController {
         let commentDeleteTap = PublishSubject<String>()
         
         EventManager.shared.postWriteTrigger
-            .subscribe(with: self) { owner, _ in
-                owner.fetchPostsTrigger.onNext(())
-            }
+            .bind(to: fetchPostsTrigger)
             .disposed(by: disposeBag)
         
         let input = CommentViewModel.Input(

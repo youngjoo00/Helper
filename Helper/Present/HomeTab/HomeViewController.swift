@@ -15,7 +15,7 @@ final class HomeViewController: BaseViewController {
 
     private let mainView = HomeView()
     
-    private let feedViewModel = PostsViewModel(mode: .feed)
+    private let recentPostsFromFollowingViewModel = RecentPostsFromFollowingViewModel()
     private let findingViewModel = PostsViewModel(mode: .findingAll)
     private let foundViewModel = PostsViewModel(mode: .foundAll)
     
@@ -33,14 +33,16 @@ final class HomeViewController: BaseViewController {
     }
     
     override func bind() {
-        feedBind()
+        recentPostsFromFollowingBind()
         findingBind()
         foundBind()
         
         EventManager.shared.postWriteTrigger
-            .subscribe(with: self) { owner, _ in
-                owner.fetchPostsTrigger.onNext(())
-            }
+            .bind(to: fetchPostsTrigger)
+            .disposed(by: disposeBag)
+        
+        EventManager.shared.followTrigger
+            .bind(to: fetchPostsTrigger)
             .disposed(by: disposeBag)
     }
 }
@@ -50,14 +52,12 @@ final class HomeViewController: BaseViewController {
 extension HomeViewController {
     
     // MARK: - Feed
-    func feedBind() {
-        let input = PostsViewModel.Input(
-            fetchPostsTrigger: fetchPostsTrigger,
-            reachedBottomTrigger: mainView.recentPostsFollowingView.collectionView.rx.reachedTrailing(),
-            refreshControlTrigger: mainView.recentPostsFollowingView.refreshControl.rx.controlEvent(.valueChanged)
+    func recentPostsFromFollowingBind() {
+        let input = RecentPostsFromFollowingViewModel.Input(
+            fetchPostsTrigger: fetchPostsTrigger
         )
         
-        let output = feedViewModel.transform(input: input)
+        let output = recentPostsFromFollowingViewModel.transform(input: input)
         
         output.posts
             .drive(mainView.recentPostsFollowingView.collectionView.rx.items(cellIdentifier: RecentPostsFromFollowingCollectionViewCell.id,
@@ -65,21 +65,17 @@ extension HomeViewController {
                 cell.updateView(item)
             }
             .disposed(by: disposeBag)
-
-        // refreshControl
-        output.isRefreshControlLoading
-            .drive(mainView.recentPostsFollowingView.refreshControl.rx.isRefreshing)
-            .disposed(by: disposeBag)
-
-        // bottomIndicator
-        output.isBottomLoading
-            .drive(mainView.recentPostsFollowingView.activityIndicator.rx.isAnimating)
-            .disposed(by: disposeBag)
         
         // Transition DetailVC
         mainView.recentPostsFollowingView.collectionView.rx.modelSelected(PostResponse.FetchPost.self)
             .subscribe(with: self) { owner, data in
                 owner.transition(viewController: DetailFeedViewController(feedID: data.postID), style: .hideBottomPush)
+            }
+            .disposed(by: disposeBag)
+        
+        output.errorToastMessage
+            .drive(with: self) { owner, message in
+                owner.showTaost(message)
             }
             .disposed(by: disposeBag)
     }

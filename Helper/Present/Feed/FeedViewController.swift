@@ -42,15 +42,11 @@ extension FeedViewController {
     
     private func postsBind() {
         EventManager.shared.postWriteTrigger
-            .subscribe(with: self) { owner, _ in
-                owner.fetchPostsTrigger.onNext(())
-            }
+            .bind(to: fetchPostsTrigger)
             .disposed(by: disposeBag)
         
         EventManager.shared.storageTrigger
-            .subscribe(with: self) { owner, _ in
-                owner.fetchPostsTrigger.onNext(())
-            }
+            .bind(to: fetchPostsTrigger)
             .disposed(by: disposeBag)
                 
         let input = PostsViewModel.Input(

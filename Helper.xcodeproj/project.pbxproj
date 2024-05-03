@@ -175,6 +175,8 @@
 		8ED8B8E22BE29F16009B4387 /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = 8ED8B8E12BE29F16009B4387 /* Hero */; };
 		8ED8B8E42BE2B767009B4387 /* CompleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8E32BE2B767009B4387 /* CompleteButton.swift */; };
 		8ED8B8E62BE34E0F009B4387 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8E52BE34E0F009B4387 /* SeparatorView.swift */; };
+		8ED8B8F22BE4B911009B4387 /* RecentPostsFromFollowingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8F12BE4B911009B4387 /* RecentPostsFromFollowingViewModel.swift */; };
+		8ED8B8F42BE4D5D2009B4387 /* LoadingIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8F32BE4D5D2009B4387 /* LoadingIndicatorManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -337,6 +339,8 @@
 		8ED8B8DE2BE205C3009B4387 /* FollowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowButton.swift; sourceTree = "<group>"; };
 		8ED8B8E32BE2B767009B4387 /* CompleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteButton.swift; sourceTree = "<group>"; };
 		8ED8B8E52BE34E0F009B4387 /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
+		8ED8B8F12BE4B911009B4387 /* RecentPostsFromFollowingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentPostsFromFollowingViewModel.swift; sourceTree = "<group>"; };
+		8ED8B8F32BE4D5D2009B4387 /* LoadingIndicatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -478,7 +482,7 @@
 				8E1BAE182BC968E500A65075 /* Present */,
 				8E1BAE322BC968EB00A65075 /* Network */,
 				8E1BAE432BC968F900A65075 /* Extension */,
-				8E1BAE3D2BC968F100A65075 /* Manager */,
+				8E1BAE3D2BC968F100A65075 /* Singleton */,
 				8E1BADFB2BC968C100A65075 /* Protocol */,
 				8E1BAE492BC9690900A65075 /* Base */,
 				8E1BAE412BC968F900A65075 /* CustomView */,
@@ -561,7 +565,7 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		8E1BAE3D2BC968F100A65075 /* Manager */ = {
+		8E1BAE3D2BC968F100A65075 /* Singleton */ = {
 			isa = PBXGroup;
 			children = (
 				8E1BAE3C2BC968F100A65075 /* UserDefaultsManager.swift */,
@@ -569,8 +573,9 @@
 				8E17A2E72BCA3E6500581B58 /* UserProfileManager.swift */,
 				8ED8B76B2BD80FFD009B4387 /* EventManager.swift */,
 				8ED8B8DC2BE16C63009B4387 /* FollowManager.swift */,
+				8ED8B8F32BE4D5D2009B4387 /* LoadingIndicatorManager.swift */,
 			);
-			path = Manager;
+			path = Singleton;
 			sourceTree = "<group>";
 		};
 		8E1BAE412BC968F900A65075 /* CustomView */ = {
@@ -873,6 +878,7 @@
 				8ED8B7CB2BDCF7EF009B4387 /* HomeView.swift */,
 				8ED8B7CD2BDCF7F6009B4387 /* HomeViewController.swift */,
 				8ED8B7D42BDCFC8E009B4387 /* RecentPostsFromFollowingCollectionViewCell.swift */,
+				8ED8B8F12BE4B911009B4387 /* RecentPostsFromFollowingViewModel.swift */,
 			);
 			path = HomeTab;
 			sourceTree = "<group>";
@@ -1123,6 +1129,7 @@
 				8ED8B7AD2BDC08CD009B4387 /* FollowContainerView.swift in Sources */,
 				8ED8B76F2BD81F2D009B4387 /* EditProfileView.swift in Sources */,
 				8ED8B7752BD8F9CD009B4387 /* EditProfileTableViewCell.swift in Sources */,
+				8ED8B8F42BE4D5D2009B4387 /* LoadingIndicatorManager.swift in Sources */,
 				8EA59CE72BD196FF009938E0 /* CommentRequest.swift in Sources */,
 				8E83BC482BCBC134007E1637 /* Router.swift in Sources */,
 				8ED8B7E22BDD5C5C009B4387 /* InitailView.swift in Sources */,
@@ -1163,6 +1170,7 @@
 				8E887CDB2BD417D600E95008 /* MenuButton.swift in Sources */,
 				8ED8B7572BD65C9E009B4387 /* HelperString.swift in Sources */,
 				8ED8B7B32BDC0999009B4387 /* FollowViewModel.swift in Sources */,
+				8ED8B8F22BE4B911009B4387 /* RecentPostsFromFollowingViewModel.swift in Sources */,
 				8E1BAE272BC968E500A65075 /* NicknameViewModel.swift in Sources */,
 				8E9A40102BCFBB36005E4F45 /* PostRequest.swift in Sources */,
 				8ED8B7CC2BDCF7EF009B4387 /* HomeView.swift in Sources */,

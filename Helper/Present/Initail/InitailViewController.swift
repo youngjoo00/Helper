@@ -19,25 +19,12 @@ final class InitailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        LoadingIndicatorManager.shared.showIndicator()
         if UserDefaultsManager.shared.getUserID().isEmpty {
             changeSignInRootView()
         } else {
-            NetworkManager.shared.callAPI(type: UserResponse.MyProfile.self, router: Router.user(.myProfile))
-                .subscribe(with: self) { owner, result in
-                    switch result {
-                    case .success(let data):
-                        UserDefaultsManager.shared.saveUserID(data.userID)
-                        owner.changeHomeRootView()
-                    case .fail(let fail):
-                        print(fail.localizedDescription)
-                        owner.changeSignInRootView()
-                    }
-                }
-                .disposed(by: disposeBag)
+            changeHomeRootView()
         }
-        
-        
     }
 
 }

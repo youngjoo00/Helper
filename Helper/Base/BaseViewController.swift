@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import Toast
+import Then
 
 class BaseViewController: UIViewController {
     
@@ -16,11 +17,15 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("baseVC")
         view.backgroundColor = .white
-        bind()
         configureNavigationBackButton()
-        
+        bind()
+    }
+    
+    func configureNotificationCenter() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleLoginSessionExpired), name: .loginSessionExpired, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleLoginSessionExpired), name: .unknownError, object: nil)
     }
     
     @objc func handleLoginSessionExpired(_ notification: Notification) {
@@ -28,7 +33,14 @@ class BaseViewController: UIViewController {
             self.changeSignInRootView()
         }
     }
-
+    
+    @objc func handleUnknownError(_ notification: Notification) {
+        showAlert(title: "안내", message: "알 수 없는 오류로 인해 로그인 화면으로 이동합니다.") {
+            self.changeSignInRootView()
+        }
+    }
+    
+    
     func showTaost(_ message: String) {
         view.makeToast(message, duration: 1.5, position: .center)
     }
