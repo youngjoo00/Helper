@@ -55,20 +55,6 @@ enum PostRequest {
         }
     }
     
-//    struct Feed: Encodable {
-//        let title: String
-//        let hashTag: String
-//        let product_id: String
-//        let files: [String]
-//        
-//        enum CodingKeys: String, CodingKey {
-//            case title
-//            case hashTag = "content"
-//            case product_id
-//            case files
-//        }
-//    }
-    
     struct StorageStatus: Encodable {
         let storageStatus: Bool
         

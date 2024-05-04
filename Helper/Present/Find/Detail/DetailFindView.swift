@@ -45,34 +45,34 @@ final class DetailFindView: BaseView {
         $0.pageIndicatorTintColor = .lightGray
     }
     
-    let titleLabel = PointLabel(fontSize: 20)
+    let titleLabel = PointBoldLabel(fontSize: 20)
     
     let infoTopSeparatorView = SeparatorView()
     
-    let featureLabel = PointLabel("특징", fontSize: 17)
+    let featureLabel = PointBoldLabel("특징", fontSize: 17)
     let featureValueLabel = PointLabel(fontSize: 17).then {
         $0.numberOfLines = 0
     }
 
-    let regionLocateLabel = PointLabel("위치", fontSize: 17)
+    let regionLocateLabel = PointBoldLabel("위치", fontSize: 17)
     let regionLocateValueLabel = PointLabel(fontSize: 17).then {
         $0.numberOfLines = 0
     }
 
-    let dateLabel = PointLabel("날짜", fontSize: 17)
+    let dateLabel = PointBoldLabel("날짜", fontSize: 17)
     let dateValueLabel = PointLabel(fontSize: 17)
     
-    let phoneLabel = PointLabel("연락처", fontSize: 17)
-    let phoneValueLabel = PointLabel("연락처", fontSize: 17)
+    let phoneLabel = PointBoldLabel("연락처", fontSize: 17)
+    let phoneValueLabel = PointLabel(fontSize: 17)
         
-    let contentLabel = PointLabel("상세내용", fontSize: 17)
+    let contentLabel = PointBoldLabel("상세내용", fontSize: 17)
     let contentValueLabel = PointLabel(fontSize: 17).then {
         $0.numberOfLines = 0
     }
     
     let contentBottomSeparatorView = SeparatorView()
 
-    let commentsLabel = PointLabel("0개의 댓글", fontSize: 17)
+    let commentsLabel = PointBoldLabel(fontSize: 17)
     let commentsTableView = BaseTableView().then {
         $0.register(CommentsTableViewCell.self, forCellReuseIdentifier: CommentsTableViewCell.id)
         $0.estimatedRowHeight = 44

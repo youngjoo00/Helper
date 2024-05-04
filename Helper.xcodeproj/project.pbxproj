@@ -60,7 +60,6 @@
 		8E1BAE4D2BC969DD00A65075 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE4C2BC969DD00A65075 /* UITextField+.swift */; };
 		8E1BAE4F2BC96AA600A65075 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE4E2BC96AA600A65075 /* DateManager.swift */; };
 		8E1BAE522BC96AC500A65075 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE502BC96AC500A65075 /* TabBarController.swift */; };
-		8E1BAE552BC97C1500A65075 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 8E1BAE542BC97C1500A65075 /* Then */; };
 		8E1BAE582BC97C2100A65075 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 8E1BAE572BC97C2100A65075 /* Toast */; };
 		8E1BAE5B2BC97C2A00A65075 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8E1BAE5A2BC97C2A00A65075 /* Alamofire */; };
 		8E1BAE5E2BC97C3200A65075 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8E1BAE5D2BC97C3200A65075 /* Kingfisher */; };
@@ -85,6 +84,14 @@
 		8E75974E2BE54C8B00CE1F55 /* BaseViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75974D2BE54C8B00CE1F55 /* BaseViewController+.swift */; };
 		8E7597502BE54E1800CE1F55 /* CommentTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75974F2BE54E1800CE1F55 /* CommentTextView.swift */; };
 		8E7597522BE5FFF700CE1F55 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7597512BE5FFF700CE1F55 /* UIApplication+.swift */; };
+		8E7597552BE656AE00CE1F55 /* iamport-ios in Frameworks */ = {isa = PBXBuildFile; productRef = 8E7597542BE656AE00CE1F55 /* iamport-ios */; };
+		8E7597582BE65CDD00CE1F55 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7597572BE65CDD00CE1F55 /* PaymentViewController.swift */; };
+		8E75975A2BE6630A00CE1F55 /* PaymentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7597592BE6630A00CE1F55 /* PaymentRouter.swift */; };
+		8E75975C2BE6664A00CE1F55 /* PymentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75975B2BE6664A00CE1F55 /* PymentRequest.swift */; };
+		8E75975E2BE6690400CE1F55 /* PaymentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75975D2BE6690400CE1F55 /* PaymentResponse.swift */; };
+		8E7597602BE6781000CE1F55 /* PaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75975F2BE6781000CE1F55 /* PaymentView.swift */; };
+		8E7597622BE678B000CE1F55 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7597612BE678B000CE1F55 /* PaymentViewModel.swift */; };
+		8E7597662BE69F7F00CE1F55 /* NumberManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7597652BE69F7F00CE1F55 /* NumberManager.swift */; };
 		8E83BC482BCBC134007E1637 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E83BC472BCBC134007E1637 /* Router.swift */; };
 		8E887CDB2BD417D600E95008 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E887CDA2BD417D600E95008 /* MenuButton.swift */; };
 		8E9A3FCC2BCD7255005E4F45 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FCB2BCD7255005E4F45 /* UIImageView+.swift */; };
@@ -254,6 +261,13 @@
 		8E75974D2BE54C8B00CE1F55 /* BaseViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseViewController+.swift"; sourceTree = "<group>"; };
 		8E75974F2BE54E1800CE1F55 /* CommentTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTextView.swift; sourceTree = "<group>"; };
 		8E7597512BE5FFF700CE1F55 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
+		8E7597572BE65CDD00CE1F55 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		8E7597592BE6630A00CE1F55 /* PaymentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRouter.swift; sourceTree = "<group>"; };
+		8E75975B2BE6664A00CE1F55 /* PymentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PymentRequest.swift; sourceTree = "<group>"; };
+		8E75975D2BE6690400CE1F55 /* PaymentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentResponse.swift; sourceTree = "<group>"; };
+		8E75975F2BE6781000CE1F55 /* PaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
+		8E7597612BE678B000CE1F55 /* PaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
+		8E7597652BE69F7F00CE1F55 /* NumberManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberManager.swift; sourceTree = "<group>"; };
 		8E83BC472BCBC134007E1637 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8E887CDA2BD417D600E95008 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		8E9A3FCB2BCD7255005E4F45 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
@@ -362,9 +376,9 @@
 				8E1BAE6B2BC97CD500A65075 /* Tabman in Frameworks */,
 				8E9A40192BCFFADE005E4F45 /* IQKeyboardManagerSwift in Frameworks */,
 				8E1BAE582BC97C2100A65075 /* Toast in Frameworks */,
-				8E1BAE552BC97C1500A65075 /* Then in Frameworks */,
 				8E1BAE652BC97C4F00A65075 /* RxSwift in Frameworks */,
 				8E1BAE992BC993C100A65075 /* SnapKit in Frameworks */,
+				8E7597552BE656AE00CE1F55 /* iamport-ios in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +393,7 @@
 				8E17A3352BCAF33200581B58 /* PostRouter.swift */,
 				8EA59CE42BD19240009938E0 /* CommentRouter.swift */,
 				8ED8B8AE2BDFF927009B4387 /* FollowRouter.swift */,
+				8E7597592BE6630A00CE1F55 /* PaymentRouter.swift */,
 				8E1BAE2F2BC968EB00A65075 /* TargetType.swift */,
 				8E1BAE2B2BC968EB00A65075 /* HTTPHeader.swift */,
 				8EA59CE82BD19D56009938E0 /* PathVersion.swift */,
@@ -553,6 +568,7 @@
 				8ED8B7EB2BDE30A0009B4387 /* Feed */,
 				8ED8B7EC2BDE30C2009B4387 /* Write */,
 				8ED8B7E42BDE21F9009B4387 /* Profile */,
+				8E7597562BE65CB200CE1F55 /* Payment */,
 				8E1BAE492BC9690900A65075 /* Base */,
 				8E1BAE412BC968F900A65075 /* CustomView */,
 			);
@@ -580,6 +596,7 @@
 				8ED8B76B2BD80FFD009B4387 /* EventManager.swift */,
 				8ED8B8DC2BE16C63009B4387 /* FollowManager.swift */,
 				8ED8B8F32BE4D5D2009B4387 /* LoadingIndicatorManager.swift */,
+				8E7597652BE69F7F00CE1F55 /* NumberManager.swift */,
 			);
 			path = Singleton;
 			sourceTree = "<group>";
@@ -692,6 +709,16 @@
 			path = Birthday;
 			sourceTree = "<group>";
 		};
+		8E7597562BE65CB200CE1F55 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				8E75975F2BE6781000CE1F55 /* PaymentView.swift */,
+				8E7597572BE65CDD00CE1F55 /* PaymentViewController.swift */,
+				8E7597612BE678B000CE1F55 /* PaymentViewModel.swift */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
 		8E9A3FD32BCD947D005E4F45 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -719,6 +746,7 @@
 				8E9A3FF52BCEE291005E4F45 /* UserRequest.swift */,
 				8E9A400F2BCFBB36005E4F45 /* PostRequest.swift */,
 				8EA59CE62BD196FF009938E0 /* CommentRequest.swift */,
+				8E75975B2BE6664A00CE1F55 /* PymentRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -731,6 +759,7 @@
 				8EA59CEA2BD1A562009938E0 /* CommentResponse.swift */,
 				8EA59CEC2BD1A64D009938E0 /* CreatorResponse.swift */,
 				8ED8B8B02BDFFA92009B4387 /* FollowResponse.swift */,
+				8E75975D2BE6690400CE1F55 /* PaymentResponse.swift */,
 				8E9A3FFB2BCEE2DC005E4F45 /* ErrorResponse.swift */,
 			);
 			path = Response;
@@ -990,7 +1019,6 @@
 			);
 			name = Helper;
 			packageProductDependencies = (
-				8E1BAE542BC97C1500A65075 /* Then */,
 				8E1BAE572BC97C2100A65075 /* Toast */,
 				8E1BAE5A2BC97C2A00A65075 /* Alamofire */,
 				8E1BAE5D2BC97C3200A65075 /* Kingfisher */,
@@ -1001,6 +1029,7 @@
 				8E1BAE982BC993C100A65075 /* SnapKit */,
 				8E9A40182BCFFADE005E4F45 /* IQKeyboardManagerSwift */,
 				8ED8B8E12BE29F16009B4387 /* Hero */,
+				8E7597542BE656AE00CE1F55 /* iamport-ios */,
 			);
 			productName = Helper;
 			productReference = 8E1BADE02BC965CC00A65075 /* Helper.app */;
@@ -1031,7 +1060,6 @@
 			);
 			mainGroup = 8E1BADD72BC965CC00A65075;
 			packageReferences = (
-				8E1BAE532BC97C1500A65075 /* XCRemoteSwiftPackageReference "Then" */,
 				8E1BAE562BC97C2100A65075 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				8E1BAE592BC97C2A00A65075 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				8E1BAE5C2BC97C3200A65075 /* XCRemoteSwiftPackageReference "Kingfisher" */,
@@ -1040,6 +1068,7 @@
 				8E1BAE972BC993C100A65075 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				8E9A40172BCFFADD005E4F45 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				8ED8B8E02BE29F15009B4387 /* XCRemoteSwiftPackageReference "Hero" */,
+				8E7597532BE656AE00CE1F55 /* XCRemoteSwiftPackageReference "iamport-ios" */,
 			);
 			productRefGroup = 8E1BADE12BC965CC00A65075 /* Products */;
 			projectDirPath = "";
@@ -1076,6 +1105,7 @@
 				8E1BAE732BC97D5D00A65075 /* BaseTableViewCell.swift in Sources */,
 				8ED8B8A52BDFADAB009B4387 /* ProfilePostsView.swift in Sources */,
 				8E17A3302BCAF03300581B58 /* BaseCollectionView.swift in Sources */,
+				8E75975C2BE6664A00CE1F55 /* PymentRequest.swift in Sources */,
 				8ED8B7F72BDE81AB009B4387 /* DetailFeedView.swift in Sources */,
 				8E17A2F32BCA7DA800581B58 /* FindViewController.swift in Sources */,
 				8ED8B8C32BE0F096009B4387 /* ProfileView.swift in Sources */,
@@ -1083,6 +1113,7 @@
 				8ED8B7E62BDE2235009B4387 /* WriteFeedView.swift in Sources */,
 				8E1BAE392BC968EC00A65075 /* TargetType.swift in Sources */,
 				8E1BAE202BC968E500A65075 /* PasswordViewController.swift in Sources */,
+				8E75975A2BE6630A00CE1F55 /* PaymentRouter.swift in Sources */,
 				8E17A2EE2BCA59D000581B58 /* BirthdayViewModel.swift in Sources */,
 				8E1BAE3E2BC968F100A65075 /* UserDefaultsManager.swift in Sources */,
 				8ED8B8022BDE908C009B4387 /* CommentViewModel.swift in Sources */,
@@ -1103,6 +1134,9 @@
 				8ED8B8DB2BE137C3009B4387 /* BaseStackView.swift in Sources */,
 				8E17A2F72BCA7F1D00581B58 /* FindTabViewController.swift in Sources */,
 				8E1BAE232BC968E500A65075 /* SignUpViewController.swift in Sources */,
+				8E7597662BE69F7F00CE1F55 /* NumberManager.swift in Sources */,
+				8E7597602BE6781000CE1F55 /* PaymentView.swift in Sources */,
+				8E75975E2BE6690400CE1F55 /* PaymentResponse.swift in Sources */,
 				8E9A3FE62BCEBD98005E4F45 /* WriteFindViewController.swift in Sources */,
 				8E9A3FDB2BCD9530005E4F45 /* SettingTableViewCell.swift in Sources */,
 				8EA59D152BD28284009938E0 /* String+.swift in Sources */,
@@ -1140,6 +1174,7 @@
 				8ED8B7752BD8F9CD009B4387 /* EditProfileTableViewCell.swift in Sources */,
 				8ED8B8F42BE4D5D2009B4387 /* LoadingIndicatorManager.swift in Sources */,
 				8EA59CE72BD196FF009938E0 /* CommentRequest.swift in Sources */,
+				8E7597622BE678B000CE1F55 /* PaymentViewModel.swift in Sources */,
 				8E83BC482BCBC134007E1637 /* Router.swift in Sources */,
 				8ED8B7E22BDD5C5C009B4387 /* InitailView.swift in Sources */,
 				8ED8B7FB2BDE81C3009B4387 /* DetailFeedViewModel.swift in Sources */,
@@ -1215,6 +1250,7 @@
 				8ED8B7F02BDE30F9009B4387 /* FeedViewController.swift in Sources */,
 				8ED8B7982BDBEBEC009B4387 /* ProfileImageView.swift in Sources */,
 				8E9A3FD22BCD8455005E4F45 /* UICollectionViewLayout+.swift in Sources */,
+				8E7597582BE65CDD00CE1F55 /* PaymentViewController.swift in Sources */,
 				8E17A3322BCAF03D00581B58 /* BaseTableView.swift in Sources */,
 				8ED8B7A22BDC07CE009B4387 /* FollowTabViewController.swift in Sources */,
 				8ED3AE1C2BD14B890040DA58 /* DetailFindView.swift in Sources */,
@@ -1380,6 +1416,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1413,6 +1450,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1455,14 +1493,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8E1BAE532BC97C1500A65075 /* XCRemoteSwiftPackageReference "Then" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/devxoul/Then.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
-			};
-		};
 		8E1BAE562BC97C2100A65075 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scalessec/Toast-Swift";
@@ -1511,6 +1541,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		8E7597532BE656AE00CE1F55 /* XCRemoteSwiftPackageReference "iamport-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/iamport/iamport-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.1;
+			};
+		};
 		8E9A40172BCFFADD005E4F45 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
@@ -1530,11 +1568,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8E1BAE542BC97C1500A65075 /* Then */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8E1BAE532BC97C1500A65075 /* XCRemoteSwiftPackageReference "Then" */;
-			productName = Then;
-		};
 		8E1BAE572BC97C2100A65075 /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8E1BAE562BC97C2100A65075 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
@@ -1574,6 +1607,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8E1BAE972BC993C100A65075 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		8E7597542BE656AE00CE1F55 /* iamport-ios */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E7597532BE656AE00CE1F55 /* XCRemoteSwiftPackageReference "iamport-ios" */;
+			productName = "iamport-ios";
 		};
 		8E9A40182BCFFADE005E4F45 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;

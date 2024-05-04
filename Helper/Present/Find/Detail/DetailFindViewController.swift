@@ -18,6 +18,7 @@ final class DetailFindViewController: BaseViewController {
     private let postEditMenuTap = PublishSubject<Void>()
     var postID = ""
     
+    let rewardButtonTap = PublishSubject<Void>()
     override func loadView() {
         view = mainView
     }
@@ -25,7 +26,6 @@ final class DetailFindViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureNavigationBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,7 +52,8 @@ final class DetailFindViewController: BaseViewController {
             storageButtonTap: mainView.storageButton.rx.tap,
             completeButtonTap: mainView.completeButton.rx.tap,
             commentDeleteTap: commentDeleteTap,
-            profileTapGesture: mainView.profileTabGesture.rx.event.map { _ in }
+            profileTapGesture: mainView.profileTabGesture.rx.event.map { _ in },
+            rewardButtonTap: rewardButtonTap
         )
                 
         mainView.commentWriteTextView.rx.text.orEmpty
@@ -63,7 +64,11 @@ final class DetailFindViewController: BaseViewController {
               
         output.checkedUserID
             .drive(with: self) { owner, value in
-                owner.navigationItem.rightBarButtonItem?.isHidden = value
+                if value {
+                    owner.configureRewardNavigationBar()
+                } else {
+                    owner.configureMenuNavigationBar()
+                }
                 owner.mainView.completeButton.isUserInteractionEnabled = !value
             }
             .disposed(by: disposeBag)
@@ -102,7 +107,6 @@ final class DetailFindViewController: BaseViewController {
             .drive(with: self) { owner, value in
                 let count = value.count
                 owner.mainView.pageControl.numberOfPages = count
-                //owner.mainView.pageControl.isHidden = count == 1
                 owner.mainView.pageControl.hidesForSinglePage = true
                 owner.mainView.titleLabelLayoutUpdate()
             }
@@ -160,6 +164,12 @@ final class DetailFindViewController: BaseViewController {
         
         output.content
             .drive(mainView.contentValueLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.isrewardButtonHidden
+            .drive(with: self) { owner, value in
+                owner.navigationItem.rightBarButtonItem?.isHidden = value
+            }
             .disposed(by: disposeBag)
         
         // 댓글 TableView 구성
@@ -254,13 +264,21 @@ final class DetailFindViewController: BaseViewController {
                 owner.navigationController?.pushViewController(vc, animated: true)
             }
             .disposed(by: disposeBag)
+        
+        output.rewardTap
+            .drive(with: self) { owner, _ in
+                owner.showAlertTextField(title: nil, message: "사례금 드리기") { price in
+                    owner.transition(viewController: PaymentViewController(postID: owner.postID, price: price ?? ""), style: .hideBottomPush)
+                }
+            }
+            .disposed(by: disposeBag)
     }
 }
 
 // MARK: - Custom Func
 extension DetailFindViewController {
     
-    private func configureNavigationBar() {
+    private func configureMenuNavigationBar() {
         
         let menuItems = [
             UIAction(title: "수정", image: UIImage(systemName: "pencil")) { [weak self] _ in
@@ -282,4 +300,54 @@ extension DetailFindViewController {
                                                                  primaryAction: nil,
                                                                  menu: menu)
     }
+    
+    private func configureRewardNavigationBar() {
+        // 컨테이너 뷰 생성 및 크기 설정
+        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 80, height: 100))
+        
+        let rewardButton = PointButton(title: "사례금")
+        rewardButton.frame = CGRect(x: 0, y: 10, width: 80, height: 33)
+            
+        containerView.addSubview(rewardButton)
+        let rightBtnItem = UIBarButtonItem(customView: containerView)
+        
+        navigationItem.rightBarButtonItem = rightBtnItem
+        
+        // RxSwift를 사용하여 버튼 탭 이벤트 처리
+        rewardButton.rx.tap
+            .bind(to: rewardButtonTap)
+            .disposed(by: disposeBag)
+    }
 }
+
+extension DetailFindViewController {
+    
+    func showAlertTextField(title: String?, message: String?, completion: @escaping (String?) -> Void) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alert.addTextField { textField in
+            
+            textField.placeholder = "금액을 입력하세요"
+            textField.keyboardType = .numberPad
+//            textField.rx.text.orEmpty
+//                .map { formatToCurrency($0) }
+//                .subscribe(with: self) { owner, formattedText in
+//                    textField.text = formattedText
+//                }
+//                .disposed(by: self.disposeBag)
+        }
+        
+        let action = UIAlertAction(title: "확인", style: .default) { text in
+            completion(alert.textFields?[0].text)
+        }
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        alert.addAction(action)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+}
+

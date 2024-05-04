@@ -30,14 +30,13 @@ enum Category: Int {
 final class FindViewController: BaseViewController {
 
     private let mainView = FindView()
-    private let findViewMode: FindViewModel
+    private let findViewModel: FindViewModel
     
     private let fetchPostsTrigger = PublishSubject<Void>()
     private let prouctID = BehaviorSubject(value: "")
     
     init(_ findViewMode: FindViewMode) {
-        self.findViewMode = .init(findViewMode)
-        
+        self.findViewModel = .init(findViewMode)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -78,7 +77,7 @@ final class FindViewController: BaseViewController {
             productID: prouctID
         )
         
-        let output = findViewMode.transform(input: input)
+        let output = findViewModel.transform(input: input)
         
         output.posts
             .drive(mainView.findView.collectionView.rx.items(cellIdentifier: PostCollectionViewCell.id,

@@ -17,10 +17,6 @@ final class TabBarController: UITabBarController {
         
         self.delegate = self
         
-        UITabBar.appearance().backgroundColor = .white
-        UITabBar.appearance().tintColor = Color.point
-        UITabBar.appearance().unselectedItemTintColor = .systemGray2
-        
         let homeTab = UINavigationController(rootViewController: HomeViewController())
         homeTab.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
         

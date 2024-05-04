@@ -32,6 +32,7 @@ enum PostResponse {
         let creator: Creator
         let files: [String]
         let storage: [String]
+        let buyers: [String]
         let complete: [String]
         let hashTags: [String]
         let comments: [Comments]
@@ -50,7 +51,8 @@ enum PostResponse {
             case creator
             case files
             case storage = "likes"
-            case likes2
+            case complete = "likes2"
+            case buyers
             case hashTags
             case comments
         }
@@ -70,8 +72,9 @@ enum PostResponse {
             creator = try container.decode(Creator.self, forKey: .creator)
             files = try container.decode([String].self, forKey: .files)
             storage = try container.decode([String].self, forKey: .storage)
-            complete = try container.decode([String].self, forKey: .likes2)
+            complete = try container.decode([String].self, forKey: .complete)
             hashTags = try container.decode([String].self, forKey: .hashTags)
+            buyers = try container.decode([String].self, forKey: .buyers)
             comments = try container.decode([Comments].self, forKey: .comments)
         }
         

@@ -23,6 +23,7 @@ final class DetailFindViewModel: ViewModelType {
         let completeButtonTap: ControlEvent<Void>
         let commentDeleteTap: Observable<String>
         let profileTapGesture: Observable<Void>
+        let rewardButtonTap: Observable<Void>
     }
     
     struct Output {
@@ -52,9 +53,10 @@ final class DetailFindViewModel: ViewModelType {
         let commentDeleteSuccess: Driver<Void>
         let profileTapGesture: Driver<String>
         let adjustTextViewHeight: Driver<Void>
+        let isrewardButtonHidden: Driver<Bool>
+        let rewardTap: Driver<Void>
     }
     
-    var testId = ""
     func transform(input: Input) -> Output {
         
         let postInfo = PublishSubject<PostResponse.FetchPost>()
@@ -170,7 +172,7 @@ final class DetailFindViewModel: ViewModelType {
             }
             .subscribe(with: self) { owner, result in
                 switch result {
-                case .success(let data):
+                case .success:
                     fetchInfoTrigger.onNext(())
                     EventManager.shared.postWriteTrigger.onNext(())
                 case .fail(let fail):
@@ -258,6 +260,10 @@ final class DetailFindViewModel: ViewModelType {
             .map { $0.creator.userID }
             .asDriver(onErrorJustReturn: "")
         
+        let isrewardButtonHidden = postInfo
+            .map { $0.hashTags[0] == HelperString.hashTagFinding && !($0.creator.userID.checkedUserID) }
+            .asDriver(onErrorJustReturn: true)
+        
         return Output(
             checkedUserID: checkedUserID,
             profileImage: profileImage,
@@ -284,7 +290,9 @@ final class DetailFindViewModel: ViewModelType {
             commentCreateSuccess: commentCreateSuccess.asDriver(onErrorDriveWith: .empty()),
             commentDeleteSuccess: commentDeleteSuccess.asDriver(onErrorDriveWith: .empty()),
             profileTapGesture: profileTapGesture, 
-            adjustTextViewHeight: input.comment.map { _ in }.asDriver(onErrorJustReturn: ())
+            adjustTextViewHeight: input.comment.map { _ in }.asDriver(onErrorJustReturn: ()), 
+            isrewardButtonHidden: isrewardButtonHidden,
+            rewardTap: input.rewardButtonTap.asDriver(onErrorJustReturn: ())
         )
     }
 }

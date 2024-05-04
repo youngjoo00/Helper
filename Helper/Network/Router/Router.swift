@@ -13,6 +13,7 @@ enum Router {
     case post(PostRouter)
     case comment(CommentRouter)
     case follow(FollowRouter)
+    case payment(PaymentRouter)
 }
 
 extension Router: TargetType {
@@ -27,6 +28,8 @@ extension Router: TargetType {
             return commentRouter.baseURL
         case .follow(let followRouter):
             return followRouter.baseURL
+        case .payment(let paymentRouter):
+            return paymentRouter.baseURL
         }
     }
 
@@ -40,6 +43,8 @@ extension Router: TargetType {
             return commentRouter.header
         case .follow(let followRouter):
             return followRouter.header
+        case .payment(let paymentRouter):
+            return paymentRouter.header
         }
     }
 
@@ -53,6 +58,8 @@ extension Router: TargetType {
             return commentRouter.path
         case .follow(let followRouter):
             return followRouter.path
+        case .payment(let paymentRouter):
+            return paymentRouter.path
         }
     }
 
@@ -66,6 +73,8 @@ extension Router: TargetType {
             return commentRouter.method
         case .follow(let followRouter):
             return followRouter.method
+        case .payment(let paymentRouter):
+            return paymentRouter.method
         }
     }
 
@@ -79,6 +88,8 @@ extension Router: TargetType {
             return commentRouter.queryItems
         case .follow(let followRouter):
             return followRouter.queryItems
+        case .payment(let paymentRouter):
+            return paymentRouter.queryItems
         }
     }
 
@@ -92,6 +103,8 @@ extension Router: TargetType {
             return commentRouter.parameters
         case .follow(let followRouter):
             return followRouter.parameters
+        case .payment(let paymentRouter):
+            return paymentRouter.parameters
         }
     }
 
@@ -105,6 +118,8 @@ extension Router: TargetType {
             return commentRouter.body
         case .follow(let followRouter):
             return followRouter.body
+        case .payment(let paymentRouter):
+            return paymentRouter.body
         }
     }
 }

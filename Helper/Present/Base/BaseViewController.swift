@@ -48,7 +48,15 @@ class BaseViewController: UIViewController {
     func bind() { }
     
     func configureNavigationBackButton() {
-        // 백버튼 처리
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        appearance.shadowColor = nil
+        appearance.shadowImage = nil
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        
         self.navigationController?.navigationBar.tintColor = Color.black
         self.navigationController?.navigationBar.topItem?.title = ""
     }

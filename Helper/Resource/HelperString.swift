@@ -36,7 +36,7 @@ enum HelperString {
     static let categoryThing = "물품"
     
     /// 비어있는 이미지 URL
-    static let blankProfileImage = "uploads/posts/helper_1714141586231.png"
+    static let blankProfileImage = "uploads/posts/BlankProfileImage_1714829691649.png"
     
     /// 에셋 기본 프로필 이미지
     static let blankAssetImage = "BlankProfileImage"
