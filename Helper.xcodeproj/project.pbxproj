@@ -83,6 +83,8 @@
 		8E1BAEA02BC99F3200A65075 /* PointBoldLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAE9F2BC99F3200A65075 /* PointBoldLabel.swift */; };
 		8E75974C2BE5385600CE1F55 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75974B2BE5385600CE1F55 /* HomeViewModel.swift */; };
 		8E75974E2BE54C8B00CE1F55 /* BaseViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75974D2BE54C8B00CE1F55 /* BaseViewController+.swift */; };
+		8E7597502BE54E1800CE1F55 /* CommentTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75974F2BE54E1800CE1F55 /* CommentTextView.swift */; };
+		8E7597522BE5FFF700CE1F55 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7597512BE5FFF700CE1F55 /* UIApplication+.swift */; };
 		8E83BC482BCBC134007E1637 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E83BC472BCBC134007E1637 /* Router.swift */; };
 		8E887CDB2BD417D600E95008 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E887CDA2BD417D600E95008 /* MenuButton.swift */; };
 		8E9A3FCC2BCD7255005E4F45 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FCB2BCD7255005E4F45 /* UIImageView+.swift */; };
@@ -144,7 +146,6 @@
 		8ED8B7CE2BDCF7F6009B4387 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7CD2BDCF7F6009B4387 /* HomeViewController.swift */; };
 		8ED8B7D52BDCFC8E009B4387 /* RecentPostsFromFollowingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7D42BDCFC8E009B4387 /* RecentPostsFromFollowingCollectionViewCell.swift */; };
 		8ED8B7D72BDD26F5009B4387 /* HorizontalPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7D62BDD26F5009B4387 /* HorizontalPostsView.swift */; };
-		8ED8B7D92BDD477C009B4387 /* UIWindow+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7D82BDD477C009B4387 /* UIWindow+.swift */; };
 		8ED8B7DD2BDD52B3009B4387 /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7DC2BDD52B3009B4387 /* Notification+.swift */; };
 		8ED8B7DF2BDD5BC0009B4387 /* InitailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7DE2BDD5BC0009B4387 /* InitailViewController.swift */; };
 		8ED8B7E22BDD5C5C009B4387 /* InitailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B7E12BDD5C5C009B4387 /* InitailView.swift */; };
@@ -251,6 +252,8 @@
 		8E1BAE9F2BC99F3200A65075 /* PointBoldLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointBoldLabel.swift; sourceTree = "<group>"; };
 		8E75974B2BE5385600CE1F55 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8E75974D2BE54C8B00CE1F55 /* BaseViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseViewController+.swift"; sourceTree = "<group>"; };
+		8E75974F2BE54E1800CE1F55 /* CommentTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTextView.swift; sourceTree = "<group>"; };
+		8E7597512BE5FFF700CE1F55 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 		8E83BC472BCBC134007E1637 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8E887CDA2BD417D600E95008 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		8E9A3FCB2BCD7255005E4F45 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
@@ -311,7 +314,6 @@
 		8ED8B7CD2BDCF7F6009B4387 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8ED8B7D42BDCFC8E009B4387 /* RecentPostsFromFollowingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentPostsFromFollowingCollectionViewCell.swift; sourceTree = "<group>"; };
 		8ED8B7D62BDD26F5009B4387 /* HorizontalPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalPostsView.swift; sourceTree = "<group>"; };
-		8ED8B7D82BDD477C009B4387 /* UIWindow+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+.swift"; sourceTree = "<group>"; };
 		8ED8B7DC2BDD52B3009B4387 /* Notification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
 		8ED8B7DE2BDD5BC0009B4387 /* InitailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitailViewController.swift; sourceTree = "<group>"; };
 		8ED8B7E12BDD5C5C009B4387 /* InitailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitailView.swift; sourceTree = "<group>"; };
@@ -394,7 +396,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		8E17A2EF2BCA7D8D00581B58 /* FindTab */ = {
+		8E17A2EF2BCA7D8D00581B58 /* Find */ = {
 			isa = PBXGroup;
 			children = (
 				8E17A3292BCAD16E00581B58 /* FindContainerView.swift */,
@@ -403,7 +405,7 @@
 				8E17A2FB2BCA808700581B58 /* Find */,
 				8ED3AE1A2BD14B670040DA58 /* Detail */,
 			);
-			path = FindTab;
+			path = Find;
 			sourceTree = "<group>";
 		};
 		8E17A2FA2BCA7F7800581B58 /* PostTab */ = {
@@ -547,7 +549,7 @@
 				8E1BAE842BC97F0400A65075 /* User */,
 				8ED8B7842BD94963009B4387 /* Posts */,
 				8ED8B7CA2BDCF7E0009B4387 /* Home */,
-				8E17A2EF2BCA7D8D00581B58 /* FindTab */,
+				8E17A2EF2BCA7D8D00581B58 /* Find */,
 				8ED8B7EB2BDE30A0009B4387 /* Feed */,
 				8ED8B7EC2BDE30C2009B4387 /* Write */,
 				8ED8B7E42BDE21F9009B4387 /* Profile */,
@@ -609,9 +611,9 @@
 				8ED8B8032BDEB99C009B4387 /* Array<String>+.swift */,
 				8ED8B7422BD556BC009B4387 /* TransitionStyle.swift */,
 				8ED8B7582BD6913D009B4387 /* UIScrollView+.swift */,
-				8ED8B7D82BDD477C009B4387 /* UIWindow+.swift */,
 				8ED8B7DC2BDD52B3009B4387 /* Notification+.swift */,
 				8ED8B8A82BDFB507009B4387 /* CheckedPostsKind+.swift */,
+				8E7597512BE5FFF700CE1F55 /* UIApplication+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -790,6 +792,7 @@
 			isa = PBXGroup;
 			children = (
 				8E9A40132BCFD3D3005E4F45 /* PointTextView.swift */,
+				8E75974F2BE54E1800CE1F55 /* CommentTextView.swift */,
 			);
 			path = TextView;
 			sourceTree = "<group>";
@@ -1114,11 +1117,11 @@
 				8ED8B7E82BDE223D009B4387 /* WriteFeedViewController.swift in Sources */,
 				8ED8B7A82BDC084D009B4387 /* FollowViewController.swift in Sources */,
 				8E1BAE8A2BC97FF800A65075 /* PointButton.swift in Sources */,
+				8E7597502BE54E1800CE1F55 /* CommentTextView.swift in Sources */,
 				8E9A3FD72BCD94A2005E4F45 /* SettingViewController.swift in Sources */,
 				8ED8B7EE2BDE30F1009B4387 /* FeedView.swift in Sources */,
 				8E1BAE332BC968EC00A65075 /* APIError.swift in Sources */,
 				8EA59CE52BD19240009938E0 /* CommentRouter.swift in Sources */,
-				8ED8B7D92BDD477C009B4387 /* UIWindow+.swift in Sources */,
 				8E1BADFD2BC968C100A65075 /* ViewModelType.swift in Sources */,
 				8E17A2E82BCA3E6500581B58 /* UserProfileManager.swift in Sources */,
 				8ED8B7BC2BDC23D3009B4387 /* OtherProfileViewController.swift in Sources */,
@@ -1192,6 +1195,7 @@
 				8E9A3FE82BCEBDA8005E4F45 /* WriteFindViewModel.swift in Sources */,
 				8ED8B7712BD81F36009B4387 /* EditProfileViewController.swift in Sources */,
 				8E1BAEA02BC99F3200A65075 /* PointBoldLabel.swift in Sources */,
+				8E7597522BE5FFF700CE1F55 /* UIApplication+.swift in Sources */,
 				8E9A3FFA2BCEE2D5005E4F45 /* PostResponse.swift in Sources */,
 				8E1BAE462BC968F900A65075 /* UIViewController+.swift in Sources */,
 				8ED8B76C2BD80FFD009B4387 /* EventManager.swift in Sources */,

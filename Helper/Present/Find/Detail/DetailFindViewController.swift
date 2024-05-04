@@ -55,7 +55,7 @@ final class DetailFindViewController: BaseViewController {
             profileTapGesture: mainView.profileTabGesture.rx.event.map { _ in }
         )
                 
-        mainView.commentWriteTextField.rx.text.orEmpty
+        mainView.commentWriteTextView.rx.text.orEmpty
             .bind(to: mainView.commentWriteSubject)
             .disposed(by: disposeBag)
         
@@ -198,6 +198,7 @@ final class DetailFindViewController: BaseViewController {
         output.commentCreateSuccess
             .drive(with: self) { owner, _ in
                 owner.mainView.updateCommentTextField()
+                owner.view.endEditing(true)
             }
             .disposed(by: disposeBag)
         
@@ -205,6 +206,12 @@ final class DetailFindViewController: BaseViewController {
             .drive(with: self) { owner, _ in
                 owner.showTaost("댓글을 삭제했습니다")
                 owner.mainView.updateCommentTextField()
+            }
+            .disposed(by: disposeBag)
+        
+        output.adjustTextViewHeight
+            .drive(with: self) { owner, _ in
+                owner.mainView.adjustTextViewHeight()
             }
             .disposed(by: disposeBag)
         

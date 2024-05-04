@@ -11,7 +11,7 @@ import RxSwift
 
 final class DetailFeedView: BaseView {
 
-    lazy var commentWriteSubject = BehaviorSubject<String>(value: commentWriteTextField.text ?? "")
+    lazy var commentWriteSubject = BehaviorSubject<String>(value: commentWriteTextView.text ?? "")
     
     let scrollView = UIScrollView()
     let contentView = UIView()
@@ -53,7 +53,7 @@ final class DetailFeedView: BaseView {
     let commentView = UIView().then {
         $0.backgroundColor = .white
     }
-    let commentWriteTextField = PointTextField(placeholderText: "댓글 내용을 입력하세요")
+    let commentWriteTextView = PointTextView()
     let commentWriteButton = PointButton(title: "등록")
     
     let scrollBottomSpaceView = UIView()
@@ -84,7 +84,7 @@ final class DetailFeedView: BaseView {
         ].forEach { profileStackView.addArrangedSubview($0) }
         
         [
-            commentWriteTextField,
+            commentWriteTextView,
             commentWriteButton,
         ].forEach { commentView.addSubview($0) }
         
@@ -159,10 +159,10 @@ final class DetailFeedView: BaseView {
         
         commentView.snp.makeConstraints { make in
             make.bottom.horizontalEdges.equalTo(safeAreaLayoutGuide)
-            make.height.equalTo(66)
+            make.height.equalTo(commentWriteTextView.snp.height).offset(20)
         }
         
-        commentWriteTextField.snp.makeConstraints { make in
+        commentWriteTextView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.height.equalTo(44)
             make.leading.equalTo(safeAreaLayoutGuide).offset(16)
@@ -170,7 +170,7 @@ final class DetailFeedView: BaseView {
         }
         
         commentWriteButton.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-10)
             make.height.equalTo(44)
             make.width.equalTo(70)
             make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
@@ -212,7 +212,7 @@ extension DetailFeedView {
     }
     
     func updateCommentTextField() {
-        commentWriteTextField.text = ""
+        commentWriteTextView.text = ""
         commentWriteSubject.onNext("")
     }
     
@@ -226,5 +226,31 @@ extension DetailFeedView {
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
         }
     }
-
+    
+    func adjustTextViewHeight() {
+        let maxHeight: CGFloat = 100.0
+        
+        // sizeThatFits를 사용하여 실제 필요한 높이 계산
+        let fittingSize = commentWriteTextView.sizeThatFits(CGSize(width: commentWriteTextView.bounds.width, height: CGFloat.infinity))
+        let currentHeight = max(44.0, fittingSize.height)
+        
+        if currentHeight <= maxHeight {
+            // 최대 높이 이하일 경우
+            commentWriteTextView.snp.updateConstraints { make in
+                make.height.equalTo(currentHeight)
+            }
+            commentWriteTextView.isScrollEnabled = false // 스크롤 비활성화
+        } else {
+            // 최대 높이를 초과할 경우
+            commentWriteTextView.snp.updateConstraints { make in
+                make.height.equalTo(maxHeight)
+            }
+            commentWriteTextView.isScrollEnabled = true // 스크롤 활성화
+        }
+        
+        commentWriteTextView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
+        
+        // 레이아웃 업데이트
+        self.layoutIfNeeded()
+    }
 }

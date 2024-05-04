@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Hero
+import IQKeyboardManagerSwift
 
 final class CommentViewController: BaseViewController {
 
@@ -36,6 +37,24 @@ final class CommentViewController: BaseViewController {
         super.viewDidLoad()
     }
     
+    // sheetPresentationController 를 사용할 경우 IQKeyboard 와 충돌되어 이상하게 작동하니, 직접 핸들링 해야함
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        IQKeyboardManager.shared.enable = false
+        configureKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        IQKeyboardManager.shared.enable = true
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func bind() {
         
         let commentDeleteTap = PublishSubject<String>()
@@ -55,7 +74,7 @@ final class CommentViewController: BaseViewController {
         
         let output = viewModel.transform(input: input)
         
-        mainView.commentWriteTextField.rx.text.orEmpty
+        mainView.commentWriteTextView.rx.text.orEmpty
             .bind(to: mainView.commentWriteSubject)
             .disposed(by: disposeBag)
         
@@ -92,7 +111,8 @@ final class CommentViewController: BaseViewController {
         // 댓글 성공
         output.commentCreateSuccess
             .drive(with: self) { owner, _ in
-                owner.mainView.updateCommentTextField()
+                owner.mainView.updateCommentTextView()
+                owner.view.endEditing(true)
             }
             .disposed(by: disposeBag)
         
@@ -100,13 +120,55 @@ final class CommentViewController: BaseViewController {
         output.commentDeleteSuccess
             .drive(with: self) { owner, _ in
                 owner.showTaost("댓글을 삭제했습니다")
-                owner.mainView.updateCommentTextField()
+                owner.mainView.updateCommentTextView()
             }
             .disposed(by: disposeBag)
 
-        // bottomIndicator
-//        output.isBottomLoading
-//            .drive(mainView.activityIndicator.rx.isAnimating)
-//            .disposed(by: disposeBag)
+        output.adjustTextViewHeight
+            .drive(with: self) { owner, _ in
+                owner.mainView.adjustTextViewHeight()
+            }
+            .disposed(by: disposeBag)
     }
+}
+
+
+// MARK: - keyboard Handling
+extension CommentViewController {
+    
+    private func configureKeyboardNotifications() {
+        // 키보드 동작을 감지하는 Notification
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        // 1. 키보드 높이 가져옴
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+        let keyboardHeight = keyboardSize.height
+        print("키보드 높이", keyboardHeight)
+        
+        // 2. safeAreaInset 하단 여백 높이를 구해야함 / 여기가 없으면 뷰가 위로 붕 뜸
+        let safeAreaBottomInset = view.safeAreaInsets.bottom
+        print("SafeAreaBottom", safeAreaBottomInset)
+        
+        // 3. 키보드 위로 뷰를 안착시키기 위해 연산
+        let offset = keyboardHeight - safeAreaBottomInset
+        print("offset", offset)
+        
+        // 4. bottomConstaraint 를 offset의 크기만큼 위로 업데이트
+        mainView.bottomConstraint?.update(offset: -offset)
+        
+        // 5. 이게 없으면 뚝딱거리면서 올라감
+        view.layoutIfNeeded()
+    }
+
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        // commentView의 하단 제약 조건을 원래대로 복구
+        mainView.bottomConstraint?.update(offset: 0)
+        view.layoutIfNeeded()
+    }
+    
 }

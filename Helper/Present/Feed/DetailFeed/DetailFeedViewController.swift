@@ -60,7 +60,7 @@ final class DetailFeedViewController: BaseViewController {
             profileTapGesture: mainView.profileTabGesture.rx.event.map { _ in }
         )
                 
-        mainView.commentWriteTextField.rx.text.orEmpty
+        mainView.commentWriteTextView.rx.text.orEmpty
             .bind(to: mainView.commentWriteSubject)
             .disposed(by: disposeBag)
         
@@ -158,12 +158,6 @@ final class DetailFeedViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        mainView.commentsTableView.rx.modelSelected(Comments.self)
-            .subscribe(with: self) { owner, data in
-                print(data)
-            }
-            .disposed(by: disposeBag)
-        
         output.commentsCount
             .drive(with: self) { owner, text in
                 owner.mainView.commentsLabel.text = text
@@ -175,6 +169,7 @@ final class DetailFeedViewController: BaseViewController {
         output.commentCreateSuccess
             .drive(with: self) { owner, _ in
                 owner.mainView.updateCommentTextField()
+                owner.view.endEditing(true)
             }
             .disposed(by: disposeBag)
         
@@ -182,6 +177,12 @@ final class DetailFeedViewController: BaseViewController {
             .drive(with: self) { owner, _ in
                 owner.showTaost("댓글을 삭제했습니다")
                 owner.mainView.updateCommentTextField()
+            }
+            .disposed(by: disposeBag)
+        
+        output.adjustTextViewHeight
+            .drive(with: self) { owner, _ in
+                owner.mainView.adjustTextViewHeight()
             }
             .disposed(by: disposeBag)
         
@@ -214,8 +215,7 @@ final class DetailFeedViewController: BaseViewController {
                 owner.showTaost(message)
             }
             .disposed(by: disposeBag)
-        
-        
+
     }
 }
 

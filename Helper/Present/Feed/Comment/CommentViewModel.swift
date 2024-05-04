@@ -30,6 +30,7 @@ final class CommentViewModel: ViewModelType {
         let errorToastMessage: Driver<String>
         let commentCreateSuccess: Driver<Void>
         let commentDeleteSuccess: Driver<Void>
+        let adjustTextViewHeight: Driver<Void>
     }
     
     func transform(input: Input) -> Output {
@@ -112,11 +113,6 @@ final class CommentViewModel: ViewModelType {
         let comments = postInfo
             .map { $0.comments }
             .asDriver(onErrorJustReturn: [])
-//        
-//        let profileTapGesture = input.profileTapGesture
-//            .withLatestFrom(postInfo)
-//            .map { $0.creator.userID }
-//            .asDriver(onErrorJustReturn: "")
         
         return Output(
             checkedUserID: checkedUserID,
@@ -125,7 +121,8 @@ final class CommentViewModel: ViewModelType {
             errorAlertMessage: errorAlertMessage.asDriver(onErrorJustReturn: "알 수 없는 오류입니다"),
             errorToastMessage: errorToastMessage.asDriver(onErrorJustReturn: "알 수 없는 오류입니다."),
             commentCreateSuccess: commentCreateSuccess.asDriver(onErrorDriveWith: .empty()),
-            commentDeleteSuccess: commentDeleteSuccess.asDriver(onErrorDriveWith: .empty())
+            commentDeleteSuccess: commentDeleteSuccess.asDriver(onErrorDriveWith: .empty()), 
+            adjustTextViewHeight: input.comment.map { _ in }.asDriver(onErrorJustReturn: ())
         )
     }
 }

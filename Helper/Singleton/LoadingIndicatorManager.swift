@@ -15,8 +15,7 @@ final class LoadingIndicatorManager {
 
     func showIndicator() {
         DispatchQueue.main.async {
-            guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
-
+            guard let window = UIApplication.shared.getWindow else { return }
             self.indicator?.removeFromSuperview() // 중복 생성 방지
 
             let indicator = UIActivityIndicatorView(style: .large)

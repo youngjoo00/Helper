@@ -51,6 +51,7 @@ final class DetailFindViewModel: ViewModelType {
         let commentCreateSuccess: Driver<Void>
         let commentDeleteSuccess: Driver<Void>
         let profileTapGesture: Driver<String>
+        let adjustTextViewHeight: Driver<Void>
     }
     
     var testId = ""
@@ -282,7 +283,8 @@ final class DetailFindViewModel: ViewModelType {
             storageSuccess: storageSuccess.map { $0 ? "게시글을 저장했어요!" : "게시글 저장을 취소했어요!" }.asDriver(onErrorDriveWith: .empty()),
             commentCreateSuccess: commentCreateSuccess.asDriver(onErrorDriveWith: .empty()),
             commentDeleteSuccess: commentDeleteSuccess.asDriver(onErrorDriveWith: .empty()),
-            profileTapGesture: profileTapGesture
+            profileTapGesture: profileTapGesture, 
+            adjustTextViewHeight: input.comment.map { _ in }.asDriver(onErrorJustReturn: ())
         )
     }
 }
