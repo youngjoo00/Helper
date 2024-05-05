@@ -21,13 +21,9 @@ final class FindContainerViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTabViewController()
+        configureLogo()
     }
     
-    override func configureNavigationBackButton() {
-        super.configureNavigationBackButton()
-        
-        navigationItem.titleView = mainView.navTitle
-    }
 }
 
 // MARK: - Custom Func

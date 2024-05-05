@@ -11,7 +11,6 @@ import Then
 
 final class FindContainerView: BaseView {
     
-    let navTitle = PointBoldLabel("게시판", fontSize: 20)
     let containerView = UIView()
     
     override func configureHierarchy() {

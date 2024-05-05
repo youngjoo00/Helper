@@ -31,7 +31,7 @@ extension ProfileImageView {
         backgroundColor = .lightGray
         clipsToBounds = true
         layer.borderWidth = 1
-        layer.borderColor = UIColor.lightGray.cgColor
+        layer.borderColor = UIColor.systemGray5.cgColor
     }
     
     func updateImage(_ urlString: String) {

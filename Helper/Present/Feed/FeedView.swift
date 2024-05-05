@@ -10,8 +10,6 @@ import Then
 
 final class FeedView: BaseView {
     
-    let navTitle = PointBoldLabel("피드", fontSize: 20)
-    
     let refreshControl = UIRefreshControl()
     
     let activityIndicator = UIActivityIndicatorView(style: .medium).then {

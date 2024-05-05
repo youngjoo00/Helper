@@ -29,7 +29,7 @@ final class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureNavigationView()
+        configureLogo()
         fetchPostsTrigger.onNext(())
         
     }
@@ -188,13 +188,5 @@ extension HomeViewController {
                 owner.transition(viewController: vc, style: .hideBottomPush)
             }
             .disposed(by: disposeBag)
-    }
-}
-
-extension HomeViewController {
-    
-    private func configureNavigationView() {
-        let leftItem = UIBarButtonItem(customView: mainView.naviTitle)
-        navigationItem.leftBarButtonItem = leftItem
     }
 }

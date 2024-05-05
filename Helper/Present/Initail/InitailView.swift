@@ -10,9 +10,7 @@ import Then
 
 final class InitailView: BaseView {
     
-    let titleLabel = HelperLabel("Helper", fontSize: 50).then {
-        $0.textColor = Color.white
-    }
+    let titleLabel = HelperLabel("Helper", fontSize: 50, color: UIColor.white)
     
     override func configureHierarchy() {
         [

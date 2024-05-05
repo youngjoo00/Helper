@@ -61,6 +61,11 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.topItem?.title = ""
     }
     
+    func configureLogo() {
+        let leftItem = UIBarButtonItem(customView: HelperLabel("Helper", fontSize: 30))
+        navigationItem.leftBarButtonItem = leftItem
+    }
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }

@@ -26,7 +26,7 @@ final class FeedViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureNavigationBar()
+        configureLogo()
         fetchPostsTrigger.onNext(())
     }
     
@@ -158,13 +158,4 @@ extension FeedViewController {
         
     }
     
-}
-
-
-// MARK: - Navigation UI
-extension FeedViewController {
-    
-    func configureNavigationBar() {
-        navigationItem.titleView = mainView.navTitle
-    }
 }

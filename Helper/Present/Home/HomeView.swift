@@ -10,8 +10,6 @@ import Then
 
 final class HomeView: BaseView {
     
-    let naviTitle = HelperLabel("Helper", fontSize: 30)
-    
     let refreshControl = UIRefreshControl()
     lazy var scrollView = UIScrollView().then {
         $0.showsVerticalScrollIndicator = false

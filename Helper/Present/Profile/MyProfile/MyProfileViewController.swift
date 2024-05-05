@@ -23,9 +23,10 @@ final class MyProfileViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureLogo()
         configureTabViewController()
         configureNavigationBar()
-        
     }
     
     override func bind() {
