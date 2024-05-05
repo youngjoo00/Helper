@@ -8,30 +8,48 @@
 import UIKit
 import Then
 
-final class NoNetworkView: UIView {
+final class NoNetworkView: BaseView {
     
+    let verticalStackView = UIStackView().then {
+        $0.axis = .vertical
+        $0.spacing = 20
+        $0.alignment = .center
+    }
+    
+    private let networkImageView = UIImageView().then {
+        $0.image = UIImage(systemName: "wifi.slash")
+        $0.backgroundColor = .clear
+        $0.tintColor = Color.point
+    }
     private let messageLabel = PointBoldLabel("인터넷 연결을 확인해주세요!", fontSize: 30, alignment: .center)
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupViews()
-        setupLayout()
+    
+    override func configureHierarchy() {
+        [
+            verticalStackView,
+        ].forEach { addSubview($0) }
+        
+        [
+            networkImageView,
+            messageLabel,
+        ].forEach { verticalStackView.addArrangedSubview($0) }
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setupViews() {
-        backgroundColor = .white
-        addSubview(messageLabel)
-    }
-    
-    private func setupLayout() {
-        messageLabel.snp.makeConstraints { make in
+    override func configureLayout() {
+        verticalStackView.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.horizontalEdges.greaterThanOrEqualToSuperview().inset(16)
+        }
+        
+        networkImageView.snp.makeConstraints { make in
+            make.size.equalTo(200)
+        }
+        
+        messageLabel.snp.makeConstraints { make in
+            make.horizontalEdges.equalToSuperview().inset(16)
         }
     }
-
+    
+    override func configureView() {
+        backgroundColor = Color.white
+    }
 }
