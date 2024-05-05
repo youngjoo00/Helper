@@ -35,7 +35,7 @@ final class DetailFindViewController: BaseViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     override func bind() {
@@ -75,6 +75,7 @@ final class DetailFindViewController: BaseViewController {
         output.profileTapGesture
             .drive(with: self) { owner, id in
                 owner.transition(viewController: id.checkedProfile, style: .push)
+                print("여기아닌가")
             }
             .disposed(by: disposeBag)
         
