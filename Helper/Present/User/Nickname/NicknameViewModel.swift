@@ -35,10 +35,10 @@ extension NicknameViewModel {
         let nextButtonTapTrigger = PublishRelay<Void>()
         
         let isValid = input.nickname
-            .map { $0.count >= 2 }
+            .map { $0.count >= 2 && $0.count <= 10 }
         
         let description = isValid
-            .map { $0 ? "" : "닉네임은 최소 두 글자 이상입니다" }
+            .map { $0 ? "" : "닉네임은 2 ~ 10글자 제한입니다" }
         
         input.nextButtonTap
             .withLatestFrom(input.nickname)
@@ -74,10 +74,10 @@ extension NicknameViewModel {
         let errorMessage = PublishRelay<String>()
         
         let isValid = input.nickname
-            .map { $0.count >= 2 }
+            .map { $0.count >= 2 && $0.count <= 10 }
         
         let description = isValid
-            .map { $0 ? "" : "닉네임은 최소 두 글자 이상입니다" }
+            .map { $0 ? "" : "닉네임은 2 ~ 10글자 제한입니다" }
         
         input.nextButtonTap
             .withLatestFrom(input.nickname)
