@@ -45,7 +45,7 @@ final class PaymentViewModel: ViewModelType {
                     amount: owner.price)
                 .then {
                     $0.pay_method = PayMethod.card.rawValue
-                    $0.name = "Helper_Test1"
+                    $0.name = "Helper"
                     $0.buyer_name = "권영주"
                     $0.app_scheme = "Helper"
                 }

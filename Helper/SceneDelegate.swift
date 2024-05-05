@@ -29,10 +29,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             switch connectionStatus {
             case .satisfied:
                 self?.removeNetworkErrorWindow()
-                print("dismiss networkError View if is present")
             case .unsatisfied:
                 self?.loadNetworkErrorWindow(on: scene)
-                print("No Internet!! show network Error View")
             default:
                 break
             }
