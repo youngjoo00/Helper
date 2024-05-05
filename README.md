@@ -4,7 +4,7 @@
 
 ### 스크린샷
 
-<img width="1500" alt="사진" src="https://github.com/youngjoo00/ReadingHaracoon/assets/90439413/22df2e93-253e-4a70-8c1d-bdd36a12a3cb">
+<img width="1500" alt="사진" src="https://github.com/youngjoo00/Helper/assets/90439413/87c02794-6d73-466c-b09e-ffd1c76dabad">
 
 ### **앱 기능**
 
