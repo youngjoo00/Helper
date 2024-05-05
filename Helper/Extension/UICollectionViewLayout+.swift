@@ -27,7 +27,7 @@ extension UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
         
-        let cellWidth = (UIScreen.main.bounds.width - (spacing * 4)) / 3
+        let cellWidth = (UIScreen.main.bounds.width - (spacing * 4)) / 2.5
         let cellhieght = cellWidth * 1.5
         
         layout.itemSize = CGSize(width: cellWidth, height: cellhieght)

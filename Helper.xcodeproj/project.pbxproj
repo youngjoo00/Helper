@@ -94,6 +94,9 @@
 		8E7597662BE69F7F00CE1F55 /* NumberManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7597652BE69F7F00CE1F55 /* NumberManager.swift */; };
 		8E7597682BE743A200CE1F55 /* NetworkPathMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7597672BE743A200CE1F55 /* NetworkPathMonitor.swift */; };
 		8E75976D2BE7447300CE1F55 /* NoNetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75976C2BE7447300CE1F55 /* NoNetworkView.swift */; };
+		8E7597702BE75D8400CE1F55 /* SEOLEIMcool.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8E75976F2BE75D8400CE1F55 /* SEOLEIMcool.otf */; };
+		8E7597722BE75DF400CE1F55 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7597712BE75DF400CE1F55 /* UIFont+.swift */; };
+		8E7597742BE75ED700CE1F55 /* HelperLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7597732BE75ED700CE1F55 /* HelperLabel.swift */; };
 		8E83BC482BCBC134007E1637 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E83BC472BCBC134007E1637 /* Router.swift */; };
 		8E887CDB2BD417D600E95008 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E887CDA2BD417D600E95008 /* MenuButton.swift */; };
 		8E9A3FCC2BCD7255005E4F45 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FCB2BCD7255005E4F45 /* UIImageView+.swift */; };
@@ -272,6 +275,9 @@
 		8E7597652BE69F7F00CE1F55 /* NumberManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberManager.swift; sourceTree = "<group>"; };
 		8E7597672BE743A200CE1F55 /* NetworkPathMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPathMonitor.swift; sourceTree = "<group>"; };
 		8E75976C2BE7447300CE1F55 /* NoNetworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNetworkView.swift; sourceTree = "<group>"; };
+		8E75976F2BE75D8400CE1F55 /* SEOLEIMcool.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SEOLEIMcool.otf; sourceTree = "<group>"; };
+		8E7597712BE75DF400CE1F55 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		8E7597732BE75ED700CE1F55 /* HelperLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperLabel.swift; sourceTree = "<group>"; };
 		8E83BC472BCBC134007E1637 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8E887CDA2BD417D600E95008 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		8E9A3FCB2BCD7255005E4F45 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
@@ -637,6 +643,7 @@
 				8ED8B7DC2BDD52B3009B4387 /* Notification+.swift */,
 				8ED8B8A82BDFB507009B4387 /* CheckedPostsKind+.swift */,
 				8E7597512BE5FFF700CE1F55 /* UIApplication+.swift */,
+				8E7597712BE75DF400CE1F55 /* UIFont+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -679,6 +686,7 @@
 		8E1BAE8C2BC9800B00A65075 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				8E75976E2BE75D3E00CE1F55 /* Fonts */,
 				8E1BAE8B2BC9800B00A65075 /* Color.swift */,
 				8ED8B7562BD65C9E009B4387 /* HelperString.swift */,
 			);
@@ -731,6 +739,14 @@
 				8E75976C2BE7447300CE1F55 /* NoNetworkView.swift */,
 			);
 			path = NoNetwork;
+			sourceTree = "<group>";
+		};
+		8E75976E2BE75D3E00CE1F55 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				8E75976F2BE75D8400CE1F55 /* SEOLEIMcool.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		8E9A3FD32BCD947D005E4F45 /* Setting */ = {
@@ -799,6 +815,7 @@
 				8E1BAE9F2BC99F3200A65075 /* PointBoldLabel.swift */,
 				8E17A2DB2BCA267000581B58 /* RedColorLabel.swift */,
 				8ED8B8A62BDFB04D009B4387 /* PointBackgroundLabel.swift */,
+				8E7597732BE75ED700CE1F55 /* HelperLabel.swift */,
 			);
 			path = Label;
 			sourceTree = "<group>";
@@ -1099,6 +1116,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E1BAE962BC9883500A65075 /* Main.storyboard in Resources */,
+				8E7597702BE75D8400CE1F55 /* SEOLEIMcool.otf in Resources */,
 				8E1BADED2BC965CD00A65075 /* Assets.xcassets in Resources */,
 				8E1BADF02BC965CD00A65075 /* Base in Resources */,
 			);
@@ -1228,6 +1246,7 @@
 				8E1BAE262BC968E500A65075 /* NicknameViewController.swift in Sources */,
 				8E887CDB2BD417D600E95008 /* MenuButton.swift in Sources */,
 				8ED8B7572BD65C9E009B4387 /* HelperString.swift in Sources */,
+				8E7597722BE75DF400CE1F55 /* UIFont+.swift in Sources */,
 				8E7597682BE743A200CE1F55 /* NetworkPathMonitor.swift in Sources */,
 				8ED8B7B32BDC0999009B4387 /* FollowViewModel.swift in Sources */,
 				8ED8B8F22BE4B911009B4387 /* RecentPostsFromFollowingViewModel.swift in Sources */,
@@ -1242,6 +1261,7 @@
 				8E9A3FF82BCEE2CE005E4F45 /* UserResponse.swift in Sources */,
 				8ED8B7CE2BDCF7F6009B4387 /* HomeViewController.swift in Sources */,
 				8E1BAE522BC96AC500A65075 /* TabBarController.swift in Sources */,
+				8E7597742BE75ED700CE1F55 /* HelperLabel.swift in Sources */,
 				8ED8B7592BD6913D009B4387 /* UIScrollView+.swift in Sources */,
 				8E9A3FE82BCEBDA8005E4F45 /* WriteFindViewModel.swift in Sources */,
 				8ED8B7712BD81F36009B4387 /* EditProfileViewController.swift in Sources */,

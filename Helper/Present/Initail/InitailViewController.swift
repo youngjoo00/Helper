@@ -19,12 +19,18 @@ final class InitailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .mainPoint
         LoadingIndicatorManager.shared.showIndicator()
-        if UserDefaultsManager.shared.getUserID().isEmpty {
-            changeSignInRootView()
-        } else {
-            changeHomeRootView()
+                
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            guard let self else { return }
+            if UserDefaultsManager.shared.getUserID().isEmpty {
+                self.changeSignInRootView()
+            } else {
+                self.changeHomeRootView()
+            }
         }
+        
     }
 
 }

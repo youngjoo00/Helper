@@ -31,8 +31,9 @@ final class HomeViewController: BaseViewController {
         
         configureNavigationView()
         fetchPostsTrigger.onNext(())
+        
     }
-    
+   
     override func bind() {
         homeBind()
         recentPostsFromFollowingBind()
@@ -193,6 +194,7 @@ extension HomeViewController {
 extension HomeViewController {
     
     private func configureNavigationView() {
-        navigationItem.titleView = mainView.naviTitle
+        let leftItem = UIBarButtonItem(customView: mainView.naviTitle)
+        navigationItem.leftBarButtonItem = leftItem
     }
 }

@@ -21,6 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().backgroundColor = .white
         UITabBar.appearance().tintColor = .mainPoint
         UITabBar.appearance().unselectedItemTintColor = .systemGray2
+        UITabBar.appearance().isTranslucent = false
+        UITabBar.appearance().backgroundImage = UIImage()
+        UITabBar.appearance().shadowImage = UIImage()
+        
         return true
     }
 

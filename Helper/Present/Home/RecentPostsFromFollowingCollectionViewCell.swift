@@ -33,9 +33,9 @@ final class RecentPostsFromFollowingCollectionViewCell: BaseCollectionViewCell {
     override func configureLayout() {
         
         profileImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(3)
+            make.top.equalToSuperview().offset(10)
             make.leading.equalToSuperview().offset(3)
-            make.size.equalTo(25)
+            make.size.equalTo(27)
         }
         
         nicknameLabel.snp.makeConstraints { make in
@@ -51,7 +51,7 @@ final class RecentPostsFromFollowingCollectionViewCell: BaseCollectionViewCell {
         feedImageView.snp.makeConstraints { make in
             make.top.equalTo(profileImageView.snp.bottom).offset(5)
             make.horizontalEdges.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-20)
         }
     }
     

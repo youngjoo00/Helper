@@ -10,7 +10,8 @@ import Then
 
 final class HomeView: BaseView {
     
-    let naviTitle = PointBoldLabel("Helper", fontSize: 20)
+    let naviTitle = HelperLabel("Helper", fontSize: 30)
+    
     let refreshControl = UIRefreshControl()
     lazy var scrollView = UIScrollView().then {
         $0.showsVerticalScrollIndicator = false
@@ -24,13 +25,13 @@ final class HomeView: BaseView {
         $0.spacing = 20
     }
     
-    let recentPostsFollowingTitleLabel = PointBoldLabel("팔로잉 최근 게시물", fontSize: 18)
+    let recentPostsFollowingTitleLabel = HelperLabel("팔로잉 최근 게시물", fontSize: 25, color: UIColor.black)
     let recentPostsFollowingView = HorizontalPostsView(collectionViewCellType: RecentPostsFromFollowingCollectionViewCell.self)
     
-    let recentPostsFindingTitleLabel = PointBoldLabel("찾고있어요 최근 게시물", fontSize: 18)
+    let recentPostsFindingTitleLabel = HelperLabel("찾고있어요 최근 게시물", fontSize: 25, color: UIColor.black)
     let recentPostsFindingView = HorizontalPostsView(collectionViewCellType: PostCollectionViewCell.self)
     
-    let recentPostsFoundTitleLabel = PointBoldLabel("찾았어요 최근 게시물", fontSize: 18)
+    let recentPostsFoundTitleLabel = HelperLabel("찾았어요 최근 게시물", fontSize: 25, color: UIColor.black)
     let recentPostsFoundView = HorizontalPostsView(collectionViewCellType: PostCollectionViewCell.self)
     
     override func configureHierarchy() {
@@ -80,7 +81,7 @@ final class HomeView: BaseView {
         recentPostsFollowingView.snp.makeConstraints { make in
             make.top.equalTo(recentPostsFollowingTitleLabel.snp.bottom).offset(15)
             make.horizontalEdges.equalToSuperview()
-            make.height.equalTo(UIScreen.main.bounds.width / 3 * 1.3)
+            make.height.equalTo(UIScreen.main.bounds.width / 3 * 1.5)
         }
         
         recentPostsFindingTitleLabel.snp.makeConstraints { make in
@@ -91,7 +92,7 @@ final class HomeView: BaseView {
         recentPostsFindingView.snp.makeConstraints { make in
             make.top.equalTo(recentPostsFindingTitleLabel.snp.bottom).offset(5)
             make.horizontalEdges.equalToSuperview()
-            make.height.equalTo(UIScreen.main.bounds.width / 3 * 1.5)
+            make.height.equalTo(UIScreen.main.bounds.width / 3 * 1.8)
         }
         
         recentPostsFoundTitleLabel.snp.makeConstraints { make in
@@ -102,7 +103,7 @@ final class HomeView: BaseView {
         recentPostsFoundView.snp.makeConstraints { make in
             make.top.equalTo(recentPostsFoundTitleLabel.snp.bottom).offset(5)
             make.horizontalEdges.equalToSuperview()
-            make.height.equalTo(UIScreen.main.bounds.width / 3 * 1.5)
+            make.height.equalTo(UIScreen.main.bounds.width / 3 * 1.8)
         }
         
         scrollBottomSpaceView.snp.makeConstraints { make in
