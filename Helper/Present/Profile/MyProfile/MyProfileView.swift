@@ -11,7 +11,7 @@ import Then
 final class MyProfileView: BaseView {
 
     let profileView = ProfileView()
-    let profileEditButton = PointButton(title: "프로필 수정")
+    let profileEditButton = BoldTextPointButton(title: "프로필 수정", size: 17)
     let containerView = UIView()
     
     override func configureHierarchy() {

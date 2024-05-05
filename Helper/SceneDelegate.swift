@@ -10,11 +10,9 @@ import RxSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
-    let disposebag = DisposeBag()
     var window: UIWindow?
     
     var errorWindow: UIWindow?
-    var networkMonitor: NetworkMonitor = NetworkMonitor()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
@@ -27,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
         
-        networkMonitor.startMonitoring() { [weak self] connectionStatus in
+        NetworkMonitorManager.shared.startMonitoring() { [weak self] connectionStatus in
             switch connectionStatus {
             case .satisfied:
                 self?.removeNetworkErrorWindow()
@@ -64,6 +62,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This occurs shortly after the scene enters the background, or when its session is discarded.
         // Release any resources associated with this scene that can be re-created the next time the scene connects.
         // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
+        NetworkMonitorManager.shared.stopMonitoring()
     }
     
     func sceneDidBecomeActive(_ scene: UIScene) {

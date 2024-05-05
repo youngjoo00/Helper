@@ -23,7 +23,6 @@ final class NoNetworkView: BaseView {
     }
     private let messageLabel = PointBoldLabel("인터넷 연결을 확인해주세요!", fontSize: 30, alignment: .center)
     
-    
     override func configureHierarchy() {
         [
             verticalStackView,

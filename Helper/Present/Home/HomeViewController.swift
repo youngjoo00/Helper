@@ -52,6 +52,18 @@ final class HomeViewController: BaseViewController {
             .disposed(by: disposeBag)
         
     }
+    
+    override func handleNetworkReconnection(_ notification: Notification) {
+        super.handleNetworkReconnection(notification)
+        
+        fetchPostsTrigger.onNext(())
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        
+    }
 }
 
 

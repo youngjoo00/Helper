@@ -105,4 +105,10 @@ final class FindViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
     }
+    
+    override func handleNetworkReconnection(_ notification: Notification) {
+        super.handleNetworkReconnection(notification)
+        
+        fetchPostsTrigger.onNext(())
+    }
 }

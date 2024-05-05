@@ -20,12 +20,14 @@ class BaseViewController: UIViewController {
         print("baseVC")
         view.backgroundColor = .white
         configureNavigationBackButton()
+        configureNotificationCenter()
         bind()
     }
     
     func configureNotificationCenter() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleLoginSessionExpired), name: .loginSessionExpired, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleLoginSessionExpired), name: .unknownError, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleUnknownError), name: .unknownError, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleNetworkReconnection), name: .networkReconnection, object: nil)
     }
     
     @objc func handleLoginSessionExpired(_ notification: Notification) {
@@ -40,6 +42,9 @@ class BaseViewController: UIViewController {
         }
     }
     
+    @objc func handleNetworkReconnection (_ notification: Notification) {
+        print("네트워크 재연결 감지")
+    }
     
     func showTaost(_ message: String) {
         view.makeToast(message, duration: 1.5, position: .center)

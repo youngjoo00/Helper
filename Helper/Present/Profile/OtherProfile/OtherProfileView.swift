@@ -12,7 +12,7 @@ import Then
 class OtherProfileView: BaseView {
     
     let profileView = ProfileView()
-    let followButton = PointButton(title: "팔로우")
+    let followButton = FollowButton()
     
     let profilePostsLabel = PointBoldLabel("게시물", fontSize: 17)
     let profilePostsView = ProfilePostsView()
@@ -61,10 +61,6 @@ class OtherProfileView: BaseView {
 extension OtherProfileView {
     
     func updateFollowButton(_ data: Bool) {
-        if data {
-            followButton.configureView("팔로잉", image: UIImage(systemName: "checkmark"))
-        } else {
-            followButton.configureView("팔로우", image: nil)
-        }
+        followButton.configureView(data, size: 18)
     }
 }

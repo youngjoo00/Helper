@@ -72,5 +72,11 @@ final class MyPostViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
     }
+    
+    override func handleNetworkReconnection(_ notification: Notification) {
+        super.handleNetworkReconnection(notification)
+        
+        fetchPostsTrigger.onNext(())
+    }
 }
 

@@ -97,6 +97,7 @@
 		8E7597702BE75D8400CE1F55 /* SEOLEIMcool.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8E75976F2BE75D8400CE1F55 /* SEOLEIMcool.otf */; };
 		8E7597722BE75DF400CE1F55 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7597712BE75DF400CE1F55 /* UIFont+.swift */; };
 		8E7597742BE75ED700CE1F55 /* HelperLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7597732BE75ED700CE1F55 /* HelperLabel.swift */; };
+		8E7597762BE76FBF00CE1F55 /* BoldTextPointButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7597752BE76FBF00CE1F55 /* BoldTextPointButton.swift */; };
 		8E83BC482BCBC134007E1637 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E83BC472BCBC134007E1637 /* Router.swift */; };
 		8E887CDB2BD417D600E95008 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E887CDA2BD417D600E95008 /* MenuButton.swift */; };
 		8E9A3FCC2BCD7255005E4F45 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FCB2BCD7255005E4F45 /* UIImageView+.swift */; };
@@ -278,6 +279,7 @@
 		8E75976F2BE75D8400CE1F55 /* SEOLEIMcool.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SEOLEIMcool.otf; sourceTree = "<group>"; };
 		8E7597712BE75DF400CE1F55 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		8E7597732BE75ED700CE1F55 /* HelperLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperLabel.swift; sourceTree = "<group>"; };
+		8E7597752BE76FBF00CE1F55 /* BoldTextPointButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldTextPointButton.swift; sourceTree = "<group>"; };
 		8E83BC472BCBC134007E1637 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8E887CDA2BD417D600E95008 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		8E9A3FCB2BCD7255005E4F45 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
@@ -804,6 +806,7 @@
 				8E887CDA2BD417D600E95008 /* MenuButton.swift */,
 				8ED8B8DE2BE205C3009B4387 /* FollowButton.swift */,
 				8ED8B8E32BE2B767009B4387 /* CompleteButton.swift */,
+				8E7597752BE76FBF00CE1F55 /* BoldTextPointButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -1144,6 +1147,7 @@
 				8ED8B8DD2BE16C63009B4387 /* FollowManager.swift in Sources */,
 				8ED8B7E62BDE2235009B4387 /* WriteFeedView.swift in Sources */,
 				8E1BAE392BC968EC00A65075 /* TargetType.swift in Sources */,
+				8E7597762BE76FBF00CE1F55 /* BoldTextPointButton.swift in Sources */,
 				8E1BAE202BC968E500A65075 /* PasswordViewController.swift in Sources */,
 				8E75975A2BE6630A00CE1F55 /* PaymentRouter.swift in Sources */,
 				8E17A2EE2BCA59D000581B58 /* BirthdayViewModel.swift in Sources */,

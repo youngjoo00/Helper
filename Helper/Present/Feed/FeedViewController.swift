@@ -34,6 +34,12 @@ final class FeedViewController: BaseViewController {
         feedBind()
         postsBind()
     }
+    
+    override func handleNetworkReconnection(_ notification: Notification) {
+        super.handleNetworkReconnection(notification)
+        
+        fetchPostsTrigger.onNext(())
+    }
 }
 
 

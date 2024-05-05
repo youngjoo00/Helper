@@ -46,6 +46,11 @@ final class OtherProfileViewController: BaseViewController {
         postsBind()
     }
     
+    override func handleNetworkReconnection(_ notification: Notification) {
+        super.handleNetworkReconnection(notification)
+        
+        fetchPostsTrigger.onNext(())
+    }
 }
 
 extension OtherProfileViewController {

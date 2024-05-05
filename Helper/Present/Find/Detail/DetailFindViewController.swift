@@ -25,7 +25,6 @@ final class DetailFindViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -318,23 +317,14 @@ extension DetailFindViewController {
             .bind(to: rewardButtonTap)
             .disposed(by: disposeBag)
     }
-}
-
-extension DetailFindViewController {
     
-    func showAlertTextField(title: String?, message: String?, completion: @escaping (String?) -> Void) {
+    private func showAlertTextField(title: String?, message: String?, completion: @escaping (String?) -> Void) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         alert.addTextField { textField in
             
             textField.placeholder = "금액을 입력하세요"
             textField.keyboardType = .numberPad
-//            textField.rx.text.orEmpty
-//                .map { formatToCurrency($0) }
-//                .subscribe(with: self) { owner, formattedText in
-//                    textField.text = formattedText
-//                }
-//                .disposed(by: self.disposeBag)
         }
         
         let action = UIAlertAction(title: "확인", style: .default) { text in
@@ -348,6 +338,4 @@ extension DetailFindViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
-    
 }
-

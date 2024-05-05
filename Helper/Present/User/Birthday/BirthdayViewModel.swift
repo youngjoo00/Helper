@@ -67,6 +67,7 @@ final class BirthdayViewModel: ViewModelType {
             .map { $0 ? "" : "유효한 생년월일이 아닙니다." }
         
         input.signUpButtonTap
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .withLatestFrom(date) { _, date in
                 UserProfileManager.shared.birthday = date.0 + date.1 + date.2
                 let signUp = UserProfileManager.shared

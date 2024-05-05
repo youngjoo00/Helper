@@ -50,7 +50,7 @@ final class SignInViewController: BaseViewController {
         output.errorMessage
             .drive(with: self) { owner, message in
                 owner.showAlert(title: "오류", message: message) {
-                    print("여긴가?", message)
+                    
                 }
             }
             .disposed(by: disposeBag)

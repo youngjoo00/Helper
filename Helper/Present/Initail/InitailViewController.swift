@@ -19,7 +19,22 @@ final class InitailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .mainPoint
+        nextTransition()
+    }
+    
+    override func handleNetworkReconnection(_ notification: Notification) {
+        super.handleNetworkReconnection(notification)
+        
+        nextTransition()
+    }
+
+}
+
+extension InitailViewController {
+    
+    private func nextTransition() {
         LoadingIndicatorManager.shared.showIndicator()
                 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
@@ -30,7 +45,5 @@ final class InitailViewController: BaseViewController {
                 self.changeHomeRootView()
             }
         }
-        
     }
-
 }
