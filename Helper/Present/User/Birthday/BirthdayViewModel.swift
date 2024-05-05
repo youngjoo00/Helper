@@ -52,12 +52,13 @@ final class BirthdayViewModel: ViewModelType {
             .observe(on: MainScheduler.asyncInstance)
             .bind(to: nextDayField)
             .disposed(by: disposeBag)
-        
+
         // 세개의 값이 다 들어온 경우 확인 시작
         let date = Observable.combineLatest(input.year, input.month, input.day)
         
         let isValid = date
             .map { year, month, day in
+                guard year.count == 4, month.count == 2, day.count == 2 else { return false }
                 guard let year = Int(year), let month = Int(month), let day = Int(day) else { return false }
                 return DateManager.shared.validationDate(year: year, month: month, day: day)
             }

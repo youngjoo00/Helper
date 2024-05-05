@@ -45,5 +45,12 @@ extension EditProfileTableViewCell {
     func updateView(content: String, contentValue: String) {
         contentlabel.text = content
         contentValueLabel.text = contentValue
+        
+        if content == EditProfileList.nick.title || content == EditProfileList.phone.title {
+            self.accessoryType = .disclosureIndicator
+        } else {
+            self.accessoryType = .none
+        }
+        
     }
 }

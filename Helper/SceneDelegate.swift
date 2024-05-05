@@ -13,6 +13,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let disposebag = DisposeBag()
     var window: UIWindow?
     
+    var errorWindow: UIWindow?
+    var networkMonitor: NetworkMonitor = NetworkMonitor()
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let scene = (scene as? UIWindowScene) else { return }
@@ -23,6 +26,37 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
+        
+        networkMonitor.startMonitoring() { [weak self] connectionStatus in
+            switch connectionStatus {
+            case .satisfied:
+                self?.removeNetworkErrorWindow()
+                print("dismiss networkError View if is present")
+            case .unsatisfied:
+                self?.loadNetworkErrorWindow(on: scene)
+                print("No Internet!! show network Error View")
+            default:
+                break
+            }
+        }
+    }
+    
+    private func loadNetworkErrorWindow(on scene: UIScene) {
+        if let windowScene = scene as? UIWindowScene {
+            let window = UIWindow(windowScene: windowScene)
+            window.windowLevel = .statusBar
+            window.makeKeyAndVisible()
+            
+            let noNetworkView = NoNetworkView(frame: window.frame)
+            window.addSubview(noNetworkView)
+            self.errorWindow = window
+        }
+    }
+    
+    private func removeNetworkErrorWindow() {
+        errorWindow?.resignKey()
+        errorWindow?.isHidden = true
+        errorWindow = nil
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

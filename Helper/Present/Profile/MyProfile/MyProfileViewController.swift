@@ -63,17 +63,6 @@ final class MyProfileViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-
-        // 나중에 자식으로 보내주게 된다면 씁시다..
-        // 탭맨으로 자식 VC 를 놨다면 반드시 반드시 반드시 값 넘길때 자식VC 로 넘기자.,.., (여기에 24시간 사용)
-//        output.postsID
-//            .bind(with: self) { owner, ids in
-//                // 자식 VC 중에 MyPostVC 찾기
-//                if let myPostVC = owner.tabVC.viewControllers.first(where: { $0 is MyPostViewController }) as? MyPostViewController {
-//                    myPostVC.postsID.onNext(ids)
-//                }
-//            }
-//            .disposed(by: disposeBag)
     }
     
 }

@@ -232,7 +232,7 @@ final class DetailFindViewModel: ViewModelType {
             .asDriver(onErrorJustReturn: "")
         
         let phone = postInfo
-            .map { $0.phone.contentEmpty }
+            .map { $0.phone.contentEmpty.formattedPhoneNumber }
             .asDriver(onErrorJustReturn: "")
         
         let content = postInfo

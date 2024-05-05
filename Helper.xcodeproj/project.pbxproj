@@ -92,6 +92,8 @@
 		8E7597602BE6781000CE1F55 /* PaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75975F2BE6781000CE1F55 /* PaymentView.swift */; };
 		8E7597622BE678B000CE1F55 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7597612BE678B000CE1F55 /* PaymentViewModel.swift */; };
 		8E7597662BE69F7F00CE1F55 /* NumberManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7597652BE69F7F00CE1F55 /* NumberManager.swift */; };
+		8E7597682BE743A200CE1F55 /* NetworkPathMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7597672BE743A200CE1F55 /* NetworkPathMonitor.swift */; };
+		8E75976D2BE7447300CE1F55 /* NoNetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75976C2BE7447300CE1F55 /* NoNetworkView.swift */; };
 		8E83BC482BCBC134007E1637 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E83BC472BCBC134007E1637 /* Router.swift */; };
 		8E887CDB2BD417D600E95008 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E887CDA2BD417D600E95008 /* MenuButton.swift */; };
 		8E9A3FCC2BCD7255005E4F45 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FCB2BCD7255005E4F45 /* UIImageView+.swift */; };
@@ -268,6 +270,8 @@
 		8E75975F2BE6781000CE1F55 /* PaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
 		8E7597612BE678B000CE1F55 /* PaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
 		8E7597652BE69F7F00CE1F55 /* NumberManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberManager.swift; sourceTree = "<group>"; };
+		8E7597672BE743A200CE1F55 /* NetworkPathMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPathMonitor.swift; sourceTree = "<group>"; };
+		8E75976C2BE7447300CE1F55 /* NoNetworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNetworkView.swift; sourceTree = "<group>"; };
 		8E83BC472BCBC134007E1637 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8E887CDA2BD417D600E95008 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		8E9A3FCB2BCD7255005E4F45 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
@@ -571,6 +575,7 @@
 				8E7597562BE65CB200CE1F55 /* Payment */,
 				8E1BAE492BC9690900A65075 /* Base */,
 				8E1BAE412BC968F900A65075 /* CustomView */,
+				8E75976B2BE7445400CE1F55 /* NoNetwork */,
 			);
 			path = Present;
 			sourceTree = "<group>";
@@ -583,6 +588,7 @@
 				8E1BAE2C2BC968EB00A65075 /* NetworkManager.swift */,
 				8E1BAE302BC968EB00A65075 /* TokenIntercepter.swift */,
 				8E1BAE292BC968EB00A65075 /* APIError.swift */,
+				8E7597672BE743A200CE1F55 /* NetworkPathMonitor.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -717,6 +723,14 @@
 				8E7597612BE678B000CE1F55 /* PaymentViewModel.swift */,
 			);
 			path = Payment;
+			sourceTree = "<group>";
+		};
+		8E75976B2BE7445400CE1F55 /* NoNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				8E75976C2BE7447300CE1F55 /* NoNetworkView.swift */,
+			);
+			path = NoNetwork;
 			sourceTree = "<group>";
 		};
 		8E9A3FD32BCD947D005E4F45 /* Setting */ = {
@@ -1177,6 +1191,7 @@
 				8E7597622BE678B000CE1F55 /* PaymentViewModel.swift in Sources */,
 				8E83BC482BCBC134007E1637 /* Router.swift in Sources */,
 				8ED8B7E22BDD5C5C009B4387 /* InitailView.swift in Sources */,
+				8E75976D2BE7447300CE1F55 /* NoNetworkView.swift in Sources */,
 				8ED8B7FB2BDE81C3009B4387 /* DetailFeedViewModel.swift in Sources */,
 				8ED3AE222BD15C960040DA58 /* CommentsTableViewCell.swift in Sources */,
 				8ED8B8AB2BDFBED6009B4387 /* QueryItem.swift in Sources */,
@@ -1213,6 +1228,7 @@
 				8E1BAE262BC968E500A65075 /* NicknameViewController.swift in Sources */,
 				8E887CDB2BD417D600E95008 /* MenuButton.swift in Sources */,
 				8ED8B7572BD65C9E009B4387 /* HelperString.swift in Sources */,
+				8E7597682BE743A200CE1F55 /* NetworkPathMonitor.swift in Sources */,
 				8ED8B7B32BDC0999009B4387 /* FollowViewModel.swift in Sources */,
 				8ED8B8F22BE4B911009B4387 /* RecentPostsFromFollowingViewModel.swift in Sources */,
 				8E1BAE272BC968E500A65075 /* NicknameViewModel.swift in Sources */,

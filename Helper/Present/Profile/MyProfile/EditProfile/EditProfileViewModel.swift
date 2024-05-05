@@ -69,8 +69,22 @@ final class EditProfileViewModel: ViewModelType {
             })
             .map { info -> [[String]] in
                 // 인스턴스를 순회하며 1차원 배열 생성 후, 순회가 끝나면 2차원 배열로 반환
-                EditProfileList.allCases.map { item in
-                    [item.title, item.contentValue(info)]
+                EditProfileList.allCases.map { item -> [String] in
+                    let title = item.title
+                    let contentValue: String
+                    
+                    switch item {
+                    case .email:
+                        contentValue = info.email
+                    case .nick:
+                        contentValue = info.nick
+                    case .phone:
+                        contentValue = info.phoneNum.formattedPhoneNumber
+                    case .birthDay:
+                        contentValue = info.birthDay.formattedBirthDay
+                    }
+                    
+                    return [title, contentValue]
                 }
             }
         
@@ -79,7 +93,7 @@ final class EditProfileViewModel: ViewModelType {
                 switch row {
                 case 0: break
                 case 1: nicknameTapped.accept(data)
-                case 2: phoneTapped.accept(data)
+                case 2: phoneTapped.accept(data.removeHyphens)
                 case 3: break
                 default: break
                 }
