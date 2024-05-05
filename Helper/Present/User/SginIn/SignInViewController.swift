@@ -35,9 +35,8 @@ final class SignInViewController: BaseViewController {
         output.loginValid
             .drive(with: self) { owner, valid in
                 if valid {
+                    LoadingIndicatorManager.shared.showIndicator()
                     owner.changeHomeRootView()
-                } else {
-                    owner.showAlert(title: "로그인 실패!", message: nil)
                 }
             }
             .disposed(by: disposeBag)
@@ -45,6 +44,14 @@ final class SignInViewController: BaseViewController {
         output.signUpButtonTapped
             .drive(with: self) { owner, _ in
                 owner.transition(viewController: SignUpViewController(), style: .push)
+            }
+            .disposed(by: disposeBag)
+        
+        output.errorMessage
+            .drive(with: self) { owner, message in
+                owner.showAlert(title: "오류", message: message) {
+                    print("여긴가?", message)
+                }
             }
             .disposed(by: disposeBag)
     }

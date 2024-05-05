@@ -22,7 +22,7 @@ extension BaseViewController {
                     sceneDelegate?.window?.rootViewController = tabbar
                     sceneDelegate?.window?.makeKey()
                 case .fail(let fail):
-                    owner.showAlert(title: "오류!", message: fail.localizedDescription) {
+                    owner.showAlert(title: "오류!", message: "로그인 세션이 만료되었습니다. 다시 로그인해 주세요.") {
                         owner.changeSignInRootView()
                     }
                 }

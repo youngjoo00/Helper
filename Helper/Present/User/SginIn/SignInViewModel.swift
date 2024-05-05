@@ -23,11 +23,13 @@ final class SignInViewModel: ViewModelType {
     struct Output {
         let loginValid: Driver<Bool>
         let signUpButtonTapped: Driver<Void>
+        let errorMessage: Driver<String>
     }
     
     func transform(input: Input) -> Output {
         
         let loginValid = PublishRelay<Bool>()
+        let errorMessage = PublishRelay<String>()
         
         let loginQuery = Observable.combineLatest(input.emailText, input.passwordText)
             .map { email, password in
@@ -41,23 +43,19 @@ final class SignInViewModel: ViewModelType {
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let data):
-                    loginValid.accept(true)
-                    print("로그인 성공!", data.accessToken, data.refreshToken)
                     UserDefaultsManager.shared.saveTokens(data.accessToken, refreshToken: data.refreshToken)
                     UserDefaultsManager.shared.saveUserID(data.userID)
+                    loginValid.accept(true)
                 case .fail(let fail):
-                    loginValid.accept(false)
+                    errorMessage.accept(fail.localizedDescription)
                     print(fail.localizedDescription)
                 }
-            } onError: { _, error in
-                print(error, "onError 등장")
-            } onDisposed: { _ in
-                print("disepose 됨")
             }
             .disposed(by: disposeBag)
 
         return Output(loginValid: loginValid.asDriver(onErrorJustReturn: false),
-                      signUpButtonTapped: input.signUpButtonTapped.asDriver()
+                      signUpButtonTapped: input.signUpButtonTapped.asDriver(),
+                      errorMessage: errorMessage.asDriver(onErrorJustReturn: "알 수 없는 오류로 인해 로그인에 실패했습니다")
         )
     }
     

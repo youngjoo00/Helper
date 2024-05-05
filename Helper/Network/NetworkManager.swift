@@ -271,18 +271,4 @@ final class NetworkManager {
             return Disposables.create()
         }
     }
-    
-    func callAPIString<T: Decodable, U: TargetType>(type: T.Type, router: U) {
-            do {
-                let urlRequest = try router.asURLRequest()
-                print(urlRequest)
-                AF.request(urlRequest, interceptor: TokenIntercepter())
-                    .validate(statusCode: 200..<300)
-                    .responseString { response in
-                        print(response)
-                    }
-            } catch {
-                print(error)
-            }
-    }
 }

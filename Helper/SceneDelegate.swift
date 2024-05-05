@@ -23,9 +23,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
-        // 임시
-//        window?.rootViewController = BirthdayViewController()
-//        window?.makeKeyAndVisible()
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

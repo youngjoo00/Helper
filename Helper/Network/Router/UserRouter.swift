@@ -115,7 +115,6 @@ extension UserRouter: TargetType {
         case .validationEmail(let query):
             return try? encoder.encode(query)
         case .login(let query):
-            print(query)
             return try? encoder.encode(query)
         case .withdraw:
             return nil
@@ -124,7 +123,6 @@ extension UserRouter: TargetType {
         case .myProfile:
             return nil
         case .editProfile(let query):
-            print(query)
             return try? encoder.encode(query)
         case .otherProfile:
             return nil
