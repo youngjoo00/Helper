@@ -98,6 +98,7 @@
 		8E7597722BE75DF400CE1F55 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7597712BE75DF400CE1F55 /* UIFont+.swift */; };
 		8E7597742BE75ED700CE1F55 /* HelperLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7597732BE75ED700CE1F55 /* HelperLabel.swift */; };
 		8E7597762BE76FBF00CE1F55 /* BoldTextPointButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7597752BE76FBF00CE1F55 /* BoldTextPointButton.swift */; };
+		8E75977A2BE7BDD600CE1F55 /* BadgeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7597792BE7BDD600CE1F55 /* BadgeButton.swift */; };
 		8E83BC482BCBC134007E1637 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E83BC472BCBC134007E1637 /* Router.swift */; };
 		8E887CDB2BD417D600E95008 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E887CDA2BD417D600E95008 /* MenuButton.swift */; };
 		8E9A3FCC2BCD7255005E4F45 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A3FCB2BCD7255005E4F45 /* UIImageView+.swift */; };
@@ -280,6 +281,7 @@
 		8E7597712BE75DF400CE1F55 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		8E7597732BE75ED700CE1F55 /* HelperLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperLabel.swift; sourceTree = "<group>"; };
 		8E7597752BE76FBF00CE1F55 /* BoldTextPointButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldTextPointButton.swift; sourceTree = "<group>"; };
+		8E7597792BE7BDD600CE1F55 /* BadgeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeButton.swift; sourceTree = "<group>"; };
 		8E83BC472BCBC134007E1637 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8E887CDA2BD417D600E95008 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		8E9A3FCB2BCD7255005E4F45 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
@@ -807,6 +809,7 @@
 				8ED8B8DE2BE205C3009B4387 /* FollowButton.swift */,
 				8ED8B8E32BE2B767009B4387 /* CompleteButton.swift */,
 				8E7597752BE76FBF00CE1F55 /* BoldTextPointButton.swift */,
+				8E7597792BE7BDD600CE1F55 /* BadgeButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -1291,6 +1294,7 @@
 				8ED8B7982BDBEBEC009B4387 /* ProfileImageView.swift in Sources */,
 				8E9A3FD22BCD8455005E4F45 /* UICollectionViewLayout+.swift in Sources */,
 				8E7597582BE65CDD00CE1F55 /* PaymentViewController.swift in Sources */,
+				8E75977A2BE7BDD600CE1F55 /* BadgeButton.swift in Sources */,
 				8E17A3322BCAF03D00581B58 /* BaseTableView.swift in Sources */,
 				8ED8B7A22BDC07CE009B4387 /* FollowTabViewController.swift in Sources */,
 				8ED3AE1C2BD14B890040DA58 /* DetailFindView.swift in Sources */,

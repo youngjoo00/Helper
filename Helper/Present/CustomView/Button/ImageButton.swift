@@ -36,4 +36,32 @@ extension ImageButton {
         self.configuration = configuration
     }
     
+    // 뱃지를 추가하는 함수
+    func addBadge(number: Int) {
+        let badgeLabel = UILabel().then {
+            $0.backgroundColor = .red
+            $0.textColor = .white
+            $0.font = UIFont.systemFont(ofSize: 12)
+            $0.textAlignment = .center
+            $0.text = String(number)
+            $0.clipsToBounds = true
+            $0.layer.cornerRadius = 10
+        }
+        
+        self.addSubview(badgeLabel)
+        
+        badgeLabel.snp.makeConstraints { make in
+            make.top.equalTo(self.snp.top)
+            make.trailing.equalTo(self.snp.trailing)
+            make.width.height.equalTo(20)
+        }
+    }
+    
+    func removeBadge() {
+        self.subviews.forEach {
+            if $0 is UILabel {
+                $0.removeFromSuperview()
+            }
+        }
+    }
 }

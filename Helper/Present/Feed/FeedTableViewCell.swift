@@ -44,7 +44,7 @@ final class FeedTableViewCell: BaseTableViewCell {
     
     let commentButton = ImageButton(image: UIImage(systemName: "message"))
     let storageButton = ImageButton(image: UIImage(systemName: "bookmark"))
-    let titleLabel = PointLabel(fontSize: 16).then {
+    let titleLabel = PointLabel(fontSize: 18).then {
         $0.numberOfLines = 0
     }
     
