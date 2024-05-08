@@ -47,7 +47,6 @@
 - Toast
 - RxSwift
 - IQKeyBoardManagerSwift
-- Hero
 - iamport-ios
 
 ## **고려사항**
