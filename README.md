@@ -81,9 +81,9 @@
 - 제네릭, 열거형을 이용하여 하나의 메서드로 Request, Response Model 사용
 - Custom APIError 열거형 생성, LocalizedError + Server Error Response 디코딩
 
-### 컨테이너뷰를 통해 자식 VC 생성 시 viewDidLoad 순서
-
 <img width="950" alt="image" src="https://github.com/youngjoo00/Helper/assets/90439413/40d3780d-6b31-4859-a91a-9237c0bae055">
+
+### 컨테이너뷰를 통해 자식 VC 생성 시 viewDidLoad 순서
 
 라이브러리 Tabman 을 사용하는 경우, ContaineView 내부에 자식VC 을 생성하며 구현하는 도중 맞닥뜨린 이슈
 
