@@ -54,7 +54,7 @@
 **Alamofire**
 
 - Router Pattern 을 통해 네트워크 통신을 위한 Endpoint 생성 로직 추상화
-- Singleton pattern, Generic 을 통해 네트워크
+- Singleton pattern, Generic 을 통해 네트워크 로직 재사용 용이
 - RequestInterceptor 를 활용한 refreshToken 갱신 로직 구현
 
 **NWPathMonitor**
