@@ -88,5 +88,7 @@
 라이브러리 Tabman 을 사용하는 경우, ContaineView 내부에 자식VC 을 생성하며 구현하는 도중 맞닥뜨린 이슈
 
 - 컨테이너뷰로 자식VC 을 넣어서 사용하는 경우, ViewDIdLoad 는 가장 내부에 있는 자식이 먼저 실행됨을 확인
+
+
 [분석 및 결과 블로그](https://youngjoo00.tistory.com/12)
 
