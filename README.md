@@ -54,13 +54,13 @@
 **Alamofire**
 
 - Router Pattern 을 통해 네트워크 통신을 위한 Endpoint 생성 로직 추상화
-- Singleton pattern, Generic 을 통해 네트워크 로직 재사용 용이
+- Singleton pattern, Generic 을 통해 네트워크 로직 재사용
 - RequestInterceptor 를 활용한 refreshToken 갱신 로직 구현
 
 **NWPathMonitor**
 
 - Monitoring 을 통해 네트워크 상태 감지
-- 네트워크 재연결 시 일부 화면 NotificationCenter 를 이용한 API 재호출
+- 네트워크 재연결 감지 NotificationCenter 를 통해 API 재호출
 
 **RxSwift + MVVM Input/Output Pattern**
 
