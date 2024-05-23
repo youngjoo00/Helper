@@ -31,7 +31,7 @@
 
 ## 기술 스택
 
-### **FrameWork**
+### **Framework**
 
 - UIKit
 - NWPathMonitor
