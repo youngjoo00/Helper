@@ -51,6 +51,11 @@
 
 ## **고려사항**
 
+**RxSwift + MVVM Input/Output Pattern**
+
+- Model, View, ViewModel 역할 분리
+- 비동기성 처리 및 데이터 스트림 처리
+
 **Alamofire**
 
 - Router Pattern 을 통해 네트워크 통신을 위한 Endpoint 생성 로직 추상화
@@ -61,11 +66,6 @@
 
 - Monitoring 을 통해 네트워크 상태 감지
 - 네트워크 재연결 감지 NotificationCenter 를 통해 API 재호출
-
-**RxSwift + MVVM Input/Output Pattern**
-
-- Model, View, ViewModel 역할 분리
-- 비동기성 처리 및 데이터 스트림 처리
 
 **iamport-ios**
 
@@ -89,6 +89,21 @@
 
 - 컨테이너뷰로 자식VC 을 넣어서 사용하는 경우, ViewDIdLoad 는 가장 내부에 있는 자식이 먼저 실행됨을 확인
 
-
 [분석 및 결과 블로그](https://youngjoo00.tistory.com/12)
 
+## **프로젝트 회고**
+
+### **좋았던 점**
+
+- Moya 와 유사하게끔 Alamofire + targetType 을 통해 Router Pattern 을 사용한 네트워크 통신 로직 추상화
+- 중복되는 View, ViewController, ViewModel 분리 및 결합하여 재사용 
+- Input/Output Pattern 및 접근제어를 통한 명확한 역할분리 및 가독성 증가
+
+### **아쉬웠던 점**
+
+- DTO 부재
+- DIP 부재
+
+### **추후 목표**
+
+- 
