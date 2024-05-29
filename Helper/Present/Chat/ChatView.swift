@@ -8,5 +8,16 @@
 import UIKit
 
 final class ChatView: BaseView {
+ 
+    override func configureHierarchy() {
+        
+    }
     
+    override func configureLayout() {
+        
+    }
+    
+    override func configureView() {
+        
+    }
 }

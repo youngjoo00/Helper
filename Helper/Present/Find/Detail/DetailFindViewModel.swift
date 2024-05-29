@@ -24,6 +24,7 @@ final class DetailFindViewModel: ViewModelType {
         let commentDeleteTap: Observable<String>
         let profileTapGesture: Observable<Void>
         let rewardButtonTap: Observable<Void>
+        let chatButtonTap: ControlEvent<Void>
     }
     
     struct Output {

@@ -19,6 +19,7 @@ final class DetailFindViewController: BaseViewController {
     var postID = ""
     
     let rewardButtonTap = PublishSubject<Void>()
+    
     override func loadView() {
         view = mainView
     }
@@ -52,7 +53,8 @@ final class DetailFindViewController: BaseViewController {
             completeButtonTap: mainView.completeButton.rx.tap,
             commentDeleteTap: commentDeleteTap,
             profileTapGesture: mainView.profileTabGesture.rx.event.map { _ in },
-            rewardButtonTap: rewardButtonTap
+            rewardButtonTap: rewardButtonTap,
+            chatButtonTap: mainView.chatButton.rx.tap
         )
                 
         mainView.commentWriteTextView.rx.text.orEmpty
@@ -65,6 +67,7 @@ final class DetailFindViewController: BaseViewController {
             .drive(with: self) { owner, value in
                 if value {
                     owner.configureRewardNavigationBar()
+                    owner.configureNavigationTitleChatButton()
                 } else {
                     owner.configureMenuNavigationBar()
                 }
@@ -75,7 +78,6 @@ final class DetailFindViewController: BaseViewController {
         output.profileTapGesture
             .drive(with: self) { owner, id in
                 owner.transition(viewController: id.checkedProfile, style: .push)
-                print("여기아닌가")
             }
             .disposed(by: disposeBag)
         
@@ -277,6 +279,10 @@ final class DetailFindViewController: BaseViewController {
 
 // MARK: - Custom Func
 extension DetailFindViewController {
+    
+    private func configureNavigationTitleChatButton() {
+        navigationItem.titleView = mainView.titleView
+    }
     
     private func configureMenuNavigationBar() {
         

@@ -13,6 +13,14 @@ import RxCocoa
 
 final class DetailFindView: BaseView {
 
+    // MARK: - titleView
+    let titleView = UIView().then {
+        $0.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+    }
+    
+    let chatButton = ImageButton(image: UIImage(systemName: "plus.message"))
+    
+    // MARK: - mainView
     lazy var commentWriteSubject = BehaviorSubject<String>(value: commentWriteTextView.text ?? "")
     
     let scrollView = UIScrollView()
@@ -90,6 +98,8 @@ final class DetailFindView: BaseView {
     let scrollBottomSpaceView = UIView()
     
     override func configureHierarchy() {
+        titleView.addSubview(chatButton)
+        
         [
             scrollView,
             commentView,
@@ -137,6 +147,11 @@ final class DetailFindView: BaseView {
     }
     
     override func configureLayout() {
+        
+        chatButton.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+        
         scrollView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide)
         }
