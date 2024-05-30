@@ -13,14 +13,14 @@ enum ChatResponse {
     struct CreateRoom: Decodable {
         let roomID: String
         let createdAt: String
-        let updatedat: String
+        let updatedAt: String
         let participants: [Participants]
         let lastChat: LastChat
         
         enum CodingKeys: String, CodingKey {
             case roomID = "room_id"
             case createdAt
-            case updatedat
+            case updatedAt
             case participants
             case lastChat
         }
@@ -29,7 +29,7 @@ enum ChatResponse {
             let container: KeyedDecodingContainer<ChatResponse.CreateRoom.CodingKeys> = try decoder.container(keyedBy: ChatResponse.CreateRoom.CodingKeys.self)
             self.roomID = try container.decode(String.self, forKey: ChatResponse.CreateRoom.CodingKeys.roomID)
             self.createdAt = try container.decode(String.self, forKey: ChatResponse.CreateRoom.CodingKeys.createdAt)
-            self.updatedat = try container.decode(String.self, forKey: ChatResponse.CreateRoom.CodingKeys.updatedat)
+            self.updatedAt = try container.decode(String.self, forKey: ChatResponse.CreateRoom.CodingKeys.updatedAt)
             self.participants = try container.decode([ChatResponse.Participants].self, forKey: ChatResponse.CreateRoom.CodingKeys.participants)
             self.lastChat = try container.decodeIfPresent(ChatResponse.LastChat.self, forKey: ChatResponse.CreateRoom.CodingKeys.lastChat) ?? LastChat(chatID: "", roomID: "", content: "", createdAt: "", sender: Sender(), files: [])
         }
@@ -61,6 +61,15 @@ enum ChatResponse {
         let createdAt: String
         let sender: Sender
         let files: [String]
+        
+        enum CodingKeys: String, CodingKey {
+            case chatID = "chat_id"
+            case roomID = "room_id"
+            case content
+            case createdAt
+            case sender
+            case files
+        }
     }
     
     struct Sender: Decodable {
@@ -96,14 +105,14 @@ enum ChatResponse {
     struct RoomData: Decodable {
         let roomID: String
         let createdAt: String
-        let updatedat: String
+        let updatedAt: String
         let participants: [Participants]
         let lastChat: LastChat?
         
         enum CodingKeys: String, CodingKey {
             case roomID = "room_id"
             case createdAt
-            case updatedat
+            case updatedAt
             case participants
             case lastChat
         }
@@ -112,7 +121,7 @@ enum ChatResponse {
             let container: KeyedDecodingContainer<ChatResponse.RoomData.CodingKeys> = try decoder.container(keyedBy: ChatResponse.RoomData.CodingKeys.self)
             self.roomID = try container.decode(String.self, forKey: ChatResponse.RoomData.CodingKeys.roomID)
             self.createdAt = try container.decode(String.self, forKey: ChatResponse.RoomData.CodingKeys.createdAt)
-            self.updatedat = try container.decode(String.self, forKey: ChatResponse.RoomData.CodingKeys.updatedat)
+            self.updatedAt = try container.decode(String.self, forKey: ChatResponse.RoomData.CodingKeys.updatedAt)
             self.participants = try container.decode([ChatResponse.Participants].self, forKey: ChatResponse.RoomData.CodingKeys.participants)
             self.lastChat = try container.decodeIfPresent(ChatResponse.LastChat.self, forKey: ChatResponse.RoomData.CodingKeys.lastChat) ?? LastChat(chatID: "", roomID: "", content: "", createdAt: "", sender: Sender(), files: [])
         }
@@ -126,25 +135,18 @@ enum ChatResponse {
     struct ChatData: Decodable {
         let chatID: String
         let roomID: String
+        let content: String
         let createdAt: String
-        let updatedat: String
-        let lastChat: LastChat?
+        let sender: Sender
+        let files: [String]
         
         enum CodingKeys: String, CodingKey {
             case chatID = "chat_id"
             case roomID = "room_id"
+            case content
             case createdAt
-            case updatedat
-            case lastChat
-        }
-        
-        init(from decoder: any Decoder) throws {
-            let container: KeyedDecodingContainer<ChatResponse.ChatData.CodingKeys> = try decoder.container(keyedBy: ChatResponse.ChatData.CodingKeys.self)
-            self.chatID = try container.decode(String.self, forKey: ChatResponse.ChatData.CodingKeys.chatID)
-            self.roomID = try container.decode(String.self, forKey: ChatResponse.ChatData.CodingKeys.roomID)
-            self.createdAt = try container.decode(String.self, forKey: ChatResponse.ChatData.CodingKeys.createdAt)
-            self.updatedat = try container.decode(String.self, forKey: ChatResponse.ChatData.CodingKeys.updatedat)
-            self.lastChat = try container.decodeIfPresent(ChatResponse.LastChat.self, forKey: ChatResponse.ChatData.CodingKeys.lastChat) ?? LastChat(chatID: "", roomID: "", content: "", createdAt: "", sender: Sender(), files: [])
+            case sender
+            case files
         }
     }
     

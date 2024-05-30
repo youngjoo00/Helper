@@ -12,10 +12,8 @@ extension BaseViewController {
         NetworkManager.shared.callAPI(type: UserResponse.MyProfile.self, router: Router.user(.myProfile))
             .subscribe(with: self) { owner, result in
                 LoadingIndicatorManager.shared.hideIndicator()
-                print("실행 확인 1")
                 switch result {
                 case .success(let data):
-                    print("실행 확인 2")
                     UserDefaultsManager.shared.saveUserID(data.userID)
                     EventManager.shared.myProfileInfo.onNext(data)
                     guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
@@ -24,13 +22,11 @@ extension BaseViewController {
                     sceneDelegate?.window?.rootViewController = tabbar
                     sceneDelegate?.window?.makeKey()
                 case .fail:
-                    print("실행 확인 3")
                     owner.showAlert(title: "오류!", message: "로그인 세션이 만료되었습니다. 다시 로그인해 주세요.") {
                         owner.changeSignInRootView()
                     }
                 }
             } onFailure: { owner, error in
-                print("실행 확인 4")
                 owner.showAlert(title: "오류!", message: error.localizedDescription) {
                     owner.changeSignInRootView()
                 }

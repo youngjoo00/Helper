@@ -19,6 +19,7 @@ final class DetailFindViewController: BaseViewController {
     var postID = ""
     
     let rewardButtonTap = PublishSubject<Void>()
+    let chatButtonTap = PublishSubject<Void>()
     
     override func loadView() {
         view = mainView
@@ -37,6 +38,10 @@ final class DetailFindViewController: BaseViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        
+        // 초기화 이후 재 바인딩을 통해 구독 설정
+        disposeBag = DisposeBag()
+        bind()
     }
     
     override func bind() {
@@ -54,7 +59,7 @@ final class DetailFindViewController: BaseViewController {
             commentDeleteTap: commentDeleteTap,
             profileTapGesture: mainView.profileTabGesture.rx.event.map { _ in },
             rewardButtonTap: rewardButtonTap,
-            chatButtonTap: mainView.chatButton.rx.tap
+            chatButtonTap: chatButtonTap
         )
                 
         mainView.commentWriteTextView.rx.text.orEmpty
@@ -267,11 +272,19 @@ final class DetailFindViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        // 사례금
         output.rewardTap
             .drive(with: self) { owner, _ in
                 owner.showAlertTextField(title: nil, message: "사례금 드리기") { price in
                     owner.transition(viewController: PaymentViewController(postID: owner.postID, price: price ?? ""), style: .hideBottomPush)
                 }
+            }
+            .disposed(by: disposeBag)
+        
+        // 채팅
+        output.chatTap
+            .drive(with: self) { owner, info in
+                owner.transition(viewController: ChatViewController(userID: info.creator.userID), style: .hideBottomPush)
             }
             .disposed(by: disposeBag)
     }
@@ -282,6 +295,10 @@ extension DetailFindViewController {
     
     private func configureNavigationTitleChatButton() {
         navigationItem.titleView = mainView.titleView
+        
+        mainView.chatButton.rx.tap
+            .bind(to: chatButtonTap)
+            .disposed(by: disposeBag)
     }
     
     private func configureMenuNavigationBar() {

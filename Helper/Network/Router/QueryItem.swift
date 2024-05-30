@@ -13,4 +13,5 @@ enum QueryItem: String {
     case productID = "product_id"
     case hashTag = "hashTag"
     case limitValue = "20"
+    case cursorDate = "cursor_date"
 }

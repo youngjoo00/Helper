@@ -14,10 +14,7 @@ import RxCocoa
 final class DetailFindView: BaseView {
 
     // MARK: - titleView
-    let titleView = UIView().then {
-        $0.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
-    }
-    
+    let titleView = UIView()
     let chatButton = ImageButton(image: UIImage(systemName: "plus.message"))
     
     // MARK: - mainView
@@ -147,6 +144,11 @@ final class DetailFindView: BaseView {
     }
     
     override func configureLayout() {
+        
+        titleView.snp.makeConstraints { make in
+            make.width.equalTo(100)
+            make.height.equalTo(40)
+        }
         
         chatButton.snp.makeConstraints { make in
             make.center.equalToSuperview()

@@ -14,6 +14,7 @@ enum Router {
     case comment(CommentRouter)
     case follow(FollowRouter)
     case payment(PaymentRouter)
+    case chat(ChatRouter)
 }
 
 extension Router: TargetType {
@@ -30,6 +31,8 @@ extension Router: TargetType {
             return followRouter.baseURL
         case .payment(let paymentRouter):
             return paymentRouter.baseURL
+        case .chat(let chatRouter):
+            return chatRouter.baseURL
         }
     }
 
@@ -45,6 +48,8 @@ extension Router: TargetType {
             return followRouter.header
         case .payment(let paymentRouter):
             return paymentRouter.header
+        case .chat(let chatRouter):
+            return chatRouter.header
         }
     }
 
@@ -60,6 +65,8 @@ extension Router: TargetType {
             return followRouter.path
         case .payment(let paymentRouter):
             return paymentRouter.path
+        case .chat(let chatRouter):
+            return chatRouter.path
         }
     }
 
@@ -75,6 +82,8 @@ extension Router: TargetType {
             return followRouter.method
         case .payment(let paymentRouter):
             return paymentRouter.method
+        case .chat(let chatRouter):
+            return chatRouter.method
         }
     }
 
@@ -90,6 +99,8 @@ extension Router: TargetType {
             return followRouter.queryItems
         case .payment(let paymentRouter):
             return paymentRouter.queryItems
+        case .chat(let chatRouter):
+            return chatRouter.queryItems
         }
     }
 
@@ -105,6 +116,8 @@ extension Router: TargetType {
             return followRouter.parameters
         case .payment(let paymentRouter):
             return paymentRouter.parameters
+        case .chat(let chatRouter):
+            return chatRouter.parameters
         }
     }
 
@@ -120,6 +133,8 @@ extension Router: TargetType {
             return followRouter.body
         case .payment(let paymentRouter):
             return paymentRouter.body
+        case .chat(let chatRouter):
+            return chatRouter.body
         }
     }
 }

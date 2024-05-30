@@ -72,7 +72,14 @@ extension ChatRouter: TargetType {
     }
     
     var queryItems: [URLQueryItem]? {
-        nil
+        switch self {
+        case .createRoom, .roomList, .send, .imageUpload:
+            return nil
+        case let .chatList(_, query):
+            return [
+                URLQueryItem(name: QueryItem.cursorDate.rawValue, value: query.cursorDate)
+            ]
+        }
     }
     
     var parameters: String? {
@@ -86,8 +93,8 @@ extension ChatRouter: TargetType {
             return try? encoder.encode(query)
         case .roomList:
             return nil
-        case let .chatList(_, query):
-            return try? encoder.encode(query)
+        case .chatList:
+            return nil
         case let .send(_, query):
             return try? encoder.encode(query)
         case let .imageUpload(_, query):

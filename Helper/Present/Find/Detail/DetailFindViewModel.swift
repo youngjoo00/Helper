@@ -24,7 +24,7 @@ final class DetailFindViewModel: ViewModelType {
         let commentDeleteTap: Observable<String>
         let profileTapGesture: Observable<Void>
         let rewardButtonTap: Observable<Void>
-        let chatButtonTap: ControlEvent<Void>
+        let chatButtonTap: Observable<Void>
     }
     
     struct Output {
@@ -56,6 +56,7 @@ final class DetailFindViewModel: ViewModelType {
         let adjustTextViewHeight: Driver<Void>
         let isrewardButtonHidden: Driver<Bool>
         let rewardTap: Driver<Void>
+        let chatTap: Driver<PostResponse.FetchPost>
     }
     
     func transform(input: Input) -> Output {
@@ -186,6 +187,10 @@ final class DetailFindViewModel: ViewModelType {
             .withLatestFrom(postInfo)
             .asDriver(onErrorDriveWith: .empty())
         
+        let chatTap = input.chatButtonTap
+            .withLatestFrom(postInfo)
+            .asDriver(onErrorDriveWith: .empty())
+        
         // MARK: - output Info
         let checkedUserID = postInfo
             .map { $0.creator.userID.checkedUserID }
@@ -293,7 +298,8 @@ final class DetailFindViewModel: ViewModelType {
             profileTapGesture: profileTapGesture, 
             adjustTextViewHeight: input.comment.map { _ in }.asDriver(onErrorJustReturn: ()), 
             isrewardButtonHidden: isrewardButtonHidden,
-            rewardTap: input.rewardButtonTap.asDriver(onErrorJustReturn: ())
+            rewardTap: input.rewardButtonTap.asDriver(onErrorJustReturn: ()),
+            chatTap: chatTap
         )
     }
 }
