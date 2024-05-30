@@ -22,12 +22,14 @@ final class ChatViewModel: ViewModelType {
     }
     
     struct Output {
-        
+        let chatDataList: Driver<[ChatResponse.ChatData]>
     }
     
     func transform(input: Input) -> Output {
         
         let chatListRequest = PublishSubject<(String)>()
+        
+        let chatDataList = PublishSubject<[ChatResponse.ChatData]>()
         
         input.viewWillAppearTrigger
             .withUnretained(self)
@@ -48,14 +50,16 @@ final class ChatViewModel: ViewModelType {
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let data):
-                    print(data)
+                    chatDataList.onNext(data.data)
                 case .fail(let fail):
                     print(fail.localizedDescription)
                 }
             }
             .disposed(by: disposeBag)
         
-        return Output()
+        return Output(
+            chatDataList: chatDataList.asDriver(onErrorDriveWith: .empty())
+        )
     }
     
 }

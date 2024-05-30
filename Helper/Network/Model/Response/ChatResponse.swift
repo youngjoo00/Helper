@@ -75,7 +75,7 @@ enum ChatResponse {
     struct Sender: Decodable {
         let userID: String
         let nick: String
-        let profileImage: String?
+        let profileImage: String
         
         enum CodingKeys: String, CodingKey {
             case userID = "user_id"
@@ -83,7 +83,7 @@ enum ChatResponse {
             case profileImage
         }
         
-        init(userID: String = "", nick: String = "", profileImage: String? = nil) {
+        init(userID: String = "", nick: String = "", profileImage: String = "") {
             self.userID = userID
             self.nick = nick
             self.profileImage = profileImage
@@ -93,7 +93,7 @@ enum ChatResponse {
             let container: KeyedDecodingContainer<ChatResponse.Sender.CodingKeys> = try decoder.container(keyedBy: ChatResponse.Sender.CodingKeys.self)
             self.userID = try container.decode(String.self, forKey: ChatResponse.Sender.CodingKeys.userID)
             self.nick = try container.decode(String.self, forKey: ChatResponse.Sender.CodingKeys.nick)
-            self.profileImage = try container.decodeIfPresent(String.self, forKey: ChatResponse.Sender.CodingKeys.profileImage)
+            self.profileImage = try container.decodeIfPresent(String.self, forKey: ChatResponse.Sender.CodingKeys.profileImage) ?? ""
         }
     }
     

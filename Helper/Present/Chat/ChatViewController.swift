@@ -51,5 +51,12 @@ final class ChatViewController: BaseViewController {
         )
         
         let output = chatViewModel.transform(input: input)
+        
+        output.chatDataList
+            .drive(mainView.chatTableView.rx.items(cellIdentifier: ChatTableViewCell.id,
+                                                   cellType: ChatTableViewCell.self)) { row, item, cell in
+                cell.updateView(item)
+            }
+            .disposed(by: disposeBag)
     }
 }
