@@ -65,7 +65,7 @@ extension ChatRouter: TargetType {
         case .chatList:
             return .get
         case .send:
-            return .get
+            return .post
         case .imageUpload:
             return .post
         }

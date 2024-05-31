@@ -47,7 +47,10 @@ final class ChatViewController: BaseViewController {
     
     override func bind() {
         let input = ChatViewModel.Input(
-            viewWillAppearTrigger: self.rx.viewWillAppear
+            viewWillAppearTrigger: self.rx.viewWillAppear,
+            chatText: mainView.chatSendView.chatTextView.rx.text.orEmpty.asObservable(),
+            chatSendTapped: mainView.chatSendView.sendButton.rx.tap,
+            galleryButtonTapped: mainView.chatSendView.galleryButton.rx.tap
         )
         
         let output = chatViewModel.transform(input: input)

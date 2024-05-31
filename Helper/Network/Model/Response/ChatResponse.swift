@@ -107,7 +107,7 @@ enum ChatResponse {
         let createdAt: String
         let updatedAt: String
         let participants: [Participants]
-        let lastChat: LastChat?
+        let lastChat: LastChat
         
         enum CodingKeys: String, CodingKey {
             case roomID = "room_id"
@@ -154,10 +154,10 @@ enum ChatResponse {
     struct Send: Decodable {
         let chatID: String
         let roomID: String
-        let content: String?
+        let content: String
         let createdAt: String
         let sender: Sender
-        let files: [String]?
+        let files: [String]
         
         enum CodingKeys: String, CodingKey {
             case chatID = "chat_id"

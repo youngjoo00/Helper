@@ -62,17 +62,17 @@ extension PostRouter: TargetType {
             return version + posts + "/files"
         case .create:
             return version + posts
-        case .update(let query, let id):
+        case let .update(_, id):
             return version + posts + "/\(id)"
         case .delete(let id):
             return version + posts + "/\(id)"
-        case .storage(let query, let id):
+        case let .storage(_, id):
             return version + posts + "/\(id)" + "/like"
-        case .complete(let query, let id):
+        case let .complete(_, id):
             return version + posts + "/\(id)" + "/like-2"
         case .fetchStorage:
             return version + posts + "/likes" + "/me"
-        case .otherUserFetchPosts(let next, let userID):
+        case let .otherUserFetchPosts(_, userID):
             return version + posts + "/users" + "/\(userID)"
         case .fetchFeed:
             return version + posts
@@ -124,7 +124,7 @@ extension PostRouter: TargetType {
                 URLQueryItem(name: QueryItem.next.rawValue, value: next),
                 URLQueryItem(name: QueryItem.limit.rawValue, value: QueryItem.limitValue.rawValue),
             ]
-        case .otherUserFetchPosts(let next, let id):
+        case let .otherUserFetchPosts(next, _):
             return [
                 URLQueryItem(name: QueryItem.next.rawValue, value: next),
                 URLQueryItem(name: QueryItem.limit.rawValue, value: QueryItem.limitValue.rawValue),
@@ -158,15 +158,15 @@ extension PostRouter: TargetType {
             return nil
         case .create(let query):
             return try? encoder.encode(query)
-        case .update(let query, let id):
+        case let .update(query, _):
             return try? encoder.encode(query)
         case .delete:
             return nil
-        case .storage(let query, let id):
+        case let .storage(query, _):
             return try? encoder.encode(query)
-        case .complete(let query, let id):
+        case let .complete(query, _):
             return try? encoder.encode(query)
-        case .fetchStorage(next: let next):
+        case .fetchStorage:
             return nil
         case .otherUserFetchPosts:
             return nil

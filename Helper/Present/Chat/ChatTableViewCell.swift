@@ -54,9 +54,9 @@ final class ChatTableViewCell: BaseTableViewCell {
 
 extension ChatTableViewCell {
     
-    func updateView(_ item: ChatResponse.ChatData) {
-        profileImageView.updateImage(item.sender.profileImage)
-        nicknameLabel.text = item.sender.nick
+    func updateView(_ item: ChatRealm) {
+        profileImageView.updateImage(item.sender?.profileImage ?? "")
+        nicknameLabel.text = item.sender?.nick ?? "알수없음"
         chatLabel.text = item.content
         timeLabel.text = DateManager.shared.dateFormat(item.createdAt)
     }

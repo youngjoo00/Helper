@@ -87,6 +87,13 @@
 		8E64888D2C0746FF00D1B4F3 /* ChatRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E64888C2C0746FF00D1B4F3 /* ChatRouter.swift */; };
 		8E64888F2C08AE8C00D1B4F3 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E64888E2C08AE8C00D1B4F3 /* ChatTableViewCell.swift */; };
 		8E6488912C08D0B500D1B4F3 /* ChatSendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6488902C08D0B500D1B4F3 /* ChatSendView.swift */; };
+		8E6488932C08DF1E00D1B4F3 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6488922C08DF1E00D1B4F3 /* SocketIOManager.swift */; };
+		8E6488962C08DF4C00D1B4F3 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 8E6488952C08DF4C00D1B4F3 /* SocketIO */; };
+		8E6488992C09BF6700D1B4F3 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 8E6488982C09BF6700D1B4F3 /* Realm */; };
+		8E64889B2C09BF6700D1B4F3 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8E64889A2C09BF6700D1B4F3 /* RealmSwift */; };
+		8E64889E2C09BFD600D1B4F3 /* ChatRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E64889D2C09BFD600D1B4F3 /* ChatRealm.swift */; };
+		8E6488A22C09C3F000D1B4F3 /* ChatRoomRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6488A12C09C3F000D1B4F3 /* ChatRoomRepository.swift */; };
+		8E6488A42C09F86900D1B4F3 /* ChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6488A32C09F86900D1B4F3 /* ChatRepository.swift */; };
 		8E75974C2BE5385600CE1F55 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75974B2BE5385600CE1F55 /* HomeViewModel.swift */; };
 		8E75974E2BE54C8B00CE1F55 /* BaseViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75974D2BE54C8B00CE1F55 /* BaseViewController+.swift */; };
 		8E7597502BE54E1800CE1F55 /* CommentTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75974F2BE54E1800CE1F55 /* CommentTextView.swift */; };
@@ -197,7 +204,6 @@
 		8ED8B8DB2BE137C3009B4387 /* BaseStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8DA2BE137C3009B4387 /* BaseStackView.swift */; };
 		8ED8B8DD2BE16C63009B4387 /* FollowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8DC2BE16C63009B4387 /* FollowManager.swift */; };
 		8ED8B8DF2BE205C3009B4387 /* FollowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8DE2BE205C3009B4387 /* FollowButton.swift */; };
-		8ED8B8E22BE29F16009B4387 /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = 8ED8B8E12BE29F16009B4387 /* Hero */; };
 		8ED8B8E42BE2B767009B4387 /* CompleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8E32BE2B767009B4387 /* CompleteButton.swift */; };
 		8ED8B8E62BE34E0F009B4387 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8E52BE34E0F009B4387 /* SeparatorView.swift */; };
 		8ED8B8F22BE4B911009B4387 /* RecentPostsFromFollowingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8B8F12BE4B911009B4387 /* RecentPostsFromFollowingViewModel.swift */; };
@@ -279,6 +285,10 @@
 		8E64888C2C0746FF00D1B4F3 /* ChatRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRouter.swift; sourceTree = "<group>"; };
 		8E64888E2C08AE8C00D1B4F3 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		8E6488902C08D0B500D1B4F3 /* ChatSendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSendView.swift; sourceTree = "<group>"; };
+		8E6488922C08DF1E00D1B4F3 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
+		8E64889D2C09BFD600D1B4F3 /* ChatRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRealm.swift; sourceTree = "<group>"; };
+		8E6488A12C09C3F000D1B4F3 /* ChatRoomRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomRepository.swift; sourceTree = "<group>"; };
+		8E6488A32C09F86900D1B4F3 /* ChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepository.swift; sourceTree = "<group>"; };
 		8E75974B2BE5385600CE1F55 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8E75974D2BE54C8B00CE1F55 /* BaseViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseViewController+.swift"; sourceTree = "<group>"; };
 		8E75974F2BE54E1800CE1F55 /* CommentTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTextView.swift; sourceTree = "<group>"; };
@@ -399,11 +409,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E1BAE632BC97C4F00A65075 /* RxRelay in Frameworks */,
-				8ED8B8E22BE29F16009B4387 /* Hero in Frameworks */,
 				8E1BAE5E2BC97C3200A65075 /* Kingfisher in Frameworks */,
 				8E1BAE5B2BC97C2A00A65075 /* Alamofire in Frameworks */,
+				8E64889B2C09BF6700D1B4F3 /* RealmSwift in Frameworks */,
 				8E1BAE612BC97C4F00A65075 /* RxCocoa in Frameworks */,
+				8E6488962C08DF4C00D1B4F3 /* SocketIO in Frameworks */,
 				8E1BAE6B2BC97CD500A65075 /* Tabman in Frameworks */,
+				8E6488992C09BF6700D1B4F3 /* Realm in Frameworks */,
 				8E9A40192BCFFADE005E4F45 /* IQKeyboardManagerSwift in Frameworks */,
 				8E1BAE582BC97C2100A65075 /* Toast in Frameworks */,
 				8E1BAE652BC97C4F00A65075 /* RxSwift in Frameworks */,
@@ -533,6 +545,7 @@
 			children = (
 				8E1BAE182BC968E500A65075 /* Present */,
 				8E1BAE322BC968EB00A65075 /* Network */,
+				8E64889C2C09BFB700D1B4F3 /* Database */,
 				8E1BAE432BC968F900A65075 /* Extension */,
 				8E1BAE3D2BC968F100A65075 /* Singleton */,
 				8E1BADFB2BC968C100A65075 /* Protocol */,
@@ -631,6 +644,7 @@
 				8ED8B8DC2BE16C63009B4387 /* FollowManager.swift */,
 				8ED8B8F32BE4D5D2009B4387 /* LoadingIndicatorManager.swift */,
 				8E7597652BE69F7F00CE1F55 /* NumberManager.swift */,
+				8E6488922C08DF1E00D1B4F3 /* SocketIOManager.swift */,
 			);
 			path = Singleton;
 			sourceTree = "<group>";
@@ -755,6 +769,32 @@
 				8E6488902C08D0B500D1B4F3 /* ChatSendView.swift */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		8E64889C2C09BFB700D1B4F3 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				8E6488A02C09C3E200D1B4F3 /* Repository */,
+				8E64889F2C09C3AC00D1B4F3 /* Model */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		8E64889F2C09C3AC00D1B4F3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8E64889D2C09BFD600D1B4F3 /* ChatRealm.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8E6488A02C09C3E200D1B4F3 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				8E6488A12C09C3F000D1B4F3 /* ChatRoomRepository.swift */,
+				8E6488A32C09F86900D1B4F3 /* ChatRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		8E7597562BE65CB200CE1F55 /* Payment */ = {
@@ -1097,8 +1137,10 @@
 				8E1BAE6A2BC97CD500A65075 /* Tabman */,
 				8E1BAE982BC993C100A65075 /* SnapKit */,
 				8E9A40182BCFFADE005E4F45 /* IQKeyboardManagerSwift */,
-				8ED8B8E12BE29F16009B4387 /* Hero */,
 				8E7597542BE656AE00CE1F55 /* iamport-ios */,
+				8E6488952C08DF4C00D1B4F3 /* SocketIO */,
+				8E6488982C09BF6700D1B4F3 /* Realm */,
+				8E64889A2C09BF6700D1B4F3 /* RealmSwift */,
 			);
 			productName = Helper;
 			productReference = 8E1BADE02BC965CC00A65075 /* Helper.app */;
@@ -1136,8 +1178,9 @@
 				8E1BAE692BC97CD500A65075 /* XCRemoteSwiftPackageReference "Tabman" */,
 				8E1BAE972BC993C100A65075 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				8E9A40172BCFFADD005E4F45 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
-				8ED8B8E02BE29F15009B4387 /* XCRemoteSwiftPackageReference "Hero" */,
 				8E7597532BE656AE00CE1F55 /* XCRemoteSwiftPackageReference "iamport-ios" */,
+				8E6488942C08DF4C00D1B4F3 /* XCRemoteSwiftPackageReference "socket" */,
+				8E6488972C09BF6700D1B4F3 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 8E1BADE12BC965CC00A65075 /* Products */;
 			projectDirPath = "";
@@ -1198,6 +1241,7 @@
 				8E1BAE4D2BC969DD00A65075 /* UITextField+.swift in Sources */,
 				8E1BAE4F2BC96AA600A65075 /* DateManager.swift in Sources */,
 				8E9D4A2E2C00AECC00996B6C /* PrivateKey.swift in Sources */,
+				8E6488A22C09C3F000D1B4F3 /* ChatRoomRepository.swift in Sources */,
 				8ED8B7A62BDC0845009B4387 /* FollowView.swift in Sources */,
 				8E1BAE212BC968E500A65075 /* PasswordViewModel.swift in Sources */,
 				8E17A2EA2BCA59C100581B58 /* BirthdayView.swift in Sources */,
@@ -1253,6 +1297,7 @@
 				8E7597622BE678B000CE1F55 /* PaymentViewModel.swift in Sources */,
 				8E83BC482BCBC134007E1637 /* Router.swift in Sources */,
 				8ED8B7E22BDD5C5C009B4387 /* InitailView.swift in Sources */,
+				8E6488A42C09F86900D1B4F3 /* ChatRepository.swift in Sources */,
 				8E75976D2BE7447300CE1F55 /* NoNetworkView.swift in Sources */,
 				8ED8B7FB2BDE81C3009B4387 /* DetailFeedViewModel.swift in Sources */,
 				8ED3AE222BD15C960040DA58 /* CommentsTableViewCell.swift in Sources */,
@@ -1282,6 +1327,7 @@
 				8E9A40142BCFD3D3005E4F45 /* PointTextView.swift in Sources */,
 				8E9A3FE42BCEBD8F005E4F45 /* WriteFindView.swift in Sources */,
 				8E17A2DE2BCA31D400581B58 /* ViewModelType+.swift in Sources */,
+				8E64889E2C09BFD600D1B4F3 /* ChatRealm.swift in Sources */,
 				8E9A3FF62BCEE291005E4F45 /* UserRequest.swift in Sources */,
 				8E6488872C0735F000D1B4F3 /* ChatViewModel.swift in Sources */,
 				8E1BAE222BC968E500A65075 /* SignUpView.swift in Sources */,
@@ -1294,6 +1340,7 @@
 				8E7597722BE75DF400CE1F55 /* UIFont+.swift in Sources */,
 				8E7597682BE743A200CE1F55 /* NetworkPathMonitor.swift in Sources */,
 				8ED8B7B32BDC0999009B4387 /* FollowViewModel.swift in Sources */,
+				8E6488932C08DF1E00D1B4F3 /* SocketIOManager.swift in Sources */,
 				8ED8B8F22BE4B911009B4387 /* RecentPostsFromFollowingViewModel.swift in Sources */,
 				8E1BAE272BC968E500A65075 /* NicknameViewModel.swift in Sources */,
 				8E9A40102BCFBB36005E4F45 /* PostRequest.swift in Sources */,
@@ -1625,6 +1672,22 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		8E6488942C08DF4C00D1B4F3 /* XCRemoteSwiftPackageReference "socket" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift";
+			requirement = {
+				kind = exactVersion;
+				version = 16.1.0;
+			};
+		};
+		8E6488972C09BF6700D1B4F3 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.46.0;
+			};
+		};
 		8E7597532BE656AE00CE1F55 /* XCRemoteSwiftPackageReference "iamport-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/iamport/iamport-ios.git";
@@ -1639,14 +1702,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 7.0.0;
-			};
-		};
-		8ED8B8E02BE29F15009B4387 /* XCRemoteSwiftPackageReference "Hero" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/HeroTransitions/Hero.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.6.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1692,6 +1747,21 @@
 			package = 8E1BAE972BC993C100A65075 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
+		8E6488952C08DF4C00D1B4F3 /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E6488942C08DF4C00D1B4F3 /* XCRemoteSwiftPackageReference "socket" */;
+			productName = SocketIO;
+		};
+		8E6488982C09BF6700D1B4F3 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E6488972C09BF6700D1B4F3 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		8E64889A2C09BF6700D1B4F3 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E6488972C09BF6700D1B4F3 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		8E7597542BE656AE00CE1F55 /* iamport-ios */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8E7597532BE656AE00CE1F55 /* XCRemoteSwiftPackageReference "iamport-ios" */;
@@ -1701,11 +1771,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8E9A40172BCFFADD005E4F45 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
-		};
-		8ED8B8E12BE29F16009B4387 /* Hero */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8ED8B8E02BE29F15009B4387 /* XCRemoteSwiftPackageReference "Hero" */;
-			productName = Hero;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

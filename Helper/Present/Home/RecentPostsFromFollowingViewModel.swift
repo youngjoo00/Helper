@@ -49,6 +49,7 @@ final class RecentPostsFromFollowingViewModel: ViewModelType {
                                 
                                 return regDate >= weekAgo ? recentPost : nil
                             case .fail(let fail):
+                                print(fail.localizedDescription)
                                 return nil
                             }
                         }

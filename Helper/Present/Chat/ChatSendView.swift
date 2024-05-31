@@ -10,9 +10,9 @@ import Then
 
 final class ChatSendView: BaseView {
     
-    private let galleryButton = ImageButton(image: UIImage(systemName: "photo"))
-    private let chatTextView = PointTextView()
-    private let sendButton = ImageButton(image: UIImage(systemName: "paperplane"))
+    let galleryButton = ImageButton(image: UIImage(systemName: "photo"))
+    let chatTextView = PointTextView()
+    let sendButton = ImageButton(image: UIImage(systemName: "paperplane"))
     
     override func configureHierarchy() {
         [

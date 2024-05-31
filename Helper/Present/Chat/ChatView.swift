@@ -14,9 +14,10 @@ final class ChatView: BaseView {
     
     let chatTableView = BaseTableView().then {
         $0.register(ChatTableViewCell.self, forCellReuseIdentifier: ChatTableViewCell.id)
+        $0.separatorStyle = .none
     }
     
-    private let chatSendView = ChatSendView()
+    let chatSendView = ChatSendView()
     
     override func configureHierarchy() {
         [
