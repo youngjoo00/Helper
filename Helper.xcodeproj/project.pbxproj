@@ -545,6 +545,7 @@
 			children = (
 				8E1BAE182BC968E500A65075 /* Present */,
 				8E1BAE322BC968EB00A65075 /* Network */,
+				8E6488A52C0A085B00D1B4F3 /* Socket */,
 				8E64889C2C09BFB700D1B4F3 /* Database */,
 				8E1BAE432BC968F900A65075 /* Extension */,
 				8E1BAE3D2BC968F100A65075 /* Singleton */,
@@ -644,7 +645,6 @@
 				8ED8B8DC2BE16C63009B4387 /* FollowManager.swift */,
 				8ED8B8F32BE4D5D2009B4387 /* LoadingIndicatorManager.swift */,
 				8E7597652BE69F7F00CE1F55 /* NumberManager.swift */,
-				8E6488922C08DF1E00D1B4F3 /* SocketIOManager.swift */,
 			);
 			path = Singleton;
 			sourceTree = "<group>";
@@ -795,6 +795,14 @@
 				8E6488A32C09F86900D1B4F3 /* ChatRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		8E6488A52C0A085B00D1B4F3 /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+				8E6488922C08DF1E00D1B4F3 /* SocketIOManager.swift */,
+			);
+			path = Socket;
 			sourceTree = "<group>";
 		};
 		8E7597562BE65CB200CE1F55 /* Payment */ = {

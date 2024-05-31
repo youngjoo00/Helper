@@ -28,7 +28,8 @@ final class ChatView: BaseView {
     
     override func configureLayout() {
         chatTableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.horizontalEdges.equalToSuperview()
+            make.bottom.equalTo(chatSendView.snp.top)
         }
         
         chatSendView.snp.makeConstraints { make in

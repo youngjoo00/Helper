@@ -49,7 +49,7 @@ final class ChatSendView: BaseView {
 }
 
 extension ChatSendView {
-
+    
     func adjustTextViewHeight() {
         let maxHeight: CGFloat = 100.0
         
@@ -76,4 +76,5 @@ extension ChatSendView {
         // 레이아웃 업데이트
         self.layoutIfNeeded()
     }
+    
 }

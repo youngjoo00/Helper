@@ -46,11 +46,15 @@ final class ChatViewController: BaseViewController {
     }
     
     override func bind() {
+        
+        let scrollToBottomTrigger = PublishSubject<Void>()
+        
         let input = ChatViewModel.Input(
             viewWillAppearTrigger: self.rx.viewWillAppear,
             chatText: mainView.chatSendView.chatTextView.rx.text.orEmpty.asObservable(),
             chatSendTapped: mainView.chatSendView.sendButton.rx.tap,
-            galleryButtonTapped: mainView.chatSendView.galleryButton.rx.tap
+            galleryButtonTapped: mainView.chatSendView.galleryButton.rx.tap,
+            scrollToBottomTrigger: scrollToBottomTrigger
         )
         
         let output = chatViewModel.transform(input: input)
@@ -61,5 +65,32 @@ final class ChatViewController: BaseViewController {
                 cell.updateView(item)
             }
             .disposed(by: disposeBag)
+        
+        output.sendSuccess
+            .drive(with: self) { owner, _ in
+                owner.mainView.chatSendView.chatTextView.text = ""
+                scrollToBottomTrigger.onNext(())
+            }
+            .disposed(by: disposeBag)
+        
+        output.scrollToBottom
+            .drive(with: self) { owner, _ in
+                owner.scrollToBottom()
+            }
+            .disposed(by: disposeBag)
+    }
+}
+
+extension ChatViewController {
+    
+    private func scrollToBottom() {
+        // numberOfSections, numberOfRows 는 0이 아닌 1부터 개수를 세기 때문에 -1 필요
+        let numberOfSections = mainView.chatTableView.numberOfSections
+        let numberOfRows = mainView.chatTableView.numberOfRows(inSection: numberOfSections - 1)
+        
+        if numberOfRows > 0 {
+            let indexPath = IndexPath(row: numberOfRows - 1, section: numberOfSections - 1)
+            mainView.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
+        }
     }
 }

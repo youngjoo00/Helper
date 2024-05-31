@@ -9,6 +9,11 @@ import RxSwift
 import RxCocoa
 import RealmSwift
 
+enum SocketState {
+    case connect
+    case disconnect
+}
+
 final class ChatViewModel: ViewModelType {
 
     var chatRoomRepository: ChatRoomRepository
@@ -29,18 +34,26 @@ final class ChatViewModel: ViewModelType {
         let chatText: Observable<String>
         let chatSendTapped: ControlEvent<Void>
         let galleryButtonTapped: ControlEvent<Void>
+        let scrollToBottomTrigger: PublishSubject<Void>
     }
     
     struct Output {
         let chatDataList: Driver<[ChatRealm]>
+        let sendSuccess: Driver<Void>
+        let scrollToBottom: Driver<Void>
     }
     
     func transform(input: Input) -> Output {
         
         let checkChatRoom = PublishSubject<Void>()
         let chatListRequest = PublishSubject<String>()
-        let chatDataList = PublishSubject<[ChatRealm]>()
+        let socket = PublishSubject<SocketState>()
         
+        // MARK: - Output Property
+        let chatDataList = PublishRelay<[ChatRealm]>()
+        let sendSuccess = PublishRelay<Void>()
+        
+        // MARK: - bind
         input.viewWillAppearTrigger
             .withUnretained(self)
             .flatMap { _ in NetworkManager.shared.callAPI(type: ChatResponse.CreateRoom.self, router: Router.chat(.createRoom(query: .init(opponentID: self.userID)))) }
@@ -102,9 +115,25 @@ final class ChatViewModel: ViewModelType {
                         }
                     }
                     
-                    chatDataList.onNext(owner.chatRoomRepository.fetchChatAllList(owner.roomID))
+                    chatDataList.accept(owner.chatRoomRepository.fetchChatAllList(owner.roomID))
+
+                    socket.onNext(.connect)
+                    input.scrollToBottomTrigger.onNext(())
                 case .fail(let fail):
                     print(fail.localizedDescription)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        socket
+            .subscribe(with: self) { owner, state in
+                switch state {
+                case .connect:
+                    SocketIOManager.shared.roomID = owner.roomID
+                    SocketIOManager.shared.establishConnection()
+                case .disconnect:
+                    SocketIOManager.shared.roomID = ""
+                    SocketIOManager.shared.leaveConnection()
                 }
             }
             .disposed(by: disposeBag)
@@ -118,7 +147,21 @@ final class ChatViewModel: ViewModelType {
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let data):
-                    print(data)
+                    let chatModel = owner.createChatModel(chatID: data.chatID,
+                                    roomID: data.roomID,
+                                    content: data.content,
+                                    createdAt: data.createdAt,
+                                    sender: data.sender,
+                                    files: data.files)
+                    
+                    let result = owner.createChatItem(chatModel)
+                    
+                    if result {
+                        chatDataList.accept(owner.chatRoomRepository.fetchChatAllList(owner.roomID))
+                        sendSuccess.accept(())
+                    } else {
+                        print("실패")
+                    }
                 case .fail(let fail):
                     print(fail.localizedDescription)
                 }
@@ -126,8 +169,39 @@ final class ChatViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         return Output(
-            chatDataList: chatDataList.asDriver(onErrorDriveWith: .empty())
+            chatDataList: chatDataList.asDriver(onErrorDriveWith: .empty()),
+            sendSuccess: sendSuccess.asDriver(onErrorJustReturn: ()),
+            scrollToBottom: input.scrollToBottomTrigger.asDriver(onErrorJustReturn: ())
         )
     }
     
+}
+
+extension ChatViewModel {
+    
+    private func createChatModel(chatID: String, roomID: String, content: String, createdAt: String, sender: ChatResponse.Sender, files: [String]) -> ChatRealm {
+        let filesList = List<String>()
+        filesList.append(objectsIn: files)
+
+        return ChatRealm(
+            chatID: chatID,
+            roomID: roomID,
+            content: content,
+            createdAt: createdAt,
+            sender: SenderRealm(userID: sender.userID,
+                                nick: sender.nick,
+                                profileImage: sender.profileImage),
+            files: filesList
+        )
+    }
+    
+    private func createChatItem(_ chatModel: ChatRealm) -> Bool {
+        do {
+            try chatRepository.createChatItem(chatModel, roomID: roomID)
+            return true
+        } catch {
+            print("생성 실패", error)
+            return false
+        }
+    }
 }
