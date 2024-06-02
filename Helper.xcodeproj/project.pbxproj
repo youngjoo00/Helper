@@ -97,6 +97,7 @@
 		8E6488A82C0CA9F600D1B4F3 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6488A72C0CA9F600D1B4F3 /* ChatRoomViewController.swift */; };
 		8E6488AA2C0CA9FE00D1B4F3 /* ChatRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6488A92C0CA9FE00D1B4F3 /* ChatRoomView.swift */; };
 		8E6488AC2C0CAA0300D1B4F3 /* ChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6488AB2C0CAA0300D1B4F3 /* ChatRoomViewModel.swift */; };
+		8E6488AE2C0CB34B00D1B4F3 /* ChatRoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6488AD2C0CB34B00D1B4F3 /* ChatRoomTableViewCell.swift */; };
 		8E75974C2BE5385600CE1F55 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75974B2BE5385600CE1F55 /* HomeViewModel.swift */; };
 		8E75974E2BE54C8B00CE1F55 /* BaseViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75974D2BE54C8B00CE1F55 /* BaseViewController+.swift */; };
 		8E7597502BE54E1800CE1F55 /* CommentTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75974F2BE54E1800CE1F55 /* CommentTextView.swift */; };
@@ -295,6 +296,7 @@
 		8E6488A72C0CA9F600D1B4F3 /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
 		8E6488A92C0CA9FE00D1B4F3 /* ChatRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomView.swift; sourceTree = "<group>"; };
 		8E6488AB2C0CAA0300D1B4F3 /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; };
+		8E6488AD2C0CB34B00D1B4F3 /* ChatRoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomTableViewCell.swift; sourceTree = "<group>"; };
 		8E75974B2BE5385600CE1F55 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8E75974D2BE54C8B00CE1F55 /* BaseViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseViewController+.swift"; sourceTree = "<group>"; };
 		8E75974F2BE54E1800CE1F55 /* CommentTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTextView.swift; sourceTree = "<group>"; };
@@ -818,6 +820,7 @@
 				8E6488A92C0CA9FE00D1B4F3 /* ChatRoomView.swift */,
 				8E6488A72C0CA9F600D1B4F3 /* ChatRoomViewController.swift */,
 				8E6488AB2C0CAA0300D1B4F3 /* ChatRoomViewModel.swift */,
+				8E6488AD2C0CB34B00D1B4F3 /* ChatRoomTableViewCell.swift */,
 			);
 			path = ChatRoom;
 			sourceTree = "<group>";
@@ -1297,6 +1300,7 @@
 				8ED8B7E82BDE223D009B4387 /* WriteFeedViewController.swift in Sources */,
 				8ED8B7A82BDC084D009B4387 /* FollowViewController.swift in Sources */,
 				8E1BAE8A2BC97FF800A65075 /* PointButton.swift in Sources */,
+				8E6488AE2C0CB34B00D1B4F3 /* ChatRoomTableViewCell.swift in Sources */,
 				8E7597502BE54E1800CE1F55 /* CommentTextView.swift in Sources */,
 				8E9A3FD72BCD94A2005E4F45 /* SettingViewController.swift in Sources */,
 				8ED8B7EE2BDE30F1009B4387 /* FeedView.swift in Sources */,
