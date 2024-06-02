@@ -94,6 +94,9 @@
 		8E64889E2C09BFD600D1B4F3 /* ChatRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E64889D2C09BFD600D1B4F3 /* ChatRealm.swift */; };
 		8E6488A22C09C3F000D1B4F3 /* ChatRoomRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6488A12C09C3F000D1B4F3 /* ChatRoomRepository.swift */; };
 		8E6488A42C09F86900D1B4F3 /* ChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6488A32C09F86900D1B4F3 /* ChatRepository.swift */; };
+		8E6488A82C0CA9F600D1B4F3 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6488A72C0CA9F600D1B4F3 /* ChatRoomViewController.swift */; };
+		8E6488AA2C0CA9FE00D1B4F3 /* ChatRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6488A92C0CA9FE00D1B4F3 /* ChatRoomView.swift */; };
+		8E6488AC2C0CAA0300D1B4F3 /* ChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6488AB2C0CAA0300D1B4F3 /* ChatRoomViewModel.swift */; };
 		8E75974C2BE5385600CE1F55 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75974B2BE5385600CE1F55 /* HomeViewModel.swift */; };
 		8E75974E2BE54C8B00CE1F55 /* BaseViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75974D2BE54C8B00CE1F55 /* BaseViewController+.swift */; };
 		8E7597502BE54E1800CE1F55 /* CommentTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75974F2BE54E1800CE1F55 /* CommentTextView.swift */; };
@@ -289,6 +292,9 @@
 		8E64889D2C09BFD600D1B4F3 /* ChatRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRealm.swift; sourceTree = "<group>"; };
 		8E6488A12C09C3F000D1B4F3 /* ChatRoomRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomRepository.swift; sourceTree = "<group>"; };
 		8E6488A32C09F86900D1B4F3 /* ChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepository.swift; sourceTree = "<group>"; };
+		8E6488A72C0CA9F600D1B4F3 /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
+		8E6488A92C0CA9FE00D1B4F3 /* ChatRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomView.swift; sourceTree = "<group>"; };
+		8E6488AB2C0CAA0300D1B4F3 /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; };
 		8E75974B2BE5385600CE1F55 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8E75974D2BE54C8B00CE1F55 /* BaseViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseViewController+.swift"; sourceTree = "<group>"; };
 		8E75974F2BE54E1800CE1F55 /* CommentTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTextView.swift; sourceTree = "<group>"; };
@@ -611,6 +617,7 @@
 				8ED8B7CA2BDCF7E0009B4387 /* Home */,
 				8E17A2EF2BCA7D8D00581B58 /* Find */,
 				8ED8B7EB2BDE30A0009B4387 /* Feed */,
+				8E6488A62C0CA9E200D1B4F3 /* ChatRoom */,
 				8E6488812C0735CB00D1B4F3 /* Chat */,
 				8ED8B7EC2BDE30C2009B4387 /* Write */,
 				8ED8B7E42BDE21F9009B4387 /* Profile */,
@@ -803,6 +810,16 @@
 				8E6488922C08DF1E00D1B4F3 /* SocketIOManager.swift */,
 			);
 			path = Socket;
+			sourceTree = "<group>";
+		};
+		8E6488A62C0CA9E200D1B4F3 /* ChatRoom */ = {
+			isa = PBXGroup;
+			children = (
+				8E6488A92C0CA9FE00D1B4F3 /* ChatRoomView.swift */,
+				8E6488A72C0CA9F600D1B4F3 /* ChatRoomViewController.swift */,
+				8E6488AB2C0CAA0300D1B4F3 /* ChatRoomViewModel.swift */,
+			);
+			path = ChatRoom;
 			sourceTree = "<group>";
 		};
 		8E7597562BE65CB200CE1F55 /* Payment */ = {
@@ -1253,6 +1270,7 @@
 				8ED8B7A62BDC0845009B4387 /* FollowView.swift in Sources */,
 				8E1BAE212BC968E500A65075 /* PasswordViewModel.swift in Sources */,
 				8E17A2EA2BCA59C100581B58 /* BirthdayView.swift in Sources */,
+				8E6488AA2C0CA9FE00D1B4F3 /* ChatRoomView.swift in Sources */,
 				8ED8B8AF2BDFF927009B4387 /* FollowRouter.swift in Sources */,
 				8EA59CE92BD19D56009938E0 /* PathVersion.swift in Sources */,
 				8ED8B8E42BE2B767009B4387 /* CompleteButton.swift in Sources */,
@@ -1385,6 +1403,8 @@
 				8ED8B8DF2BE205C3009B4387 /* FollowButton.swift in Sources */,
 				8ED8B7F02BDE30F9009B4387 /* FeedViewController.swift in Sources */,
 				8ED8B7982BDBEBEC009B4387 /* ProfileImageView.swift in Sources */,
+				8E6488A82C0CA9F600D1B4F3 /* ChatRoomViewController.swift in Sources */,
+				8E6488AC2C0CAA0300D1B4F3 /* ChatRoomViewModel.swift in Sources */,
 				8E9A3FD22BCD8455005E4F45 /* UICollectionViewLayout+.swift in Sources */,
 				8E7597582BE65CDD00CE1F55 /* PaymentViewController.swift in Sources */,
 				8E75977A2BE7BDD600CE1F55 /* BadgeButton.swift in Sources */,

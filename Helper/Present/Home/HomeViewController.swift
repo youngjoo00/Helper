@@ -30,8 +30,8 @@ final class HomeViewController: BaseViewController {
         super.viewDidLoad()
         
         configureLogo()
+        configureChatRoomRightNavigationItem()
         fetchPostsTrigger.onNext(())
-        
     }
    
     override func bind() {
@@ -57,12 +57,6 @@ final class HomeViewController: BaseViewController {
         super.handleNetworkReconnection(notification)
         
         fetchPostsTrigger.onNext(())
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        
     }
 }
 
@@ -200,5 +194,17 @@ extension HomeViewController {
                 owner.transition(viewController: vc, style: .hideBottomPush)
             }
             .disposed(by: disposeBag)
+    }
+}
+
+extension HomeViewController {
+    
+    func configureChatRoomRightNavigationItem() {
+        let rightButtonItem = UIBarButtonItem(image: UIImage(systemName: "paperplane"), style: .plain, target: self, action: #selector(chatRoomButtonTapped))
+        navigationItem.rightBarButtonItem = rightButtonItem
+    }
+    
+    @objc func chatRoomButtonTapped() {
+        transition(viewController: ChatRoomViewController(), style: .hideBottomPush)
     }
 }
